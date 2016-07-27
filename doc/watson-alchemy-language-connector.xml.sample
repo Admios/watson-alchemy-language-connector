@@ -1,0 +1,6 @@
+<!-- BEGIN_INCLUDE(watson-alchemy-language:greet) -->
+    <watson-alchemy-language:greet config-ref="" friend="#[map-payload:friend]" />
+<!-- END_INCLUDE(watson-alchemy-language:greet) -->
+<!-- BEGIN_INCLUDE(watson-alchemy-language:add-entity) -->
+    <watson-alchemy-language:add-entity config-ref="" key="id1"/>
+<!-- END_INCLUDE(watson-alchemy-language:add-entity) -->
