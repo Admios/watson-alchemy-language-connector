@@ -28,8 +28,16 @@
         </repository>
     </repositories>
     <scm>
-        <connection>scm:git:git://github.com:Admios/watson-alchemy-language.git</connection>
+        <connection>scm:git:git://github.com:Admios/watson-alchemy-language-connector.git</connection>
         <developerConnection>scm:git:git@github.com:Admios/watson-alchemy-language-connector.git</developerConnection>
-        <url>http://github.com/Admios/watson-alchemy-language</url>
+        <url>http://github.com/Admios/watson-alchemy-language-connector</url>
     </scm>
+    
+    <dependencies>
+		<dependency>
+			<groupId>com.ibm.watson.developer_cloud</groupId>
+			<artifactId>java-sdk</artifactId>
+			<version>3.0.1</version>
+		</dependency>
+	</dependencies>
 </project>

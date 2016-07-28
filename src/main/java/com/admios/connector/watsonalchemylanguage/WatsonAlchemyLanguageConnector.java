@@ -23,7 +23,7 @@ public class WatsonAlchemyLanguageConnector {
         /*
          * MESSAGE PROCESSOR CODE GOES HERE
          */
-        return config.getGreeting() + " " + friend + ". " + config.getReply();
+        return "";
     }
 
 
