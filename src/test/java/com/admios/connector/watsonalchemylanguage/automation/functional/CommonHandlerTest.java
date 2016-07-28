@@ -3,62 +3,24 @@ package com.admios.connector.watsonalchemylanguage.automation.functional;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
-import org.junit.After;
-import org.junit.Before;
 import org.junit.Test;
-import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
-import com.admios.connector.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
 import com.admios.connector.watsonalchemylanguage.handler.CommonHandler;
 
-public class CommonHandlerTest extends
-AbstractTestCase<WatsonAlchemyLanguageConnector>{
-
-	public CommonHandlerTest() {
-		super(WatsonAlchemyLanguageConnector.class);
-	}
-
-	@Before
-	public void setup() {
-		// TODO
-	}
-
-	@After
-	public void tearDown() {
-		// TODO
-	}
-
-	@Test
-	public void verify() {
-		java.lang.String expected = null;
-		java.lang.String friend = null;
-		assertEquals(getConnector().greet(friend), expected);
-	}
+public class CommonHandlerTest {
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void parameterInvalid(){
-		
 		CommonHandlerMock mock = new CommonHandlerMock();
-		
-		try{
-			mock.addParam(null, "Invalid object");
-			fail();
-		} catch (IllegalArgumentException e){
-			
-		}
+		mock.addParam(null, "Invalid object");
+		fail();
 	}
 	
 	@Test(expected=IllegalArgumentException.class)
 	public void parameterEmpty(){
-		
 		CommonHandlerMock mock = new CommonHandlerMock();
-		
-		try{
-			mock.addParam("", "Invalid object");
-			fail();
-		} catch (IllegalArgumentException e){
-			
-		}
+		mock.addParam("", "Invalid object");
+		fail();
 	}
 	
 	@Test
