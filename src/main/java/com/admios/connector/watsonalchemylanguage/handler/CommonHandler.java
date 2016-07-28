@@ -8,7 +8,7 @@ import com.ibm.watson.developer_cloud.alchemy.v1.AlchemyLanguage;
 public abstract class CommonHandler<T> {
 
 	protected final AlchemyLanguage service;
-	private Map<String, Object> params = new HashMap<>();
+	protected Map<String, Object> params = new HashMap<>();
 
 	public CommonHandler(AlchemyLanguage service, String param, Object value) {
 		this.service = service;
