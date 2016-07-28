@@ -1,107 +1,79 @@
 package com.admios.connector.watsonalchemylanguage.config;
 
-import org.mule.api.annotations.components.ConnectionManagement;
-import org.mule.api.annotations.TestConnectivity;
+import java.util.HashMap;
+import java.util.Map;
+
+import org.mule.api.ConnectionException;
+import org.mule.api.ConnectionExceptionCode;
 import org.mule.api.annotations.Connect;
-import org.mule.api.annotations.ValidateConnection;
 import org.mule.api.annotations.ConnectionIdentifier;
 import org.mule.api.annotations.Disconnect;
+import org.mule.api.annotations.TestConnectivity;
+import org.mule.api.annotations.ValidateConnection;
+import org.mule.api.annotations.components.ConnectionManagement;
 import org.mule.api.annotations.param.ConnectionKey;
-import org.mule.api.ConnectionException;
-import org.mule.api.annotations.display.Password;
-import org.mule.api.annotations.Configurable;
-import org.mule.api.annotations.param.Default;
 
-@ConnectionManagement(friendlyName = "Configuration")
+import com.ibm.watson.developer_cloud.alchemy.v1.AlchemyLanguage;
+import com.ibm.watson.developer_cloud.service.exception.UnauthorizedException;
+
+@ConnectionManagement(friendlyName = "Watson AlchemyLanguage Configuration")
 public class ConnectorConfig {
-    
-    /**
-     * Greeting message
-     */
-    @Configurable
-    @Default("Hello")
-    private String greeting;
 
-    /**
-     * Reply message
-     */
-    @Configurable
-    @Default("How are you?")
-    private String reply;
+	private AlchemyLanguage service;
 
-    /**
-     * Connect
-     *
-     * @param username A username
-     * @param password A password
-     * @throws ConnectionException
-     */
-    @Connect
-    @TestConnectivity
-    public void connect(@ConnectionKey String username, @Password String password)
-        throws ConnectionException {
-        /*
-         * CODE FOR ESTABLISHING A CONNECTION GOES IN HERE
-         */
-    }
+	/**
+	 * Connect, this method will use one api call to validate the api key
+	 *
+	 * @param username
+	 *            A apiKey
+	 * @throws ConnectionException
+	 */
+	@Connect
+	@TestConnectivity
+	public void connect(@ConnectionKey String apiKey) throws ConnectionException {
+		setService(new AlchemyLanguage(apiKey));
+		testConnectivity();
+	}
 
-    /**
-     * Disconnect
-     */
-    @Disconnect
-    public void disconnect() {
-        /*
-         * CODE FOR CLOSING A CONNECTION GOES IN HERE
-         */
-    }
+	/**
+	 * Disconnect
+	 */
+	@Disconnect
+	public void disconnect() {
+		setService(null);
+	}
 
-    /**
-     * Are we connected
-     */
-    @ValidateConnection
-    public boolean isConnected() {
-        //TODO: Change it to reflect that we are connected.
-        return false;
-    }
+	/**
+	 * Are we connected
+	 */
+	@ValidateConnection
+	public boolean isConnected() {
+		return getService() != null;
+	}
 
-    /**
-     * Are we connected
-     */
-    @ConnectionIdentifier
-    public String connectionId() {
-        return "001";
-    }
+	/**
+	 * Are we connected
+	 */
+	@ConnectionIdentifier
+	public String connectionId() {
+		return "001";
+	}
 
-    /**
-     * Set greeting message
-     *
-     * @param greeting the greeting message
-     */
-    public void setGreeting(String greeting) {
-        this.greeting = greeting;
-    }
+	private void testConnectivity() throws ConnectionException {
+		try {
+			Map<String, Object> params = new HashMap<>();
+			params.put(AlchemyLanguage.TEXT, "Connection Test Request");
+			getService().getLanguage(params).execute();
+		} catch (UnauthorizedException e) {
+			throw new ConnectionException(ConnectionExceptionCode.INCORRECT_CREDENTIALS, "", e.getMessage(), e);
+		}
+	}
 
-    /**
-     * Get greeting message
-     */
-    public String getGreeting() {
-        return this.greeting;
-    }
+	public AlchemyLanguage getService() {
+		return service;
+	}
 
-    /**
-     * Set reply message
-     *
-     * @param reply The reply message 
-     */
-    public void setReply(String reply) {
-        this.reply = reply;
-    }
-
-    /**
-     * Get configured reply message
-     */
-    public String getReply() {
-        return this.reply;
-    }
-    
+	public void setService(AlchemyLanguage service) {
+		this.service = service;
+	}
 }
