@@ -8,10 +8,11 @@ import org.junit.runners.Suite.SuiteClasses;
 import org.mule.tools.devkit.ctf.mockup.ConnectorTestContext;
 
 import com.admios.connector.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
+import com.admios.connector.watsonalchemylanguage.automation.functional.GetEntitiesTestCase;
 import com.admios.connector.watsonalchemylanguage.automation.functional.GreetTestCases;
 
 @RunWith(Suite.class)
-@SuiteClasses({ GreetTestCases.class })
+@SuiteClasses({ GreetTestCases.class, GetEntitiesTestCase.class })
 
 public class FunctionalTestSuite {
 
