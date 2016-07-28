@@ -20,12 +20,8 @@ public class WatsonAlchemyLanguageConnector {
      */
     @Processor
     public String greet(String friend) {
-        /*
-         * MESSAGE PROCESSOR CODE GOES HERE
-         */
         return "";
     }
-
 
     public ConnectorConfig getConfig() {
         return config;
