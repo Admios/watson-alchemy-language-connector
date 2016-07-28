@@ -18,10 +18,10 @@ public abstract class CommonHandler<T> {
 	}
 
 	protected CommonHandler<T> addParam(String param, Object value) {
-		if(StringUtils.isNotEmpty(param)){
-			params.put(param, value);
-		} else {
+		if(StringUtils.isEmpty(param)){
 			throw new IllegalArgumentException("The param name can be null or empty");
+		} else if(value != null){
+			params.put(param, value);
 		}
 		return this;
 	}
@@ -29,6 +29,10 @@ public abstract class CommonHandler<T> {
 	protected CommonHandler<T> removeParam(String param) {
 		params.remove(param);
 		return this;
+	}
+	
+	public Integer parametersSize(){
+		return params.size();
 	}
 
 	abstract public T execute();

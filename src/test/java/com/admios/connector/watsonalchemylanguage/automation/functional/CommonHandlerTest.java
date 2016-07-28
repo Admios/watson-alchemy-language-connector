@@ -6,12 +6,10 @@ import static org.junit.Assert.fail;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.Assert;
 import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
 import com.admios.connector.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
 import com.admios.connector.watsonalchemylanguage.handler.CommonHandler;
-import com.ibm.watson.developer_cloud.alchemy.v1.AlchemyLanguage;
 
 public class CommonHandlerTest extends
 AbstractTestCase<WatsonAlchemyLanguageConnector>{
@@ -61,6 +59,14 @@ AbstractTestCase<WatsonAlchemyLanguageConnector>{
 		} catch (IllegalArgumentException e){
 			
 		}
+	}
+	
+	@Test
+	public void parameterWithNullValue(){
+		CommonHandlerMock mock = new CommonHandlerMock();
+		assertEquals(1,mock.parametersSize().intValue());
+		mock.addParam("maxTime", null);
+		assertEquals(1,mock.parametersSize().intValue());
 	}
 }
 
