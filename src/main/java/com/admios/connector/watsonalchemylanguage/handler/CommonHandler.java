@@ -3,11 +3,15 @@ package com.admios.connector.watsonalchemylanguage.handler;
 import java.util.HashMap;
 import java.util.Map;
 
+import com.ibm.watson.developer_cloud.alchemy.v1.AlchemyLanguage;
+
 public abstract class CommonHandler<T> {
 
+	protected final AlchemyLanguage service;
 	private Map<String, Object> params = new HashMap<>();
 
-	public CommonHandler(String param, Object value) {
+	public CommonHandler(AlchemyLanguage service, String param, Object value) {
+		this.service = service;
 		params.put(param, value);
 	}
 
