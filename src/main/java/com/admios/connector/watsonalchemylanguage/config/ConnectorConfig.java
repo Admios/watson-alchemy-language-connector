@@ -16,7 +16,7 @@ import org.mule.api.annotations.param.ConnectionKey;
 import com.ibm.watson.developer_cloud.alchemy.v1.AlchemyLanguage;
 import com.ibm.watson.developer_cloud.service.exception.UnauthorizedException;
 
-@ConnectionManagement(friendlyName = "Watson AlchemyLanguage Configuration")
+@ConnectionManagement(friendlyName = "Watson AlchemyLanguage Configuration", configElementName = "watson-alchemylanguage-config")
 public class ConnectorConfig {
 
 	private AlchemyLanguage service;

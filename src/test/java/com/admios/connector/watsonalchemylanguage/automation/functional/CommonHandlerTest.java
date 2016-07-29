@@ -32,6 +32,7 @@ public class CommonHandlerTest {
 	}
 }
 
+@SuppressWarnings("rawtypes")
 final class CommonHandlerMock extends CommonHandler{
 	
 	public CommonHandlerMock(){
