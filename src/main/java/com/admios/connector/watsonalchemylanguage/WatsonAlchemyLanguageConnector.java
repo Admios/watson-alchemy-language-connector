@@ -6,7 +6,9 @@ import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.param.Optional;
 
 import com.admios.connector.watsonalchemylanguage.config.ConnectorConfig;
+import com.admios.connector.watsonalchemylanguage.handler.implementation.DateExtractionHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.EntitiesHandler;
+import com.ibm.watson.developer_cloud.alchemy.v1.model.Dates;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Entities;
 
 @Connector(name = "watson-alchemy-language", friendlyName = "Watson AlchemyLanguage Service")
@@ -55,7 +57,24 @@ public class WatsonAlchemyLanguageConnector {
 				.addSentiment(sentiment).addShowSourceText(showSourceText).addStructuredEntities(structuredEntities)
 				.addCquery(cquery).addXpath(xpath).addSourceText(sourceText).execute();
 	}
-
+	
+	
+	/**
+	 * Extract entities from a text or a webpage.
+	 * 
+	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#date_extraction}
+	 *
+	 *
+	 * @param source The text, html or url to process.
+	 */
+	@Processor
+	public Dates dateExtraction(String source, @Optional String anchorDate, @Optional Integer showSourceText) {
+		return new DateExtractionHandler(config.getService(), source)
+				.addAnchorDate(anchorDate)
+				.addShowSourceText(showSourceText)
+				.execute();
+	}
+	
 	public ConnectorConfig getConfig() {
 		return config;
 	}

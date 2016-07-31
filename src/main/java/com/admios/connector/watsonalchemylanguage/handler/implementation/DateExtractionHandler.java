@@ -1,5 +1,8 @@
 package com.admios.connector.watsonalchemylanguage.handler.implementation;
 
+import org.jsoup.Jsoup;
+import org.jsoup.safety.Whitelist;
+
 import com.admios.connector.watsonalchemylanguage.handler.CommonHandler;
 import com.admios.connector.watsonalchemylanguage.util.StringUtils;
 import com.ibm.watson.developer_cloud.alchemy.v1.AlchemyLanguage;
@@ -8,7 +11,7 @@ import com.ibm.watson.developer_cloud.alchemy.v1.model.Dates;
 public class DateExtractionHandler extends CommonHandler<Dates> {
 
 	public DateExtractionHandler(AlchemyLanguage service, String text){
-		super(service, StringUtils.isURL(text) ? AlchemyLanguage.URL : AlchemyLanguage.TEXT, text);
+		super(service, getType(text), text);
 	}
 	
 	public DateExtractionHandler addAnchorDate(String query) {
@@ -21,6 +24,17 @@ public class DateExtractionHandler extends CommonHandler<Dates> {
 	
 	private DateExtractionHandler cast(CommonHandler<Dates> addParam) {
 		return (DateExtractionHandler) addParam;
+	}
+	
+	private static String getType(String text){
+		
+		if(StringUtils.isURL(text)){
+			return AlchemyLanguage.URL;
+		}else if(Jsoup.isValid(text, Whitelist.basicWithImages())){
+			return AlchemyLanguage.HTML;
+		} else {
+			return AlchemyLanguage.TEXT;
+		}
 	}
 
 	@Override
