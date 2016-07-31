@@ -8,8 +8,10 @@ import org.mule.api.annotations.param.Optional;
 import com.admios.connector.watsonalchemylanguage.config.ConnectorConfig;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.DateExtractionHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.EntitiesHandler;
+import com.admios.connector.watsonalchemylanguage.handler.implementation.FeedDetectionHandler;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Dates;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Entities;
+import com.ibm.watson.developer_cloud.alchemy.v1.model.Feeds;
 
 @Connector(name = "watson-alchemy-language", friendlyName = "Watson AlchemyLanguage Service")
 public class WatsonAlchemyLanguageConnector {
@@ -60,7 +62,7 @@ public class WatsonAlchemyLanguageConnector {
 	
 	
 	/**
-	 * Extract entities from a text or a webpage.
+	 * Extract Dates from a text, webpage or content in an url.
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#date_extraction}
 	 *
@@ -72,6 +74,20 @@ public class WatsonAlchemyLanguageConnector {
 		return new DateExtractionHandler(config.getService(), source)
 				.addAnchorDate(anchorDate)
 				.addShowSourceText(showSourceText)
+				.execute();
+	}
+	
+	/**
+	 * Get feeds from a url.
+	 * 
+	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#feed_detection}
+	 *
+	 *
+	 * @param url The url to process.
+	 */
+	@Processor
+	public Feeds feedDetection(String url){
+		return new FeedDetectionHandler(config.getService(), url)
 				.execute();
 	}
 	
