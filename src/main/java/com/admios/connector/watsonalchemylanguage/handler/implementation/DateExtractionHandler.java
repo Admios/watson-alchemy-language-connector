@@ -30,7 +30,7 @@ public class DateExtractionHandler extends CommonHandler<Dates> {
 		
 		if(StringUtils.isURL(text)){
 			return AlchemyLanguage.URL;
-		}else if(Jsoup.isValid(text, Whitelist.basicWithImages())){
+		}else if(Jsoup.isValid(text, Whitelist.relaxed())){	
 			return AlchemyLanguage.HTML;
 		} else {
 			return AlchemyLanguage.TEXT;
