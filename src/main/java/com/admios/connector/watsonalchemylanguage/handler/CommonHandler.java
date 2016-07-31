@@ -26,6 +26,11 @@ public abstract class CommonHandler<T> {
 		return this;
 	}
 
+	@SuppressWarnings("unchecked")
+	public <K extends CommonHandler<?>> K cast() {
+		return (K) this;
+	}
+
 	protected CommonHandler<T> removeParam(String param) {
 		params.remove(param);
 		return this;

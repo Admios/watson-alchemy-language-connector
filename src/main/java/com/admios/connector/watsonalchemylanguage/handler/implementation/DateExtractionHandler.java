@@ -12,15 +12,11 @@ public class DateExtractionHandler extends CommonHandler<Dates> {
 	}
 	
 	public DateExtractionHandler addAnchorDate(String query) {
-		return cast(addParam(AlchemyLanguage.ANCHOR_DATE, query));
+		return addParam(AlchemyLanguage.ANCHOR_DATE, query).cast();
 	}
 	
 	public DateExtractionHandler addShowSourceText(Integer number) {
-		return cast(addParam(AlchemyLanguage.SHOW_SOURCE_TEXT, number));
-	}
-	
-	private DateExtractionHandler cast(CommonHandler<Dates> addParam) {
-		return (DateExtractionHandler) addParam;
+		return addParam(AlchemyLanguage.SHOW_SOURCE_TEXT, number).cast();
 	}
 
 	@Override
