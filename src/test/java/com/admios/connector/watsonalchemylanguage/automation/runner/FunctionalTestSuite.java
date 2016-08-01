@@ -13,10 +13,11 @@ import com.admios.connector.watsonalchemylanguage.automation.functional.DateExtr
 import com.admios.connector.watsonalchemylanguage.automation.functional.FeedDetectionHandlerTest;
 import com.admios.connector.watsonalchemylanguage.automation.functional.GetConceptsTestCase;
 import com.admios.connector.watsonalchemylanguage.automation.functional.GetEntitiesTestCase;
+import com.admios.connector.watsonalchemylanguage.automation.functional.KeywordsHandlerTest;
 
 @RunWith(Suite.class)
 @SuiteClasses({ CommonHandlerTest.class, GetEntitiesTestCase.class, GetConceptsTestCase.class, 
-	DateExtractionHandlerTest.class, FeedDetectionHandlerTest.class })
+	DateExtractionHandlerTest.class, FeedDetectionHandlerTest.class, KeywordsHandlerTest.class })
 public class FunctionalTestSuite {
 
 	@BeforeClass

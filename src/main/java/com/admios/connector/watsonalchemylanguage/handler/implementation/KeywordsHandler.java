@@ -1,14 +1,13 @@
 package com.admios.connector.watsonalchemylanguage.handler.implementation;
 
-import com.admios.connector.watsonalchemylanguage.handler.CommonHandler;
-import com.admios.connector.watsonalchemylanguage.util.StringUtils;
+import com.admios.connector.watsonalchemylanguage.handler.URLCommonHandler;
 import com.ibm.watson.developer_cloud.alchemy.v1.AlchemyLanguage;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Keywords;
 
-public class KeywordsHandler extends CommonHandler<Keywords> {
+public class KeywordsHandler extends URLCommonHandler<KeywordsHandler,Keywords> {
 
 	public KeywordsHandler(AlchemyLanguage service, String text) {
-		super(service, StringUtils.getType(text), text);
+		super(service, text);
 	}
 
 	public KeywordsHandler addMaxRetrieve(Integer maxRetrieve) {
@@ -21,22 +20,6 @@ public class KeywordsHandler extends CommonHandler<Keywords> {
 
 	public KeywordsHandler addSentiment(Integer sentiment) {
 		return addParam(AlchemyLanguage.SENTIMENT, sentiment);
-	}
-
-	public KeywordsHandler addShowSourceText(Integer showSourceText) {
-		return addParam(AlchemyLanguage.SHOW_SOURCE_TEXT, showSourceText);
-	}
-
-	public KeywordsHandler addCquery(String cquery) {
-		return addParam(AlchemyLanguage.CQUERY, cquery);
-	}
-
-	public KeywordsHandler addXpath(String xpath) {
-		return addParam(AlchemyLanguage.XPATH, xpath);
-	}
-
-	public KeywordsHandler addSourceText(String sourceText) {
-		return addParam(AlchemyLanguage.SOURCE_TEXT, sourceText);
 	}
 
 	@Override

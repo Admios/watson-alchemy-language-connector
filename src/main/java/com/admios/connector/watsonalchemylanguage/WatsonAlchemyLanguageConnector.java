@@ -6,14 +6,12 @@ import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.param.Optional;
 
 import com.admios.connector.watsonalchemylanguage.config.ConnectorConfig;
+import com.admios.connector.watsonalchemylanguage.handler.implementation.ConceptsHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.DateExtractionHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.EntitiesHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.FeedDetectionHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.KeywordsHandler;
-import com.ibm.watson.developer_cloud.alchemy.v1.AlchemyLanguage;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Dates;
-import com.admios.connector.watsonalchemylanguage.handler.implementation.ConceptsHandler;
-import com.admios.connector.watsonalchemylanguage.handler.implementation.EntitiesHandler;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Concepts;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Entities;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Feeds;
