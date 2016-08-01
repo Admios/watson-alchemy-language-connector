@@ -35,3 +35,9 @@
 	source="The polymer is made by a company called Papa from Australia"
 	maxRetrieve="10" knowledgeGraph="1" doc:name="Watson AlchemyLanguage Service"/>
 <!-- END_INCLUDE(watson-alchemy-language:keywords) -->
+
+<!-- BEGIN_INCLUDE(watson-alchemy-language:sentimentAnalysis) -->
+<watson-alchemy-language:sentiment-analysis config-ref="ref"
+	source="www.url.com/blog/post"
+	doc:name="Watson AlchemyLanguage Service"/>
+<!-- END_INCLUDE(watson-alchemy-language:sentimentAnalysis) -->

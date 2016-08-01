@@ -6,7 +6,7 @@ import com.ibm.watson.developer_cloud.alchemy.v1.AlchemyLanguage;
 public abstract class URLCommonHandler<HandlerClass, result> extends CommonHandler<result> {
 
 	public URLCommonHandler(AlchemyLanguage service, String source) {
-		super(service, StringUtils.isURL(source) ? AlchemyLanguage.URL : AlchemyLanguage.TEXT, source);
+		super(service, StringUtils.getType(source), source);
 	}
 
 	@SuppressWarnings("unchecked")
