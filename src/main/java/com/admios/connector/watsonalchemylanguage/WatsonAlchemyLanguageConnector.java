@@ -33,7 +33,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:getAuthors}
 	 *
 	 * @param source The HTML or url to process
-	 * @return return A list of extracted author
+	 * @return return A list of extracted {@link DocumentAuthors}
 	 */
 	@Processor
 	public DocumentAuthors getAuthors(String source) {
@@ -65,7 +65,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
 	 * @param sourceText How to obtain the source text from the webpage
 	 * 
-	 * @return return Entities
+	 * @return return {@link Entities}
 	 */
 	@Processor
 	public Entities getEntities(String source, @Optional Integer maxRetrieve,
@@ -87,8 +87,12 @@ public class WatsonAlchemyLanguageConnector {
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#date_extraction}
 	 *
+	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:date-extraction}
 	 *
 	 * @param source The text, html or url to process.
+	 * @param anchorDate The date to use as "today" when interpreting phrases in the text like "next tuesday." Format: <code>yyyy-mm-dd hh:mm:ss</code>
+	 * @param showSourceText Set this to 1 to include the source text in the response.
+	 * @return return {@link Dates}
 	 */
 	@Processor
 	public Dates dateExtraction(String source, @Optional String anchorDate, @Optional Integer showSourceText) {
@@ -103,8 +107,10 @@ public class WatsonAlchemyLanguageConnector {
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#feed_detection}
 	 *
+	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:feed-detection}
 	 *
-	 * @param url The url to process.
+	 * @param url The <code>URL</code> to process.
+	 * @return return {@link Feeds}
 	 */
 	@Processor
 	public Feeds feedDetection(String url){
@@ -130,7 +136,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
 	 * @param sourceText How to obtain the source text from the webpage
 	 * 
-	 * @return return Concepts
+	 * @return return {@link Concepts}
 	 */
 	@Processor
 	public Concepts getConcepts(String source, @Optional Integer maxRetrieve,
@@ -152,6 +158,24 @@ public class WatsonAlchemyLanguageConnector {
 		this.config = config;
 	}
 
+	
+	/**
+	* Extract keywords from a webpages, HTML or plain text.
+	* 
+	* API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#keywords}
+	*
+	* {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:keywords}
+	*
+	*	@param source The text, HTML or URL to process.
+	*	@param maxRetrieve Maximum number of entities to return (default = 50) detected entities by default).
+	*	@param knowledgeGraph Set this to 1 to include knowledge graph information in the results.
+	*	@param sentiment Set this to 1 to analyze the sentiment towards each detected entity.
+	*	@param showSourceText Set this to 1 to include the source text in the response.
+	*	@param cquery A visual constraints query to apply to the web page. Required when <code>sourceText</code> is set to cquery.
+	*	@param xpath An XPath query to apply to the web page. Required when <code>sourceText</code> is set to one of the XPath values.
+	*	@param sourceText How to obtain the source text from the webpage.
+	*	@return return {@link Keywords}
+	*/
 	@Processor
 	public Keywords getKeywords(String source, @Optional Integer maxRetrieve,
 			@Optional Integer knowledgeGraph, @Optional Integer sentiment,

@@ -13,3 +13,22 @@
 	source="IBM Watson won the Jeopardy television show hosted by Alex Trebek"
 	maxRetrieve="5" doc:name="Watson AlchemyLanguage Service"/>
 <!-- END_INCLUDE(watson-alchemy-language:getConcepts) -->
+
+
+<!-- BEGIN_INCLUDE(watson-alchemy-language:feedDetection) -->
+<watson-alchemy-language:feed-detection config-ref="ref"
+	url="http://news.ycombinator.com"
+	doc:name="Watson AlchemyLanguage Service"/>
+<!-- END_INCLUDE(watson-alchemy-language:feedDetection) -->
+
+<!-- BEGIN_INCLUDE(watson-alchemy-language:dateExtraction) -->
+<watson-alchemy-language:date-extraction config-ref="ref"
+	source="November 25, 2014"
+	doc:name="Watson AlchemyLanguage Service"/>
+<!-- END_INCLUDE(watson-alchemy-language:dateExtraction) -->
+
+<!-- BEGIN_INCLUDE(watson-alchemy-language:keywords) -->
+<watson-alchemy-language:get-concepts config-ref="ref"
+	source="The polymer is made by a company called Papa from Australia"
+	maxRetrieve="10" knowledgeGraph="1" doc:name="Watson AlchemyLanguage Service"/>
+<!-- END_INCLUDE(watson-alchemy-language:keywords) -->
