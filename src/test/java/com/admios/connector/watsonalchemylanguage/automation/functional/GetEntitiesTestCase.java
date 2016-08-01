@@ -21,18 +21,18 @@ public class GetEntitiesTestCase extends AbstractTestCase<WatsonAlchemyLanguageC
 
 	@Test
 	public void testWithText() {
-		testGetEntities(Constants.TEXT, Constants.TEXT_ENTITY_1, Constants.TEXT_ENTITY_2);
+		testGetEntities(Constants.TEST_TEXT, Constants.TEST_TEXT_ENTITY_1, Constants.TEST_TEXT_ENTITY_2);
 	}
 
 	@Test
 	public void testWithURL() {
-		testGetEntities(Constants.URL, Constants.URL_ENTITY_1, Constants.URL_ENTITY_2);
+		testGetEntities(Constants.TEST_URL, Constants.TEST_URL_ENTITY_1, Constants.TEST_URL_ENTITY_2);
 	}
 
 	@Test
 	public void testWithMaxRetrieve() {
 		int maxRetrieve = 3;
-		Entities entities = getConnector().getEntities(Constants.URL, maxRetrieve, null, null, null,
+		Entities entities = getConnector().getEntities(Constants.TEST_URL, maxRetrieve, null, null, null,
 				null, null, null, null, null, null, null, null);
 		assertEquals(String.format("The connector should retrieve only %s entities", maxRetrieve),
 				entities.getEntities().size(), maxRetrieve);
@@ -43,7 +43,7 @@ public class GetEntitiesTestCase extends AbstractTestCase<WatsonAlchemyLanguageC
 				null, null, null, null, null, null, null, null);
 		assertNotNull(entities);
 		testPrecenseOf(entities.getEntities(), expectedEntities);
-		if (source.equals(Constants.URL)) {
+		if (source.equals(Constants.TEST_URL)) {
 			assertNotNull(entities.getUrl());
 		} else {
 			assert (entities.getUrl().isEmpty());
