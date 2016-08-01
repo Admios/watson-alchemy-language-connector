@@ -9,9 +9,12 @@ import com.admios.connector.watsonalchemylanguage.config.ConnectorConfig;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.DateExtractionHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.EntitiesHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.FeedDetectionHandler;
+import com.admios.connector.watsonalchemylanguage.handler.implementation.KeywordsHandler;
+import com.ibm.watson.developer_cloud.alchemy.v1.AlchemyLanguage;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Dates;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Entities;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Feeds;
+import com.ibm.watson.developer_cloud.alchemy.v1.model.Keywords;
 
 @Connector(name = "watson-alchemy-language", friendlyName = "Watson AlchemyLanguage Service")
 public class WatsonAlchemyLanguageConnector {
@@ -97,6 +100,21 @@ public class WatsonAlchemyLanguageConnector {
 
 	public void setConfig(ConnectorConfig config) {
 		this.config = config;
+	}
+
+	@Processor
+	public Keywords getKeywords(String source, @Optional Integer maxRetrieve,
+			@Optional Integer knowledgeGraph, @Optional Integer sentiment,
+			@Optional Integer showSourceText, @Optional String cquery,
+			@Optional String xpath, @Optional String sourceText) {
+		return new KeywordsHandler(config.getService(), source)
+				.addCquery(cquery)
+				.addKnowledgeGraph(knowledgeGraph)
+				.addMaxRetrieve(maxRetrieve)
+				.addSentiment(sentiment)
+				.addShowSourceText(showSourceText)
+				.addXpath(xpath)
+				.execute();
 	}
 
 }
