@@ -12,9 +12,11 @@ import com.admios.connector.watsonalchemylanguage.handler.implementation.DateExt
 import com.admios.connector.watsonalchemylanguage.handler.implementation.EntitiesHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.FeedDetectionHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.KeywordsHandler;
-import com.ibm.watson.developer_cloud.alchemy.v1.model.Dates;
+import com.admios.connector.watsonalchemylanguage.handler.implementation.PublicationDateHandler;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Concepts;
+import com.ibm.watson.developer_cloud.alchemy.v1.model.Dates;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentAuthors;
+import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentPublicationDate;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Entities;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Feeds;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Keywords;
@@ -36,7 +38,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return A list of extracted {@link DocumentAuthors}
 	 */
 	@Processor
-	public DocumentAuthors getAuthors(String source) {
+	public DocumentAuthors authors(String source) {
 		return new AuthorsHandler(config.getService(), source).execute();
 	}
 
@@ -68,7 +70,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return {@link Entities}
 	 */
 	@Processor
-	public Entities getEntities(String source, @Optional Integer maxRetrieve,
+	public Entities entities(String source, @Optional Integer maxRetrieve,
 			@Optional Integer coreference, @Optional Integer disambiguate, @Optional Integer knowledgeGraph,
 			@Optional Integer linkedData, @Optional Integer quotations, @Optional Integer sentiment,
 			@Optional Integer showSourceText, @Optional Integer structuredEntities,
@@ -80,8 +82,7 @@ public class WatsonAlchemyLanguageConnector {
 				.addSentiment(sentiment).addShowSourceText(showSourceText).addStructuredEntities(structuredEntities)
 				.addCquery(cquery).addXpath(xpath).addSourceText(sourceText).execute();
 	}
-	
-	
+
 	/**
 	 * Extract Dates from a text, webpage or content in an url.
 	 * 
@@ -101,7 +102,7 @@ public class WatsonAlchemyLanguageConnector {
 				.addShowSourceText(showSourceText)
 				.execute();
 	}
-	
+
 	/**
 	 * Get feeds from a url.
 	 * 
@@ -113,7 +114,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return {@link Feeds}
 	 */
 	@Processor
-	public Feeds feedDetection(String url){
+	public Feeds feedDetection(String url) {
 		return new FeedDetectionHandler(config.getService(), url)
 				.execute();
 	}
@@ -139,7 +140,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return {@link Concepts}
 	 */
 	@Processor
-	public Concepts getConcepts(String source, @Optional Integer maxRetrieve,
+	public Concepts concepts(String source, @Optional Integer maxRetrieve,
 			@Optional Integer knowledgeGraph, @Optional Integer linkedData,
 			@Optional Integer showSourceText, @Optional String cquery,
 			@Optional String xpath, @Optional String sourceText) {
@@ -177,7 +178,7 @@ public class WatsonAlchemyLanguageConnector {
 	*	@return return {@link Keywords}
 	*/
 	@Processor
-	public Keywords getKeywords(String source, @Optional Integer maxRetrieve,
+	public Keywords keywords(String source, @Optional Integer maxRetrieve,
 			@Optional Integer knowledgeGraph, @Optional Integer sentiment,
 			@Optional Integer showSourceText, @Optional String cquery,
 			@Optional String xpath, @Optional String sourceText) {
@@ -189,6 +190,21 @@ public class WatsonAlchemyLanguageConnector {
 				.addShowSourceText(showSourceText)
 				.addXpath(xpath)
 				.execute();
+	}
+
+	/**
+	 * Get the publication date of a webpage or HTML document.
+	 *
+	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#publication_date}
+	 * 
+	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:publicationDate}
+	 *
+	 * @param source The HTML or url to process
+	 * @return return comment
+	 */
+	@Processor
+	public DocumentPublicationDate publicationDate(String source) {
+		return new PublicationDateHandler(config.getService(), source).execute();
 	}
 
 }

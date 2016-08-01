@@ -13,9 +13,9 @@ import com.admios.connector.watsonalchemylanguage.automation.global.Constants;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Entities;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Entity;
 
-public class GetEntitiesTestCase extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
+public class EntitiesTestCase extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
 
-	public GetEntitiesTestCase() {
+	public EntitiesTestCase() {
 		super(WatsonAlchemyLanguageConnector.class);
 	}
 
@@ -32,14 +32,14 @@ public class GetEntitiesTestCase extends AbstractTestCase<WatsonAlchemyLanguageC
 	@Test
 	public void testWithMaxRetrieve() {
 		int maxRetrieve = 3;
-		Entities entities = getConnector().getEntities(Constants.TEST_URL, maxRetrieve, null, null, null,
+		Entities entities = getConnector().entities(Constants.TEST_URL, maxRetrieve, null, null, null,
 				null, null, null, null, null, null, null, null);
 		assertEquals(String.format("The connector should retrieve only %s entities", maxRetrieve),
 				entities.getEntities().size(), maxRetrieve);
 	}
 
 	private void testGetEntities(String source, String... expectedEntities) {
-		Entities entities = getConnector().getEntities(source, null, null, null, null,
+		Entities entities = getConnector().entities(source, null, null, null, null,
 				null, null, null, null, null, null, null, null);
 		assertNotNull(entities);
 		testPrecenseOf(entities.getEntities(), expectedEntities);
