@@ -31,7 +31,7 @@
 <!-- END_INCLUDE(watson-alchemy-language:dateExtraction) -->
 
 <!-- BEGIN_INCLUDE(watson-alchemy-language:keywords) -->
-<watson-alchemy-language:get-concepts config-ref="ref"
+<watson-alchemy-language:keywords config-ref="ref"
 	source="The polymer is made by a company called Papa from Australia"
 	maxRetrieve="10" knowledgeGraph="1" doc:name="Watson AlchemyLanguage Service"/>
 <!-- END_INCLUDE(watson-alchemy-language:keywords) -->
