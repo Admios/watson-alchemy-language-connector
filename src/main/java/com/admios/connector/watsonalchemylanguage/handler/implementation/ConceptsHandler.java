@@ -16,15 +16,15 @@ public class ConceptsHandler extends URLCommonHandler<ConceptsHandler, Concepts>
 	}
 
 	public ConceptsHandler addMaxRetrieve(Integer maxRetrieve) {
-		return (ConceptsHandler) addParam(AlchemyLanguage.MAX_RETRIEVE, maxRetrieve);
+		return addParam(AlchemyLanguage.MAX_RETRIEVE, maxRetrieve);
 	}
 
 	public ConceptsHandler addKnowledgeGraph(Integer knowledgeGraph) {
-		return (ConceptsHandler) addParam(AlchemyLanguage.KNOWLEDGE_GRAPH, knowledgeGraph);
+		return addParam(AlchemyLanguage.KNOWLEDGE_GRAPH, knowledgeGraph);
 	}
 
 	public ConceptsHandler addLinkedData(Integer linkedData) {
-		return (ConceptsHandler) addParam(AlchemyLanguage.LINKED_DATA, linkedData);
+		return addParam(AlchemyLanguage.LINKED_DATA, linkedData);
 	}
 
 }

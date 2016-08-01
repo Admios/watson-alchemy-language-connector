@@ -16,34 +16,34 @@ public class EntitiesHandler extends URLCommonHandler<EntitiesHandler, Entities>
 	}
 
 	public EntitiesHandler addMaxRetrieve(Integer maxRetrieve) {
-		return (EntitiesHandler) addParam(AlchemyLanguage.MAX_RETRIEVE, maxRetrieve);
+		return addParam(AlchemyLanguage.MAX_RETRIEVE, maxRetrieve);
 	}
 
 	public EntitiesHandler addCoreference(Integer coreference) {
-		return (EntitiesHandler) addParam(AlchemyLanguage.COREFERENCE, coreference);
+		return addParam(AlchemyLanguage.COREFERENCE, coreference);
 	}
 
 	public EntitiesHandler addDisambiguate(Integer disambiguate) {
-		return (EntitiesHandler) addParam(AlchemyLanguage.DISAMBIGUATE, disambiguate);
+		return addParam(AlchemyLanguage.DISAMBIGUATE, disambiguate);
 	}
 
 	public EntitiesHandler addKnowledgeGraph(Integer knowledgeGraph) {
-		return (EntitiesHandler) addParam(AlchemyLanguage.KNOWLEDGE_GRAPH, knowledgeGraph);
+		return addParam(AlchemyLanguage.KNOWLEDGE_GRAPH, knowledgeGraph);
 	}
 
 	public EntitiesHandler addLinkedData(Integer linkedData) {
-		return (EntitiesHandler) addParam(AlchemyLanguage.LINKED_DATA, linkedData);
+		return addParam(AlchemyLanguage.LINKED_DATA, linkedData);
 	}
 
 	public EntitiesHandler addQuotations(Integer quotations) {
-		return (EntitiesHandler) addParam(AlchemyLanguage.QUOTATIONS, quotations);
+		return addParam(AlchemyLanguage.QUOTATIONS, quotations);
 	}
 
 	public EntitiesHandler addSentiment(Integer sentiment) {
-		return (EntitiesHandler) addParam(AlchemyLanguage.SENTIMENT, sentiment);
+		return addParam(AlchemyLanguage.SENTIMENT, sentiment);
 	}
 
 	public EntitiesHandler addStructuredEntities(Integer structuredEntities) {
-		return (EntitiesHandler) addParam(AlchemyLanguage.STRUCTURED_ENTITIES, structuredEntities);
+		return addParam(AlchemyLanguage.STRUCTURED_ENTITIES, structuredEntities);
 	}
 }
