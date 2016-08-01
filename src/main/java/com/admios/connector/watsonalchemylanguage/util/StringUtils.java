@@ -18,15 +18,19 @@ public class StringUtils {
 			return false;
 		}
 	}
-	
-	public static String getType(String text){
-		
-		if(isURL(text)){
+
+	public static String getType(String text) {
+
+		if (isURL(text)) {
 			return AlchemyLanguage.URL;
-		}else if(Jsoup.isValid(text, Whitelist.relaxed())){	
+		} else if (Jsoup.isValid(text, Whitelist.relaxed())) {
 			return AlchemyLanguage.HTML;
 		} else {
 			return AlchemyLanguage.TEXT;
 		}
+	}
+
+	public static String getHtmlOrUrlType(String text) {
+		return StringUtils.isURL(text) ? AlchemyLanguage.URL : AlchemyLanguage.HTML;
 	}
 }

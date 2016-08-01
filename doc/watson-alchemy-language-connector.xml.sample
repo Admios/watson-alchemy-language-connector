@@ -13,3 +13,7 @@
 	source="IBM Watson won the Jeopardy television show hosted by Alex Trebek"
 	maxRetrieve="5" doc:name="Watson AlchemyLanguage Service"/>
 <!-- END_INCLUDE(watson-alchemy-language:getConcepts) -->
+
+<!-- BEGIN_INCLUDE(watson-alchemy-language:publicationDate) -->
+<watson-alchemy-language:publication_date config-ref="ref"  source="www.url.com/blog/post" doc:name="Watson AlchemyLanguage Service" />
+<!-- END_INCLUDE(watson-alchemy-language:publicationDate) -->
