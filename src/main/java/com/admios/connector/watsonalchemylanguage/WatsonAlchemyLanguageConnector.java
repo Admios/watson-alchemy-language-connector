@@ -7,9 +7,15 @@ import org.mule.api.annotations.param.Optional;
 
 import com.admios.connector.watsonalchemylanguage.config.ConnectorConfig;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.ConceptsHandler;
+import com.admios.connector.watsonalchemylanguage.handler.implementation.DateExtractionHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.EntitiesHandler;
+import com.admios.connector.watsonalchemylanguage.handler.implementation.FeedDetectionHandler;
+import com.admios.connector.watsonalchemylanguage.handler.implementation.KeywordsHandler;
+import com.ibm.watson.developer_cloud.alchemy.v1.model.Dates;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Concepts;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Entities;
+import com.ibm.watson.developer_cloud.alchemy.v1.model.Feeds;
+import com.ibm.watson.developer_cloud.alchemy.v1.model.Keywords;
 
 @Connector(name = "watson-alchemy-language", friendlyName = "Watson AlchemyLanguage Service")
 public class WatsonAlchemyLanguageConnector {
@@ -57,6 +63,37 @@ public class WatsonAlchemyLanguageConnector {
 				.addSentiment(sentiment).addShowSourceText(showSourceText).addStructuredEntities(structuredEntities)
 				.addCquery(cquery).addXpath(xpath).addSourceText(sourceText).execute();
 	}
+	
+	
+	/**
+	 * Extract Dates from a text, webpage or content in an url.
+	 * 
+	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#date_extraction}
+	 *
+	 *
+	 * @param source The text, html or url to process.
+	 */
+	@Processor
+	public Dates dateExtraction(String source, @Optional String anchorDate, @Optional Integer showSourceText) {
+		return new DateExtractionHandler(config.getService(), source)
+				.addAnchorDate(anchorDate)
+				.addShowSourceText(showSourceText)
+				.execute();
+	}
+	
+	/**
+	 * Get feeds from a url.
+	 * 
+	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#feed_detection}
+	 *
+	 *
+	 * @param url The url to process.
+	 */
+	@Processor
+	public Feeds feedDetection(String url){
+		return new FeedDetectionHandler(config.getService(), url)
+				.execute();
+	}
 
 	/**
 	 * Extract concepts from a webpage or plain text.
@@ -96,6 +133,21 @@ public class WatsonAlchemyLanguageConnector {
 
 	public void setConfig(ConnectorConfig config) {
 		this.config = config;
+	}
+
+	@Processor
+	public Keywords getKeywords(String source, @Optional Integer maxRetrieve,
+			@Optional Integer knowledgeGraph, @Optional Integer sentiment,
+			@Optional Integer showSourceText, @Optional String cquery,
+			@Optional String xpath, @Optional String sourceText) {
+		return new KeywordsHandler(config.getService(), source)
+				.addCquery(cquery)
+				.addKnowledgeGraph(knowledgeGraph)
+				.addMaxRetrieve(maxRetrieve)
+				.addSentiment(sentiment)
+				.addShowSourceText(showSourceText)
+				.addXpath(xpath)
+				.execute();
 	}
 
 }

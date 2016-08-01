@@ -17,13 +17,18 @@ public abstract class CommonHandler<T> {
 		params.put(param, value);
 	}
 
-	protected CommonHandler<T> addParam(String param, Object value) {
+	protected <K extends CommonHandler<T>> K addParam(String param, Object value) {
 		if (StringUtils.isEmpty(param)){
 			throw new IllegalArgumentException("The param name can be null or empty");
 		} else if (value != null) {
 			params.put(param, value);
 		}
-		return this;
+		return this.cast();
+	}
+
+	@SuppressWarnings("unchecked")
+	private <K extends CommonHandler<?>> K cast() {
+		return (K) this;
 	}
 
 	protected CommonHandler<T> removeParam(String param) {
