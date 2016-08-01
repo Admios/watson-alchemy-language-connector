@@ -17,3 +17,21 @@
 <!-- BEGIN_INCLUDE(watson-alchemy-language:publicationDate) -->
 <watson-alchemy-language:publication_date config-ref="ref"  source="www.url.com/blog/post" doc:name="Watson AlchemyLanguage Service" />
 <!-- END_INCLUDE(watson-alchemy-language:publicationDate) -->
+
+<!-- BEGIN_INCLUDE(watson-alchemy-language:feedDetection) -->
+<watson-alchemy-language:feed-detection config-ref="ref"
+	url="http://news.ycombinator.com"
+	doc:name="Watson AlchemyLanguage Service"/>
+<!-- END_INCLUDE(watson-alchemy-language:feedDetection) -->
+
+<!-- BEGIN_INCLUDE(watson-alchemy-language:dateExtraction) -->
+<watson-alchemy-language:date-extraction config-ref="ref"
+	source="November 25, 2014"
+	doc:name="Watson AlchemyLanguage Service"/>
+<!-- END_INCLUDE(watson-alchemy-language:dateExtraction) -->
+
+<!-- BEGIN_INCLUDE(watson-alchemy-language:keywords) -->
+<watson-alchemy-language:keywords config-ref="ref"
+	source="The polymer is made by a company called Papa from Australia"
+	maxRetrieve="10" knowledgeGraph="1" doc:name="Watson AlchemyLanguage Service"/>
+<!-- END_INCLUDE(watson-alchemy-language:keywords) -->
