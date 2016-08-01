@@ -23,6 +23,7 @@
 	<classpathentry kind="var" path="M2_REPO/com/google/code/gson/gson/2.6.2/gson-2.6.2.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/apache/commons/commons-lang3/3.4/commons-lang3-3.4.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/glassfish/jersey/bundles/repackaged/jersey-jsr166e/2.22.2/jersey-jsr166e-2.22.2.jar"/>
+	<classpathentry kind="var" path="M2_REPO/org/jsoup/jsoup/1.9.2/jsoup-1.9.2.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/mule/mule-core/3.7.0/mule-core-3.7.0.jar"/>
 	<classpathentry kind="var" path="M2_REPO/org/mule/extensions/mule-extensions-api/1.0.0-alpha/mule-extensions-api-1.0.0-alpha.jar"/>
 	<classpathentry kind="var" path="M2_REPO/commons-beanutils/commons-beanutils/1.9.2/commons-beanutils-1.9.2.jar"/>

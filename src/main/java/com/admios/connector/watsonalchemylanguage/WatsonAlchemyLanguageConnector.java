@@ -6,6 +6,7 @@ import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.param.Optional;
 
 import com.admios.connector.watsonalchemylanguage.config.ConnectorConfig;
+import com.admios.connector.watsonalchemylanguage.handler.implementation.AuthorsHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.ConceptsHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.DateExtractionHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.EntitiesHandler;
@@ -13,6 +14,7 @@ import com.admios.connector.watsonalchemylanguage.handler.implementation.FeedDet
 import com.admios.connector.watsonalchemylanguage.handler.implementation.KeywordsHandler;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Dates;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Concepts;
+import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentAuthors;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Entities;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Feeds;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Keywords;
@@ -22,6 +24,21 @@ public class WatsonAlchemyLanguageConnector {
 
 	@Config
 	ConnectorConfig config;
+
+	/**
+	 * Get author names from a webpage or HTML content.
+	 * 
+	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#authors}
+	 *
+	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:getAuthors}
+	 *
+	 * @param source The HTML or url to process
+	 * @return return A list of extracted author
+	 */
+	@Processor
+	public DocumentAuthors getAuthors(String source) {
+		return new AuthorsHandler(config.getService(), source).execute();
+	}
 
 	/**
 	 * Extract entities from a text or a webpage.
