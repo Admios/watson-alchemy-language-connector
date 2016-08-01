@@ -6,7 +6,9 @@ import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.param.Optional;
 
 import com.admios.connector.watsonalchemylanguage.config.ConnectorConfig;
+import com.admios.connector.watsonalchemylanguage.handler.implementation.ConceptsHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.EntitiesHandler;
+import com.ibm.watson.developer_cloud.alchemy.v1.model.Concepts;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Entities;
 
 @Connector(name = "watson-alchemy-language", friendlyName = "Watson AlchemyLanguage Service")
@@ -54,6 +56,38 @@ public class WatsonAlchemyLanguageConnector {
 				.addKnowledgeGraph(knowledgeGraph).addLinkedData(linkedData).addQuotations(quotations)
 				.addSentiment(sentiment).addShowSourceText(showSourceText).addStructuredEntities(structuredEntities)
 				.addCquery(cquery).addXpath(xpath).addSourceText(sourceText).execute();
+	}
+
+	/**
+	 * Extract concepts from a webpage or plain text.
+	 *
+	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#concepts}
+	 *
+	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:getConcepts}
+	 *
+	 * @param source The text or url to process
+	 * @param maxRetrieve Maximum number of entities to return (default = 50) detected entities by default)
+	 * @param knowledgeGraph Set this to 1 to include knowledge graph information in the results. This incurs an
+	 *            additional transaction charge
+	 * @param linkedData Set this to 0 to hide Linked Data content links in the response
+	 * @param showSourceText Set this to 1 to include the source text in the response TwitterHandle, Hashtag, and
+	 *            IPAddress
+	 * @param cquery A visual constraints query to apply to the web page. Required when sourceText is set to cquery
+	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
+	 * @param sourceText How to obtain the source text from the webpage
+	 * 
+	 * @return return Concepts
+	 */
+	@Processor
+	public Concepts getConcepts(String source, @Optional Integer maxRetrieve,
+			@Optional Integer knowledgeGraph, @Optional Integer linkedData,
+			@Optional Integer showSourceText, @Optional String cquery,
+			@Optional String xpath, @Optional String sourceText) {
+
+		return new ConceptsHandler(config.getService(), source).addMaxRetrieve(maxRetrieve)
+				.addKnowledgeGraph(knowledgeGraph).addLinkedData(linkedData)
+				.addShowSourceText(showSourceText).addCquery(cquery).addXpath(xpath)
+				.addSourceText(sourceText).execute();
 	}
 
 	public ConnectorConfig getConfig() {

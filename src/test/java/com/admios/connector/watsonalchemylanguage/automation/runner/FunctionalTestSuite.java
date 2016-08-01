@@ -9,10 +9,11 @@ import org.mule.tools.devkit.ctf.mockup.ConnectorTestContext;
 
 import com.admios.connector.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
 import com.admios.connector.watsonalchemylanguage.automation.functional.CommonHandlerTest;
+import com.admios.connector.watsonalchemylanguage.automation.functional.GetConceptsTestCase;
 import com.admios.connector.watsonalchemylanguage.automation.functional.GetEntitiesTestCase;
 
 @RunWith(Suite.class)
-@SuiteClasses({ CommonHandlerTest.class, GetEntitiesTestCase.class })
+@SuiteClasses({ CommonHandlerTest.class, GetEntitiesTestCase.class, GetConceptsTestCase.class })
 public class FunctionalTestSuite {
 
 	@BeforeClass
