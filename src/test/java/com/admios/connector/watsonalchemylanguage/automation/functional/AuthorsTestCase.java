@@ -8,15 +8,15 @@ import com.admios.connector.watsonalchemylanguage.WatsonAlchemyLanguageConnector
 import com.admios.connector.watsonalchemylanguage.automation.global.Constants;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentAuthors;
 
-public class GetAuthorsTestCase extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
+public class AuthorsTestCase extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
 
-	public GetAuthorsTestCase() {
+	public AuthorsTestCase() {
 		super(WatsonAlchemyLanguageConnector.class);
 	}
 
 	@Test
 	public void testWithURL() {
-		DocumentAuthors authors = getConnector().getAuthors(Constants.TEST_URL_BLOG);
+		DocumentAuthors authors = getConnector().authors(Constants.TEST_URL_BLOG);
 
 		assertNotNull(authors);
 		assertEquals(Constants.TEST_URL_BLOG, authors.getUrl());

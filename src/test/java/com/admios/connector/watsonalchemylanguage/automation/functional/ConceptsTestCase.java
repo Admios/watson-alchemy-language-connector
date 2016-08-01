@@ -14,9 +14,9 @@ import com.admios.connector.watsonalchemylanguage.automation.global.Constants;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Concept;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Concepts;
 
-public class GetConceptsTestCase extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
+public class ConceptsTestCase extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
 
-	public GetConceptsTestCase() {
+	public ConceptsTestCase() {
 		super(WatsonAlchemyLanguageConnector.class);
 	}
 
@@ -31,7 +31,7 @@ public class GetConceptsTestCase extends AbstractTestCase<WatsonAlchemyLanguageC
 	}
 
 	private void testGetConcepts(String source, String... expectedConcepts) {
-		Concepts concepts = getConnector().getConcepts(source,
+		Concepts concepts = getConnector().concepts(source,
 				null, null, null, null, null, null, null);
 		assertNotNull(concepts);
 		testPrecenseOf(concepts.getConcepts(), expectedConcepts);

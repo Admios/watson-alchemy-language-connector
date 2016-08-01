@@ -1,18 +1,18 @@
-<!-- BEGIN_INCLUDE(watson-alchemy-language:getAuthors) -->
-<watson-alchemy-language:get-authors config-ref="ref"  source="www.url.com" doc:name="Watson AlchemyLanguage Service" />
-<!-- END_INCLUDE(watson-alchemy-language:getAuthors) -->
+<!-- BEGIN_INCLUDE(watson-alchemy-language:authors) -->
+<watson-alchemy-language:authors config-ref="ref"  source="www.url.com" doc:name="Watson AlchemyLanguage Service" />
+<!-- END_INCLUDE(watson-alchemy-language:authors) -->
 
-<!-- BEGIN_INCLUDE(watson-alchemy-language:getEntities) -->
-<watson-alchemy-language:get-entities config-ref="ref"
+<!-- BEGIN_INCLUDE(watson-alchemy-language:entities) -->
+<watson-alchemy-language:entities config-ref="ref"
 	source="IBM Watson won the Jeopardy television show hosted by Alex Trebek"
 	maxRetrieve="5" doc:name="Watson AlchemyLanguage Service"/>
-<!-- END_INCLUDE(watson-alchemy-language:getEntities) -->
+<!-- END_INCLUDE(watson-alchemy-language:entities) -->
 
-<!-- BEGIN_INCLUDE(watson-alchemy-language:getConcepts) -->
-<watson-alchemy-language:get-concepts config-ref="ref"
+<!-- BEGIN_INCLUDE(watson-alchemy-language:concepts) -->
+<watson-alchemy-language:concepts config-ref="ref"
 	source="IBM Watson won the Jeopardy television show hosted by Alex Trebek"
 	maxRetrieve="5" doc:name="Watson AlchemyLanguage Service"/>
-<!-- END_INCLUDE(watson-alchemy-language:getConcepts) -->
+<!-- END_INCLUDE(watson-alchemy-language:concepts) -->
 
 <!-- BEGIN_INCLUDE(watson-alchemy-language:publicationDate) -->
 <watson-alchemy-language:publication_date config-ref="ref"  source="www.url.com/blog/post" doc:name="Watson AlchemyLanguage Service" />

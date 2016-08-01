@@ -38,7 +38,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return A list of extracted author
 	 */
 	@Processor
-	public DocumentAuthors getAuthors(String source) {
+	public DocumentAuthors authors(String source) {
 		return new AuthorsHandler(config.getService(), source).execute();
 	}
 
@@ -70,7 +70,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return Entities
 	 */
 	@Processor
-	public Entities getEntities(String source, @Optional Integer maxRetrieve,
+	public Entities entities(String source, @Optional Integer maxRetrieve,
 			@Optional Integer coreference, @Optional Integer disambiguate, @Optional Integer knowledgeGraph,
 			@Optional Integer linkedData, @Optional Integer quotations, @Optional Integer sentiment,
 			@Optional Integer showSourceText, @Optional Integer structuredEntities,
@@ -134,7 +134,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return Concepts
 	 */
 	@Processor
-	public Concepts getConcepts(String source, @Optional Integer maxRetrieve,
+	public Concepts concepts(String source, @Optional Integer maxRetrieve,
 			@Optional Integer knowledgeGraph, @Optional Integer linkedData,
 			@Optional Integer showSourceText, @Optional String cquery,
 			@Optional String xpath, @Optional String sourceText) {
