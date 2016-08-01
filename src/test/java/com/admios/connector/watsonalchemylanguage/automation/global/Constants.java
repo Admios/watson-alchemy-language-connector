@@ -6,6 +6,8 @@ import java.util.Properties;
 public class Constants {
 
 	public static final String TEST_URL;
+	public static final String TEST_URL_BLOG;
+	public static final String TEST_URL_BLOG_AUTHOR;
 	public static final String TEST_URL_ENTITY_1;
 	public static final String TEST_URL_ENTITY_2;
 	public static final String TEST_URL_CONCEPT_1;
@@ -24,6 +26,8 @@ public class Constants {
 			e.printStackTrace();
 		}
 		TEST_URL = contants.getProperty("url");
+		TEST_URL_BLOG = contants.getProperty("url_blog");
+		TEST_URL_BLOG_AUTHOR = contants.getProperty("url_blog_author");
 		TEST_URL_ENTITY_1 = contants.getProperty("url_entity1");
 		TEST_URL_ENTITY_2 = contants.getProperty("url_entity2");
 		TEST_URL_CONCEPT_1 = contants.getProperty("url_concept1");

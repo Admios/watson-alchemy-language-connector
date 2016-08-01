@@ -1,3 +1,7 @@
+<!-- BEGIN_INCLUDE(watson-alchemy-language:getAuthors) -->
+<watson-alchemy-language:get-authors config-ref="ref"  source="www.url.com" doc:name="Watson AlchemyLanguage Service" />
+<!-- END_INCLUDE(watson-alchemy-language:getAuthors) -->
+
 <!-- BEGIN_INCLUDE(watson-alchemy-language:getEntities) -->
 <watson-alchemy-language:get-entities config-ref="ref"
 	source="IBM Watson won the Jeopardy television show hosted by Alex Trebek"
