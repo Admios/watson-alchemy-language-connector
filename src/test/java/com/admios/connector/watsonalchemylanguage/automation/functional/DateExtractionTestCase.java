@@ -9,9 +9,9 @@ import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 import com.admios.connector.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Dates;
 
-public class DateExtractionHandlerTest extends AbstractTestCase<WatsonAlchemyLanguageConnector>{
+public class DateExtractionTestCase extends AbstractTestCase<WatsonAlchemyLanguageConnector>{
 	
-	public DateExtractionHandlerTest(){
+	public DateExtractionTestCase(){
 		super(WatsonAlchemyLanguageConnector.class);
 	}
 	

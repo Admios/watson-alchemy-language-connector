@@ -11,9 +11,9 @@ import com.admios.connector.watsonalchemylanguage.WatsonAlchemyLanguageConnector
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Keyword;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Keywords;
 
-public class KeywordsHandlerTest extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
+public class KeywordsTestCase extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
 
-	public KeywordsHandlerTest(){
+	public KeywordsTestCase(){
 		super(WatsonAlchemyLanguageConnector.class);
 	}
 	
@@ -24,7 +24,7 @@ public class KeywordsHandlerTest extends AbstractTestCase<WatsonAlchemyLanguageC
 				+ " from the huge fields of the Cooper and Surat Basins in the arid lands out near the"
 				+ " Queensland, New South Wales and South Australian borders.";
 		
-		Keywords results = getConnector().getKeywords(paragraph, null, null, null, 0, null, null, null);
+		Keywords results = getConnector().keywords(paragraph, null, null, null, 0, null, null, null);
 		
 		assertNotNull(results);
 		assertEquals("english", results.getLanguage());
