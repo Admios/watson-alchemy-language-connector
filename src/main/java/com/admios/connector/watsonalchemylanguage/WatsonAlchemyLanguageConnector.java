@@ -154,7 +154,7 @@ public class WatsonAlchemyLanguageConnector {
 	}
 
 	@Processor
-	public Keywords getKeywords(String source, @Optional Integer maxRetrieve,
+	public Keywords keywords(String source, @Optional Integer maxRetrieve,
 			@Optional Integer knowledgeGraph, @Optional Integer sentiment,
 			@Optional Integer showSourceText, @Optional String cquery,
 			@Optional String xpath, @Optional String sourceText) {

@@ -10,15 +10,15 @@ import org.mule.tools.devkit.ctf.mockup.ConnectorTestContext;
 import com.admios.connector.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
 import com.admios.connector.watsonalchemylanguage.automation.functional.CommonHandlerTest;
 import com.admios.connector.watsonalchemylanguage.automation.functional.AuthorsTestCase;
-import com.admios.connector.watsonalchemylanguage.automation.functional.DateExtractionHandlerTest;
-import com.admios.connector.watsonalchemylanguage.automation.functional.FeedDetectionHandlerTest;
+import com.admios.connector.watsonalchemylanguage.automation.functional.DateExtractionTestCase;
+import com.admios.connector.watsonalchemylanguage.automation.functional.FeedDetectionTestCase;
 import com.admios.connector.watsonalchemylanguage.automation.functional.ConceptsTestCase;
 import com.admios.connector.watsonalchemylanguage.automation.functional.EntitiesTestCase;
-import com.admios.connector.watsonalchemylanguage.automation.functional.KeywordsHandlerTest;
+import com.admios.connector.watsonalchemylanguage.automation.functional.KeywordsTestCase;
 
 @RunWith(Suite.class)
 @SuiteClasses({ CommonHandlerTest.class, EntitiesTestCase.class, ConceptsTestCase.class,
-		DateExtractionHandlerTest.class, FeedDetectionHandlerTest.class, KeywordsHandlerTest.class,
+		DateExtractionTestCase.class, FeedDetectionTestCase.class, KeywordsTestCase.class,
 		AuthorsTestCase.class })
 public class FunctionalTestSuite {
 

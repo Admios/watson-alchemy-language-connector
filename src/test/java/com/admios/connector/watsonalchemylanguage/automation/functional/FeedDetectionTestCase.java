@@ -9,9 +9,9 @@ import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 import com.admios.connector.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Feeds;
 
-public class FeedDetectionHandlerTest extends AbstractTestCase<WatsonAlchemyLanguageConnector>{
+public class FeedDetectionTestCase extends AbstractTestCase<WatsonAlchemyLanguageConnector>{
 	
-	public FeedDetectionHandlerTest(){
+	public FeedDetectionTestCase(){
 		super(WatsonAlchemyLanguageConnector.class);
 	}
 	
