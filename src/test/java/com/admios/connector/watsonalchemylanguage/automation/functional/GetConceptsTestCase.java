@@ -22,12 +22,12 @@ public class GetConceptsTestCase extends AbstractTestCase<WatsonAlchemyLanguageC
 
 	@Test
 	public void testWithText() {
-		testGetConcepts(Constants.TEXT, Constants.TEXT_CONCEPT_1, Constants.TEXT_CONCEPT_2);
+		testGetConcepts(Constants.TEST_TEXT, Constants.TEST_TEXT_CONCEPT_1, Constants.TEST_TEXT_CONCEPT_2);
 	}
 
 	@Test
 	public void testWithURL() {
-		testGetConcepts(Constants.URL, Constants.URL_CONCEPT_1, Constants.URL_CONCEPT_2);
+		testGetConcepts(Constants.TEST_URL, Constants.TEST_URL_CONCEPT_1, Constants.TEST_URL_CONCEPT_2);
 	}
 
 	private void testGetConcepts(String source, String... expectedConcepts) {
@@ -35,7 +35,7 @@ public class GetConceptsTestCase extends AbstractTestCase<WatsonAlchemyLanguageC
 				null, null, null, null, null, null, null);
 		assertNotNull(concepts);
 		testPrecenseOf(concepts.getConcepts(), expectedConcepts);
-		if (source.equals(Constants.URL)) {
+		if (source.equals(Constants.TEST_URL)) {
 			assertNotNull(concepts.getUrl());
 		} else {
 			assert (concepts.getUrl().isEmpty());
