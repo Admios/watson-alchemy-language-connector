@@ -1,5 +1,7 @@
 package com.admios.connector.watsonalchemylanguage;
 
+import java.util.List;
+
 import org.mule.api.annotations.Config;
 import org.mule.api.annotations.Connector;
 import org.mule.api.annotations.Processor;
@@ -15,6 +17,7 @@ import com.admios.connector.watsonalchemylanguage.handler.implementation.Keyword
 import com.admios.connector.watsonalchemylanguage.handler.implementation.MicroformatsHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.PublicationDateHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.SentimentAnalysisHandler;
+import com.admios.connector.watsonalchemylanguage.handler.implementation.TargetedSentimentHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.TypedRelationsHandler;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Concepts;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Dates;
@@ -164,6 +167,38 @@ public class WatsonAlchemyLanguageConnector {
 
 	public void setConfig(ConnectorConfig config) {
 		this.config = config;
+	}
+	
+	/**
+	 * Analyze sentiment for targeted phrases in a webpage, HTML, or plain text. 
+	 * Supported languages: Arabic, English, French, German, Italian, Portuguese, Russian, Spanish.
+	 * 
+	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#targeted_sentiment}
+	 *
+	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:targeted-sentiments}
+	 *
+	 * @param source The text, HTML or URL to process.
+	 * @param targets Array of target phrases. The service will return sentiment information for each phrase that is found
+	 *            in the source text. Supports up to 20 phrases.
+	 * @param showSourceText Set this to 1 to include the source text in the response.
+	 * @param cquery A visual constraints query to apply to the web page. Required when <code>sourceText</code> is set
+	 *            to cquery.
+	 * @param xpath An XPath query to apply to the web page. Required when <code>sourceText</code> is set to one of the
+	 *            XPath values.
+	 * @param sourceText How to obtain the source text from the webpage.
+	 * @return return {@link DocumentSentiment}
+	 */
+	@Processor
+	public DocumentSentiment targetedSentiments(String source, List<String> targets, 
+			@Optional Integer showSourceText, @Optional String cquery,
+			@Optional String xpath, @Optional String sourceText) {
+		return new TargetedSentimentHandler(config.getService(), source)
+				.addCquery(cquery)
+				.addShowSourceText(showSourceText)
+				.addTargets(targets)
+				.addXpath(xpath)
+				.addSourceText(sourceText)
+				.execute();
 	}
 
 	/**

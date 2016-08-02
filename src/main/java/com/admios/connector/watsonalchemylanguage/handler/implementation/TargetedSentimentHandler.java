@@ -12,8 +12,13 @@ public class TargetedSentimentHandler extends URLCommonHandler<TargetedSentiment
 		super(service, source);
 	}
 	
+	/**
+	 * Set targets, override previous array.
+	 * @param targets
+	 * @return
+	 */
 	public TargetedSentimentHandler addTargets(List<String> targets){
-		return addParam(AlchemyLanguage.TARGETS, targets);
+		return addParam(AlchemyLanguage.TARGETS, targets.toArray(new String[0]));
 	}
 	
 	@Override
