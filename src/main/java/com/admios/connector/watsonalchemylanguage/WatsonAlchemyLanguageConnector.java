@@ -12,6 +12,7 @@ import com.admios.connector.watsonalchemylanguage.handler.implementation.DateExt
 import com.admios.connector.watsonalchemylanguage.handler.implementation.EntitiesHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.FeedDetectionHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.KeywordsHandler;
+import com.admios.connector.watsonalchemylanguage.handler.implementation.MicroformatsHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.PublicationDateHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.SentimentAnalysisHandler;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Concepts;
@@ -22,6 +23,7 @@ import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentSentiment;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Entities;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Feeds;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Keywords;
+import com.ibm.watson.developer_cloud.alchemy.v1.model.Microformats;
 
 @Connector(name = "watson-alchemy-language", friendlyName = "Watson AlchemyLanguage Service")
 public class WatsonAlchemyLanguageConnector {
@@ -194,6 +196,22 @@ public class WatsonAlchemyLanguageConnector {
 				.addShowSourceText(showSourceText)
 				.addXpath(xpath)
 				.execute();
+	}
+	
+	/**
+	 * Get Microformats from a text, webpage or content in an url.
+	 * 
+	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#microformats}
+	 *
+	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:microformats}
+	 *
+	 * @param source The text, html or url to process.
+	 * @param showSourceText Set this to 1 to include the source text in the response.
+	 * @return return {@link Microformats}
+	 */
+	@Processor
+	public Microformats microformats(String source, @Optional Integer showSourceText) {
+		return new MicroformatsHandler(config.getService(), source).addShowSourceText(showSourceText).execute();
 	}
 
 	/**
