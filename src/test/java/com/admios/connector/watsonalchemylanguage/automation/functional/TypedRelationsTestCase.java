@@ -27,8 +27,6 @@ public class TypedRelationsTestCase extends AbstractTestCase<WatsonAlchemyLangua
 		assertNotNull(typedRelations);
 		assertEquals(Constants.TEST_URL_BLOG, typedRelations.getUrl());
 		testPrecenseOf(typedRelations.getTypedRelations(), Constants.TEST_URL_BLOG_TYPE_RELATION);
-		System.out.println(typedRelations.toString());
-
 	}
 
 	private void testPrecenseOf(List<TypedRelation> relations, String... expectedRelations) {
