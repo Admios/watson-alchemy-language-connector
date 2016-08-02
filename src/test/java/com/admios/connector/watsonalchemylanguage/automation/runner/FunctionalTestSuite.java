@@ -15,13 +15,16 @@ import com.admios.connector.watsonalchemylanguage.automation.functional.FeedDete
 import com.admios.connector.watsonalchemylanguage.automation.functional.ConceptsTestCase;
 import com.admios.connector.watsonalchemylanguage.automation.functional.EntitiesTestCase;
 import com.admios.connector.watsonalchemylanguage.automation.functional.KeywordsTestCase;
+import com.admios.connector.watsonalchemylanguage.automation.functional.LanguageDetectionTestCase;
 import com.admios.connector.watsonalchemylanguage.automation.functional.SentimentAnalysisTestCase;
+import com.admios.connector.watsonalchemylanguage.automation.functional.TitleExtractionTestCase;
 import com.admios.connector.watsonalchemylanguage.automation.functional.TypedRelationsTestCase;
 
 @RunWith(Suite.class)
 @SuiteClasses({ CommonHandlerTest.class, EntitiesTestCase.class, ConceptsTestCase.class,
 		DateExtractionTestCase.class, FeedDetectionTestCase.class, KeywordsTestCase.class,
-		AuthorsTestCase.class, SentimentAnalysisTestCase.class, TypedRelationsTestCase.class })
+		AuthorsTestCase.class, SentimentAnalysisTestCase.class, TypedRelationsTestCase.class,
+		TitleExtractionTestCase.class, LanguageDetectionTestCase.class })
 public class FunctionalTestSuite {
 
 	@BeforeClass

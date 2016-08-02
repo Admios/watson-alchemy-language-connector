@@ -46,3 +46,13 @@
 <watson-alchemy-language:typed-relations config-ref="ref"
 	source="www.url.com/blog/post" doc:name="Watson AlchemyLanguage Service"/>
 <!-- END_INCLUDE(watson-alchemy-language:typedRelations) -->
+
+<!-- BEGIN_INCLUDE(watson-alchemy-language:languageDetection) -->
+<watson-alchemy-language:language-detection config-ref="ref"
+	source="www.url.com/blog/post" doc:name="Watson AlchemyLanguage Service"/>
+<!-- END_INCLUDE(watson-alchemy-language:languageDetection) -->
+
+<!-- BEGIN_INCLUDE(watson-alchemy-language:titleExtraction) -->
+<watson-alchemy-language:title-extraction config-ref="ref"
+	source="www.url.com/blog/post" doc:name="Watson AlchemyLanguage Service"/>
+<!-- END_INCLUDE(watson-alchemy-language:titleExtraction) -->
