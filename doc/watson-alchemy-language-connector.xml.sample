@@ -30,6 +30,12 @@
 	doc:name="Watson AlchemyLanguage Service"/>
 <!-- END_INCLUDE(watson-alchemy-language:dateExtraction) -->
 
+<!-- BEGIN_INCLUDE(watson-alchemy-language:microformats) -->
+<watson-alchemy-language:microformats config-ref="ref"
+	source="http://microformats.org/wiki/hcard"
+	doc:name="Watson AlchemyLanguage Service"/>
+<!-- END_INCLUDE(watson-alchemy-language:microformats) -->
+
 <!-- BEGIN_INCLUDE(watson-alchemy-language:keywords) -->
 <watson-alchemy-language:keywords config-ref="ref"
 	source="The polymer is made by a company called Papa from Australia"
