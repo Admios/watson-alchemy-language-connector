@@ -1,8 +1,7 @@
 package com.admios.connector.watsonalchemylanguage.automation.functional;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;  
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.ArrayList;
 
@@ -11,8 +10,6 @@ import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
 import com.admios.connector.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentSentiment;
-import com.ibm.watson.developer_cloud.alchemy.v1.model.Keyword;
-import com.ibm.watson.developer_cloud.alchemy.v1.model.Keywords;
 
 public class TargetedSentimentTestCase extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
 
