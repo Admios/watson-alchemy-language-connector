@@ -47,3 +47,8 @@
 	source="www.url.com/blog/post"
 	doc:name="Watson AlchemyLanguage Service"/>
 <!-- END_INCLUDE(watson-alchemy-language:sentimentAnalysis) -->
+
+<!-- BEGIN_INCLUDE(watson-alchemy-language:typedRelations) -->
+<watson-alchemy-language:typed-relations config-ref="ref"
+	source="www.url.com/blog/post" doc:name="Watson AlchemyLanguage Service"/>
+<!-- END_INCLUDE(watson-alchemy-language:typedRelations) -->

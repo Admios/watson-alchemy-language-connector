@@ -15,6 +15,7 @@ import com.admios.connector.watsonalchemylanguage.handler.implementation.Keyword
 import com.admios.connector.watsonalchemylanguage.handler.implementation.MicroformatsHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.PublicationDateHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.SentimentAnalysisHandler;
+import com.admios.connector.watsonalchemylanguage.handler.implementation.TypedRelationsHandler;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Concepts;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Dates;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentAuthors;
@@ -24,6 +25,7 @@ import com.ibm.watson.developer_cloud.alchemy.v1.model.Entities;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Feeds;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Keywords;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Microformats;
+import com.ibm.watson.developer_cloud.alchemy.v1.model.TypedRelations;
 
 @Connector(name = "watson-alchemy-language", friendlyName = "Watson AlchemyLanguage Service")
 public class WatsonAlchemyLanguageConnector {
@@ -237,8 +239,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:sentimentAnalysis}
 	 *
 	 * @param source The text, HTML document or url to process
-	 * @param showSourceText Set this to 1 to include the source text in the response TwitterHandle, Hashtag, and
-	 *            IPAddress
+	 * @param showSourceText Set this to 1 to include the source text in the response
 	 * @param cquery A visual constraints query to apply to the web page. Required when sourceText is set to cquery
 	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
 	 * @param sourceText How to obtain the source text from the webpage
@@ -250,6 +251,25 @@ public class WatsonAlchemyLanguageConnector {
 			@Optional String xpath, @Optional String sourceText) {
 		return new SentimentAnalysisHandler(config.getService(), source).addShowSourceText(showSourceText)
 				.addCquery(cquery).addXpath(xpath).addSourceText(sourceText).execute();
+	}
+
+	/**
+	 * Use custom models to identify typed relations between detected entities from a webpage, HTML, or plain text.
+	 * 
+	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#typed_relations}
+	 *
+	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:typedRelations}
+	 *
+	 * @param source The text, HTML document or url to process
+	 * @param model The unique alphanumeric identifier for your custom model
+	 * @param showSourceText Set this to 1 to include the source text in the response
+	 * 
+	 * @return return {@link TypedRelations}
+	 */
+	@Processor
+	public TypedRelations typedRelations(String source, @Optional String model, @Optional Integer showSourceText) {
+		return new TypedRelationsHandler(config.getService(), source).addModel(model)
+				.addShowSourceText(showSourceText).execute();
 	}
 
 }

@@ -10,6 +10,7 @@ public class Constants {
 	public static final String TEST_URL_BLOG_AUTHOR;
 	public static final String TEST_URL_BLOG_SENTIMENT;
 	public static final String TEST_URL_BLOG_PUBLICATION_DATE;
+	public static final String TEST_URL_BLOG_TYPE_RELATION;
 	public static final String TEST_URL_ENTITY_1;
 	public static final String TEST_URL_ENTITY_2;
 	public static final String TEST_URL_CONCEPT_1;
@@ -32,6 +33,7 @@ public class Constants {
 		TEST_URL_BLOG_AUTHOR = contants.getProperty("url_blog_author");
 		TEST_URL_BLOG_SENTIMENT = contants.getProperty("url_blog_sentiment");
 		TEST_URL_BLOG_PUBLICATION_DATE = contants.getProperty("url_blog_publication_date");
+		TEST_URL_BLOG_TYPE_RELATION = contants.getProperty("url_blog_type_relation");
 		TEST_URL_ENTITY_1 = contants.getProperty("url_entity1");
 		TEST_URL_ENTITY_2 = contants.getProperty("url_entity2");
 		TEST_URL_CONCEPT_1 = contants.getProperty("url_concept1");
