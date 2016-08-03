@@ -7,6 +7,7 @@ import org.mule.api.annotations.param.Optional;
 
 import com.admios.connector.watsonalchemylanguage.config.ConnectorConfig;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.AuthorsHandler;
+import com.admios.connector.watsonalchemylanguage.handler.implementation.CombinedCallHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.ConceptsHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.DateExtractionHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.EntitiesHandler;
@@ -19,6 +20,7 @@ import com.admios.connector.watsonalchemylanguage.handler.implementation.Sentime
 import com.admios.connector.watsonalchemylanguage.handler.implementation.TargetedSentimentHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.TitleExtractionHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.TypedRelationsHandler;
+import com.ibm.watson.developer_cloud.alchemy.v1.model.CombinedResults;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Concepts;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Dates;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentAuthors;
@@ -170,18 +172,19 @@ public class WatsonAlchemyLanguageConnector {
 	public void setConfig(ConnectorConfig config) {
 		this.config = config;
 	}
-	
+
 	/**
-	 * Analyze sentiment for targeted phrases in a webpage, HTML, or plain text. 
-	 * Supported languages: Arabic, English, French, German, Italian, Portuguese, Russian, Spanish.
+	 * Analyze sentiment for targeted phrases in a webpage, HTML, or plain text. Supported languages: Arabic, English,
+	 * French, German, Italian, Portuguese, Russian, Spanish.
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#targeted_sentiment}
 	 *
-	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:targeted-sentiments}
+	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample
+	 * watson-alchemy-language:targeted-sentiments}
 	 *
 	 * @param source The text, HTML or URL to process.
-	 * @param target Target phrase. The service will return sentiment information for the phrase that is found
-	 *            in the source text.
+	 * @param target Target phrase. The service will return sentiment information for the phrase that is found in the
+	 *            source text.
 	 * @param showSourceText Set this to 1 to include the source text in the response.
 	 * @param cquery A visual constraints query to apply to the web page. Required when <code>sourceText</code> is set
 	 *            to cquery.
@@ -191,7 +194,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return {@link DocumentSentiment}
 	 */
 	@Processor
-	public DocumentSentiment targetedSentiment(String source, String target, 
+	public DocumentSentiment targetedSentiment(String source, String target,
 			@Optional Integer showSourceText, @Optional String cquery,
 			@Optional String xpath, @Optional String sourceText) {
 		return new TargetedSentimentHandler(config.getService(), source)
@@ -354,6 +357,53 @@ public class WatsonAlchemyLanguageConnector {
 		return new TitleExtractionHandler(config.getService(), source)
 				.addShowSourceText(showSourceText)
 				.execute();
+	}
+
+	/**
+	 * Analyze text, HTML, or webpage content with multiple text analysis operations. Any parameters for the extract
+	 * methods can also be passed.
+	 * 
+	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#combined-call}
+	 *
+	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:combinedCall}
+	 *
+	 * @param source The text or url to process
+	 * @param extract Comma separated list of any of the following methods: authors, concepts (default), dates,
+	 *            doc-emotion, entities (default), feeds, keywords (default), pub-date, relations, typed-rels,
+	 *            doc-sentiment, taxonomy (default), title
+	 * @param maxRetrieve Maximum number of entities to return (default = 50)
+	 * @param anchorDate The date to use as "today" when interpreting phrases in the text like "next tuesday.". Format:
+	 *            yyyy-mm-dd hh:mm:ss
+	 * @param coreference Set this to 0 to treat coreferences as separate entities (coreferences are resolved into
+	 *            detected entities by default)
+	 * @param disambiguate Set this to 0 to hide entity disambiguation information in the response
+	 * @param knowledgeGraph Set this to 1 to include knowledge graph information in the results. This incurs an
+	 *            additional transaction charge
+	 * @param linkedData Set this to 0 to hide Linked Data content links in the response
+	 * @param quotations Set this to 1 to include quotations that are linked to detected entities
+	 * @param sentiment Set this to 1 to analyze the sentiment towards each detected entity. This incurs an additional
+	 *            transaction charge
+	 * @param showSourceText Set this to 1 to include the source text in the response
+	 * @param structuredEntities Set this to 0 to ignore structured entities, such as Quantity, EmailAddress,
+	 *            TwitterHandle, Hashtag, and IPAddress
+	 * @param cquery A visual constraints query to apply to the web page. Required when sourceText is set to cquery
+	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
+	 * @param sourceText How to obtain the source text from the webpage
+	 * 
+	 * @return return {@link CombinedResults}
+	 */
+	@Processor
+	public CombinedResults combinedCall(String source, @Optional String extract, @Optional Integer maxRetrieve,
+			@Optional Integer coreference, @Optional Integer disambiguate, @Optional Integer knowledgeGraph,
+			@Optional Integer linkedData, @Optional Integer quotations, @Optional Integer sentiment,
+			@Optional Integer showSourceText, @Optional Integer structuredEntities, @Optional String anchorDate,
+			@Optional String cquery, @Optional String xpath, @Optional String sourceText) {
+
+		return new CombinedCallHandler(config.getService(), source).addExtract(extract).addAnchorDate(anchorDate)
+				.addMaxRetrieve(maxRetrieve).addCoreference(coreference).addDisambiguate(disambiguate)
+				.addKnowledgeGraph(knowledgeGraph).addLinkedData(linkedData).addQuotations(quotations)
+				.addSentiment(sentiment).addShowSourceText(showSourceText).addStructuredEntities(structuredEntities)
+				.addCquery(cquery).addXpath(xpath).addSourceText(sourceText).execute();
 	}
 
 }
