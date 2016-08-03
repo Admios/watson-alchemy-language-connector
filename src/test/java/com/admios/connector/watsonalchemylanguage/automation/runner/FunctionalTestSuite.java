@@ -19,11 +19,12 @@ import com.admios.connector.watsonalchemylanguage.automation.functional.Language
 import com.admios.connector.watsonalchemylanguage.automation.functional.MicroformatsTestCase;
 import com.admios.connector.watsonalchemylanguage.automation.functional.PublicationDateTestCase;
 import com.admios.connector.watsonalchemylanguage.automation.functional.SentimentAnalysisTestCase;
+import com.admios.connector.watsonalchemylanguage.automation.functional.TargetedSentimentTestCase;
 import com.admios.connector.watsonalchemylanguage.automation.functional.TitleExtractionTestCase;
 import com.admios.connector.watsonalchemylanguage.automation.functional.TypedRelationsTestCase;
 
 @RunWith(Suite.class)
-@SuiteClasses({ CommonHandlerTest.class, EntitiesTestCase.class, ConceptsTestCase.class,
+@SuiteClasses({ CommonHandlerTest.class, EntitiesTestCase.class, ConceptsTestCase.class, TargetedSentimentTestCase.class,
 		DateExtractionTestCase.class, FeedDetectionTestCase.class, KeywordsTestCase.class,
 		AuthorsTestCase.class, SentimentAnalysisTestCase.class, TypedRelationsTestCase.class,
 		TitleExtractionTestCase.class, LanguageDetectionTestCase.class, MicroformatsTestCase.class,

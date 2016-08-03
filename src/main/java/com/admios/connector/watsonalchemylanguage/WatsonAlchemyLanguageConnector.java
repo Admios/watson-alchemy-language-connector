@@ -16,6 +16,7 @@ import com.admios.connector.watsonalchemylanguage.handler.implementation.Languag
 import com.admios.connector.watsonalchemylanguage.handler.implementation.MicroformatsHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.PublicationDateHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.SentimentAnalysisHandler;
+import com.admios.connector.watsonalchemylanguage.handler.implementation.TargetedSentimentHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.TitleExtractionHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.TypedRelationsHandler;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Concepts;
@@ -168,6 +169,38 @@ public class WatsonAlchemyLanguageConnector {
 
 	public void setConfig(ConnectorConfig config) {
 		this.config = config;
+	}
+	
+	/**
+	 * Analyze sentiment for targeted phrases in a webpage, HTML, or plain text. 
+	 * Supported languages: Arabic, English, French, German, Italian, Portuguese, Russian, Spanish.
+	 * 
+	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#targeted_sentiment}
+	 *
+	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:targeted-sentiments}
+	 *
+	 * @param source The text, HTML or URL to process.
+	 * @param target Target phrase. The service will return sentiment information for the phrase that is found
+	 *            in the source text.
+	 * @param showSourceText Set this to 1 to include the source text in the response.
+	 * @param cquery A visual constraints query to apply to the web page. Required when <code>sourceText</code> is set
+	 *            to cquery.
+	 * @param xpath An XPath query to apply to the web page. Required when <code>sourceText</code> is set to one of the
+	 *            XPath values.
+	 * @param sourceText How to obtain the source text from the webpage.
+	 * @return return {@link DocumentSentiment}
+	 */
+	@Processor
+	public DocumentSentiment targetedSentiment(String source, String target, 
+			@Optional Integer showSourceText, @Optional String cquery,
+			@Optional String xpath, @Optional String sourceText) {
+		return new TargetedSentimentHandler(config.getService(), source)
+				.addCquery(cquery)
+				.addShowSourceText(showSourceText)
+				.addTarget(target)
+				.addXpath(xpath)
+				.addSourceText(sourceText)
+				.execute();
 	}
 
 	/**
