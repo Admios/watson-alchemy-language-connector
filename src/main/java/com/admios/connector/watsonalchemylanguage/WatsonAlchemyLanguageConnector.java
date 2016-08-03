@@ -15,6 +15,7 @@ import com.admios.connector.watsonalchemylanguage.handler.implementation.Keyword
 import com.admios.connector.watsonalchemylanguage.handler.implementation.LanguageDetectionHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.MicroformatsHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.PublicationDateHandler;
+import com.admios.connector.watsonalchemylanguage.handler.implementation.RelationsHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.SentimentAnalysisHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.TargetedSentimentHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.TitleExtractionHandler;
@@ -30,6 +31,7 @@ import com.ibm.watson.developer_cloud.alchemy.v1.model.Feeds;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Keywords;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Language;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Microformats;
+import com.ibm.watson.developer_cloud.alchemy.v1.model.SAORelations;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.TypedRelations;
 
 @Connector(name = "watson-alchemy-language", friendlyName = "Watson AlchemyLanguage Service")
@@ -251,6 +253,16 @@ public class WatsonAlchemyLanguageConnector {
 	@Processor
 	public Microformats microformats(String source, @Optional Integer showSourceText) {
 		return new MicroformatsHandler(config.getService(), source).addShowSourceText(showSourceText).execute();
+	}
+	
+	@Processor
+	public SAORelations relations(String source, @Optional Integer maxRetrieve, @Optional Boolean showSourceText, @Optional Boolean keywords, @Optional Boolean entities, @Optional Boolean requireEntities,
+			@Optional Boolean coreference, @Optional Boolean disambiguate, @Optional Boolean knowledgeGraph, @Optional Boolean showLinkedData, @Optional Boolean analyzeSentiment, @Optional Boolean excludeEntityFromSentimentAnalysis, @Optional Boolean showSourceTex, @Optional String cquery, @Optional String xpath, @Optional String sourceText){
+		return new RelationsHandler(config.getService(), source)
+				.addMaxRetrieve(maxRetrieve)
+				
+				.execute();
+		
 	}
 
 	/**
