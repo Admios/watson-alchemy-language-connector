@@ -1,7 +1,5 @@
 package com.admios.connector.watsonalchemylanguage;
 
-import java.util.List;
-
 import org.mule.api.annotations.Config;
 import org.mule.api.annotations.Connector;
 import org.mule.api.annotations.Processor;
@@ -178,8 +176,8 @@ public class WatsonAlchemyLanguageConnector {
 	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:targeted-sentiments}
 	 *
 	 * @param source The text, HTML or URL to process.
-	 * @param targets Array of target phrases. The service will return sentiment information for each phrase that is found
-	 *            in the source text. Supports up to 20 phrases.
+	 * @param target Target phrase. The service will return sentiment information for the phrase that is found
+	 *            in the source text.
 	 * @param showSourceText Set this to 1 to include the source text in the response.
 	 * @param cquery A visual constraints query to apply to the web page. Required when <code>sourceText</code> is set
 	 *            to cquery.
@@ -189,13 +187,13 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return {@link DocumentSentiment}
 	 */
 	@Processor
-	public DocumentSentiment targetedSentiments(String source, List<String> targets, 
+	public DocumentSentiment targetedSentiment(String source, String target, 
 			@Optional Integer showSourceText, @Optional String cquery,
 			@Optional String xpath, @Optional String sourceText) {
 		return new TargetedSentimentHandler(config.getService(), source)
 				.addCquery(cquery)
 				.addShowSourceText(showSourceText)
-				.addTargets(targets)
+				.addTarget(target)
 				.addXpath(xpath)
 				.addSourceText(sourceText)
 				.execute();

@@ -42,11 +42,11 @@
 	maxRetrieve="10" knowledgeGraph="1" doc:name="Watson AlchemyLanguage Service"/>
 <!-- END_INCLUDE(watson-alchemy-language:keywords) -->
 
-<!-- BEGIN_INCLUDE(watson-alchemy-language:targetedSentiments) -->
-<watson-alchemy-language:targeted-sentiments config-ref="ref"
+<!-- BEGIN_INCLUDE(watson-alchemy-language:targetedSentiment) -->
+<watson-alchemy-language:targeted-sentiment config-ref="ref"
 	source="The polymer is made by a company called Papa from Australia"
-	targets="company, Australia" doc:name="Watson AlchemyLanguage Service"/>
-<!-- END_INCLUDE(watson-alchemy-language:targetedSentiments) -->
+	target="Australia" doc:name="Watson AlchemyLanguage Service"/>
+<!-- END_INCLUDE(watson-alchemy-language:targetedSentiment) -->
 
 <!-- BEGIN_INCLUDE(watson-alchemy-language:sentimentAnalysis) -->
 <watson-alchemy-language:sentiment-analysis config-ref="ref"

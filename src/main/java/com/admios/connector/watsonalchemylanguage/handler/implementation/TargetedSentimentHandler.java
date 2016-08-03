@@ -1,7 +1,5 @@
 package com.admios.connector.watsonalchemylanguage.handler.implementation;
 
-import java.util.List;
-
 import com.admios.connector.watsonalchemylanguage.handler.URLCommonHandler;
 import com.ibm.watson.developer_cloud.alchemy.v1.AlchemyLanguage;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentSentiment;
@@ -12,18 +10,12 @@ public class TargetedSentimentHandler extends URLCommonHandler<TargetedSentiment
 		super(service, source);
 	}
 	
-	/**
-	 * Set targets, override previous array.
-	 * @param targets
-	 * @return
-	 */
-	public TargetedSentimentHandler addTargets(List<String> targets){
-		return addParam(AlchemyLanguage.TARGETS, targets.toArray(new String[0]));
+	public TargetedSentimentHandler addTarget(String target) {
+		return addParam(AlchemyLanguage.TARGET, target);
 	}
-	
+
 	@Override
 	public DocumentSentiment execute() {
-		
 		return service.getSentiment(params).execute();
 	}
 
