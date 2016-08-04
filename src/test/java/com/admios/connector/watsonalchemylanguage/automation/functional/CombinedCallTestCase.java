@@ -21,7 +21,7 @@ public class CombinedCallTestCase extends AbstractTestCase<WatsonAlchemyLanguage
 	@Test
 	public void testWithURL() {
 		CombinedResults results = getConnector().combinedCall(Constants.TEST_URL_BLOG, "title,pub-date", 10,
-				null, null, null, null, null, null, null, null, null, null, null, null);
+				null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
 
 		assertNotNull(results);
 		assertNotNull(results.getTitle());

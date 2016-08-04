@@ -383,6 +383,11 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param maxRetrieve Maximum number of entities to return (default = 50)
 	 * @param anchorDate The date to use as "today" when interpreting phrases in the text like "next tuesday.". Format:
 	 *            yyyy-mm-dd hh:mm:ss
+	 * @param keywords Check this to identify keywords in detected relations. <b>This incurs an additional transaction
+	 *            charge</b>
+	 * @param entities Check this to identify named entities in detected relations. <b>This incurs an additional
+	 *            transaction charge.</b>
+	 * @param requireEntities Check this to restrict results to relations that contain at least one named entity.
 	 * @param coreference Set this to 0 to treat coreferences as separate entities (coreferences are resolved into
 	 *            detected entities by default)
 	 * @param disambiguate Set this to 0 to hide entity disambiguation information in the response
@@ -403,6 +408,7 @@ public class WatsonAlchemyLanguageConnector {
 	 */
 	@Processor
 	public CombinedResults combinedCall(String source, @Optional String extract, @Optional Integer maxRetrieve,
+			@Optional Boolean keywords, @Optional Boolean entities, @Optional Boolean requireEntities,
 			@Optional Integer coreference, @Optional Integer disambiguate, @Optional Integer knowledgeGraph,
 			@Optional Integer linkedData, @Optional Integer quotations, @Optional Integer sentiment,
 			@Optional Boolean showSourceText, @Optional Integer structuredEntities, @Optional String anchorDate,
@@ -410,6 +416,7 @@ public class WatsonAlchemyLanguageConnector {
 
 		return new CombinedCallHandler(config.getService(), source).addExtract(extract).addAnchorDate(anchorDate)
 				.addMaxRetrieve(maxRetrieve).addCoreference(coreference).addDisambiguate(disambiguate)
+				.setKeywords(keywords).setEntities(entities).setRequireEntities(requireEntities)
 				.addKnowledgeGraph(knowledgeGraph).addLinkedData(linkedData).addQuotations(quotations)
 				.addSentiment(sentiment).addShowSourceText(showSourceText).addStructuredEntities(structuredEntities)
 				.addCquery(cquery).addXpath(xpath).addSourceText(sourceText).execute();

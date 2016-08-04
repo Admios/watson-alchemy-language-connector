@@ -1,6 +1,7 @@
 package com.admios.connector.watsonalchemylanguage.handler.implementation;
 
 import com.admios.connector.watsonalchemylanguage.handler.URLCommonHandler;
+import com.admios.connector.watsonalchemylanguage.util.Utils;
 import com.ibm.watson.developer_cloud.alchemy.v1.AlchemyLanguage;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.CombinedResults;
 
@@ -25,6 +26,18 @@ public class CombinedCallHandler extends URLCommonHandler<CombinedCallHandler, C
 
 	public CombinedCallHandler addAnchorDate(String anchorDate) {
 		return addParam(AlchemyLanguage.ANCHOR_DATE, anchorDate);
+	}
+
+	public CombinedCallHandler setKeywords(Boolean keywords) {
+		return addParam(AlchemyLanguage.KEYWORDS, Utils.intValue(keywords));
+	}
+
+	public CombinedCallHandler setEntities(Boolean entities) {
+		return addParam(AlchemyLanguage.ENTITIES, Utils.intValue(entities));
+	}
+
+	public CombinedCallHandler setRequireEntities(Boolean requireEntities) {
+		return addParam(AlchemyLanguage.REQUIRED_ENTITIES, Utils.intValue(requireEntities));
 	}
 
 	public CombinedCallHandler addCoreference(Integer coreference) {
