@@ -1,3 +1,7 @@
+<!-- BEGIN_INCLUDE(watson-alchemy-language:combinedCall) -->
+<watson-alchemy-language:combined-call config-ref="ref"  source="www.url.com" extract="authors,taxonomy" doc:name="Watson AlchemyLanguage Service" />
+<!-- END_INCLUDE(watson-alchemy-language:combinedCall) -->
+
 <!-- BEGIN_INCLUDE(watson-alchemy-language:authors) -->
 <watson-alchemy-language:authors config-ref="ref"  source="www.url.com" doc:name="Watson AlchemyLanguage Service" />
 <!-- END_INCLUDE(watson-alchemy-language:authors) -->
