@@ -390,6 +390,20 @@ public class WatsonAlchemyLanguageConnector {
 	}
 	
 	/**
+	 * Extract the main body raw text from a webpage or HTML.
+	 * 
+	 * API Doc: {@see https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#text_raw}
+	 *
+	 * @param source The HTML or URL to process. 
+	 * 
+	 * @return return {@link DocumentText}
+	 */
+	@Processor
+	public DocumentText rawTextExtraction(String source) {
+		return new TextExtractionHandler(config.getService(), source).execute();			
+	}
+	
+	/**
 	 * Categorize a webpage into a 5-level taxonomy
 	 * 
 	 * API Doc: {@see https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#taxonomy}
