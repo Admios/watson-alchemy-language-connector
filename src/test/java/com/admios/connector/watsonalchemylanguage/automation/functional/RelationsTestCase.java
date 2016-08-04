@@ -35,7 +35,22 @@ public class RelationsTestCase extends AbstractTestCase<WatsonAlchemyLanguageCon
 
 		String text = "Angular.js has been out there for a while now and is definitely a popular option to take into"
 				+ " consideration when selecting a front end technology.";
-		SAORelations relations = getConnector().relations(text, 10, true, null, null, null, null, true, null, null, null,
+		SAORelations relations = getConnector().relations(text, 10, true, null, null, null, null, null, null, null, null,
+				null, null, null, null);
+
+		assertNotNull(relations);
+		assertEquals("english", relations.getLanguage());
+		assertEquals(text + "\n", relations.getText());
+		assertEquals(3, relations.getRelations().size());
+		assertEquals("Angular.js", relations.getRelations().get(0).getSubject().getText());
+		assertTrue(relations.getUrl().isEmpty());
+	}
+	
+	@Test
+	public void relationTestUsingTextAndDisambiguate() {
+		String text = "Angular.js has been out there for a while now and is definitely a popular option to take into"
+				+ " consideration when selecting a front end technology.";
+		SAORelations relations = getConnector().relations(text, 10, true, null, null, null, null, true, null, true, null,
 				null, null, null, null);
 
 		assertNotNull(relations);
