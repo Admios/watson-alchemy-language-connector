@@ -1,5 +1,6 @@
 package com.admios.connector.watsonalchemylanguage.handler.implementation;
 
+import static com.admios.connector.watsonalchemylanguage.util.Utils.intValue;
 import com.admios.connector.watsonalchemylanguage.handler.URLCommonHandler;
 import com.ibm.watson.developer_cloud.alchemy.v1.AlchemyLanguage;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.SAORelations;
@@ -14,44 +15,40 @@ public class RelationsHandler extends URLCommonHandler<RelationsHandler, SAORela
 		return addParam(AlchemyLanguage.MAX_RETRIEVE, maxRetrieve);
 	}
 
-	public RelationsHandler turnOnKnowledgeGraph(Boolean bool) {
-		return addParam(AlchemyLanguage.KNOWLEDGE_GRAPH, bool? 1: 0);
+	public RelationsHandler setKnowledgeGraph(Boolean knowledgeGraph) {
+		return addParam(AlchemyLanguage.KNOWLEDGE_GRAPH, intValue(knowledgeGraph));
 	}
 
-	public RelationsHandler turnOnSentiment(Boolean bool) {
-		return addParam(AlchemyLanguage.SENTIMENT, bool? 1: 0);
+	public RelationsHandler setSentiment(Boolean sentiment) {
+		return addParam(AlchemyLanguage.SENTIMENT, intValue(sentiment));
 	}
 	
-	public RelationsHandler turnOnKeywords(Boolean bool) {
-		return addParam(AlchemyLanguage.KEYWORDS, bool? 1: 0);
+	public RelationsHandler excludeEntityFromSentimentAnalysis(Boolean excludeSentiments) {
+		return addParam(AlchemyLanguage.SENTIMENT_EXCLUDE_ENTITIES, intValue(excludeSentiments));
 	}
 	
-	public RelationsHandler turnOnEntities(Boolean bool) {
-		return addParam(AlchemyLanguage.ENTITIES, bool? 1: 0);
+	public RelationsHandler setKeywords(Boolean keywords) {
+		return addParam(AlchemyLanguage.KEYWORDS, intValue(keywords));
 	}
 	
-	public RelationsHandler turnOnRequireEntities(Boolean bool) {
-		return addParam(AlchemyLanguage.REQUIRED_ENTITIES, bool? 1: 0);
+	public RelationsHandler setEntities(Boolean entities) {
+		return addParam(AlchemyLanguage.ENTITIES, intValue(entities));
 	}
 	
-	public RelationsHandler turnOnCoreferences(Boolean bool) {
-		return addParam(AlchemyLanguage.COREFERENCE, bool? 1: 0);
+	public RelationsHandler setRequireEntities(Boolean requireEntities) {
+		return addParam(AlchemyLanguage.REQUIRED_ENTITIES, intValue(requireEntities));
 	}
 	
-	public RelationsHandler turnOnDisambiguate(Boolean bool) {
-		return addParam(AlchemyLanguage.DISAMBIGUATE, bool? 1: 0);
+	public RelationsHandler setCoreferences(Boolean coreference) {
+		return addParam(AlchemyLanguage.COREFERENCE, intValue(!coreference));
 	}
 	
-	public RelationsHandler showLinkedData(Boolean bool) {
-		return addParam(AlchemyLanguage.LINKED_DATA, bool? 1: 0);
+	public RelationsHandler setDisambiguate(Boolean disambiguate) {
+		return addParam(AlchemyLanguage.DISAMBIGUATE, intValue(!disambiguate));
 	}
 	
-	public RelationsHandler excludeEntityFromSentimentAnalysis(Boolean bool) {
-		return addParam(AlchemyLanguage.SENTIMENT_EXCLUDE_ENTITIES, bool? 1: 0);
-	}
-	
-	public RelationsHandler addShowSourceText(Boolean bool) {
-		return addParam(AlchemyLanguage.SHOW_SOURCE_TEXT, bool? 1: 0);
+	public RelationsHandler hideLinkedData(Boolean linkedData) {
+		return addParam(AlchemyLanguage.LINKED_DATA, intValue(!linkedData));
 	}
 	
 	@Override

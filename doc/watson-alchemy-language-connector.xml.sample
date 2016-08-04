@@ -42,6 +42,12 @@
 	maxRetrieve="10" knowledgeGraph="1" doc:name="Watson AlchemyLanguage Service"/>
 <!-- END_INCLUDE(watson-alchemy-language:keywords) -->
 
+<!-- BEGIN_INCLUDE(watson-alchemy-language:relations) -->
+<watson-alchemy-language:relations config-ref="ref"
+	source="http://www.admios.com/admios-blog/"
+	maxRetrieve="10" knowledgeGraph="true" doc:name="Watson AlchemyLanguage Service"/>
+<!-- END_INCLUDE(watson-alchemy-language:relations) -->
+
 <!-- BEGIN_INCLUDE(watson-alchemy-language:targetedSentiment) -->
 <watson-alchemy-language:targeted-sentiment config-ref="ref"
 	source="The polymer is made by a company called Papa from Australia"
