@@ -14,4 +14,13 @@ public class UtilsTestCase {
 		assertEquals(1, Utils.intValue(true).intValue());
 		
 	}
+
+	@Test
+	public void deniedToIntValueTest(){
+		
+		assertEquals(null, Utils.deniedToIntValue(null));
+		assertEquals(1, Utils.deniedToIntValue(false).intValue());
+		assertEquals(0, Utils.deniedToIntValue(true).intValue());
+		
+	}
 }

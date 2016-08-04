@@ -3,6 +3,7 @@ package com.admios.connector.watsonalchemylanguage;
 import org.mule.api.annotations.Config;
 import org.mule.api.annotations.Connector;
 import org.mule.api.annotations.Processor;
+import org.mule.api.annotations.display.FriendlyName;
 import org.mule.api.annotations.param.Optional;
 
 import com.admios.connector.watsonalchemylanguage.config.ConnectorConfig;
@@ -16,6 +17,7 @@ import com.admios.connector.watsonalchemylanguage.handler.implementation.Keyword
 import com.admios.connector.watsonalchemylanguage.handler.implementation.LanguageDetectionHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.MicroformatsHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.PublicationDateHandler;
+import com.admios.connector.watsonalchemylanguage.handler.implementation.RelationsHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.SentimentAnalysisHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.TargetedSentimentHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.TitleExtractionHandler;
@@ -32,6 +34,7 @@ import com.ibm.watson.developer_cloud.alchemy.v1.model.Feeds;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Keywords;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Language;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Microformats;
+import com.ibm.watson.developer_cloud.alchemy.v1.model.SAORelations;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.TypedRelations;
 
 /**
@@ -263,6 +266,57 @@ public class WatsonAlchemyLanguageConnector {
 	@Processor
 	public Microformats microformats(String source, @Optional Boolean showSourceText) {
 		return new MicroformatsHandler(config.getService(), source).addShowSourceText(showSourceText).execute();
+	}
+	
+	
+	/**
+	* Extract Subject-Action-Object relations from a webpage, HTML, or plain text.
+	* Supported languages: English, Spanish
+	*
+	* API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#microformats}
+	* {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:relations}
+	*
+	*	@param source One of these is required. Pass HTML content in html, a public facing URL in url, or plain text in text.
+	*	@param maxRetrieve Maximum number of relations to return (default = 50, maximum = 100)
+	*	@param showSourceText Check this to include the source text in the response.
+	*	@param keywords Check this to identify keywords in detected relations. <b>This incurs an additional transaction charge</b>
+	*	@param entities Check this to identify named entities in detected relations. <b>This incurs an additional transaction charge.</b>
+	*	@param requireEntities Check this to restrict results to relations that contain at least one named entity.
+	*	@param coreference Check this treat coreferences as separate entities (coreferences are resolved into detected entities by default).
+	*	@param disambiguate Check this to hide entity disambiguation information in the response.
+	*	@param knowledgeGraph Check this to include knowledge graph information in the results. <b>This incurs an additional transaction charge.</b>
+	*	@param hideLinkedData Check this to hide Linked Data contents links in the response.
+	*	@param analyzeSentiment Check this to analyze the sentiment towards each result.
+	*	@param excludeEntityFromSentimentAnalysis Check this to exclude named entity text from sentiment analysis. For exapmle, do not analyze "New" in "New York".
+	*	@param showSourceTex Check this to include the source text in the response.
+	*	@param cquery A visual constraints query to apply to the web page. Required when sourceText is set to cquery.
+	*	@param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values.
+	*	@param sourceText How to obtain the source text from the web page.
+	*	@return return an array of detected relations.
+	*/
+	@Processor
+	public SAORelations relations(String source, @Optional Integer maxRetrieve, @Optional Boolean showSourceText,
+			@Optional Boolean keywords, @Optional Boolean entities, @Optional Boolean requireEntities,
+			@Optional Boolean coreference, @Optional Boolean disambiguate, @Optional Boolean knowledgeGraph,
+			@Optional Boolean hideLinkedData, @Optional Boolean analyzeSentiment,
+			@Optional @FriendlyName("Exclude entity from analysis") Boolean excludeEntityFromSentimentAnalysis,
+			@Optional String cquery, @Optional String xpath, @Optional String sourceText) {
+		return new RelationsHandler(config.getService(), source)
+				.addMaxRetrieve(maxRetrieve)
+				.addShowSourceText(showSourceText)
+				.setKeywords(keywords)
+				.setEntities(entities)
+				.setRequireEntities(requireEntities)
+				.setCoreferences(coreference)
+				.setDisambiguate(disambiguate)
+				.setKnowledgeGraph(knowledgeGraph)
+				.hideLinkedData(hideLinkedData)
+				.setSentiment(analyzeSentiment)
+				.excludeEntityFromSentimentAnalysis(excludeEntityFromSentimentAnalysis)
+				.addCquery(cquery).addXpath(xpath)
+				.addSourceText(sourceText)
+				.execute();
+
 	}
 
 	/**
