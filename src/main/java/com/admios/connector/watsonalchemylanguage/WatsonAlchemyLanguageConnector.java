@@ -71,7 +71,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param quotations Set this to 1 to include quotations that are linked to detected entities
 	 * @param sentiment Set this to 1 to analyze the sentiment towards each detected entity. This incurs an additional
 	 *            transaction charge
-	 * @param showSourceText Set this to 1 to include the source text in the response
+	 * @param showSourceText Check this to include the source text in the response
 	 * @param structuredEntities Set this to 0 to ignore structured entities, such as Quantity, EmailAddress,
 	 *            TwitterHandle, Hashtag, and IPAddress
 	 * @param cquery A visual constraints query to apply to the web page. Required when sourceText is set to cquery
@@ -84,7 +84,7 @@ public class WatsonAlchemyLanguageConnector {
 	public Entities entities(String source, @Optional Integer maxRetrieve,
 			@Optional Integer coreference, @Optional Integer disambiguate, @Optional Integer knowledgeGraph,
 			@Optional Integer linkedData, @Optional Integer quotations, @Optional Integer sentiment,
-			@Optional Integer showSourceText, @Optional Integer structuredEntities,
+			@Optional Boolean showSourceText, @Optional Integer structuredEntities,
 			@Optional String cquery, @Optional String xpath, @Optional String sourceText) {
 
 		return new EntitiesHandler(config.getService(), source)
@@ -104,11 +104,11 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param source The text, html or url to process.
 	 * @param anchorDate The date to use as "today" when interpreting phrases in the text like "next tuesday." Format:
 	 *            <code>yyyy-mm-dd hh:mm:ss</code>
-	 * @param showSourceText Set this to 1 to include the source text in the response.
+	 * @param showSourceText Check this to include the source text in the response.
 	 * @return return {@link Dates}
 	 */
 	@Processor
-	public Dates dateExtraction(String source, @Optional String anchorDate, @Optional Integer showSourceText) {
+	public Dates dateExtraction(String source, @Optional String anchorDate, @Optional Boolean showSourceText) {
 		return new DateExtractionHandler(config.getService(), source)
 				.addAnchorDate(anchorDate)
 				.addShowSourceText(showSourceText)
@@ -143,7 +143,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param knowledgeGraph Set this to 1 to include knowledge graph information in the results. This incurs an
 	 *            additional transaction charge
 	 * @param linkedData Set this to 0 to hide Linked Data content links in the response
-	 * @param showSourceText Set this to 1 to include the source text in the response TwitterHandle, Hashtag, and
+	 * @param showSourceText Check this to include the source text in the response TwitterHandle, Hashtag, and
 	 *            IPAddress
 	 * @param cquery A visual constraints query to apply to the web page. Required when sourceText is set to cquery
 	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
@@ -154,7 +154,7 @@ public class WatsonAlchemyLanguageConnector {
 	@Processor
 	public Concepts concepts(String source, @Optional Integer maxRetrieve,
 			@Optional Integer knowledgeGraph, @Optional Integer linkedData,
-			@Optional Integer showSourceText, @Optional String cquery,
+			@Optional Boolean showSourceText, @Optional String cquery,
 			@Optional String xpath, @Optional String sourceText) {
 
 		return new ConceptsHandler(config.getService(), source).addMaxRetrieve(maxRetrieve)
@@ -182,7 +182,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param source The text, HTML or URL to process.
 	 * @param target Target phrase. The service will return sentiment information for the phrase that is found
 	 *            in the source text.
-	 * @param showSourceText Set this to 1 to include the source text in the response.
+	 * @param showSourceText Check this to include the source text in the response.
 	 * @param cquery A visual constraints query to apply to the web page. Required when <code>sourceText</code> is set
 	 *            to cquery.
 	 * @param xpath An XPath query to apply to the web page. Required when <code>sourceText</code> is set to one of the
@@ -192,7 +192,7 @@ public class WatsonAlchemyLanguageConnector {
 	 */
 	@Processor
 	public DocumentSentiment targetedSentiment(String source, String target, 
-			@Optional Integer showSourceText, @Optional String cquery,
+			@Optional Boolean showSourceText, @Optional String cquery,
 			@Optional String xpath, @Optional String sourceText) {
 		return new TargetedSentimentHandler(config.getService(), source)
 				.addCquery(cquery)
@@ -214,7 +214,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param maxRetrieve Maximum number of entities to return (default = 50) detected entities by default).
 	 * @param knowledgeGraph Set this to 1 to include knowledge graph information in the results.
 	 * @param sentiment Set this to 1 to analyze the sentiment towards each detected entity.
-	 * @param showSourceText Set this to 1 to include the source text in the response.
+	 * @param showSourceText Check this to include the source text in the response.
 	 * @param cquery A visual constraints query to apply to the web page. Required when <code>sourceText</code> is set
 	 *            to cquery.
 	 * @param xpath An XPath query to apply to the web page. Required when <code>sourceText</code> is set to one of the
@@ -225,7 +225,7 @@ public class WatsonAlchemyLanguageConnector {
 	@Processor
 	public Keywords keywords(String source, @Optional Integer maxRetrieve,
 			@Optional Integer knowledgeGraph, @Optional Integer sentiment,
-			@Optional Integer showSourceText, @Optional String cquery,
+			@Optional Boolean showSourceText, @Optional String cquery,
 			@Optional String xpath, @Optional String sourceText) {
 		return new KeywordsHandler(config.getService(), source)
 				.addCquery(cquery)
@@ -245,11 +245,11 @@ public class WatsonAlchemyLanguageConnector {
 	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:microformats}
 	 *
 	 * @param source The text, html or url to process.
-	 * @param showSourceText Set this to 1 to include the source text in the response.
+	 * @param showSourceText Check this to include the source text in the response.
 	 * @return return {@link Microformats}
 	 */
 	@Processor
-	public Microformats microformats(String source, @Optional Integer showSourceText) {
+	public Microformats microformats(String source, @Optional Boolean showSourceText) {
 		return new MicroformatsHandler(config.getService(), source).addShowSourceText(showSourceText).execute();
 	}
 
@@ -276,7 +276,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:sentimentAnalysis}
 	 *
 	 * @param source The text, HTML document or url to process
-	 * @param showSourceText Set this to 1 to include the source text in the response
+	 * @param showSourceText Check this to include the source text in the response
 	 * @param cquery A visual constraints query to apply to the web page. Required when sourceText is set to cquery
 	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
 	 * @param sourceText How to obtain the source text from the webpage
@@ -284,7 +284,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return {@link DocumentSentiment}
 	 */
 	@Processor
-	public DocumentSentiment sentimentAnalysis(String source, @Optional Integer showSourceText, @Optional String cquery,
+	public DocumentSentiment sentimentAnalysis(String source, @Optional Boolean showSourceText, @Optional String cquery,
 			@Optional String xpath, @Optional String sourceText) {
 		return new SentimentAnalysisHandler(config.getService(), source).addShowSourceText(showSourceText)
 				.addCquery(cquery).addXpath(xpath).addSourceText(sourceText).execute();
@@ -299,12 +299,12 @@ public class WatsonAlchemyLanguageConnector {
 	 *
 	 * @param source The text, HTML document or url to process
 	 * @param model The unique alphanumeric identifier for your custom model
-	 * @param showSourceText Set this to 1 to include the source text in the response
+	 * @param showSourceText Check this to include the source text in the response
 	 * 
 	 * @return return {@link TypedRelations}
 	 */
 	@Processor
-	public TypedRelations typedRelations(String source, @Optional String model, @Optional Integer showSourceText) {
+	public TypedRelations typedRelations(String source, @Optional String model, @Optional Boolean showSourceText) {
 		return new TypedRelationsHandler(config.getService(), source).addModel(model)
 				.addShowSourceText(showSourceText).execute();
 	}
@@ -317,7 +317,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:languageDetection}
 	 *
 	 * @param source The text, HTML or URL to process.
-	 * @param showSourceText Set this to 1 to include the source text in the response.
+	 * @param showSourceText Check this to include the source text in the response.
 	 * @param cquery A visual constraints query to apply to the web page. Required when <code>sourceText</code> is set
 	 *            to cquery.
 	 * @param xpath An XPath query to apply to the web page. Required when <code>sourceText</code> is set to one of the
@@ -327,7 +327,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return {@link Language}
 	 */
 	@Processor
-	public Language languageDetection(String source, @Optional Integer showSourceText, @Optional String cquery,
+	public Language languageDetection(String source, @Optional Boolean showSourceText, @Optional String cquery,
 			@Optional String xpath, @Optional String sourceText) {
 		return new LanguageDetectionHandler(config.getService(), source)
 				.addShowSourceText(showSourceText)
@@ -345,12 +345,12 @@ public class WatsonAlchemyLanguageConnector {
 	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:titleExtraction}
 	 *
 	 * @param source The HTML or URL to process.
-	 * @param showSourceText Set this to 1 to include the source text in the response.
+	 * @param showSourceText Check this to include the source text in the response.
 	 * 
 	 * @return return {@link DocumentTitle}
 	 */
 	@Processor
-	public DocumentTitle titleExtraction(String source, @Optional Integer showSourceText) {
+	public DocumentTitle titleExtraction(String source, @Optional Boolean showSourceText) {
 		return new TitleExtractionHandler(config.getService(), source)
 				.addShowSourceText(showSourceText)
 				.execute();
