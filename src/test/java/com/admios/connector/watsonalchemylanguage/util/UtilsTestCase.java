@@ -9,18 +9,18 @@ public class UtilsTestCase {
 	@Test
 	public void trueToIntValueTest(){
 		
-		assertEquals(null, Utils.trueToIntValue(null));
-		assertEquals(0, Utils.trueToIntValue(false).intValue());
-		assertEquals(1, Utils.trueToIntValue(true).intValue());
+		assertEquals(null, Utils.intValue(null));
+		assertEquals(0, Utils.intValue(false).intValue());
+		assertEquals(1, Utils.intValue(true).intValue());
 		
 	}
 
 	@Test
 	public void falseToIntValueTest(){
 		
-		assertEquals(null, Utils.falseToIntValue(null));
-		assertEquals(1, Utils.falseToIntValue(false).intValue());
-		assertEquals(0, Utils.falseToIntValue(true).intValue());
+		assertEquals(null, Utils.deniedToIntValue(null));
+		assertEquals(1, Utils.deniedToIntValue(false).intValue());
+		assertEquals(0, Utils.deniedToIntValue(true).intValue());
 		
 	}
 }

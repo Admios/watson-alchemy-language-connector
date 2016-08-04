@@ -1,6 +1,6 @@
 package com.admios.connector.watsonalchemylanguage.handler;
 
-import static com.admios.connector.watsonalchemylanguage.util.Utils.trueToIntValue;
+import static com.admios.connector.watsonalchemylanguage.util.Utils.intValue;
 
 import com.admios.connector.watsonalchemylanguage.util.StringUtils;
 import com.ibm.watson.developer_cloud.alchemy.v1.AlchemyLanguage;
@@ -13,7 +13,7 @@ public abstract class URLCommonHandler<HandlerClass, result> extends CommonHandl
 
 	@SuppressWarnings("unchecked")
 	public HandlerClass addShowSourceText(Boolean showSourceText) {
-		return (HandlerClass) addParam(AlchemyLanguage.SHOW_SOURCE_TEXT, trueToIntValue(showSourceText));
+		return (HandlerClass) addParam(AlchemyLanguage.SHOW_SOURCE_TEXT, intValue(showSourceText));
 	}
 
 	@SuppressWarnings("unchecked")
