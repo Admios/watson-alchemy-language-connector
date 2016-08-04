@@ -7,7 +7,7 @@ import org.junit.Test;
 public class UtilsTestCase {
 
 	@Test
-	public void trueToIntValueTest(){
+	public void intValueTest(){
 		
 		assertEquals(null, Utils.intValue(null));
 		assertEquals(0, Utils.intValue(false).intValue());
@@ -16,7 +16,7 @@ public class UtilsTestCase {
 	}
 
 	@Test
-	public void falseToIntValueTest(){
+	public void deniedToIntValueTest(){
 		
 		assertEquals(null, Utils.deniedToIntValue(null));
 		assertEquals(1, Utils.deniedToIntValue(false).intValue());
