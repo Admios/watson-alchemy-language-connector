@@ -29,7 +29,7 @@ public class DateExtractionTestCase extends AbstractTestCase<WatsonAlchemyLangua
 	
 	@Test
 	public void getDatesUsingHTML() {
-		Dates dates = getConnector().dateExtraction("<html><body><h1>Finally found it!!!</h1><p>The Person was found alive on November 10, 2014 in Marsella.</p><p>The last time was on a party was October 31, 2014 at a ranch outside the City Lights.</p></body></html>", null, 1);
+		Dates dates = getConnector().dateExtraction("<html><body><h1>Finally found it!!!</h1><p>The Person was found alive on November 10, 2014 in Marsella.</p><p>The last time was on a party was October 31, 2014 at a ranch outside the City Lights.</p></body></html>", null, true);
 		
 		assertNotNull(dates);
 		assertEquals("english", dates.getLanguage());
