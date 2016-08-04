@@ -24,7 +24,7 @@ public class KeywordsTestCase extends AbstractTestCase<WatsonAlchemyLanguageConn
 				+ " from the huge fields of the Cooper and Surat Basins in the arid lands out near the"
 				+ " Queensland, New South Wales and South Australian borders.";
 		
-		Keywords results = getConnector().keywords(paragraph, null, null, null, 0, null, null, null);
+		Keywords results = getConnector().keywords(paragraph, null, null, null, false, null, null, null);
 		
 		assertNotNull(results);
 		assertEquals("english", results.getLanguage());

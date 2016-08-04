@@ -19,7 +19,7 @@ public class TargetedSentimentTestCase extends AbstractTestCase<WatsonAlchemyLan
 	public void getTargetedSentimentUsingText(){
 		
 		String paragraph = "The polymer is very good but node is very bad";
-		DocumentSentiment results = getConnector().targetedSentiment(paragraph, "polymer", 1, null, null, null);
+		DocumentSentiment results = getConnector().targetedSentiment(paragraph, "polymer", true, null, null, null);
 		
 		assertNotNull(results);
 		assertEquals("english", results.getLanguage());
@@ -27,7 +27,7 @@ public class TargetedSentimentTestCase extends AbstractTestCase<WatsonAlchemyLan
 		assertNotNull(results.getSentiment().getScore());
 		assertEquals("POSITIVE", results.getSentiment().getType().toString());
 		
-		results = getConnector().targetedSentiment(paragraph, "node", 1, null, null, null);
+		results = getConnector().targetedSentiment(paragraph, "node", true, null, null, null);
 		assertNotNull(results);
 		assertEquals("english", results.getLanguage());
 		assertEquals(1, results.getTotalTransactions().intValue());
