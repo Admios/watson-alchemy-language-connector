@@ -21,7 +21,7 @@ public class ConnectorConfigTest {
 	public static void init() throws IOException {
 		Properties testProperties = new Properties();
 		testProperties.load(ConnectionException.class.getResourceAsStream("/automation-credentials.properties"));
-		API_KEY = testProperties.getProperty("config-type.apiKey");
+		API_KEY = testProperties.getProperty("watson-alchemylanguage-config.apiKey");
 	}
 
 	@Before
