@@ -197,13 +197,13 @@ public class WatsonAlchemyLanguageConnector {
 	 *
 	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:targetedSentiment}
 	 *
-	 * @param source The text, HTML or URL to process. <<<<<<< HEAD
+	 * @param source The text, HTML or URL to process. 
 	 * @param target Target phrase. The service will return sentiment information for the phrase that is found in the
 	 *            source text.
-	 * @param showSourceText Set this to 1 to include the source text in the response. =======
+	 * @param showSourceText Set this to 1 to include the source text in the response.
 	 * @param target Target phrase. The service will return sentiment information for the phrase that is found in the
 	 *            source text.
-	 * @param showSourceText Check this to include the source text in the response. >>>>>>> master
+	 * @param showSourceText Check this to include the source text in the response.
 	 * @param cquery A visual constraints query to apply to the web page. Required when <code>sourceText</code> is set
 	 *            to cquery.
 	 * @param xpath An XPath query to apply to the web page. Required when <code>sourceText</code> is set to one of the
@@ -432,7 +432,8 @@ public class WatsonAlchemyLanguageConnector {
 	 * Extract the main body text from a webpage or HTML.
 	 * 
 	 * API Doc: {@see https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#text_cleaned}
-	 *
+	 * 
+	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:textExtraction}
 	 *
 	 * @param source The HTML or URL to process.
 	 * @param cquery A visual constraint query to apply to the web page. Required when sourceText is set to cquery
@@ -441,6 +442,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param extractLinks Set this to 1 to include hyperlinks in the extracted text
 	 * @param useMetadata Set this to 0 to ignore description information in webpage metadata 
 	 * 
+	 * @param useMetaData Comment for useMetaData
 	 * @return return {@link DocumentText}
 	 */
 	@Processor
@@ -460,6 +462,9 @@ public class WatsonAlchemyLanguageConnector {
 	 * 
 	 * API Doc: {@see https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#text_raw}
 	 *
+	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:rawTextExtraction}
+	 * 
+	 * 
 	 * @param source The HTML or URL to process. 
 	 * 
 	 * @return return {@link DocumentText}
@@ -473,7 +478,8 @@ public class WatsonAlchemyLanguageConnector {
 	 * Categorize a webpage into a 5-level taxonomy
 	 * 
 	 * API Doc: {@see https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#taxonomy}
-	 *
+	 * 
+	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:taxonomy}
 	 *
 	 * @param source The HTML or URL to process.
 	 * @param cquery A visual constraint query to apply to the web page. Required when sourceText is set to cquery
@@ -498,7 +504,8 @@ public class WatsonAlchemyLanguageConnector {
 	 * Detect emotions implied in the text of a webpage
 	 * 
 	 * API Doc: {@see https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#emotion_analysis}
-	 *
+	 * 
+	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:emotionAnalysis}
 	 *
 	 * @param source The HTML or URL to process.
 	 * @param cquery A visual constraint query to apply to the web page. Required when sourceText is set to cquery
@@ -509,7 +516,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return {@link DocumentEmotion}
 	 */
 	@Processor
-	public DocumentEmotion EmotionAnalysis(String source, @Optional Boolean showSourceText,
+	public DocumentEmotion emotionAnalysis(String source, @Optional Boolean showSourceText,
 			@Optional String cquery, @Optional String xpath, @Optional String sourceText) {
 		return new EmotionalAnalysisHandler(config.getService(), source)
 				.addCquery(cquery)
