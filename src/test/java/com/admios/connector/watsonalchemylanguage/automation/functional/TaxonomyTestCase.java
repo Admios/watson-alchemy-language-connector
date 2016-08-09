@@ -16,7 +16,7 @@ public class TaxonomyTestCase extends AbstractTestCase<WatsonAlchemyLanguageConn
 	
 	@Test
 	public void testWithURL() {
-		Taxonomies taxonomies = getConnector().getTaxonomies(Constants.GITHUB_URL_BLOG, null, null, null, null);
+		Taxonomies taxonomies = getConnector().taxonomies(Constants.TEST_URL_BLOG, null, null, null, null);
 		
 		assertNotNull(taxonomies);
 		assertEquals(Constants.TEST_URL_BLOG, taxonomies.getUrl());

@@ -22,7 +22,6 @@ public class Constants {
 	public static final String TEST_TEXT_ENTITY_2;
 	public static final String TEST_TEXT_CONCEPT_1;
 	public static final String TEST_TEXT_CONCEPT_2;
-	public static final String GITHUB_URL_BLOG;
 
 	static {
 		Properties contants = new Properties();
@@ -48,6 +47,5 @@ public class Constants {
 		TEST_TEXT_ENTITY_2 = contants.getProperty("text_entity2");
 		TEST_TEXT_CONCEPT_1 = contants.getProperty("text_concept1");
 		TEST_TEXT_CONCEPT_2 = contants.getProperty("text_concept2");
-		GITHUB_URL_BLOG = contants.getProperty("github_url_blog");
 	}
 }

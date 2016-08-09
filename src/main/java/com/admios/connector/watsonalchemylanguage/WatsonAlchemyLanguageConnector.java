@@ -490,7 +490,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return {@link Taxonomies}
 	 */
 	@Processor
-	public Taxonomies getTaxonomies(String source, @Optional Boolean showSourceText,
+	public Taxonomies taxonomies(String source, @Optional Boolean showSourceText,
 			@Optional String cquery, @Optional String xpath, @Optional String sourceText) {		
 		return new TaxonomyHandler(config.getService(), source)
 				.addShowSourceText(showSourceText)
