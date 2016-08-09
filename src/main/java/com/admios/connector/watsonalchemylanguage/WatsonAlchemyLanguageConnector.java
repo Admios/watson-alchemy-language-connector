@@ -200,7 +200,6 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param source The text, HTML or URL to process. 
 	 * @param target Target phrase. The service will return sentiment information for the phrase that is found in the
 	 *            source text.
-	 * @param showSourceText Set this to 1 to include the source text in the response.
 	 * @param target Target phrase. The service will return sentiment information for the phrase that is found in the
 	 *            source text.
 	 * @param showSourceText Check this to include the source text in the response.
