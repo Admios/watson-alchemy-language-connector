@@ -8,7 +8,8 @@ Alchemy Language v1
 IBM Watson developer cloud SDK version 3.2.0 https://github.com/watson-developer-cloud/java-sdk
 
 ## Supported Mule Runtime Versions: 
-${project.devkitVersion}
+Mule 3.5.x, 3.6.x, 3.7.x and 3.8.x.
+
 ## New Features and Functionality
 - Authors
 - Combined Call
