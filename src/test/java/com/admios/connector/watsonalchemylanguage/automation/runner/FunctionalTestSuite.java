@@ -12,6 +12,7 @@ import com.admios.connector.watsonalchemylanguage.automation.functional.CommonHa
 import com.admios.connector.watsonalchemylanguage.automation.functional.AuthorsTestCase;
 import com.admios.connector.watsonalchemylanguage.automation.functional.CombinedCallTestCase;
 import com.admios.connector.watsonalchemylanguage.automation.functional.DateExtractionTestCase;
+import com.admios.connector.watsonalchemylanguage.automation.functional.EmotionAnalysisTestCase;
 import com.admios.connector.watsonalchemylanguage.automation.functional.FeedDetectionTestCase;
 import com.admios.connector.watsonalchemylanguage.automation.functional.ConceptsTestCase;
 import com.admios.connector.watsonalchemylanguage.automation.functional.EntitiesTestCase;
@@ -19,9 +20,12 @@ import com.admios.connector.watsonalchemylanguage.automation.functional.Keywords
 import com.admios.connector.watsonalchemylanguage.automation.functional.LanguageDetectionTestCase;
 import com.admios.connector.watsonalchemylanguage.automation.functional.MicroformatsTestCase;
 import com.admios.connector.watsonalchemylanguage.automation.functional.PublicationDateTestCase;
+import com.admios.connector.watsonalchemylanguage.automation.functional.RawTextExtractionTestCase;
 import com.admios.connector.watsonalchemylanguage.automation.functional.RelationsTestCase;
 import com.admios.connector.watsonalchemylanguage.automation.functional.SentimentAnalysisTestCase;
 import com.admios.connector.watsonalchemylanguage.automation.functional.TargetedSentimentTestCase;
+import com.admios.connector.watsonalchemylanguage.automation.functional.TaxonomyTestCase;
+import com.admios.connector.watsonalchemylanguage.automation.functional.TextExtractionTestCase;
 import com.admios.connector.watsonalchemylanguage.automation.functional.TitleExtractionTestCase;
 import com.admios.connector.watsonalchemylanguage.automation.functional.TypedRelationsTestCase;
 
@@ -31,7 +35,9 @@ import com.admios.connector.watsonalchemylanguage.automation.functional.TypedRel
 		DateExtractionTestCase.class, FeedDetectionTestCase.class, KeywordsTestCase.class,
 		AuthorsTestCase.class, SentimentAnalysisTestCase.class, TypedRelationsTestCase.class,
 		TitleExtractionTestCase.class, LanguageDetectionTestCase.class, MicroformatsTestCase.class,
-		PublicationDateTestCase.class, CombinedCallTestCase.class })
+		PublicationDateTestCase.class, CombinedCallTestCase.class,
+		EmotionAnalysisTestCase.class, TaxonomyTestCase.class, RawTextExtractionTestCase.class,
+		TextExtractionTestCase.class })
 public class FunctionalTestSuite {
 
 	@BeforeClass
