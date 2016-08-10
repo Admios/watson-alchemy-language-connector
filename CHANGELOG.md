@@ -1,17 +1,30 @@
 # WatsonAlchemyLanguage Release Notes
-# --------------------------------------------------------------------
-# Date: <DD-MMM-YYYY>
-Example: 24-Jan-2015
-# Version: (default value: 0.1)
-# Supported API versions: 
-Example: Salesforce Bulk API v.28, SOAP API V.28 (include links to API docs)
-# Supported Mule Runtime Versions: 
+
+# Version: 1.0.0
+## Date: 15-Aug-2016
+
+## Supported API versions: 
+Alchemy Language v1
+IBM Watson developer cloud SDK version 3.2.0 https://github.com/watson-developer-cloud/java-sdk
+
+## Supported Mule Runtime Versions: 
 ${project.devkitVersion}
-# New Features and Functionality
-(default value: Initial version) 
-Example: Added support for Query. http://github.com/Admios/watson-alchemy-language/issues/61
-# Closed Issues in this release 
-(include issue link when possible)
-Example: Fixed problem with lost telefone on Bulk Update (CLDCONNECT-123).
-# Known Issues in this release
-Example: Session ID expires after  30 days. http://github.com/Admios/watson-alchemy-language/issues/62
+## New Features and Functionality
+- Authors
+- Combined Call
+- Concepts
+- Date Extraction
+- Emotion Analysis
+- Entities
+- Feed Detection
+- Keywords
+- Language Detection
+- Microformats
+- Publication Date
+- Relations
+- Sentiment Analysis
+- Targeted Sentiment
+- Taxonomy
+- Text (raw)
+- Title Extraction
+- Typed Relations
