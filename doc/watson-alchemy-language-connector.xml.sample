@@ -78,3 +78,27 @@
 <watson-alchemy-language:title-extraction config-ref="ref"
 	source="www.url.com/blog/post" doc:name="Watson AlchemyLanguage Service"/>
 <!-- END_INCLUDE(watson-alchemy-language:titleExtraction) -->
+
+<!-- BEGIN_INCLUDE(watson-alchemy-language:textExtraction) -->
+<watson-alchemy-language:text-extraction config-ref="ref"
+	source="http://www.admios.com/admios-blog/2016/7/20/build-fast-and-clean-uis-with-angular-material"
+	doc:name="Watson AlchemyLanguage Service"/>
+<!-- END_INCLUDE(watson-alchemy-language:textExtraction) -->
+
+<!-- BEGIN_INCLUDE(watson-alchemy-language:rawTextExtraction) -->
+<watson-alchemy-language:raw-text-extraction config-ref="ref"
+	source="http://www.admios.com/admios-blog/2016/7/20/build-fast-and-clean-uis-with-angular-material"
+	doc:name="Watson AlchemyLanguage Service"/>
+<!-- END_INCLUDE(watson-alchemy-language:rawTextExtraction) -->
+
+<!-- BEGIN_INCLUDE(watson-alchemy-language:taxonomy) -->
+<watson-alchemy-language:taxonomy config-ref="ref"
+	source="http://www.admios.com/admios-blog/2016/7/20/build-fast-and-clean-uis-with-angular-material"
+	doc:name="Watson AlchemyLanguage Service"/>
+<!-- END_INCLUDE(watson-alchemy-language:taxonomy) -->
+
+<!-- BEGIN_INCLUDE(watson-alchemy-language:emotionalAnalysis) -->
+<watson-alchemy-language:emotional-analysis config-ref="ref"
+	source="http://www.admios.com/admios-blog/2016/7/20/build-fast-and-clean-uis-with-angular-material"
+	doc:name="Watson AlchemyLanguage Service"/>	
+<!-- END_INCLUDE(watson-alchemy-language:emotionalAnalysis) -->

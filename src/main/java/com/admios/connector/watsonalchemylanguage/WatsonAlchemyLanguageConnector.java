@@ -13,6 +13,7 @@ import com.admios.connector.watsonalchemylanguage.handler.implementation.Authors
 import com.admios.connector.watsonalchemylanguage.handler.implementation.CombinedCallHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.ConceptsHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.DateExtractionHandler;
+import com.admios.connector.watsonalchemylanguage.handler.implementation.EmotionalAnalysisHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.EntitiesHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.FeedDetectionHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.KeywordsHandler;
@@ -22,20 +23,25 @@ import com.admios.connector.watsonalchemylanguage.handler.implementation.Publica
 import com.admios.connector.watsonalchemylanguage.handler.implementation.RelationsHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.SentimentAnalysisHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.TargetedSentimentHandler;
+import com.admios.connector.watsonalchemylanguage.handler.implementation.TaxonomyHandler;
+import com.admios.connector.watsonalchemylanguage.handler.implementation.TextExtractionHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.TitleExtractionHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.TypedRelationsHandler;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.CombinedResults;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Concepts;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Dates;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentAuthors;
+import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentEmotion;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentPublicationDate;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentSentiment;
+import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentText;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentTitle;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Entities;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Feeds;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Keywords;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Language;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Microformats;
+import com.ibm.watson.developer_cloud.alchemy.v1.model.Taxonomies;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.SAORelations;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.TypedRelations;
 
@@ -195,13 +201,12 @@ public class WatsonAlchemyLanguageConnector {
 	 *
 	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:targetedSentiment}
 	 *
-	 * @param source The text, HTML or URL to process. <<<<<<< HEAD
+	 * @param source The text, HTML or URL to process. 
 	 * @param target Target phrase. The service will return sentiment information for the phrase that is found in the
 	 *            source text.
-	 * @param showSourceText Set this to 1 to include the source text in the response. =======
 	 * @param target Target phrase. The service will return sentiment information for the phrase that is found in the
 	 *            source text.
-	 * @param showSourceText Check this to include the source text in the response. >>>>>>> master
+	 * @param showSourceText Check this to include the source text in the response.
 	 * @param cquery A visual constraints query to apply to the web page. Required when <code>sourceText</code> is set
 	 *            to cquery.
 	 * @param xpath An XPath query to apply to the web page. Required when <code>sourceText</code> is set to one of the
@@ -429,6 +434,103 @@ public class WatsonAlchemyLanguageConnector {
 		return new TitleExtractionHandler(config.getService(), source)
 				.addShowSourceText(showSourceText)
 				.execute();
+	}
+	
+	/**
+	 * Extract the main body text from a webpage or HTML.
+	 * 
+	 * API Doc: {@see https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#text_cleaned}
+	 * 
+	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:textExtraction}
+	 *
+	 * @param source The HTML or URL to process.
+	 * @param cquery A visual constraint query to apply to the web page. Required when sourceText is set to cquery
+	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
+	 * @param sourceText Determines how to obtain the source text from the webpage
+	 * @param extractLinks Set this to 1 to include hyperlinks in the extracted text
+	 * @param useMetadata Set this to 0 to ignore description information in webpage metadata 
+	 * 
+	 * @param useMetaData Comment for useMetaData
+	 * @return return {@link DocumentText}
+	 */
+	@Processor
+	public DocumentText textExtraction(String source, @Optional String cquery,
+			@Optional String xpath, @Optional String sourceText, 
+			@Optional String extractLinks, @Optional String useMetaData) {
+		return new TextExtractionHandler(config.getService(), source)
+				.addCquery(cquery)
+				.addSourceText(sourceText)
+				.addXpath(xpath)
+				.addExtractLinks(extractLinks)
+				.addUseMetadata(useMetaData).execute();			
+	}
+	
+	/**
+	 * Extract the main body raw text from a webpage or HTML.
+	 * 
+	 * API Doc: {@see https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#text_raw}
+	 *
+	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:rawTextExtraction}
+	 * 
+	 * 
+	 * @param source The HTML or URL to process. 
+	 * 
+	 * @return return {@link DocumentText}
+	 */
+	@Processor
+	public DocumentText rawTextExtraction(String source) {
+		return new TextExtractionHandler(config.getService(), source).execute();			
+	}
+	
+	/**
+	 * Categorize a webpage into a 5-level taxonomy
+	 * 
+	 * API Doc: {@see https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#taxonomy}
+	 * 
+	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:taxonomy}
+	 *
+	 * @param source The HTML or URL to process.
+	 * @param cquery A visual constraint query to apply to the web page. Required when sourceText is set to cquery
+	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
+	 * @param sourceText Determines how to obtain the source text from the webpage
+	 * @param showSourceText Set this to 1 to include the source text in the response 
+	 * 
+	 * @return return {@link Taxonomies}
+	 */
+	@Processor
+	public Taxonomies taxonomies(String source, @Optional Boolean showSourceText,
+			@Optional String cquery, @Optional String xpath, @Optional String sourceText) {		
+		return new TaxonomyHandler(config.getService(), source)
+				.addShowSourceText(showSourceText)
+				.addCquery(cquery)
+				.addSourceText(sourceText)
+				.addXpath(xpath)
+				.addCquery(cquery).execute();
+	}
+	
+	/**
+	 * Detect emotions implied in the text of a webpage
+	 * 
+	 * API Doc: {@see https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#emotion_analysis}
+	 * 
+	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:emotionalAnalysis}
+	 *
+	 * @param source The HTML or URL to process.
+	 * @param cquery A visual constraint query to apply to the web page. Required when sourceText is set to cquery
+	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
+	 * @param sourceText Determines how to obtain the source text from the webpage
+	 * @param showSourceText Set this to 1 to include the source text in the response 
+	 * 
+	 * @return return {@link DocumentEmotion}
+	 */
+	@Processor
+	public DocumentEmotion emotionAnalysis(String source, @Optional Boolean showSourceText,
+			@Optional String cquery, @Optional String xpath, @Optional String sourceText) {
+		return new EmotionalAnalysisHandler(config.getService(), source)
+				.addCquery(cquery)
+				.addShowSourceText(showSourceText)
+				.addSourceText(sourceText)
+				.addXpath(xpath).execute();
 	}
 
 	/**
