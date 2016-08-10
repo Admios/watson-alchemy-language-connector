@@ -20,10 +20,11 @@ public class RawTextExtractionTestCase extends AbstractTestCase<WatsonAlchemyLan
 	@Test
 	public void testWithURL() {
 		DocumentText documentText = getConnector().rawTextExtraction(Constants.TEST_URL_BLOG);
-
+		CharSequence cs = "been out there for a while now and is definitely a popular";
+		
 		assertNotNull(documentText);
 		assertEquals(Constants.TEST_URL_BLOG, documentText.getUrl());
-		assertFalse(documentText.getText().isEmpty());
+		assertFalse(!documentText.getText().contains(cs));
 	}
 	
 }

@@ -23,6 +23,6 @@ public class EmotionAnalysisTestCase extends AbstractTestCase<WatsonAlchemyLangu
 
 		assertNotNull(documentEmotion);
 		assertEquals(Constants.TEST_URL_BLOG, documentEmotion.getUrl());
-		assertFalse(documentEmotion.getEmotion().getJoy() > 0);
+		assertFalse(documentEmotion.getEmotion().getJoy() == 0);
 	}
 }

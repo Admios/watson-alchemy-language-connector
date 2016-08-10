@@ -20,7 +20,7 @@ public class TaxonomyTestCase extends AbstractTestCase<WatsonAlchemyLanguageConn
 		
 		assertNotNull(taxonomies);
 		assertEquals(Constants.TEST_URL_BLOG, taxonomies.getUrl());
-		assertFalse(taxonomies.getTaxonomy().isEmpty());
+		assertFalse(taxonomies.getTaxonomy().get(0).getScore() != 0.544901);
 	}
 	
 	

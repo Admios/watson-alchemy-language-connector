@@ -504,7 +504,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * 
 	 * API Doc: {@see https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#emotion_analysis}
 	 * 
-	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:emotionAnalysis}
+	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:emotionalAnalysis}
 	 *
 	 * @param source The HTML or URL to process.
 	 * @param cquery A visual constraint query to apply to the web page. Required when sourceText is set to cquery

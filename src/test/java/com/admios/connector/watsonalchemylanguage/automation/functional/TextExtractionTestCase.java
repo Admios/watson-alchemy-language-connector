@@ -17,9 +17,10 @@ public class TextExtractionTestCase extends AbstractTestCase<WatsonAlchemyLangua
 	@Test
 	public void testWithURL() {
 		DocumentText documentText = getConnector().textExtraction(Constants.TEST_URL_BLOG, null, null, null, null, null);
-
+		CharSequence cs = "been out there for a while now and is definitely a popular";
+		
 		assertNotNull(documentText);
 		assertEquals(Constants.TEST_URL_BLOG, documentText.getUrl());
-		assertFalse(documentText.getText().isEmpty());
+		assertFalse(!documentText.getText().contains(cs));
 	}
 }

@@ -101,4 +101,5 @@
 <watson-alchemy-language:emotional-analysis config-ref="ref"
 	source="http://www.admios.com/admios-blog/2016/7/20/build-fast-and-clean-uis-with-angular-material"
 	doc:name="Watson AlchemyLanguage Service"/>
+	<!-- END_INCLUDE(watson-alchemy-language:emotionalAnalysis) -->
 <!-- END_INCLUDE(watson-alchemy-language:emotionalAnalysis) -->
