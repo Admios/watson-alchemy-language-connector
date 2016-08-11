@@ -7,7 +7,7 @@ import org.junit.Test;
 import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
 import com.admios.connector.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
-import com.admios.connector.watsonalchemylanguage.automation.global.Constants;
+import org.mule.modules.watsonalchemylanguage.automation.global.Constants;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentSentiment;
 
 public class SentimentAnalysisTestCases extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
