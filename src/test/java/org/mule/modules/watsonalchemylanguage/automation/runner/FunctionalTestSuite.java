@@ -1,4 +1,4 @@
-package com.admios.connector.watsonalchemylanguage.automation.runner;
+package org.mule.modules.watsonalchemylanguage.automation.runner;
 
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
