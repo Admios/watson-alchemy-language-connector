@@ -5,7 +5,6 @@ import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
-import org.mule.modules.watsonalchemylanguage.automation.CommonHandlerTest;
 import org.mule.tools.devkit.ctf.mockup.ConnectorTestContext;
 
 import com.admios.connector.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
@@ -28,6 +27,7 @@ import org.mule.modules.watsonalchemylanguage.automation.functional.TaxonomyTest
 import org.mule.modules.watsonalchemylanguage.automation.functional.TextExtractionTestCases;
 import org.mule.modules.watsonalchemylanguage.automation.functional.TitleExtractionTestCases;
 import org.mule.modules.watsonalchemylanguage.automation.functional.TypedRelationsTestCases;
+import org.mule.modules.watsonalchemylanguage.automation.unit.CommonHandlerTest;
 
 @RunWith(Suite.class)
 @SuiteClasses({ CommonHandlerTest.class, EntitiesTestCases.class, ConceptsTestCases.class,

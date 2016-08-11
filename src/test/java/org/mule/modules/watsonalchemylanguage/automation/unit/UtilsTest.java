@@ -1,4 +1,4 @@
-package org.mule.modules.watsonalchemylanguage.util;
+package org.mule.modules.watsonalchemylanguage.automation.unit;
 
 import static org.junit.Assert.assertEquals;
 
@@ -6,7 +6,7 @@ import org.junit.Test;
 
 import com.admios.connector.watsonalchemylanguage.util.Utils;
 
-public class UtilsTestCase {
+public class UtilsTest {
 
 	@Test
 	public void intValueTest(){
