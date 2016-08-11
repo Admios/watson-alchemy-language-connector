@@ -1,6 +1,6 @@
 package org.mule.modules.watsonalchemylanguage.automation.system;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.*;
 
 import java.util.Properties;
 
@@ -32,22 +32,16 @@ public class ConnectorConfigTestCases {
 		assertTrue("Connect should success", true);
 	}
 
-	@Test
-	public void testConnectFail() {
-		try {
-			config.connect(BAD_API_KEY);
-			assertTrue("Connect should fail due to bad Api Key", false);
-		} catch (ConnectionException e) {
-		}
+	@Test(expected = ConnectionException.class)
+	public void testConnectFail() throws ConnectionException {
+		config.connect(BAD_API_KEY);
+		fail("Connect should fail due to bad Api Key");
 	}
 
-	@Test
-	public void testConnectWithNullKey() {
-		try {
-			config.connect(null);
-			assertTrue("Connect should fail due to bad Api Key", false);
-		} catch (ConnectionException e) {
-		}
+	@Test(expected = ConnectionException.class)
+	public void testConnectWithNullKey() throws ConnectionException {
+		config.connect(null);
+		fail("Connect should fail due to bad Api Key");
 	}
 
 }
