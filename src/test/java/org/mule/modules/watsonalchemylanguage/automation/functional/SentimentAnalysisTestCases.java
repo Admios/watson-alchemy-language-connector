@@ -7,7 +7,6 @@ import org.junit.Test;
 import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
 import com.admios.connector.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
-import org.mule.modules.watsonalchemylanguage.automation.global.Constants;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentSentiment;
 
 public class SentimentAnalysisTestCases extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
@@ -18,12 +17,12 @@ public class SentimentAnalysisTestCases extends AbstractTestCase<WatsonAlchemyLa
 
 	@Test
 	public void testWithURL() {
-		DocumentSentiment sentiment = getConnector().sentimentAnalysis(Constants.TEST_URL_BLOG,
+		DocumentSentiment sentiment = getConnector().sentimentAnalysis(TestDataBuilder.TEST_URL_BLOG,
 				null, null, null, null);
 
 		assertNotNull(sentiment);
-		assertEquals(Constants.TEST_URL_BLOG, sentiment.getUrl());
-		assertEquals(Constants.TEST_URL_BLOG_SENTIMENT, sentiment.getSentiment().getType().name());
+		assertEquals(TestDataBuilder.TEST_URL_BLOG, sentiment.getUrl());
+		assertEquals(TestDataBuilder.TEST_URL_BLOG_SENTIMENT, sentiment.getSentiment().getType().name());
 	}
 
 }

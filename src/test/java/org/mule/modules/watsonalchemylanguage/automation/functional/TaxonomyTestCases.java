@@ -9,8 +9,6 @@ import org.junit.Test;
 import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
 import com.admios.connector.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
-import org.mule.modules.watsonalchemylanguage.automation.global.Constants;
-
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Taxonomies;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Taxonomy;
 
@@ -22,12 +20,12 @@ public class TaxonomyTestCases extends AbstractTestCase<WatsonAlchemyLanguageCon
 
 	@Test
 	public void testWithURL() {
-		Taxonomies taxonomies = getConnector().taxonomies(Constants.TEST_URL_BLOG, null, null, null, null);
+		Taxonomies taxonomies = getConnector().taxonomies(TestDataBuilder.TEST_URL_BLOG, null, null, null, null);
 
 		assertNotNull(taxonomies);
-		assertEquals(Constants.TEST_URL_BLOG, taxonomies.getUrl());
-		testPrecenseOf(taxonomies.getTaxonomy(), Constants.TEST_URL_BLOG_TAXONOMY_1,
-				Constants.TEST_URL_BLOG_TAXONOMY_2, Constants.TEST_URL_BLOG_TAXONOMY_3);
+		assertEquals(TestDataBuilder.TEST_URL_BLOG, taxonomies.getUrl());
+		testPrecenseOf(taxonomies.getTaxonomy(), TestDataBuilder.TEST_URL_BLOG_TAXONOMY_1,
+				TestDataBuilder.TEST_URL_BLOG_TAXONOMY_2, TestDataBuilder.TEST_URL_BLOG_TAXONOMY_3);
 	}
 
 	private void testPrecenseOf(List<Taxonomy> taxonomies, String... taxonomiesExpected) {

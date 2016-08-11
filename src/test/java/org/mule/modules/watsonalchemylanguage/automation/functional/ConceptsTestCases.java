@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
 import com.admios.connector.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
-import org.mule.modules.watsonalchemylanguage.automation.global.Constants;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Concept;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Concepts;
 
@@ -22,12 +21,12 @@ public class ConceptsTestCases extends AbstractTestCase<WatsonAlchemyLanguageCon
 
 	@Test
 	public void testWithText() {
-		testGetConcepts(Constants.TEST_TEXT, Constants.TEST_TEXT_CONCEPT_1, Constants.TEST_TEXT_CONCEPT_2);
+		testGetConcepts(TestDataBuilder.TEST_TEXT, TestDataBuilder.TEST_TEXT_CONCEPT_1, TestDataBuilder.TEST_TEXT_CONCEPT_2);
 	}
 
 	@Test
 	public void testWithURL() {
-		testGetConcepts(Constants.TEST_URL, Constants.TEST_URL_CONCEPT_1, Constants.TEST_URL_CONCEPT_2);
+		testGetConcepts(TestDataBuilder.TEST_URL, TestDataBuilder.TEST_URL_CONCEPT_1, TestDataBuilder.TEST_URL_CONCEPT_2);
 	}
 
 	private void testGetConcepts(String source, String... expectedConcepts) {
@@ -35,7 +34,7 @@ public class ConceptsTestCases extends AbstractTestCase<WatsonAlchemyLanguageCon
 				null, null, null, null, null, null, null);
 		assertNotNull(concepts);
 		testPrecenseOf(concepts.getConcepts(), expectedConcepts);
-		if (source.equals(Constants.TEST_URL)) {
+		if (source.equals(TestDataBuilder.TEST_URL)) {
 			assertNotNull(concepts.getUrl());
 		} else {
 			assert (concepts.getUrl().isEmpty());

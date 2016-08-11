@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
 import com.admios.connector.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
-import org.mule.modules.watsonalchemylanguage.automation.global.Constants;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentPublicationDate;
 
 public class PublicationDateTestCases extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
@@ -20,11 +19,11 @@ public class PublicationDateTestCases extends AbstractTestCase<WatsonAlchemyLang
 
 	@Test
 	public void testWithURL() {
-		DocumentPublicationDate publicationDate = getConnector().publicationDate(Constants.TEST_URL_BLOG);
+		DocumentPublicationDate publicationDate = getConnector().publicationDate(TestDataBuilder.TEST_URL_BLOG);
 
 		assertNotNull(publicationDate);
-		assertEquals(Constants.TEST_URL_BLOG, publicationDate.getUrl());
-		assertEquals(Constants.TEST_URL_BLOG_PUBLICATION_DATE,
+		assertEquals(TestDataBuilder.TEST_URL_BLOG, publicationDate.getUrl());
+		assertEquals(TestDataBuilder.TEST_URL_BLOG_PUBLICATION_DATE,
 				new SimpleDateFormat("yyyyMMdd").format(publicationDate.getPublicationDate().getDate()));
 	}
 

@@ -1,9 +1,9 @@
-package org.mule.modules.watsonalchemylanguage.automation.global;
+package org.mule.modules.watsonalchemylanguage.automation.functional;
 
 import java.io.IOException;
 import java.util.Properties;
 
-public class Constants {
+public class TestDataBuilder {
 
 	public static final String TEST_URL;
 	public static final String TEST_URL_BLOG;
@@ -29,7 +29,7 @@ public class Constants {
 	static {
 		Properties contants = new Properties();
 		try {
-			contants.load(Constants.class.getResourceAsStream("/constants.properties"));
+			contants.load(TestDataBuilder.class.getResourceAsStream("/constants.properties"));
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

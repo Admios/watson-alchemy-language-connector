@@ -9,7 +9,6 @@ import org.junit.Test;
 import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
 import com.admios.connector.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
-import org.mule.modules.watsonalchemylanguage.automation.global.Constants;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Entities;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Entity;
 
@@ -21,18 +20,18 @@ public class EntitiesTestCases extends AbstractTestCase<WatsonAlchemyLanguageCon
 
 	@Test
 	public void testWithText() {
-		testGetEntities(Constants.TEST_TEXT, Constants.TEST_TEXT_ENTITY_1, Constants.TEST_TEXT_ENTITY_2);
+		testGetEntities(TestDataBuilder.TEST_TEXT, TestDataBuilder.TEST_TEXT_ENTITY_1, TestDataBuilder.TEST_TEXT_ENTITY_2);
 	}
 
 	@Test
 	public void testWithURL() {
-		testGetEntities(Constants.TEST_URL, Constants.TEST_URL_ENTITY_1, Constants.TEST_URL_ENTITY_2);
+		testGetEntities(TestDataBuilder.TEST_URL, TestDataBuilder.TEST_URL_ENTITY_1, TestDataBuilder.TEST_URL_ENTITY_2);
 	}
 
 	@Test
 	public void testWithMaxRetrieve() {
 		int maxRetrieve = 3;
-		Entities entities = getConnector().entities(Constants.TEST_URL, maxRetrieve, null, null, null,
+		Entities entities = getConnector().entities(TestDataBuilder.TEST_URL, maxRetrieve, null, null, null,
 				null, null, null, null, null, null, null, null);
 		assertEquals(String.format("The connector should retrieve only %s entities", maxRetrieve),
 				entities.getEntities().size(), maxRetrieve);
@@ -43,7 +42,7 @@ public class EntitiesTestCases extends AbstractTestCase<WatsonAlchemyLanguageCon
 				null, null, null, null, null, null, null, null);
 		assertNotNull(entities);
 		testPrecenseOf(entities.getEntities(), expectedEntities);
-		if (source.equals(Constants.TEST_URL)) {
+		if (source.equals(TestDataBuilder.TEST_URL)) {
 			assertNotNull(entities.getUrl());
 		} else {
 			assert (entities.getUrl().isEmpty());

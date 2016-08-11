@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
 import com.admios.connector.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
-import org.mule.modules.watsonalchemylanguage.automation.global.Constants;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.TypedRelation;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.TypedRelations;
 
@@ -22,11 +21,11 @@ public class TypedRelationsTestCases extends AbstractTestCase<WatsonAlchemyLangu
 
 	@Test
 	public void testWithURLCustomModel() {
-		TypedRelations typedRelations = getConnector().typedRelations(Constants.TEST_URL_BLOG, "en-news", null);
+		TypedRelations typedRelations = getConnector().typedRelations(TestDataBuilder.TEST_URL_BLOG, "en-news", null);
 
 		assertNotNull(typedRelations);
-		assertEquals(Constants.TEST_URL_BLOG, typedRelations.getUrl());
-		testPrecenseOf(typedRelations.getTypedRelations(), Constants.TEST_URL_BLOG_TYPE_RELATION);
+		assertEquals(TestDataBuilder.TEST_URL_BLOG, typedRelations.getUrl());
+		testPrecenseOf(typedRelations.getTypedRelations(), TestDataBuilder.TEST_URL_BLOG_TYPE_RELATION);
 	}
 
 	private void testPrecenseOf(List<TypedRelation> relations, String... expectedRelations) {

@@ -7,7 +7,6 @@ import org.junit.Test;
 import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
 import com.admios.connector.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
-import org.mule.modules.watsonalchemylanguage.automation.global.Constants;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentTitle;
 
 public class TitleExtractionTestCases extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
@@ -18,10 +17,10 @@ public class TitleExtractionTestCases extends AbstractTestCase<WatsonAlchemyLang
 
 	@Test
 	public void testWithURL() {
-		DocumentTitle title = getConnector().titleExtraction(Constants.TEST_URL_BLOG, null);
+		DocumentTitle title = getConnector().titleExtraction(TestDataBuilder.TEST_URL_BLOG, null);
 
 		assertNotNull(title);
-		assertEquals(Constants.TEST_URL_BLOG, title.getUrl());
-		assertEquals(Constants.TEST_URL_BLOG_TITLE, title.getTitle());
+		assertEquals(TestDataBuilder.TEST_URL_BLOG, title.getUrl());
+		assertEquals(TestDataBuilder.TEST_URL_BLOG_TITLE, title.getTitle());
 	}
 }
