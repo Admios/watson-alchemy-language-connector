@@ -32,3 +32,26 @@ Check features, compatibility and versions of the connector using the https://gi
 Connector API link:/doc/API_Reference/[Technical Reference] or check our link:/demo_app[demo applications].
 
 == Prerequisites
+* Anypoint Studio 6.0.x
+* Oracle Java JDK 7.0
+
+=== Extensions for Anypoint Studio
+* Anypoint DevKit 1.1.4+
+* Mule Server Runtime 3.8.0 EE
+
+
+== Install the Connector
+
+=== Inside Anypoint Studio
+You can install the connector in Anypoint Studio using the menu option inside Anypoint Studio,
+Just click on Help -> Install New Software
+
+. In field *works with* select: _Anypoint Connectors Update Site_
+. In the dropdown *Select* look for _Watson IBM Alchemy Language Connector_
+. Check the box.
+. Click next to review the software to install
+. Click next to accept the license
+. Choose _I accept the terms of the license agreement_.
+. Click Finish
+
+Is prefer to restart Anypoint Studio after the install.
