@@ -1,4 +1,4 @@
-package org.mule.modules.watsonalchemylanguage.automation;
+package org.mule.modules.watsonalchemylanguage.automation.unit;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;

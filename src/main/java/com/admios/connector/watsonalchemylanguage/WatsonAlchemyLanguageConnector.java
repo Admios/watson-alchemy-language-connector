@@ -54,7 +54,7 @@ import com.ibm.watson.developer_cloud.alchemy.v1.model.TypedRelations;
  * @author Admios
  */
 @RequiresEnterpriseLicense(allowEval = true)
-@Connector(name = "watson-alchemy-language", friendlyName = "Watson AlchemyLanguage Service")
+@Connector(name = "watson-alchemy-language", friendlyName = "Watson AlchemyLanguage Service", minMuleVersion = "3.6.0")
 public class WatsonAlchemyLanguageConnector {
 
 	@Config
@@ -201,7 +201,7 @@ public class WatsonAlchemyLanguageConnector {
 	 *
 	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:targetedSentiment}
 	 *
-	 * @param source The text, HTML or URL to process. 
+	 * @param source The text, HTML or URL to process.
 	 * @param target Target phrase. The service will return sentiment information for the phrase that is found in the
 	 *            source text.
 	 * @param target Target phrase. The service will return sentiment information for the phrase that is found in the
@@ -435,7 +435,7 @@ public class WatsonAlchemyLanguageConnector {
 				.addShowSourceText(showSourceText)
 				.execute();
 	}
-	
+
 	/**
 	 * Extract the main body text from a webpage or HTML.
 	 * 
@@ -448,23 +448,23 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
 	 * @param sourceText Determines how to obtain the source text from the webpage
 	 * @param extractLinks Set this to 1 to include hyperlinks in the extracted text
-	 * @param useMetadata Set this to 0 to ignore description information in webpage metadata 
+	 * @param useMetadata Set this to 0 to ignore description information in webpage metadata
 	 * 
 	 * @param useMetaData Comment for useMetaData
 	 * @return return {@link DocumentText}
 	 */
 	@Processor
 	public DocumentText textExtraction(String source, @Optional String cquery,
-			@Optional String xpath, @Optional String sourceText, 
+			@Optional String xpath, @Optional String sourceText,
 			@Optional String extractLinks, @Optional String useMetaData) {
 		return new TextExtractionHandler(config.getService(), source)
 				.addCquery(cquery)
 				.addSourceText(sourceText)
 				.addXpath(xpath)
 				.addExtractLinks(extractLinks)
-				.addUseMetadata(useMetaData).execute();			
+				.addUseMetadata(useMetaData).execute();
 	}
-	
+
 	/**
 	 * Extract the main body raw text from a webpage or HTML.
 	 * 
@@ -473,15 +473,15 @@ public class WatsonAlchemyLanguageConnector {
 	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:rawTextExtraction}
 	 * 
 	 * 
-	 * @param source The HTML or URL to process. 
+	 * @param source The HTML or URL to process.
 	 * 
 	 * @return return {@link DocumentText}
 	 */
 	@Processor
 	public DocumentText rawTextExtraction(String source) {
-		return new TextExtractionHandler(config.getService(), source).execute();			
+		return new TextExtractionHandler(config.getService(), source).execute();
 	}
-	
+
 	/**
 	 * Categorize a webpage into a 5-level taxonomy
 	 * 
@@ -493,13 +493,13 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param cquery A visual constraint query to apply to the web page. Required when sourceText is set to cquery
 	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
 	 * @param sourceText Determines how to obtain the source text from the webpage
-	 * @param showSourceText Set this to 1 to include the source text in the response 
+	 * @param showSourceText Set this to 1 to include the source text in the response
 	 * 
 	 * @return return {@link Taxonomies}
 	 */
 	@Processor
 	public Taxonomies taxonomies(String source, @Optional Boolean showSourceText,
-			@Optional String cquery, @Optional String xpath, @Optional String sourceText) {		
+			@Optional String cquery, @Optional String xpath, @Optional String sourceText) {
 		return new TaxonomyHandler(config.getService(), source)
 				.addShowSourceText(showSourceText)
 				.addCquery(cquery)
@@ -507,7 +507,7 @@ public class WatsonAlchemyLanguageConnector {
 				.addXpath(xpath)
 				.addCquery(cquery).execute();
 	}
-	
+
 	/**
 	 * Detect emotions implied in the text of a webpage
 	 * 
@@ -519,7 +519,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param cquery A visual constraint query to apply to the web page. Required when sourceText is set to cquery
 	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
 	 * @param sourceText Determines how to obtain the source text from the webpage
-	 * @param showSourceText Set this to 1 to include the source text in the response 
+	 * @param showSourceText Set this to 1 to include the source text in the response
 	 * 
 	 * @return return {@link DocumentEmotion}
 	 */

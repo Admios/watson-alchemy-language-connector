@@ -24,8 +24,7 @@ public class ConnectorConfig {
 	/**
 	 * Connect, this method will use one api call to validate the api key
 	 *
-	 * @param username
-	 *            A apiKey
+	 * @param username A apiKey
 	 * @throws ConnectionException
 	 */
 	@Connect
@@ -64,7 +63,7 @@ public class ConnectorConfig {
 			Map<String, Object> params = new HashMap<>();
 			params.put(AlchemyLanguage.TEXT, "Connection Test Request");
 			getService().getLanguage(params).execute();
-		} catch (UnauthorizedException e) {
+		} catch (UnauthorizedException | IllegalArgumentException e) {
 			throw new ConnectionException(ConnectionExceptionCode.INCORRECT_CREDENTIALS, "", e.getMessage(), e);
 		}
 	}
