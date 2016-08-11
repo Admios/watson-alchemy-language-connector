@@ -1,0 +1,34 @@
+////
+Watson - Alchemy language Connector User Guide.
+////
+
+= IBM Watson - Alchemy language Connector
+
+:keywords: add_keywords_separated_by_commas
+:imagesdir: ./_images
+:toc: macro
+:toclevels: 3
+
+////
+Image names follow "image:". Identify images using the connector name, preferably without the word "connector"
+URLs should always follow "link:"
+////
+
+// Dropdown for Connector Version
+//  Children: Technical Reference / Demos
+
+toc::[]
+
+//Global rule: the word "connector" should be lower case except when appearing in titles, important URL anchors, and after a MuleSoft tradename such as "Anypoint".
+== Introduction
+AlchemyLanguage is a collection of text analysis functions that derive semantic information from your content.
+You can input text, HTML, or a public URL and leverage sophisticated natural language processing techniques to
+get a quick high-level understanding of your content and obtain detailed insights such as directional sentiment from entity to object.
+With this connector you have full access to AlchemyLanguage methods.
+
+
+Read through this user guide to understand how to set up and configure a basic flow using the connector.
+Check features, compatibility and versions of the connector using the https://github.com/Admios/watson-alchemy-language-connector/blob/master/CHANGELOG.md[Release Notes].
+Connector API link:/doc/API_Reference/[Technical Reference] or check our link:/demo_app[demo applications].
+
+== Prerequisites
