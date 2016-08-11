@@ -39,6 +39,9 @@ Connector API link:/doc/API_Reference/[Technical Reference] or check our link:/d
 * Anypoint DevKit 1.1.4+
 * Mule Server Runtime 3.8.0 EE
 
+* Already have an account in IMB Bluemix, you may create it https://www.ibm.com/account/us-en/[here].
+* Have an Watson API Key for Alchemy Language https://new-console.ng.bluemix.net/dashboard/watson[Watson page].
+
 
 == Install the Connector
 
@@ -55,3 +58,17 @@ Just click on Help -> Install New Software
 . Click Finish
 
 Is prefer to restart Anypoint Studio after the install.
+
+
+=== Using the Connector in a Mavenized Mule App
+
+If you are coding a Mavenized Mule application, this XML snippet must be included in your `pom.xml` file.
+
+[source,xml,linenums]
+----
+<dependency>
+	<groupId>com.admios.connector</groupId>
+	<artifactId>watson-alchemy-language-connector</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+</dependency>
+----
