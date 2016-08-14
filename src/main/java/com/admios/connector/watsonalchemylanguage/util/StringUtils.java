@@ -10,7 +10,9 @@ import com.ibm.watson.developer_cloud.alchemy.v1.AlchemyLanguage;
 
 public class StringUtils {
 
-	public static boolean isURL(String text) {
+	private StringUtils() {}
+
+	public static boolean isURL(final String text) {
 		try {
 			new URL(text);
 			return true;
@@ -19,7 +21,7 @@ public class StringUtils {
 		}
 	}
 
-	public static String getType(String text) {
+	public static String getType(final String text) {
 
 		if (isURL(text)) {
 			return AlchemyLanguage.URL;
@@ -30,7 +32,7 @@ public class StringUtils {
 		}
 	}
 
-	public static String getHtmlOrUrlType(String text) {
+	public static String getHtmlOrUrlType(final String text) {
 		return StringUtils.isURL(text) ? AlchemyLanguage.URL : AlchemyLanguage.HTML;
 	}
 }

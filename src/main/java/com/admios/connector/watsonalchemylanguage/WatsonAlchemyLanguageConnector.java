@@ -4,6 +4,8 @@ import org.mule.api.annotations.Config;
 import org.mule.api.annotations.Connector;
 import org.mule.api.annotations.Processor;
 import org.mule.api.annotations.display.FriendlyName;
+import org.mule.api.annotations.licensing.RequiresEnterpriseLicense;
+import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
 
 import com.admios.connector.watsonalchemylanguage.config.ConnectorConfig;
@@ -11,6 +13,7 @@ import com.admios.connector.watsonalchemylanguage.handler.implementation.Authors
 import com.admios.connector.watsonalchemylanguage.handler.implementation.CombinedCallHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.ConceptsHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.DateExtractionHandler;
+import com.admios.connector.watsonalchemylanguage.handler.implementation.EmotionalAnalysisHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.EntitiesHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.FeedDetectionHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.KeywordsHandler;
@@ -20,20 +23,25 @@ import com.admios.connector.watsonalchemylanguage.handler.implementation.Publica
 import com.admios.connector.watsonalchemylanguage.handler.implementation.RelationsHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.SentimentAnalysisHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.TargetedSentimentHandler;
+import com.admios.connector.watsonalchemylanguage.handler.implementation.TaxonomyHandler;
+import com.admios.connector.watsonalchemylanguage.handler.implementation.TextExtractionHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.TitleExtractionHandler;
 import com.admios.connector.watsonalchemylanguage.handler.implementation.TypedRelationsHandler;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.CombinedResults;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Concepts;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Dates;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentAuthors;
+import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentEmotion;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentPublicationDate;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentSentiment;
+import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentText;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentTitle;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Entities;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Feeds;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Keywords;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Language;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Microformats;
+import com.ibm.watson.developer_cloud.alchemy.v1.model.Taxonomies;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.SAORelations;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.TypedRelations;
 
@@ -45,7 +53,8 @@ import com.ibm.watson.developer_cloud.alchemy.v1.model.TypedRelations;
  * 
  * @author Admios
  */
-@Connector(name = "watson-alchemy-language", friendlyName = "Watson AlchemyLanguage Service")
+@RequiresEnterpriseLicense(allowEval = true)
+@Connector(name = "watson-alchemy-language", friendlyName = "Watson AlchemyLanguage Service", minMuleVersion = "3.6.0")
 public class WatsonAlchemyLanguageConnector {
 
 	@Config
@@ -62,7 +71,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return A list of extracted {@link DocumentAuthors}
 	 */
 	@Processor
-	public DocumentAuthors authors(String source) {
+	public DocumentAuthors authors(@Default("#[payload]") String source) {
 		return new AuthorsHandler(config.getService(), source).execute();
 	}
 
@@ -94,7 +103,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return {@link Entities}
 	 */
 	@Processor
-	public Entities entities(String source, @Optional Integer maxRetrieve,
+	public Entities entities(@Default("#[payload]") String source, @Optional Integer maxRetrieve,
 			@Optional Integer coreference, @Optional Integer disambiguate, @Optional Integer knowledgeGraph,
 			@Optional Integer linkedData, @Optional Integer quotations, @Optional Integer sentiment,
 			@Optional Boolean showSourceText, @Optional Integer structuredEntities,
@@ -121,7 +130,8 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return {@link Dates}
 	 */
 	@Processor
-	public Dates dateExtraction(String source, @Optional String anchorDate, @Optional Boolean showSourceText) {
+	public Dates dateExtraction(@Default("#[payload]") String source, @Optional String anchorDate,
+			@Optional Boolean showSourceText) {
 		return new DateExtractionHandler(config.getService(), source)
 				.addAnchorDate(anchorDate)
 				.addShowSourceText(showSourceText)
@@ -139,7 +149,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return {@link Feeds}
 	 */
 	@Processor
-	public Feeds feedDetection(String url) {
+	public Feeds feedDetection(@Default("#[payload]") String url) {
 		return new FeedDetectionHandler(config.getService(), url)
 				.execute();
 	}
@@ -164,7 +174,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return {@link Concepts}
 	 */
 	@Processor
-	public Concepts concepts(String source, @Optional Integer maxRetrieve,
+	public Concepts concepts(@Default("#[payload]") String source, @Optional Integer maxRetrieve,
 			@Optional Integer knowledgeGraph, @Optional Integer linkedData,
 			@Optional Boolean showSourceText, @Optional String cquery,
 			@Optional String xpath, @Optional String sourceText) {
@@ -191,13 +201,12 @@ public class WatsonAlchemyLanguageConnector {
 	 *
 	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:targetedSentiment}
 	 *
-	 * @param source The text, HTML or URL to process. <<<<<<< HEAD
+	 * @param source The text, HTML or URL to process.
 	 * @param target Target phrase. The service will return sentiment information for the phrase that is found in the
 	 *            source text.
-	 * @param showSourceText Set this to 1 to include the source text in the response. =======
 	 * @param target Target phrase. The service will return sentiment information for the phrase that is found in the
 	 *            source text.
-	 * @param showSourceText Check this to include the source text in the response. >>>>>>> master
+	 * @param showSourceText Check this to include the source text in the response.
 	 * @param cquery A visual constraints query to apply to the web page. Required when <code>sourceText</code> is set
 	 *            to cquery.
 	 * @param xpath An XPath query to apply to the web page. Required when <code>sourceText</code> is set to one of the
@@ -206,9 +215,9 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return {@link DocumentSentiment}
 	 */
 	@Processor
-	public DocumentSentiment targetedSentiment(String source, String target,
-			@Optional Boolean showSourceText, @Optional String cquery,
-			@Optional String xpath, @Optional String sourceText) {
+	public DocumentSentiment targetedSentiment(@Default("#[payload]") String source, String target,
+			@Optional Boolean showSourceText, @Optional String cquery, @Optional String xpath,
+			@Optional String sourceText) {
 		return new TargetedSentimentHandler(config.getService(), source)
 				.addCquery(cquery)
 				.addShowSourceText(showSourceText)
@@ -238,10 +247,9 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return {@link Keywords}
 	 */
 	@Processor
-	public Keywords keywords(String source, @Optional Integer maxRetrieve,
-			@Optional Integer knowledgeGraph, @Optional Integer sentiment,
-			@Optional Boolean showSourceText, @Optional String cquery,
-			@Optional String xpath, @Optional String sourceText) {
+	public Keywords keywords(@Default("#[payload]") String source, @Optional Integer maxRetrieve,
+			@Optional Integer knowledgeGraph, @Optional Integer sentiment, @Optional Boolean showSourceText,
+			@Optional String cquery, @Optional String xpath, @Optional String sourceText) {
 		return new KeywordsHandler(config.getService(), source)
 				.addCquery(cquery)
 				.addKnowledgeGraph(knowledgeGraph)
@@ -264,41 +272,46 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return {@link Microformats}
 	 */
 	@Processor
-	public Microformats microformats(String source, @Optional Boolean showSourceText) {
+	public Microformats microformats(@Default("#[payload]") String source, @Optional Boolean showSourceText) {
 		return new MicroformatsHandler(config.getService(), source).addShowSourceText(showSourceText).execute();
 	}
-	
-	
+
 	/**
-	* Extract Subject-Action-Object relations from a webpage, HTML, or plain text.
-	* Supported languages: English, Spanish
-	*
-	* API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#microformats}
-	* {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:relations}
-	*
-	*	@param source One of these is required. Pass HTML content in html, a public facing URL in url, or plain text in text.
-	*	@param maxRetrieve Maximum number of relations to return (default = 50, maximum = 100)
-	*	@param showSourceText Check this to include the source text in the response.
-	*	@param keywords Check this to identify keywords in detected relations. <b>This incurs an additional transaction charge</b>
-	*	@param entities Check this to identify named entities in detected relations. <b>This incurs an additional transaction charge.</b>
-	*	@param requireEntities Check this to restrict results to relations that contain at least one named entity.
-	*	@param coreference Check this treat coreferences as separate entities (coreferences are resolved into detected entities by default).
-	*	@param disambiguate Check this to hide entity disambiguation information in the response.
-	*	@param knowledgeGraph Check this to include knowledge graph information in the results. <b>This incurs an additional transaction charge.</b>
-	*	@param hideLinkedData Check this to hide Linked Data contents links in the response.
-	*	@param analyzeSentiment Check this to analyze the sentiment towards each result.
-	*	@param excludeEntityFromSentimentAnalysis Check this to exclude named entity text from sentiment analysis. For exapmle, do not analyze "New" in "New York".
-	*	@param showSourceTex Check this to include the source text in the response.
-	*	@param cquery A visual constraints query to apply to the web page. Required when sourceText is set to cquery.
-	*	@param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values.
-	*	@param sourceText How to obtain the source text from the web page.
-	*	@return return an array of detected relations.
-	*/
+	 * Extract Subject-Action-Object relations from a webpage, HTML, or plain text. Supported languages: English,
+	 * Spanish
+	 *
+	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#microformats}
+	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:relations}
+	 *
+	 * @param source One of these is required. Pass HTML content in html, a public facing URL in url, or plain text in
+	 *            text.
+	 * @param maxRetrieve Maximum number of relations to return (default = 50, maximum = 100)
+	 * @param showSourceText Check this to include the source text in the response.
+	 * @param keywords Check this to identify keywords in detected relations. <b>This incurs an additional transaction
+	 *            charge</b>
+	 * @param entities Check this to identify named entities in detected relations. <b>This incurs an additional
+	 *            transaction charge.</b>
+	 * @param requireEntities Check this to restrict results to relations that contain at least one named entity.
+	 * @param coreference Check this treat coreferences as separate entities (coreferences are resolved into detected
+	 *            entities by default).
+	 * @param disambiguate Check this to hide entity disambiguation information in the response.
+	 * @param knowledgeGraph Check this to include knowledge graph information in the results. <b>This incurs an
+	 *            additional transaction charge.</b>
+	 * @param hideLinkedData Check this to hide Linked Data contents links in the response.
+	 * @param analyzeSentiment Check this to analyze the sentiment towards each result.
+	 * @param excludeEntityFromSentimentAnalysis Check this to exclude named entity text from sentiment analysis. For
+	 *            exapmle, do not analyze "New" in "New York".
+	 * @param showSourceTex Check this to include the source text in the response.
+	 * @param cquery A visual constraints query to apply to the web page. Required when sourceText is set to cquery.
+	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values.
+	 * @param sourceText How to obtain the source text from the web page.
+	 * @return return an array of detected relations.
+	 */
 	@Processor
-	public SAORelations relations(String source, @Optional Integer maxRetrieve, @Optional Boolean showSourceText,
-			@Optional Boolean keywords, @Optional Boolean entities, @Optional Boolean requireEntities,
-			@Optional Boolean coreference, @Optional Boolean disambiguate, @Optional Boolean knowledgeGraph,
-			@Optional Boolean hideLinkedData, @Optional Boolean analyzeSentiment,
+	public SAORelations relations(@Default("#[payload]") String source, @Optional Integer maxRetrieve,
+			@Optional Boolean showSourceText, @Optional Boolean keywords, @Optional Boolean entities,
+			@Optional Boolean requireEntities, @Optional Boolean coreference, @Optional Boolean disambiguate,
+			@Optional Boolean knowledgeGraph, @Optional Boolean hideLinkedData, @Optional Boolean analyzeSentiment,
 			@Optional @FriendlyName("Exclude entity from analysis") Boolean excludeEntityFromSentimentAnalysis,
 			@Optional String cquery, @Optional String xpath, @Optional String sourceText) {
 		return new RelationsHandler(config.getService(), source)
@@ -330,7 +343,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return {@link DocumentPublicationDate}
 	 */
 	@Processor
-	public DocumentPublicationDate publicationDate(String source) {
+	public DocumentPublicationDate publicationDate(@Default("#[payload]") String source) {
 		return new PublicationDateHandler(config.getService(), source).execute();
 	}
 
@@ -350,8 +363,8 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return {@link DocumentSentiment}
 	 */
 	@Processor
-	public DocumentSentiment sentimentAnalysis(String source, @Optional Boolean showSourceText, @Optional String cquery,
-			@Optional String xpath, @Optional String sourceText) {
+	public DocumentSentiment sentimentAnalysis(@Default("#[payload]") String source, @Optional Boolean showSourceText,
+			@Optional String cquery, @Optional String xpath, @Optional String sourceText) {
 		return new SentimentAnalysisHandler(config.getService(), source).addShowSourceText(showSourceText)
 				.addCquery(cquery).addXpath(xpath).addSourceText(sourceText).execute();
 	}
@@ -370,7 +383,8 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return {@link TypedRelations}
 	 */
 	@Processor
-	public TypedRelations typedRelations(String source, @Optional String model, @Optional Boolean showSourceText) {
+	public TypedRelations typedRelations(@Default("#[payload]") String source, @Optional String model,
+			@Optional Boolean showSourceText) {
 		return new TypedRelationsHandler(config.getService(), source).addModel(model)
 				.addShowSourceText(showSourceText).execute();
 	}
@@ -393,8 +407,8 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return {@link Language}
 	 */
 	@Processor
-	public Language languageDetection(String source, @Optional Boolean showSourceText, @Optional String cquery,
-			@Optional String xpath, @Optional String sourceText) {
+	public Language languageDetection(@Default("#[payload]") String source, @Optional Boolean showSourceText,
+			@Optional String cquery, @Optional String xpath, @Optional String sourceText) {
 		return new LanguageDetectionHandler(config.getService(), source)
 				.addShowSourceText(showSourceText)
 				.addCquery(cquery)
@@ -416,10 +430,107 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return {@link DocumentTitle}
 	 */
 	@Processor
-	public DocumentTitle titleExtraction(String source, @Optional Boolean showSourceText) {
+	public DocumentTitle titleExtraction(@Default("#[payload]") String source, @Optional Boolean showSourceText) {
 		return new TitleExtractionHandler(config.getService(), source)
 				.addShowSourceText(showSourceText)
 				.execute();
+	}
+
+	/**
+	 * Extract the main body text from a webpage or HTML.
+	 * 
+	 * API Doc: {@see https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#text_cleaned}
+	 * 
+	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:textExtraction}
+	 *
+	 * @param source The HTML or URL to process.
+	 * @param cquery A visual constraint query to apply to the web page. Required when sourceText is set to cquery
+	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
+	 * @param sourceText Determines how to obtain the source text from the webpage
+	 * @param extractLinks Set this to 1 to include hyperlinks in the extracted text
+	 * @param useMetadata Set this to 0 to ignore description information in webpage metadata
+	 * 
+	 * @param useMetaData Comment for useMetaData
+	 * @return return {@link DocumentText}
+	 */
+	@Processor
+	public DocumentText textExtraction(String source, @Optional String cquery,
+			@Optional String xpath, @Optional String sourceText,
+			@Optional String extractLinks, @Optional String useMetaData) {
+		return new TextExtractionHandler(config.getService(), source)
+				.addCquery(cquery)
+				.addSourceText(sourceText)
+				.addXpath(xpath)
+				.addExtractLinks(extractLinks)
+				.addUseMetadata(useMetaData).execute();
+	}
+
+	/**
+	 * Extract the main body raw text from a webpage or HTML.
+	 * 
+	 * API Doc: {@see https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#text_raw}
+	 *
+	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:rawTextExtraction}
+	 * 
+	 * 
+	 * @param source The HTML or URL to process.
+	 * 
+	 * @return return {@link DocumentText}
+	 */
+	@Processor
+	public DocumentText rawTextExtraction(String source) {
+		return new TextExtractionHandler(config.getService(), source).execute();
+	}
+
+	/**
+	 * Categorize a webpage into a 5-level taxonomy
+	 * 
+	 * API Doc: {@see https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#taxonomy}
+	 * 
+	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:taxonomy}
+	 *
+	 * @param source The HTML or URL to process.
+	 * @param cquery A visual constraint query to apply to the web page. Required when sourceText is set to cquery
+	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
+	 * @param sourceText Determines how to obtain the source text from the webpage
+	 * @param showSourceText Set this to 1 to include the source text in the response
+	 * 
+	 * @return return {@link Taxonomies}
+	 */
+	@Processor
+	public Taxonomies taxonomies(String source, @Optional Boolean showSourceText,
+			@Optional String cquery, @Optional String xpath, @Optional String sourceText) {
+		return new TaxonomyHandler(config.getService(), source)
+				.addShowSourceText(showSourceText)
+				.addCquery(cquery)
+				.addSourceText(sourceText)
+				.addXpath(xpath)
+				.addCquery(cquery).execute();
+	}
+
+	/**
+	 * Detect emotions implied in the text of a webpage
+	 * 
+	 * API Doc: {@see https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#emotion_analysis}
+	 * 
+	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:emotionalAnalysis}
+	 *
+	 * @param source The HTML or URL to process.
+	 * @param cquery A visual constraint query to apply to the web page. Required when sourceText is set to cquery
+	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
+	 * @param sourceText Determines how to obtain the source text from the webpage
+	 * @param showSourceText Set this to 1 to include the source text in the response
+	 * 
+	 * @return return {@link DocumentEmotion}
+	 */
+	@Processor
+	public DocumentEmotion emotionAnalysis(String source, @Optional Boolean showSourceText,
+			@Optional String cquery, @Optional String xpath, @Optional String sourceText) {
+		return new EmotionalAnalysisHandler(config.getService(), source)
+				.addCquery(cquery)
+				.addShowSourceText(showSourceText)
+				.addSourceText(sourceText)
+				.addXpath(xpath).execute();
 	}
 
 	/**
@@ -461,12 +572,12 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return return {@link CombinedResults}
 	 */
 	@Processor
-	public CombinedResults combinedCall(String source, @Optional String extract, @Optional Integer maxRetrieve,
-			@Optional Boolean keywords, @Optional Boolean entities, @Optional Boolean requireEntities,
-			@Optional Integer coreference, @Optional Integer disambiguate, @Optional Integer knowledgeGraph,
-			@Optional Integer linkedData, @Optional Integer quotations, @Optional Integer sentiment,
-			@Optional Boolean showSourceText, @Optional Integer structuredEntities, @Optional String anchorDate,
-			@Optional String cquery, @Optional String xpath, @Optional String sourceText) {
+	public CombinedResults combinedCall(@Default("#[payload]") String source, @Optional String extract,
+			@Optional Integer maxRetrieve, @Optional Boolean keywords, @Optional Boolean entities,
+			@Optional Boolean requireEntities, @Optional Integer coreference, @Optional Integer disambiguate,
+			@Optional Integer knowledgeGraph, @Optional Integer linkedData, @Optional Integer quotations,
+			@Optional Integer sentiment, @Optional Boolean showSourceText, @Optional Integer structuredEntities,
+			@Optional String anchorDate, @Optional String cquery, @Optional String xpath, @Optional String sourceText) {
 
 		return new CombinedCallHandler(config.getService(), source).addExtract(extract).addAnchorDate(anchorDate)
 				.addMaxRetrieve(maxRetrieve).addCoreference(coreference).addDisambiguate(disambiguate)

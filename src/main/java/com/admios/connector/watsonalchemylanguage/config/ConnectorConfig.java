@@ -16,7 +16,7 @@ import org.mule.api.annotations.param.ConnectionKey;
 import com.ibm.watson.developer_cloud.alchemy.v1.AlchemyLanguage;
 import com.ibm.watson.developer_cloud.service.exception.UnauthorizedException;
 
-@ConnectionManagement(friendlyName = "Watson AlchemyLanguage Configuration", configElementName = "watson-alchemylanguage-config")
+@ConnectionManagement(friendlyName = "Configuration", configElementName = "watson-alchemylanguage-config")
 public class ConnectorConfig {
 
 	private AlchemyLanguage service;
@@ -24,8 +24,7 @@ public class ConnectorConfig {
 	/**
 	 * Connect, this method will use one api call to validate the api key
 	 *
-	 * @param username
-	 *            A apiKey
+	 * @param username A apiKey
 	 * @throws ConnectionException
 	 */
 	@Connect
@@ -64,7 +63,7 @@ public class ConnectorConfig {
 			Map<String, Object> params = new HashMap<>();
 			params.put(AlchemyLanguage.TEXT, "Connection Test Request");
 			getService().getLanguage(params).execute();
-		} catch (UnauthorizedException e) {
+		} catch (UnauthorizedException | IllegalArgumentException e) {
 			throw new ConnectionException(ConnectionExceptionCode.INCORRECT_CREDENTIALS, "", e.getMessage(), e);
 		}
 	}
