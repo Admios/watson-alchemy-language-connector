@@ -5,7 +5,7 @@ Watson - Alchemy language Connector User Guide.
 = IBM Watson - Alchemy language Connector
 
 :keywords: add_keywords_separated_by_commas
-:imagesdir: ./_images
+:imagesdir: ./images
 :toc: macro
 :toclevels: 3
 
@@ -58,6 +58,40 @@ Just click on Help -> Install New Software
 . Click Finish
 
 Is prefer to restart Anypoint Studio after the install.
+
+=== Use Exchange site
+
+== Use the connector in a project
+
+=== Setting up the project
+Create a new Mule Project by clicking on "File > New > Mule Project".
+
+image::user-guide-00.png[Create Project]
+In the new project dialog box, the only thing you are required to enter is the name of the project.
+You can click on "Next" to go through the rest of pages.
+
+image::user-guide-01.png[Create Project]
+Now to test our connector we need to create a HTTP flow.
+
+In the Mule Palette, select connectors and drag and drop HTTP Connector in to the flow designer.
+
+image::user-guide-02.png[Select HTTP connector]
+First we need to config the HTTP request service before using it. Click on the http connector and later in the HTTP tab below.
+
+image::user-guide-03.png[Select Http tab]
+when the configuration view appear, click on the green plus icon in the right of the field "Connector Configuration."
+Just set the port to 8080 or any number of your preference. Save by click OK.
+
+
+image::user-guide-04.png[save port 8080]
+Back in the Http configuration tab; select Basic Settings -> Path. Write _/watson_
+This is for url path of the endpoint to be listen for Anypoint.
+Should look like this.
+
+image::user-guide-05.png[http configuration]
+From the Mule Palette - Connectors drag and drop IBM Watson Text Processors.
+
+
 
 
 === Using the Connector in a Mavenized Mule App
