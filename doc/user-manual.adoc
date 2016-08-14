@@ -21,7 +21,7 @@ With this connector you have full access to AlchemyLanguage methods.
 
 Read through this user guide to understand how to set up and configure a basic flow using the connector.
 Check features, compatibility and versions of the connector using the https://github.com/Admios/watson-alchemy-language-connector/blob/master/CHANGELOG.md[Release Notes].
-Connector API link:/apidocs/watson-alchemy-language-apidoc.html[API Reference] or check our link:/demo_app[demo applications].
+Connector API link:apidocs/watson-alchemy-language-apidoc.adoc[API Reference] or check our link:/demo_app[demo applications].
 
 == Prerequisites
 * Anypoint Studio 6.0.x
@@ -128,4 +128,4 @@ If you are coding a Mavenized Mule application, this XML snippet must be include
 
 == Technical Reference
 
-For technical reference or API Reference check the link link:/apidocs/watson-alchemy-language-apidoc.html[API Reference].
+For technical reference or API Reference check the link link:apidocs/watson-alchemy-language-apidoc.adoc[API Reference].
