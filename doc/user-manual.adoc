@@ -9,14 +9,6 @@ Watson - Alchemy language Connector User Guide.
 :toc: macro
 :toclevels: 3
 
-////
-Image names follow "image:". Identify images using the connector name, preferably without the word "connector"
-URLs should always follow "link:"
-////
-
-// Dropdown for Connector Version
-//  Children: Technical Reference / Demos
-
 toc::[]
 
 //Global rule: the word "connector" should be lower case except when appearing in titles, important URL anchors, and after a MuleSoft tradename such as "Anypoint".
@@ -29,7 +21,7 @@ With this connector you have full access to AlchemyLanguage methods.
 
 Read through this user guide to understand how to set up and configure a basic flow using the connector.
 Check features, compatibility and versions of the connector using the https://github.com/Admios/watson-alchemy-language-connector/blob/master/CHANGELOG.md[Release Notes].
-Connector API link:/doc/API_Reference/[Technical Reference] or check our link:/demo_app[demo applications].
+Connector API link:/apidocs/watson-alchemy-language-apidoc.html[API Reference] or check our link:/demo_app[demo applications].
 
 == Prerequisites
 * Anypoint Studio 6.0.x
@@ -89,10 +81,37 @@ This is for url path of the endpoint to be listen for Anypoint.
 Should look like this.
 
 image::user-guide-05.png[http configuration]
+
+
+=== Configure the Connector Global Element
+
 From the Mule Palette - Connectors drag and drop IBM Watson Text Processors.
 
+To use the IBM Watson connector in your Mule application, you must configure the basic connector configuration.
+Select the IBM Watson Text Processor tab
 
+image::user-guide-06.png[Add watson connector]
+. Click in the green plus sign
+. Add your API Key from IBM Bluemix/Watson
+. Test Connection
 
+image::user-guide-07.png[Add API Key]
+You should receive a successful message after connection test. Click Ok to save the Watson Configuration.
+
+To Test the Connector we will use the method Language Detection.
+
+. Select Language Detection from the operations drop-down list.
+. Add some text in the source field. e.g. Miércoles 3 de agosto de 2016
+. Add an _Object to JSON_ Transformer after the Watson Connector.
+. Start the server doing right click and then click in the green play button
+
+image::user-guide-08.png[Start the server]
+When the console finish it will show some message like *Application testwatson default deployed*
+
+Now is time to go to a web browser and enter the url we previously configure: _http://localhost:8080/watson_
+
+image::user-guide-09.png[Check connector output]
+Congratulations you have completed the Quick Start Guide.
 
 === Using the Connector in a Mavenized Mule App
 
@@ -106,3 +125,7 @@ If you are coding a Mavenized Mule application, this XML snippet must be include
 	<version>1.0.0-SNAPSHOT</version>
 </dependency>
 ----
+
+== Technical Reference
+
+For technical reference or API Reference check the link link:/apidocs/watson-alchemy-language-apidoc.html[API Reference].
