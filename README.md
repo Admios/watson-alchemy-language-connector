@@ -3,16 +3,16 @@
 The IBM Watson™ AlchemyLanguage service is a collection of text analysis functions that derive semantic information from your content. You can input text, HTML, or a public URL and leverage sophisticated natural language processing techniques to get a quick high-level understanding of your content and obtain detailed insights such as sentiment for detected entities and keywords.
 
 # Mule supported versions
-Mule 3.5.x, 3.6.x, 3.7.x and 3.8.x.
+Mule 3.6.x, 3.7.x and 3.8.x.
 
-# Java Runtime version 
+# Java Runtime version
 7.0
 
 #Service or application supported modules
 Watson Alchemy Language v1
 
-# Installation 
-You can download the connector from the update site in Anypoint Studio. 
+# Installation
+You can download the connector from the update site in Anypoint Studio.
 Open Anypoint Studio, go to Help → Install New Software and select Anypoint Connectors Update Site where you’ll find all avaliable connectors.
 
 #Usage
