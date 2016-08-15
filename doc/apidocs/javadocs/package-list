@@ -1,0 +1,5 @@
+com.admios.connector.watsonalchemylanguage
+com.admios.connector.watsonalchemylanguage.config
+com.admios.connector.watsonalchemylanguage.handler
+com.admios.connector.watsonalchemylanguage.handler.implementation
+com.admios.connector.watsonalchemylanguage.util

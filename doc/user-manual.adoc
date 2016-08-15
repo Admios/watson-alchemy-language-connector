@@ -1,0 +1,131 @@
+////
+Watson - Alchemy language Connector User Guide.
+////
+
+= IBM Watson - Alchemy language Connector
+
+:keywords: add_keywords_separated_by_commas
+:imagesdir: ./images
+:toc: macro
+:toclevels: 3
+
+toc::[]
+
+//Global rule: the word "connector" should be lower case except when appearing in titles, important URL anchors, and after a MuleSoft tradename such as "Anypoint".
+== Introduction
+AlchemyLanguage is a collection of text analysis functions that derive semantic information from your content.
+You can input text, HTML, or a public URL and leverage sophisticated natural language processing techniques to
+get a quick high-level understanding of your content and obtain detailed insights such as directional sentiment from entity to object.
+With this connector you have full access to AlchemyLanguage methods.
+
+
+Read through this user guide to understand how to set up and configure a basic flow using the connector.
+Check features, compatibility and versions of the connector using the https://github.com/Admios/watson-alchemy-language-connector/blob/master/CHANGELOG.md[Release Notes].
+Connector API link:apidocs/watson-alchemy-language-apidoc.adoc[API Reference] or check our link:/demo_app[demo applications].
+
+== Prerequisites
+* Anypoint Studio 6.0.x
+* Oracle Java JDK 7.0
+
+=== Extensions for Anypoint Studio
+* Anypoint DevKit 1.1.4+
+* Mule Server Runtime 3.8.0 EE
+
+* Already have an account in IMB Bluemix, you may create it https://www.ibm.com/account/us-en/[here].
+* Have an Watson API Key for Alchemy Language https://new-console.ng.bluemix.net/dashboard/watson[Watson page].
+
+
+== Install the Connector
+
+=== Inside Anypoint Studio
+You can install the connector in Anypoint Studio using the menu option inside Anypoint Studio,
+Just click on Help -> Install New Software
+
+. In field *works with* select: _Anypoint Connectors Update Site_
+. In the dropdown *Select* look for _Watson IBM Alchemy Language Connector_
+. Check the box.
+. Click next to review the software to install
+. Click next to accept the license
+. Choose _I accept the terms of the license agreement_.
+. Click Finish
+
+Is prefer to restart Anypoint Studio after the install.
+
+=== Use Exchange site
+
+== Use the connector in a project
+
+=== Setting up the project
+Create a new Mule Project by clicking on "File > New > Mule Project".
+
+image::user-guide-00.png[Create Project]
+In the new project dialog box, the only thing you are required to enter is the name of the project.
+You can click on "Next" to go through the rest of pages.
+
+image::user-guide-01.png[Create Project]
+Now to test our connector we need to create a HTTP flow.
+
+In the Mule Palette, select connectors and drag and drop HTTP Connector in to the flow designer.
+
+image::user-guide-02.png[Select HTTP connector]
+First we need to config the HTTP request service before using it. Click on the http connector and later in the HTTP tab below.
+
+image::user-guide-03.png[Select Http tab]
+when the configuration view appear, click on the green plus icon in the right of the field "Connector Configuration."
+Just set the port to 8080 or any number of your preference. Save by click OK.
+
+
+image::user-guide-04.png[save port 8080]
+Back in the Http configuration tab; select Basic Settings -> Path. Write _/watson_
+This is for url path of the endpoint to be listen for Anypoint.
+Should look like this.
+
+image::user-guide-05.png[http configuration]
+
+
+=== Configure the Connector Global Element
+
+From the Mule Palette - Connectors drag and drop IBM Watson Text Processors.
+
+To use the IBM Watson connector in your Mule application, you must configure the basic connector configuration.
+Select the IBM Watson Text Processor tab
+
+image::user-guide-06.png[Add watson connector]
+. Click in the green plus sign
+. Add your API Key from IBM Bluemix/Watson
+. Test Connection
+
+image::user-guide-07.png[Add API Key]
+You should receive a successful message after connection test. Click Ok to save the Watson Configuration.
+
+To Test the Connector we will use the method Language Detection.
+
+. Select Language Detection from the operations drop-down list.
+. Add some text in the source field. e.g. Miércoles 3 de agosto de 2016
+. Add an _Object to JSON_ Transformer after the Watson Connector.
+. Start the server doing right click and then click in the green play button
+
+image::user-guide-08.png[Start the server]
+When the console finish it will show some message like *Application testwatson default deployed*
+
+Now is time to go to a web browser and enter the url we previously configure: _http://localhost:8080/watson_
+
+image::user-guide-09.png[Check connector output]
+Congratulations you have completed the Quick Start Guide.
+
+=== Using the Connector in a Mavenized Mule App
+
+If you are coding a Mavenized Mule application, this XML snippet must be included in your `pom.xml` file.
+
+[source,xml,linenums]
+----
+<dependency>
+	<groupId>com.admios.connector</groupId>
+	<artifactId>watson-alchemy-language-connector</artifactId>
+	<version>1.0.0-SNAPSHOT</version>
+</dependency>
+----
+
+== Technical Reference
+
+For technical reference or API Reference check the link link:apidocs/watson-alchemy-language-apidoc.adoc[API Reference].
