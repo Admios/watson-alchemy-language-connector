@@ -29,7 +29,7 @@ detected entities and keywords.
 == Configs
 ---
 === Configuration
-`<watson-alchemy-language:watson-alchemylanguage-config>`
+`<watson-alchemy-language:config>`
 
 
 `Connection Management` 

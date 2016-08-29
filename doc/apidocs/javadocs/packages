@@ -1,0 +1,5 @@
+org.mule.modules.watsonalchemylanguage.config
+org.mule.modules.watsonalchemylanguage.handler
+org.mule.modules.watsonalchemylanguage.handler.implementation
+org.mule.modules.watsonalchemylanguage.util
+org.mule.modules.watsonalchemylanguage

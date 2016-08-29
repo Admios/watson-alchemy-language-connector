@@ -1,5 +1,5 @@
-com.admios.connector.watsonalchemylanguage
-com.admios.connector.watsonalchemylanguage.config
-com.admios.connector.watsonalchemylanguage.handler
-com.admios.connector.watsonalchemylanguage.handler.implementation
-com.admios.connector.watsonalchemylanguage.util
+org.mule.modules.watsonalchemylanguage
+org.mule.modules.watsonalchemylanguage.config
+org.mule.modules.watsonalchemylanguage.handler
+org.mule.modules.watsonalchemylanguage.handler.implementation
+org.mule.modules.watsonalchemylanguage.util
