@@ -70,8 +70,6 @@ public class WatsonAlchemyLanguageConnector {
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#authors}
 	 *
-	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:authors}
-	 *
 	 * @param source The HTML or url to process
 	 * @return return A list of extracted {@link DocumentAuthors}
 	 */
@@ -84,8 +82,6 @@ public class WatsonAlchemyLanguageConnector {
 	 * Extract entities from a text or a webpage.
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#entities}
-	 *
-	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:entities}
 	 *
 	 * @param source The text or url to process
 	 * @param maxRetrieve Maximum number of entities to return (default = 50)
@@ -126,8 +122,6 @@ public class WatsonAlchemyLanguageConnector {
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#date-extraction}
 	 *
-	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:dateExtraction}
-	 *
 	 * @param source The text, html or url to process.
 	 * @param anchorDate The date to use as "today" when interpreting phrases in the text like "next tuesday." Format:
 	 *            <code>yyyy-mm-dd hh:mm:ss</code>
@@ -148,8 +142,6 @@ public class WatsonAlchemyLanguageConnector {
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#feed-detection}
 	 *
-	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:feedDetection}
-	 *
 	 * @param url The <code>URL</code> to process.
 	 * @return return {@link Feeds}
 	 */
@@ -163,8 +155,6 @@ public class WatsonAlchemyLanguageConnector {
 	 * Extract concepts from a webpage or plain text.
 	 *
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#concepts}
-	 *
-	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:concepts}
 	 *
 	 * @param source The text or url to process
 	 * @param maxRetrieve Maximum number of entities to return (default = 50) detected entities by default)
@@ -204,8 +194,6 @@ public class WatsonAlchemyLanguageConnector {
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#targeted-sentiment}
 	 *
-	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:targetedSentiment}
-	 *
 	 * @param source The text, HTML or URL to process.
 	 * @param target Target phrase. The service will return sentiment information for the phrase that is found in the
 	 *            source text.
@@ -236,8 +224,6 @@ public class WatsonAlchemyLanguageConnector {
 	 * Extract keywords from a webpages, HTML or plain text.
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#keywords}
-	 *
-	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:keywords}
 	 *
 	 * @param source The text, HTML or URL to process.
 	 * @param maxRetrieve Maximum number of entities to return (default = 50) detected entities by default).
@@ -270,8 +256,6 @@ public class WatsonAlchemyLanguageConnector {
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#microformats}
 	 *
-	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:microformats}
-	 *
 	 * @param source The text, html or url to process.
 	 * @param showSourceText Check this to include the source text in the response.
 	 * @return return {@link Microformats}
@@ -286,8 +270,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * Spanish
 	 *
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#microformats}
-	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:relations}
-	 *
+	 * 
 	 * @param source One of these is required. Pass HTML content in html, a public facing URL in url, or plain text in
 	 *            text.
 	 * @param maxRetrieve Maximum number of relations to return (default = 50, maximum = 100)
@@ -342,8 +325,6 @@ public class WatsonAlchemyLanguageConnector {
 	 *
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#publication_date}
 	 * 
-	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:publicationDate}
-	 *
 	 * @param source The HTML or url to process
 	 * @return return {@link DocumentPublicationDate}
 	 */
@@ -356,8 +337,6 @@ public class WatsonAlchemyLanguageConnector {
 	 * Analyze the overall sentiment of a webpage, HTML, or plain text.
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#sentiment}
-	 *
-	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:sentimentAnalysis}
 	 *
 	 * @param source The text, HTML document or url to process
 	 * @param showSourceText Check this to include the source text in the response
@@ -379,8 +358,6 @@ public class WatsonAlchemyLanguageConnector {
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#typed_relations}
 	 *
-	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:typedRelations}
-	 *
 	 * @param source The text, HTML document or url to process
 	 * @param model The unique alphanumeric identifier for your custom model
 	 * @param showSourceText Check this to include the source text in the response
@@ -398,8 +375,6 @@ public class WatsonAlchemyLanguageConnector {
 	 * Detect the language of a webpage, HTML, or plain text.
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#language}
-	 *
-	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:languageDetection}
 	 *
 	 * @param source The text, HTML or URL to process.
 	 * @param showSourceText Check this to include the source text in the response.
@@ -427,8 +402,6 @@ public class WatsonAlchemyLanguageConnector {
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#title_extraction}
 	 *
-	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:titleExtraction}
-	 *
 	 * @param source The HTML or URL to process.
 	 * @param showSourceText Check this to include the source text in the response.
 	 * 
@@ -446,8 +419,6 @@ public class WatsonAlchemyLanguageConnector {
 	 * 
 	 * API Doc: {@see https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#text_cleaned}
 	 * 
-	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:textExtraction}
-	 *
 	 * @param source The HTML or URL to process.
 	 * @param cquery A visual constraint query to apply to the web page. Required when sourceText is set to cquery
 	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
@@ -474,9 +445,6 @@ public class WatsonAlchemyLanguageConnector {
 	 * Extract the main body raw text from a webpage or HTML.
 	 * 
 	 * API Doc: {@see https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#text_raw}
-	 *
-	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:rawTextExtraction}
-	 * 
 	 * 
 	 * @param source The HTML or URL to process.
 	 * 
@@ -492,8 +460,6 @@ public class WatsonAlchemyLanguageConnector {
 	 * 
 	 * API Doc: {@see https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#taxonomy}
 	 * 
-	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:taxonomy}
-	 *
 	 * @param source The HTML or URL to process.
 	 * @param cquery A visual constraint query to apply to the web page. Required when sourceText is set to cquery
 	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
@@ -518,8 +484,6 @@ public class WatsonAlchemyLanguageConnector {
 	 * 
 	 * API Doc: {@see https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#emotion_analysis}
 	 * 
-	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:emotionalAnalysis}
-	 *
 	 * @param source The HTML or URL to process.
 	 * @param cquery A visual constraint query to apply to the web page. Required when sourceText is set to cquery
 	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
@@ -543,8 +507,6 @@ public class WatsonAlchemyLanguageConnector {
 	 * methods can also be passed.
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#combined-call}
-	 *
-	 * {@sample.xml ../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:combinedCall}
 	 *
 	 * @param source The text or url to process
 	 * @param extract Comma separated list of any of the following methods: authors, concepts (default), dates,
