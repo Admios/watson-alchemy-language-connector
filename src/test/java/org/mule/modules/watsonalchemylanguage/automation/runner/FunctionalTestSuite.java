@@ -32,13 +32,25 @@ import org.mule.modules.watsonalchemylanguage.automation.functional.TypedRelatio
 import org.mule.modules.watsonalchemylanguage.automation.unit.CommonHandlerTest;
 
 @RunWith(Suite.class)
-@SuiteClasses({ CommonHandlerTest.class, EntitiesTestCases.class, ConceptsTestCases.class,
-		TargetedSentimentTestCases.class, RelationsTestCases.class,
-		DateExtractionTestCases.class, FeedDetectionTestCases.class, KeywordsTestCases.class,
-		AuthorsTestCases.class, SentimentAnalysisTestCases.class, TypedRelationsTestCases.class,
-		TitleExtractionTestCases.class, LanguageDetectionTestCases.class, MicroformatsTestCases.class,
-		PublicationDateTestCases.class, CombinedCallTestCases.class,
-		EmotionAnalysisTestCases.class, TaxonomiesTestCases.class, RawTextExtractionTestCases.class,
+@SuiteClasses({ CommonHandlerTest.class,
+		EntitiesTestCases.class,
+		ConceptsTestCases.class,
+		TargetedSentimentTestCases.class,
+		RelationsTestCases.class,
+		DateExtractionTestCases.class,
+		FeedDetectionTestCases.class,
+		KeywordsTestCases.class,
+		AuthorsTestCases.class,
+		SentimentAnalysisTestCases.class,
+		TypedRelationsTestCases.class,
+		TitleExtractionTestCases.class,
+		LanguageDetectionTestCases.class,
+		MicroformatsTestCases.class,
+		PublicationDateTestCases.class,
+		CombinedCallTestCases.class,
+		EmotionAnalysisTestCases.class,
+		TaxonomiesTestCases.class,
+		RawTextExtractionTestCases.class,
 		TextExtractionTestCases.class })
 public class FunctionalTestSuite {
 

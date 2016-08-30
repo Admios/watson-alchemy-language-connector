@@ -3,23 +3,18 @@
  */
 package org.mule.modules.watsonalchemylanguage.automation.functional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
-import org.mule.modules.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
-import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Entities;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Entity;
 
-public class EntitiesTestCases extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
-
-	public EntitiesTestCases() {
-		super(WatsonAlchemyLanguageConnector.class);
-	}
+public class EntitiesTestCases extends AbstractTestCases {
 
 	@Test
 	public void testWithText() {

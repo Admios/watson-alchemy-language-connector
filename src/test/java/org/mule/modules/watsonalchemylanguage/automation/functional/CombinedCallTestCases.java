@@ -9,16 +9,10 @@ import static org.junit.Assert.assertNotNull;
 import java.text.SimpleDateFormat;
 
 import org.junit.Test;
-import org.mule.modules.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
-import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
 import com.ibm.watson.developer_cloud.alchemy.v1.model.CombinedResults;
 
-public class CombinedCallTestCases extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
-
-	public CombinedCallTestCases() {
-		super(WatsonAlchemyLanguageConnector.class);
-	}
+public class CombinedCallTestCases extends AbstractTestCases {
 
 	@Test
 	public void testWithURL() {

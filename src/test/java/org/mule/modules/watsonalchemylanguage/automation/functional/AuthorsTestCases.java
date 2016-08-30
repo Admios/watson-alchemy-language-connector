@@ -3,18 +3,14 @@
  */
 package org.mule.modules.watsonalchemylanguage.automation.functional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
+
 import org.junit.Test;
-import org.mule.modules.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
-import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
 import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentAuthors;
 
-public class AuthorsTestCases extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
-
-	public AuthorsTestCases() {
-		super(WatsonAlchemyLanguageConnector.class);
-	}
+public class AuthorsTestCases extends AbstractTestCases {
 
 	@Test
 	public void testWithURL() {

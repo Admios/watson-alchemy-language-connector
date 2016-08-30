@@ -4,23 +4,18 @@
 package org.mule.modules.watsonalchemylanguage.automation.functional;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertTrue;
 
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
-import org.mule.modules.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
-import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
 import com.ibm.watson.developer_cloud.alchemy.v1.model.TypedRelation;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.TypedRelations;
 
-public class TypedRelationsTestCases extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
-
-	public TypedRelationsTestCases() {
-		super(WatsonAlchemyLanguageConnector.class);
-	}
+public class TypedRelationsTestCases extends AbstractTestCases {
 
 	@Test
 	public void testWithURLCustomModel() {

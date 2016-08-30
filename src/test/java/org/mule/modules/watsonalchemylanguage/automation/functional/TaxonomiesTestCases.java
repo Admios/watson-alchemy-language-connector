@@ -3,23 +3,18 @@
  */
 package org.mule.modules.watsonalchemylanguage.automation.functional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
-import org.mule.modules.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
-import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Taxonomies;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Taxonomy;
 
-public class TaxonomiesTestCases extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
-
-	public TaxonomiesTestCases() {
-		super(WatsonAlchemyLanguageConnector.class);
-	}
+public class TaxonomiesTestCases extends AbstractTestCases {
 
 	@Test
 	public void testWithURL() {

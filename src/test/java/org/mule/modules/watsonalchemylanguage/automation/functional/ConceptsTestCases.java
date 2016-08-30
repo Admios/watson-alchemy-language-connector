@@ -10,17 +10,11 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
-import org.mule.modules.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
-import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Concept;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Concepts;
 
-public class ConceptsTestCases extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
-
-	public ConceptsTestCases() {
-		super(WatsonAlchemyLanguageConnector.class);
-	}
+public class ConceptsTestCases extends AbstractTestCases {
 
 	@Test
 	public void testWithText() {

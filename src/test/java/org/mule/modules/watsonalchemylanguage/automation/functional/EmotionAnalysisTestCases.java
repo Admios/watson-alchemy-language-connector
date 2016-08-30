@@ -8,16 +8,10 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
-import org.mule.modules.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
-import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
 import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentEmotion;
 
-public class EmotionAnalysisTestCases extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
-	
-	public EmotionAnalysisTestCases() {
-		super(WatsonAlchemyLanguageConnector.class);
-	}
+public class EmotionAnalysisTestCases extends AbstractTestCases {
 	
 	@Test
 	public void testWithURL() {

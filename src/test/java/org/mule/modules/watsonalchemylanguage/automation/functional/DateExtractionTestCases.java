@@ -7,16 +7,10 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
-import org.mule.modules.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
-import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Dates;
 
-public class DateExtractionTestCases extends AbstractTestCase<WatsonAlchemyLanguageConnector>{
-	
-	public DateExtractionTestCases(){
-		super(WatsonAlchemyLanguageConnector.class);
-	}
+public class DateExtractionTestCases extends AbstractTestCases {
 	
 	@Test
 	public void getDatesUsingText() {

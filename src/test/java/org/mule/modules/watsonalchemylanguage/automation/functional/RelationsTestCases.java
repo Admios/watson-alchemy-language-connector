@@ -8,16 +8,10 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-import org.mule.modules.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
-import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
 import com.ibm.watson.developer_cloud.alchemy.v1.model.SAORelations;
 
-public class RelationsTestCases extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
-
-	public RelationsTestCases() {
-		super(WatsonAlchemyLanguageConnector.class);
-	}
+public class RelationsTestCases extends AbstractTestCases {
 
 	@Test
 	public void relationTestUsingURL() {
@@ -38,7 +32,8 @@ public class RelationsTestCases extends AbstractTestCase<WatsonAlchemyLanguageCo
 
 		String text = "Angular.js has been out there for a while now and is definitely a popular option to take into"
 				+ " consideration when selecting a front end technology.";
-		SAORelations relations = getConnector().relations(text, 10, true, null, null, null, null, null, null, null, null,
+		SAORelations relations = getConnector().relations(text, 10, true, null, null, null, null, null, null, null,
+				null,
 				null, null, null, null);
 
 		assertNotNull(relations);
@@ -48,12 +43,13 @@ public class RelationsTestCases extends AbstractTestCase<WatsonAlchemyLanguageCo
 		assertEquals("Angular.js", relations.getRelations().get(0).getSubject().getText());
 		assertTrue(relations.getUrl().isEmpty());
 	}
-	
+
 	@Test
 	public void relationTestUsingTextAndDisambiguate() {
 		String text = "Angular.js has been out there for a while now and is definitely a popular option to take into"
 				+ " consideration when selecting a front end technology.";
-		SAORelations relations = getConnector().relations(text, 10, true, null, null, null, null, true, null, true, null,
+		SAORelations relations = getConnector().relations(text, 10, true, null, null, null, null, true, null, true,
+				null,
 				null, null, null, null);
 
 		assertNotNull(relations);

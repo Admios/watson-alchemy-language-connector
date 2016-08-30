@@ -3,18 +3,15 @@
  */
 package org.mule.modules.watsonalchemylanguage.automation.functional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
-import org.mule.modules.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
-import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 
 import com.ibm.watson.developer_cloud.alchemy.v1.model.DocumentText;
 
-public class TextExtractionTestCases extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
-	public TextExtractionTestCases() {
-		super(WatsonAlchemyLanguageConnector.class);
-	}
+public class TextExtractionTestCases extends AbstractTestCases {
 	
 	@Test
 	public void testWithURL() {
