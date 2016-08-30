@@ -25,7 +25,7 @@ import org.mule.modules.watsonalchemylanguage.automation.functional.RawTextExtra
 import org.mule.modules.watsonalchemylanguage.automation.functional.RelationsTestCases;
 import org.mule.modules.watsonalchemylanguage.automation.functional.SentimentAnalysisTestCases;
 import org.mule.modules.watsonalchemylanguage.automation.functional.TargetedSentimentTestCases;
-import org.mule.modules.watsonalchemylanguage.automation.functional.TaxonomyTestCases;
+import org.mule.modules.watsonalchemylanguage.automation.functional.TaxonomiesTestCases;
 import org.mule.modules.watsonalchemylanguage.automation.functional.TextExtractionTestCases;
 import org.mule.modules.watsonalchemylanguage.automation.functional.TitleExtractionTestCases;
 import org.mule.modules.watsonalchemylanguage.automation.functional.TypedRelationsTestCases;
@@ -38,7 +38,7 @@ import org.mule.modules.watsonalchemylanguage.automation.unit.CommonHandlerTest;
 		AuthorsTestCases.class, SentimentAnalysisTestCases.class, TypedRelationsTestCases.class,
 		TitleExtractionTestCases.class, LanguageDetectionTestCases.class, MicroformatsTestCases.class,
 		PublicationDateTestCases.class, CombinedCallTestCases.class,
-		EmotionAnalysisTestCases.class, TaxonomyTestCases.class, RawTextExtractionTestCases.class,
+		EmotionAnalysisTestCases.class, TaxonomiesTestCases.class, RawTextExtractionTestCases.class,
 		TextExtractionTestCases.class })
 public class FunctionalTestSuite {
 

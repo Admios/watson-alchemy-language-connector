@@ -15,9 +15,9 @@ import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Taxonomies;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Taxonomy;
 
-public class TaxonomyTestCases extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
+public class TaxonomiesTestCases extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
 
-	public TaxonomyTestCases() {
+	public TaxonomiesTestCases() {
 		super(WatsonAlchemyLanguageConnector.class);
 	}
 

@@ -300,7 +300,7 @@ public class WatsonAlchemyLanguageConnector {
 			@Optional Boolean showSourceText, @Optional Boolean keywords, @Optional Boolean entities,
 			@Optional Boolean requireEntities, @Optional Boolean coreference, @Optional Boolean disambiguate,
 			@Optional Boolean knowledgeGraph, @Optional Boolean hideLinkedData, @Optional Boolean analyzeSentiment,
-			@Optional @FriendlyName("Exclude entity from analysis") Boolean excludeEntityFromSentimentAnalysis,
+			@FriendlyName("Exclude entity from analysis") @Optional Boolean excludeEntityFromSentimentAnalysis,
 			@Optional String cquery, @Optional String xpath, @Optional String sourceText) {
 		return new RelationsHandler(config.getService(), source)
 				.addMaxRetrieve(maxRetrieve)
