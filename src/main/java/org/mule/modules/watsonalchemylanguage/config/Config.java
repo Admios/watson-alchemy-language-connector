@@ -27,7 +27,7 @@ public class Config {
 	/**
 	 * Connect, this method will use one api call to validate the api key
 	 *
-	 * @param username A apiKey
+	 * @param apiKey The API Key retrieved from IBM Bluemix that will be use in all the request.
 	 * @throws ConnectionException
 	 */
 	@Connect

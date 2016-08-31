@@ -71,7 +71,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#authors}
 	 *
 	 * @param source The HTML or url to process
-	 * @return return A list of extracted {@link DocumentAuthors}
+	 * @return Return a list of detected authors in a webpage or HTML content.
 	 */
 	@Processor
 	public DocumentAuthors authors(@Default("#[payload]") String source) {
@@ -79,7 +79,7 @@ public class WatsonAlchemyLanguageConnector {
 	}
 
 	/**
-	 * Extract entities from a text or a webpage.
+	 * Extract entities from a text, webpage or HTML content.
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#entities}
 	 *
@@ -101,7 +101,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
 	 * @param sourceText How to obtain the source text from the webpage
 	 * 
-	 * @return return {@link Entities}
+	 * @return Return a list of detected entities in a text, webpage or HTML content.
 	 */
 	@Processor
 	public Entities entities(@Default("#[payload]") String source, @Optional Integer maxRetrieve,
@@ -126,7 +126,8 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param anchorDate The date to use as "today" when interpreting phrases in the text like "next tuesday." Format:
 	 *            <code>yyyy-mm-dd hh:mm:ss</code>
 	 * @param showSourceText Check this to include the source text in the response.
-	 * @return return {@link Dates}
+	 * 
+	 * @return Return a list of detected dates in the text, webpage or HTML content.
 	 */
 	@Processor
 	public Dates dateExtraction(@Default("#[payload]") String source, @Optional String anchorDate,
@@ -143,7 +144,8 @@ public class WatsonAlchemyLanguageConnector {
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#feed-detection}
 	 *
 	 * @param url The <code>URL</code> to process.
-	 * @return return {@link Feeds}
+	 * 
+	 * @return Return a list of detected RSS/ATOM links in webpage.
 	 */
 	@Processor
 	public Feeds feedDetection(@Default("#[payload]") String url) {
@@ -166,7 +168,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
 	 * @param sourceText How to obtain the source text from the webpage
 	 * 
-	 * @return return {@link Concepts}
+	 * @return Return a list of detected high level concepts used in the text, webpage or HTML content.
 	 */
 	@Processor
 	public Concepts concepts(@Default("#[payload]") String source, @Optional Integer maxRetrieve,
@@ -205,7 +207,8 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param xpath An XPath query to apply to the web page. Required when <code>sourceText</code> is set to one of the
 	 *            XPath values.
 	 * @param sourceText How to obtain the source text from the webpage.
-	 * @return return {@link DocumentSentiment}
+	 * 
+	 * @return Return the sentiment expressed in the targeted phrase in the text, webpage or HTML content.
 	 */
 	@Processor
 	public DocumentSentiment targetedSentiment(@Default("#[payload]") String source, String target,
@@ -235,7 +238,8 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param xpath An XPath query to apply to the web page. Required when <code>sourceText</code> is set to one of the
 	 *            XPath values.
 	 * @param sourceText How to obtain the source text from the webpage.
-	 * @return return {@link Keywords}
+	 * 
+	 * @return Return a list of detected keywords in a text, webpage or HTML content.
 	 */
 	@Processor
 	public Keywords keywords(@Default("#[payload]") String source, @Optional Integer maxRetrieve,
@@ -258,7 +262,8 @@ public class WatsonAlchemyLanguageConnector {
 	 *
 	 * @param source The text, html or url to process.
 	 * @param showSourceText Check this to include the source text in the response.
-	 * @return return {@link Microformats}
+	 * 
+	 * @return Return a list of detected microformats in a text, webpage or HTML content.
 	 */
 	@Processor
 	public Microformats microformats(@Default("#[payload]") String source, @Optional Boolean showSourceText) {
@@ -274,7 +279,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param source One of these is required. Pass HTML content in html, a public facing URL in url, or plain text in
 	 *            text.
 	 * @param maxRetrieve Maximum number of relations to return (default = 50, maximum = 100)
-	 * @param showSourceText Check this to include the source text in the response.
+	 * @param showSourceText Check this to include the source text in the response
 	 * @param keywords Check this to identify keywords in detected relations. <b>This incurs an additional transaction
 	 *            charge</b>
 	 * @param entities Check this to identify named entities in detected relations. <b>This incurs an additional
@@ -293,7 +298,8 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param cquery A visual constraints query to apply to the web page. Required when sourceText is set to cquery.
 	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values.
 	 * @param sourceText How to obtain the source text from the web page.
-	 * @return return an array of detected relations.
+	 * 
+	 * @return Return a list of detected Subject-Action-Object relations in the text, webpage or HTML content.
 	 */
 	@Processor
 	public SAORelations relations(@Default("#[payload]") String source, @Optional Integer maxRetrieve,
@@ -326,7 +332,8 @@ public class WatsonAlchemyLanguageConnector {
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#publication_date}
 	 * 
 	 * @param source The HTML or url to process
-	 * @return return {@link DocumentPublicationDate}
+	 * 
+	 * @return Return the publication date of the webpage or HTML content.
 	 */
 	@Processor
 	public DocumentPublicationDate publicationDate(@Default("#[payload]") String source) {
@@ -334,7 +341,6 @@ public class WatsonAlchemyLanguageConnector {
 	}
 
 	/**
-	 * Analyze the overall sentiment of a webpage, HTML, or plain text.
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#sentiment}
 	 *
@@ -344,7 +350,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
 	 * @param sourceText How to obtain the source text from the webpage
 	 * 
-	 * @return return {@link DocumentSentiment}
+	 * @return Return the general sentiment expressed in the text, webpage or HTML content.
 	 */
 	@Processor
 	public DocumentSentiment sentimentAnalysis(@Default("#[payload]") String source, @Optional Boolean showSourceText,
@@ -362,7 +368,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param model The unique alphanumeric identifier for your custom model
 	 * @param showSourceText Check this to include the source text in the response
 	 * 
-	 * @return return {@link TypedRelations}
+	 * @return Return a list of detected Subject-Action-Object relations in the text, webpage or HTML content.
 	 */
 	@Processor
 	public TypedRelations typedRelations(@Default("#[payload]") String source, @Optional String model,
@@ -384,7 +390,7 @@ public class WatsonAlchemyLanguageConnector {
 	 *            XPath values.
 	 * @param sourceText How to obtain the source text from the webpage.
 	 * 
-	 * @return return {@link Language}
+	 * @return Return the detected languages in a text, webpage or HTML content.
 	 */
 	@Processor
 	public Language languageDetection(@Default("#[payload]") String source, @Optional Boolean showSourceText,
@@ -405,7 +411,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param source The HTML or URL to process.
 	 * @param showSourceText Check this to include the source text in the response.
 	 * 
-	 * @return return {@link DocumentTitle}
+	 * @return Return the title of the webpage or HTML content.
 	 */
 	@Processor
 	public DocumentTitle titleExtraction(@Default("#[payload]") String source, @Optional Boolean showSourceText) {
@@ -424,10 +430,9 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
 	 * @param sourceText Determines how to obtain the source text from the webpage
 	 * @param extractLinks Set this to 1 to include hyperlinks in the extracted text
-	 * @param useMetadata Set this to 0 to ignore description information in webpage metadata
+	 * @param useMetaData Set this to 0 to ignore description information in webpage metadata
 	 * 
-	 * @param useMetaData Comment for useMetaData
-	 * @return return {@link DocumentText}
+	 * @return Return the extracted text.
 	 */
 	@Processor
 	public DocumentText textExtraction(String source, @Optional String cquery,
@@ -448,7 +453,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * 
 	 * @param source The HTML or URL to process.
 	 * 
-	 * @return return {@link DocumentText}
+	 * @return Return the extracted text.
 	 */
 	@Processor
 	public DocumentText rawTextExtraction(String source) {
@@ -466,7 +471,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param sourceText Determines how to obtain the source text from the webpage
 	 * @param showSourceText Set this to 1 to include the source text in the response
 	 * 
-	 * @return return {@link Taxonomies}
+	 * @return Return a list of detected taxonomies in the text, webpage or HTML content.
 	 */
 	@Processor
 	public Taxonomies taxonomies(String source, @Optional Boolean showSourceText,
@@ -490,7 +495,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param sourceText Determines how to obtain the source text from the webpage
 	 * @param showSourceText Set this to 1 to include the source text in the response
 	 * 
-	 * @return return {@link DocumentEmotion}
+	 * @return Return a list of all the detected emotions in the text, webpage or HTML content.
 	 */
 	@Processor
 	public DocumentEmotion emotionAnalysis(String source, @Optional Boolean showSourceText,
@@ -536,7 +541,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
 	 * @param sourceText How to obtain the source text from the webpage
 	 * 
-	 * @return return {@link CombinedResults}
+	 * @return Return the combined results for all the operations specified in the extract parameter.
 	 */
 	@Processor
 	public CombinedResults combinedCall(@Default("#[payload]") String source, @Optional String extract,
