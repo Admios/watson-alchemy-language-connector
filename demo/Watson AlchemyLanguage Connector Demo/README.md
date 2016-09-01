@@ -310,7 +310,7 @@ Run the demo project and in the browser hit - **http://localhost:8081/get-entiti
 
 - **PostIssueOnSupportSystemFlow**
 
-Run the demo project and do a POST requesto to **http://localhost:8081/get-entities?source=[TEXT_OR_URL]**:
+Run the demo project and do a POST requesto to **http://localhost:8081/issue?user=[USERNAME]&description=[DESCRIPTION]**:
 
 **Input**: POST - http://localhost:8081/issue?user=test&description=IBM Watson is a great tool for text recongnition
 
