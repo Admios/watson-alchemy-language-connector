@@ -1,117 +1,99 @@
 ////
-Watson - Alchemy language Connector User Guide.
+The following is the approved connector user guide template for documenting MuleSoft Supported Connectors.
 ////
 
-= IBM Watson - Alchemy language Connector
-
+= Watson AlchemyLanguage Connector User Guide
 :keywords: add_keywords_separated_by_commas
-:imagesdir: ./images
+:imagesdir: ./_images
 :toc: macro
-:toclevels: 3
+:toclevels: 2
+////
+Image names follow "image:". Identify images using the connector name, preferably without the word "connector"
+URLs should always follow "link:"
+////
+
+// Dropdown for Connector Version
+//  Children: Technical Reference / Demos
 
 toc::[]
 
-//Global rule: the word "connector" should be lower case except when appearing in titles, important URL anchors, and after a MuleSoft tradename such as "Anypoint".
+
 == Introduction
-AlchemyLanguage is a collection of text analysis functions that derive semantic information from your content.
-You can input text, HTML, or a public URL and leverage sophisticated natural language processing techniques to
-get a quick high-level understanding of your content and obtain detailed insights such as directional sentiment from entity to object.
-With this connector you have full access to AlchemyLanguage methods.
 
+AlchemyLanguage is a collection of text analysis functions that derive semantic information from your content. You can input text, HTML, or a public URL and leverage sophisticated natural language processing techniques to get a quick high-level understanding of your content and obtain detailed insights such as directional sentiment from entity to object.
 
-Read through this user guide to understand how to set up and configure a basic flow using the connector.
-Check features, compatibility and versions of the connector using the https://github.com/Admios/watson-alchemy-language-connector/blob/master/CHANGELOG.md[Release Notes].
-Connector API link:apidocs/watson-alchemy-language-apidoc.adoc[API Reference] or check our link:/demo_app[demo applications].
+Read through this user guide to understand how to set up and configure a basic flow using the connector. Track feature additions, compatibility, limitations and API version updates with each release of the connector using the link:release-notes.html[Connector Release Notes]. Review the connector operations and functionality using the link:../demo/Watson%20AlchemyLanguage%20Connector%20Demo[demo application].
+
+MuleSoft maintains this connector under the link:https://docs.mulesoft.com/mule-user-guide/v/3.8/anypoint-connectors#connector-categories[Certified] support policy.
+
 
 == Prerequisites
-* Anypoint Studio 6.0.x
-* Oracle Java JDK 7.0
 
-=== Extensions for Anypoint Studio
-* Anypoint DevKit 1.1.4+
-* Mule Server Runtime 3.8.0 EE
-
-* Already have an account in IMB Bluemix, you may create it https://www.ibm.com/account/us-en/[here].
-* Have an Watson API Key for Alchemy Language https://new-console.ng.bluemix.net/dashboard/watson[Watson page].
+This document assumes that you are familiar with Mule,
+link:https://docs.mulesoft.com/mule-user-guide/v/3.8/anypoint-connectors[Anypoint Connectors], and
+link:https://docs.mulesoft.com/mule-fundamentals/v/3.8/anypoint-studio-essentials[Anypoint Studio Essentials]. To increase your familiarity with Studio, consider completing a link:https://docs.mulesoft.com/mule-fundamentals/v/3.8/basic-studio-tutorial[Anypoint Studio Tutorial]. This page requires some basic knowledge of link:https://docs.mulesoft.com/mule-fundamentals/v/3.8/mule-concepts[Mule Concepts], link:https://docs.mulesoft.com/mule-fundamentals/v/3.8/elements-in-a-mule-flow[Elements in a Mule Flow], and link:https://docs.mulesoft.com/mule-fundamentals/v/3.8/global-elements[Global Elements].
 
 
-== Install the Connector
+[[requirements]]
+=== Hardware and Software Requirements
 
-=== Inside Anypoint Studio
-You can install the connector in Anypoint Studio using the menu option inside Anypoint Studio,
-Just click on Help -> Install New Software
-
-. In field *works with* select: _Anypoint Connectors Update Site_
-. In the dropdown *Select* look for _Watson IBM Alchemy Language Connector_
-. Check the box.
-. Click next to review the software to install
-. Click next to accept the license
-. Choose _I accept the terms of the license agreement_.
-. Click Finish
-
-Is prefer to restart Anypoint Studio after the install.
-
-=== Use Exchange site
-
-== Use the connector in a project
-
-=== Setting up the project
-Create a new Mule Project by clicking on "File > New > Mule Project".
-
-image::user-guide-00.png[Create Project]
-In the new project dialog box, the only thing you are required to enter is the name of the project.
-You can click on "Next" to go through the rest of pages.
-
-image::user-guide-01.png[Create Project]
-Now to test our connector we need to create a HTTP flow.
-
-In the Mule Palette, select connectors and drag and drop HTTP Connector in to the flow designer.
-
-image::user-guide-02.png[Select HTTP connector]
-First we need to config the HTTP request service before using it. Click on the http connector and later in the HTTP tab below.
-
-image::user-guide-03.png[Select Http tab]
-when the configuration view appear, click on the green plus icon in the right of the field "Connector Configuration."
-Just set the port to 8080 or any number of your preference. Save by click OK.
+For hardware and software requirements, please visit the link:https://docs.mulesoft.com/mule-user-guide/v/3.8/hardware-and-software-requirements[Hardware and Software Requirements] page.
 
 
-image::user-guide-04.png[save port 8080]
-Back in the Http configuration tab; select Basic Settings -> Path. Write _/watson_
-This is for url path of the endpoint to be listen for Anypoint.
-Should look like this.
 
-image::user-guide-05.png[http configuration]
+=== Compatibility
+[width="100%", cols=",", options="header"]
+|===
+|Software |Version
+|Mule Runtime |3.6
+|Watson AlchemyLanguage |v1
+|===
 
+== Installing the Connector
 
-=== Configure the Connector Global Element
+You can install the connector in Anypoint Studio using the instructions in
+link:https://docs.mulesoft.com/mule-fundamentals/v/3.8/anypoint-exchange#installing-a-connector-from-anypoint-exchange[Installing a Connector from Anypoint Exchange].
 
-From the Mule Palette - Connectors drag and drop IBM Watson Text Processors.
+== Configuring the Connector Global Element
 
-To use the IBM Watson connector in your Mule application, you must configure the basic connector configuration.
-Select the IBM Watson Text Processor tab
+To use the Watson AlchemyLanguage connector in your Mule application, you must configure a global Watson AlchemyLanguage element that can be used by the Watson AlchemyLanguage connector (read more about  link:https://docs.mulesoft.com/mule-fundamentals/v/3.8/global-elements[Global Elements]). The Watson AlchemyLanguage connector offers the following global configuration(s), requiring the following credentials: *Api Key*:
 
-image::user-guide-06.png[Add watson connector]
-. Click in the green plus sign
-. Add your API Key from IBM Bluemix/Watson
-. Test Connection
+[width="100a",cols="50a,50a",options="header",]
+|===
+|Field |Description
+|*Api Key* |Enter the API Key retrieved from IBM Bluemix that will be used in all the request.
+|===
 
-image::user-guide-07.png[Add API Key]
-You should receive a successful message after connection test. Click Ok to save the Watson Configuration.
+image::watson-alchemy-language-global-element-props.png[watson-alchemy-language-config]
 
-To Test the Connector we will use the method Language Detection.
+== Using the Connector
 
-. Select Language Detection from the operations drop-down list.
-. Add some text in the source field. e.g. Miércoles 3 de agosto de 2016
-. Add an _Object to JSON_ Transformer after the Watson Connector.
-. Start the server doing right click and then click in the green play button
+=== Connector Namespace and Schema
 
-image::user-guide-08.png[Start the server]
-When the console finish it will show some message like *Application testwatson default deployed*
+When designing your application in Studio, the act of dragging the connector from the palette onto the Anypoint Studio canvas should automatically populate the XML code with the connector *namespace* and *schema location*.
 
-Now is time to go to a web browser and enter the url we previously configure: _http://localhost:8080/watson_
+*Namespace:* `http://www.mulesoft.org/schema/mule/watson-alchemy-language`
 
-image::user-guide-09.png[Check connector output]
-Congratulations you have completed the Quick Start Guide.
+*Schema Location:* `http://www.mulesoft.org/schema/mule/connector/current/mule-connector.xsd`
+
+[TIP]
+If you are manually coding the Mule application in Studio's XML editor or other text editor, define the namespace and schema location in the header of your *Configuration XML*, inside the `<mule>` tag.
+
+[source, xml,linenums]
+----
+<mule xmlns="http://www.mulesoft.org/schema/mule/core"
+      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+      xmlns:watson-alchemy-language="http://www.mulesoft.org/schema/mule/watson-alchemy-language"
+      xsi:schemaLocation="
+               http://www.mulesoft.org/schema/mule/core
+               http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+               http://www.mulesoft.org/schema/mule/watson-alchemy-language http://www.mulesoft.org/schema/mule/watson-alchemy-language/current/mule-watson-alchemy-language.xsd">
+
+      <!-- put your global configuration elements and flows here -->
+
+</mule>
+----
+
 
 === Using the Connector in a Mavenized Mule App
 
@@ -122,10 +104,181 @@ If you are coding a Mavenized Mule application, this XML snippet must be include
 <dependency>
 	<groupId>com.admios.connector</groupId>
 	<artifactId>watson-alchemy-language-connector</artifactId>
-	<version>1.0.0-SNAPSHOT</version>
+	<version>1.0.0</version>
 </dependency>
 ----
 
-== Technical Reference
+[TIP]
+====
+Inside the `<version>` tags, put the desired version number, the word `RELEASE` for the latest release, or `SNAPSHOT` for the latest available version. The available versions to date are:
 
-For technical reference or API Reference check the link link:apidocs/watson-alchemy-language-apidoc.adoc[API Reference].
+* *1.0.0*
+====
+
+
+== Demo Mule Applications Using Connector
+link:../demo/Watson%20AlchemyLanguage%20Connector%20Demo[Demo Application]
+
+
+=== Example Use Case
+
+* Modernize a legacy support system, preprocessing the customer request with Watson to classify it and add valuable information before it’s created in the support system.
+* Make a batch application that ingests tweets from the company twitter account and then analyzes their sentiment and keywords in order to get statistics about your social presence and save this data in a monitoring system.
+
+==== Legacy Modernization
+* Create a new *Mule Project*.
+* In the Mule Palette, select connectors and drag and drop *HTTP Connector* in to the flow designer.
+* First we need to config the HTTP request service before using it. Click on the http connector and later in the HTTP tab below.
+
+image::user-guide-01.png[Select Http tab]
+
+* Add a new HTTP Listener Configuration and set the port to 8081, back into the http connector set the *Path* and *Allowed Configuration* to "/issue" and "POST".
+
+image::user-guide-02.png[Http tab]
+
+* In the Mule Palette, select connectors and drag and drop *Watson AlchemyLanguage Service* in to the flow designer, then create a new configuration and set your *Api Key* from your Bluemix account, after that set the *Extract, Source and Sentiment* to "doc-sentiment,entities,keywords",  #[message.inboundProperties.'http.query.params'.description] and 1 respectively.
+
+image::user-guide-03.png[Http tab]
+
+* Then you can add a *Transform Message* and an another flow to save the results in you external system.
+
+image::user-guide-04.png[Http tab]
+
+* Finally you can try the demo making a POST requesto to *http://localhost:8081/issue?user=test&description=IBM Watson is a great tool for text recongnition*:
+
+[source,javascript]
+----
+{
+  "description": "IBM Watson is a great tool for text recongnition",
+  "sentiment": "POSITIVE",
+  "user": "test",
+  "keywords": [
+    {
+      "sentiment": {
+        "mixed": null,
+        "type": "POSITIVE",
+        "score": 0.7915
+      },
+      "totalTransactions": null,
+      "language": null,
+      "relevance": 0.912319,
+      "url": null,
+      "knowledgeGraph": null,
+      "text": "IBM Watson"
+    },
+    {
+      "sentiment": {
+        "mixed": null,
+        "type": "POSITIVE",
+        "score": 0.7915
+      },
+      "totalTransactions": null,
+      "language": null,
+      "relevance": 0.755268,
+      "url": null,
+      "knowledgeGraph": null,
+      "text": "great tool"
+    },
+    {
+      "sentiment": {
+        "mixed": null,
+        "type": "POSITIVE",
+        "score": 0.7915
+      },
+      "totalTransactions": null,
+      "language": null,
+      "relevance": 0.742875,
+      "url": null,
+      "knowledgeGraph": null,
+      "text": "text recongnition"
+    }
+  ],
+  "entities": [
+    {
+      "sentiment": {
+        "mixed": null,
+        "type": "POSITIVE",
+        "score": 0.7915
+      },
+      "totalTransactions": null,
+      "disambiguated": null,
+      "quotations": null,
+      "count": 2,
+      "type": "Company",
+      "relevance": 0.33,
+      "knowledgeGraph": null,
+      "text": "IBM Watson"
+    }
+  ]
+}
+----
+
+=== Example Use Case - XML
+
+Paste this into Anypoint Studio to interact with the example use case application discussed in this guide.
+
+[source,xml,linenums]
+----
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw"
+	xmlns:twitter="http://www.mulesoft.org/schema/mule/twitter"
+	xmlns:batch="http://www.mulesoft.org/schema/mule/batch" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking"
+	xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:watson-alchemy-language="http://www.mulesoft.org/schema/mule/watson-alchemy-language"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/watson-alchemy-language http://www.mulesoft.org/schema/mule/watson-alchemy-language/current/mule-watson-alchemy-language.xsd
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
+http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/batch/current/mule-batch.xsd">
+	<http:listener-config name="HTTP_Listener_Configuration"
+		host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration" />
+	<watson-alchemy-language:watson-alchemylanguage-config
+		name="Watson_AlchemyLanguage_Service__Watson_AlchemyLanguage_Configuration"
+		apiKey="${watson.apikey}"
+		doc:name="Watson AlchemyLanguage Service: Watson AlchemyLanguage Configuration" />
+	<flow name="PostIssueOnSupportSystem">
+		<http:listener config-ref="HTTP_Listener_Configuration"
+			path="/issue" allowedMethods="POST" doc:name="HTTP" />
+		<watson-alchemy-language:combined-call
+			config-ref="Watson_AlchemyLanguage_Service__Watson_AlchemyLanguage_Configuration"
+			extract="doc-sentiment,entities,keywords"
+			source="#[message.inboundProperties.'http.query.params'.description]"
+			sentiment="1" doc:name="Get Combined Results" />
+		<dw:transform-message doc:name="Generate Response">
+			<dw:input-payload doc:sample="sample_data/CombinedResults.dwl" />
+			<dw:set-payload><![CDATA[%dw 1.0
+%output application/json
+---
+{
+	description: inboundProperties."http.query.params".description,
+	sentiment: payload.sentiment.type,
+	user: inboundProperties."http.query.params".user,
+	keywords: payload.keywords,
+	entities: payload.entities
+}]]></dw:set-payload>
+		</dw:transform-message>
+		<flow-ref name="CreateNewTickectInSupportSystem" doc:name="CreateNewTickectInSupportSystem" />
+	</flow>
+	<sub-flow name="CreateNewTickectInSupportSystem">
+		<logger message="#[payload]" level="INFO" doc:name="Logger" />
+	</sub-flow>
+</mule>
+
+----
+
+
+== Connector Performance
+
+To define the pooling profile for the connector manually, access the *Pooling Profile* tab in the applicable global element for the connector.
+
+For background information on pooling, see link:https://docs.mulesoft.com/mule-user-guide/v/3.8/tuning-performance[Tuning Performance].
+
+== Resources
+
+* Access the link:release-notes.html[Watson AlchemyLanguage Connector Release Notes].
