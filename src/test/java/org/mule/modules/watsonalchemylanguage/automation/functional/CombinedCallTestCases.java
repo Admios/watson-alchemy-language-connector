@@ -9,6 +9,7 @@ import static org.junit.Assert.assertNotNull;
 import java.text.SimpleDateFormat;
 
 import org.junit.Test;
+import org.mule.modules.watsonalchemylanguage.model.CombinedCallRequest;
 
 import com.ibm.watson.developer_cloud.alchemy.v1.model.CombinedResults;
 
@@ -16,8 +17,8 @@ public class CombinedCallTestCases extends AbstractTestCases {
 
 	@Test
 	public void testWithURL() {
-		CombinedResults results = getConnector().combinedCall(TestDataBuilder.TEST_URL_BLOG, "title,pub-date", 10,
-				null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+		
+		CombinedResults results = getConnector().combinedCall(buildTestRequest());
 
 		assertNotNull(results);
 		assertNotNull(results.getTitle());
@@ -26,6 +27,16 @@ public class CombinedCallTestCases extends AbstractTestCases {
 		assertNotNull(results.getPublicationDate());
 		assertEquals(TestDataBuilder.TEST_URL_BLOG_PUBLICATION_DATE,
 				new SimpleDateFormat("yyyyMMdd").format(results.getPublicationDate().getDate()));
+	}
+	
+	private CombinedCallRequest buildTestRequest() {
+		CombinedCallRequest testCombinedCallRequest;
+		testCombinedCallRequest = new CombinedCallRequest();
+		testCombinedCallRequest.setSource(TestDataBuilder.TEST_URL_BLOG);
+		testCombinedCallRequest.setExtract("title,pub-date");
+		testCombinedCallRequest.setMaxRetrieve(10);
+		
+		return testCombinedCallRequest;
 	}
 
 }

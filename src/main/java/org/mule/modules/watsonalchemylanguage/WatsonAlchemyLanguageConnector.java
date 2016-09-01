@@ -29,6 +29,7 @@ import org.mule.modules.watsonalchemylanguage.handler.implementation.TaxonomyHan
 import org.mule.modules.watsonalchemylanguage.handler.implementation.TextExtractionHandler;
 import org.mule.modules.watsonalchemylanguage.handler.implementation.TitleExtractionHandler;
 import org.mule.modules.watsonalchemylanguage.handler.implementation.TypedRelationsHandler;
+import org.mule.modules.watsonalchemylanguage.model.CombinedCallRequest;
 
 import com.ibm.watson.developer_cloud.alchemy.v1.model.CombinedResults;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Concepts;
@@ -505,58 +506,38 @@ public class WatsonAlchemyLanguageConnector {
 				.addShowSourceText(showSourceText)
 				.addSourceText(sourceText)
 				.addXpath(xpath).execute();
-	}
-
+	}	
+	
+	
 	/**
 	 * Analyze text, HTML, or webpage content with multiple text analysis operations. Any parameters for the extract
 	 * methods can also be passed.
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#combined-call}
-	 *
-	 * @param source The text or url to process
-	 * @param extract Comma separated list of any of the following methods: authors, concepts (default), dates,
-	 *            doc-emotion, entities (default), feeds, keywords (default), pub-date, relations, typed-rels,
-	 *            doc-sentiment, taxonomy (default), title
-	 * @param maxRetrieve Maximum number of entities to return (default = 50)
-	 * @param anchorDate The date to use as "today" when interpreting phrases in the text like "next tuesday.". Format:
-	 *            yyyy-mm-dd hh:mm:ss
-	 * @param keywords Check this to identify keywords in detected relations. <b>This incurs an additional transaction
-	 *            charge</b>
-	 * @param entities Check this to identify named entities in detected relations. <b>This incurs an additional
-	 *            transaction charge.</b>
-	 * @param requireEntities Check this to restrict results to relations that contain at least one named entity.
-	 * @param coreference Set this to 0 to treat coreferences as separate entities (coreferences are resolved into
-	 *            detected entities by default)
-	 * @param disambiguate Set this to 0 to hide entity disambiguation information in the response
-	 * @param knowledgeGraph Set this to 1 to include knowledge graph information in the results. This incurs an
-	 *            additional transaction charge
-	 * @param linkedData Set this to 0 to hide Linked Data content links in the response
-	 * @param quotations Set this to 1 to include quotations that are linked to detected entities
-	 * @param sentiment Set this to 1 to analyze the sentiment towards each detected entity. This incurs an additional
-	 *            transaction charge
-	 * @param showSourceText Set this to 1 to include the source text in the response
-	 * @param structuredEntities Set this to 0 to ignore structured entities, such as Quantity, EmailAddress,
-	 *            TwitterHandle, Hashtag, and IPAddress
-	 * @param cquery A visual constraints query to apply to the web page. Required when sourceText is set to cquery
-	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
-	 * @param sourceText How to obtain the source text from the webpage
+	 * 
+	 * @param request Request with all the options for a combine call operation.
 	 * 
 	 * @return Return the combined results for all the operations specified in the extract parameter.
 	 */
 	@Processor
-	public CombinedResults combinedCall(@Default("#[payload]") String source, @Optional String extract,
-			@Optional Integer maxRetrieve, @Optional Boolean keywords, @Optional Boolean entities,
-			@Optional Boolean requireEntities, @Optional Integer coreference, @Optional Integer disambiguate,
-			@Optional Integer knowledgeGraph, @Optional Integer linkedData, @Optional Integer quotations,
-			@Optional Integer sentiment, @Optional Boolean showSourceText, @Optional Integer structuredEntities,
-			@Optional String anchorDate, @Optional String cquery, @Optional String xpath, @Optional String sourceText) {
-
-		return new CombinedCallHandler(config.getService(), source).addExtract(extract).addAnchorDate(anchorDate)
-				.addMaxRetrieve(maxRetrieve).addCoreference(coreference).addDisambiguate(disambiguate)
-				.setKeywords(keywords).setEntities(entities).setRequireEntities(requireEntities)
-				.addKnowledgeGraph(knowledgeGraph).addLinkedData(linkedData).addQuotations(quotations)
-				.addSentiment(sentiment).addShowSourceText(showSourceText).addStructuredEntities(structuredEntities)
-				.addCquery(cquery).addXpath(xpath).addSourceText(sourceText).execute();
+	public CombinedResults combinedCall(@Default("#[payload]") CombinedCallRequest request) {
+		return new CombinedCallHandler(config.getService(), request.getSource())
+				.addExtract(request.getExtract())
+				.addAnchorDate(request.getAnchorDate())
+				.addMaxRetrieve(request.getMaxRetrieve())
+				.addCoreference(request.getCoreference())
+				.addDisambiguate(request.getDisambiguate())
+				.setEntities(request.getEntities())
+				.setRequireEntities(request.getRequireEntities())
+				.addKnowledgeGraph(request.getKnowledgeGraph())
+				.addLinkedData(request.getLinkedData())
+				.addQuotations(request.getQuotations())
+				.addSentiment(request.getSentiment())
+				.addStructuredEntities(request.getStructuredEntities())
+				.addCquery(request.getCquery())
+				.addShowSourceText(request.getShowSourceText())
+				.addSourceText(request.getSourceText())
+				.addXpath(request.getXpath())
+				.execute();			
 	}
-
 }
