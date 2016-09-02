@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
+import org.mule.modules.watsonalchemylanguage.model.TaxonomiesRequest;
 
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Taxonomies;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Taxonomy;
@@ -18,7 +19,7 @@ public class TaxonomiesTestCases extends AbstractTestCases {
 
 	@Test
 	public void testWithURL() {
-		Taxonomies taxonomies = getConnector().taxonomies(TestDataBuilder.TEST_URL_BLOG, null, null, null, null);
+		Taxonomies taxonomies = getConnector().taxonomies(buildBasicRequest());
 
 		assertNotNull(taxonomies);
 		assertEquals(TestDataBuilder.TEST_URL_BLOG, taxonomies.getUrl());
@@ -36,5 +37,9 @@ public class TaxonomiesTestCases extends AbstractTestCases {
 		}
 		assertEquals(String.format("The response doesn't contains all the expect taxonomies: %s", flatTaxonomies),
 				taxonomiesExpected.length, cont);
+	}
+
+	private TaxonomiesRequest buildBasicRequest() {
+		return new TaxonomiesRequest(TestDataBuilder.TEST_URL_BLOG);
 	}
 }

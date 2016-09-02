@@ -30,6 +30,9 @@ import org.mule.modules.watsonalchemylanguage.handler.implementation.TextExtract
 import org.mule.modules.watsonalchemylanguage.handler.implementation.TitleExtractionHandler;
 import org.mule.modules.watsonalchemylanguage.handler.implementation.TypedRelationsHandler;
 import org.mule.modules.watsonalchemylanguage.model.CombinedCallRequest;
+import org.mule.modules.watsonalchemylanguage.model.SentimentAnalysisRequest;
+import org.mule.modules.watsonalchemylanguage.model.TargetedSentimentRequest;
+import org.mule.modules.watsonalchemylanguage.model.TaxonomiesRequest;
 import org.mule.modules.watsonalchemylanguage.model.TextExtractionRequest;
 import org.mule.modules.watsonalchemylanguage.model.TitleExtractionRequest;
 import org.mule.modules.watsonalchemylanguage.model.TypedRelationsRequest;
@@ -200,30 +203,18 @@ public class WatsonAlchemyLanguageConnector {
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#targeted-sentiment}
 	 *
-	 * @param source The text, HTML or URL to process.
-	 * @param target Target phrase. The service will return sentiment information for the phrase that is found in the
-	 *            source text.
-	 * @param target Target phrase. The service will return sentiment information for the phrase that is found in the
-	 *            source text.
-	 * @param showSourceText Check this to include the source text in the response.
-	 * @param cquery A visual constraints query to apply to the web page. Required when <code>sourceText</code> is set
-	 *            to cquery.
-	 * @param xpath An XPath query to apply to the web page. Required when <code>sourceText</code> is set to one of the
-	 *            XPath values.
-	 * @param sourceText How to obtain the source text from the webpage.
+	 * @param request Request with all the options for the targeted sentiment operation.
 	 * 
 	 * @return Return the sentiment expressed in the targeted phrase in the text, webpage or HTML content.
 	 */
 	@Processor
-	public DocumentSentiment targetedSentiment(@Default("#[payload]") String source, String target,
-			@Optional Boolean showSourceText, @Optional String cquery, @Optional String xpath,
-			@Optional String sourceText) {
-		return new TargetedSentimentHandler(config.getService(), source)
-				.addCquery(cquery)
-				.addShowSourceText(showSourceText)
-				.addTarget(target)
-				.addXpath(xpath)
-				.addSourceText(sourceText)
+	public DocumentSentiment targetedSentiment(@Default("#[payload]") TargetedSentimentRequest request) {
+		return new TargetedSentimentHandler(config.getService(), request.getSource())
+				.addCquery(request.getCquery())
+				.addShowSourceText(request.getShowSourceText())
+				.addTarget(request.getTarget())
+				.addXpath(request.getXpath())
+				.addSourceText(request.getSourceText())
 				.execute();
 	}
 
@@ -345,22 +336,21 @@ public class WatsonAlchemyLanguageConnector {
 	}
 
 	/**
+	 * Analyze the overall sentiment of a webpage, HTML, or plain text.
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#sentiment}
 	 *
-	 * @param source The text, HTML document or url to process
-	 * @param showSourceText Check this to include the source text in the response
-	 * @param cquery A visual constraints query to apply to the web page. Required when sourceText is set to cquery
-	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
-	 * @param sourceText How to obtain the source text from the webpage
+	 * @param request Request with all the options for the sentiment analysis operation.
 	 * 
 	 * @return Return the general sentiment expressed in the text, webpage or HTML content.
 	 */
 	@Processor
-	public DocumentSentiment sentimentAnalysis(@Default("#[payload]") String source, @Optional Boolean showSourceText,
-			@Optional String cquery, @Optional String xpath, @Optional String sourceText) {
-		return new SentimentAnalysisHandler(config.getService(), source).addShowSourceText(showSourceText)
-				.addCquery(cquery).addXpath(xpath).addSourceText(sourceText).execute();
+	public DocumentSentiment sentimentAnalysis(@Default("#[payload]") SentimentAnalysisRequest request) {
+		return new SentimentAnalysisHandler(config.getService(), request.getSource())
+				.addShowSourceText(request.getShowSourceText())
+				.addCquery(request.getCquery())
+				.addXpath(request.getXpath())
+				.addSourceText(request.getSourceText()).execute();
 	}
 
 	/**
@@ -459,23 +449,18 @@ public class WatsonAlchemyLanguageConnector {
 	 * 
 	 * API Doc: {@see https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#taxonomy}
 	 * 
-	 * @param source The HTML or URL to process.
-	 * @param cquery A visual constraint query to apply to the web page. Required when sourceText is set to cquery
-	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
-	 * @param sourceText Determines how to obtain the source text from the webpage
-	 * @param showSourceText Set this to 1 to include the source text in the response
+	 * @param request Request with all the options for the taxonomies operation.
 	 * 
 	 * @return Return a list of detected taxonomies in the text, webpage or HTML content.
 	 */
 	@Processor
-	public Taxonomies taxonomies(String source, @Optional Boolean showSourceText,
-			@Optional String cquery, @Optional String xpath, @Optional String sourceText) {
-		return new TaxonomyHandler(config.getService(), source)
-				.addShowSourceText(showSourceText)
-				.addCquery(cquery)
-				.addSourceText(sourceText)
-				.addXpath(xpath)
-				.addCquery(cquery).execute();
+	public Taxonomies taxonomies(@Default("#[payload]") TaxonomiesRequest request) {
+		return new TaxonomyHandler(config.getService(), request.getSource())
+				.addShowSourceText(request.getShowSourceText())
+				.addCquery(request.getCquery())
+				.addSourceText(request.getSourceText())
+				.addXpath(request.getXpath())
+				.addCquery(request.getCquery()).execute();
 	}
 
 	/**
