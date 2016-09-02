@@ -4,52 +4,52 @@ import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
 
 /**
- * Class with all the options for the sentiment analysis operation.
+ * Class with all the options for the language detection operation.
  * 
  * @author Admios
  */
-public class SentimentAnalysisRequest {
+public class LanguageDetectionRequest {
 
 	/**
-	 * The text, HTML document or url to process
+	 * The text, HTML or URL to process.
 	 */
 	@Default("#[payload]")
 	private String source;
 
 	/**
-	 * Check this to include the source text in the response
+	 * Check this to include the source text in the response.
 	 */
 	@Optional
 	private Boolean showSourceText;
 
 	/**
-	 * A visual constraints query to apply to the web page. Required when sourceText is set to cquery
+	 * A visual constraints query to apply to the web page. Required when <code>sourceText</code> is set to cquery.
 	 */
 	@Optional
 	private String cquery;
 
 	/**
-	 * An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
+	 * An XPath query to apply to the web page. Required when <code>sourceText</code> is set to one of the XPath values.
 	 */
 	@Optional
 	private String xpath;
 
 	/**
-	 * How to obtain the source text from the webpage
+	 * How to obtain the source text from the webpage.
 	 */
 	@Optional
 	private String sourceText;
 
-	public SentimentAnalysisRequest() {
+	public LanguageDetectionRequest() {
 	}
 
-	public SentimentAnalysisRequest(String source) {
+	public LanguageDetectionRequest(String source) {
 		super();
 		this.source = source;
 	}
 
 	/**
-	 * The text, HTML document or url to process
+	 * The text, HTML or URL to process.
 	 * 
 	 * @return the source
 	 */
@@ -58,7 +58,7 @@ public class SentimentAnalysisRequest {
 	}
 
 	/**
-	 * Flag value, check this to include the source text in the response
+	 * Flag value, check this to include the source text in the response.
 	 * 
 	 * @return the showSourceText
 	 */
@@ -67,7 +67,7 @@ public class SentimentAnalysisRequest {
 	}
 
 	/**
-	 * A visual constraints query to apply to the web page. Required when sourceText is set to cquery
+	 * A visual constraints query to apply to the web page. Required when <code>sourceText</code> is set to cquery.
 	 * 
 	 * @return the cquery
 	 */
@@ -76,7 +76,7 @@ public class SentimentAnalysisRequest {
 	}
 
 	/**
-	 * An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
+	 * An XPath query to apply to the web page. Required when <code>sourceText</code> is set to one of the XPath values.
 	 * 
 	 * @return the xpath
 	 */
@@ -85,7 +85,7 @@ public class SentimentAnalysisRequest {
 	}
 
 	/**
-	 * How to obtain the source text from the webpage
+	 * How to obtain the source text from the webpage.
 	 * 
 	 * @return the sourceText
 	 */

@@ -14,36 +14,36 @@ public class TargetedSentimentRequest {
 	 * The text, HTML or URL to process.
 	 */
 	@Default("#[payload]")
-	String source;
+	private String source;
 
 	/**
 	 * Target phrase. The service will return sentiment information for the phrase that is found in the source text.
 	 */
-	String target;
+	private String target;
 
 	/**
 	 * Check this to include the source text in the response.
 	 */
 	@Optional
-	Boolean showSourceText;
+	private Boolean showSourceText;
 
 	/**
 	 * A visual constraints query to apply to the web page. Required when <code>sourceText</code> is set to cquery.
 	 */
 	@Optional
-	String cquery;
+	private String cquery;
 
 	/**
 	 * An XPath query to apply to the web page. Required when <code>sourceText</code> is set to one of the XPath values.
 	 */
 	@Optional
-	String xpath;
+	private String xpath;
 
 	/**
 	 * How to obtain the source text from the webpage.
 	 */
 	@Optional
-	String sourceText;
+	private String sourceText;
 
 	public TargetedSentimentRequest() {
 	}

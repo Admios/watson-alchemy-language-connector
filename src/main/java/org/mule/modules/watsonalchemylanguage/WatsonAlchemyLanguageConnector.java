@@ -30,6 +30,8 @@ import org.mule.modules.watsonalchemylanguage.handler.implementation.TextExtract
 import org.mule.modules.watsonalchemylanguage.handler.implementation.TitleExtractionHandler;
 import org.mule.modules.watsonalchemylanguage.handler.implementation.TypedRelationsHandler;
 import org.mule.modules.watsonalchemylanguage.model.CombinedCallRequest;
+import org.mule.modules.watsonalchemylanguage.model.LanguageDetectionRequest;
+import org.mule.modules.watsonalchemylanguage.model.MicroformatsRequest;
 import org.mule.modules.watsonalchemylanguage.model.SentimentAnalysisRequest;
 import org.mule.modules.watsonalchemylanguage.model.TargetedSentimentRequest;
 import org.mule.modules.watsonalchemylanguage.model.TaxonomiesRequest;
@@ -255,14 +257,14 @@ public class WatsonAlchemyLanguageConnector {
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#microformats}
 	 *
-	 * @param source The text, html or url to process.
-	 * @param showSourceText Check this to include the source text in the response.
+	 * @param request Request with all the options for the microformats operation.
 	 * 
 	 * @return Return a list of detected microformats in a text, webpage or HTML content.
 	 */
 	@Processor
-	public Microformats microformats(@Default("#[payload]") String source, @Optional Boolean showSourceText) {
-		return new MicroformatsHandler(config.getService(), source).addShowSourceText(showSourceText).execute();
+	public Microformats microformats(@Default("#[payload]") MicroformatsRequest request) {
+		return new MicroformatsHandler(config.getService(), request.getSource())
+				.addShowSourceText(request.getShowSourceText()).execute();
 	}
 
 	/**
@@ -374,24 +376,17 @@ public class WatsonAlchemyLanguageConnector {
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#language}
 	 *
-	 * @param source The text, HTML or URL to process.
-	 * @param showSourceText Check this to include the source text in the response.
-	 * @param cquery A visual constraints query to apply to the web page. Required when <code>sourceText</code> is set
-	 *            to cquery.
-	 * @param xpath An XPath query to apply to the web page. Required when <code>sourceText</code> is set to one of the
-	 *            XPath values.
-	 * @param sourceText How to obtain the source text from the webpage.
+	 * @param request Request with all the options for the language detection operation.
 	 * 
 	 * @return Return the detected languages in a text, webpage or HTML content.
 	 */
 	@Processor
-	public Language languageDetection(@Default("#[payload]") String source, @Optional Boolean showSourceText,
-			@Optional String cquery, @Optional String xpath, @Optional String sourceText) {
-		return new LanguageDetectionHandler(config.getService(), source)
-				.addShowSourceText(showSourceText)
-				.addCquery(cquery)
-				.addXpath(xpath)
-				.addSourceText(sourceText)
+	public Language languageDetection(@Default("#[payload]") LanguageDetectionRequest request) {
+		return new LanguageDetectionHandler(config.getService(), request.getSource())
+				.addShowSourceText(request.getShowSourceText())
+				.addCquery(request.getCquery())
+				.addXpath(request.getXpath())
+				.addSourceText(request.getSourceText())
 				.execute();
 	}
 

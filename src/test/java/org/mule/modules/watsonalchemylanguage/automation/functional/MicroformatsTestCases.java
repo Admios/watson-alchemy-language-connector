@@ -8,6 +8,7 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertNotNull;
 
 import org.junit.Test;
+import org.mule.modules.watsonalchemylanguage.model.MicroformatsRequest;
 
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Microformats;
 
@@ -16,12 +17,16 @@ public class MicroformatsTestCases extends AbstractTestCases {
 	@Test
 	public void getMicroformatsUsingURL() {
 
-		Microformats results = getConnector().microformats("http://microformats.org/wiki/hcard", null);
+		Microformats results = getConnector().microformats(buildBasicRequest());
 
 		assertNotNull(results);
 		assertEquals("http://microformats.org/wiki/hcard", results.getUrl());
 		assertFalse(results.getMicroformats().isEmpty());
 
+	}
+
+	private MicroformatsRequest buildBasicRequest() {
+		return new MicroformatsRequest("http://microformats.org/wiki/hcard", false);
 	}
 
 }
