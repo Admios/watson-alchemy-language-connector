@@ -30,6 +30,9 @@ import org.mule.modules.watsonalchemylanguage.handler.implementation.TextExtract
 import org.mule.modules.watsonalchemylanguage.handler.implementation.TitleExtractionHandler;
 import org.mule.modules.watsonalchemylanguage.handler.implementation.TypedRelationsHandler;
 import org.mule.modules.watsonalchemylanguage.model.CombinedCallRequest;
+import org.mule.modules.watsonalchemylanguage.model.TextExtractionRequest;
+import org.mule.modules.watsonalchemylanguage.model.TitleExtractionRequest;
+import org.mule.modules.watsonalchemylanguage.model.TypedRelationsRequest;
 
 import com.ibm.watson.developer_cloud.alchemy.v1.model.CombinedResults;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Concepts;
@@ -365,17 +368,15 @@ public class WatsonAlchemyLanguageConnector {
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#typed_relations}
 	 *
-	 * @param source The text, HTML document or url to process
-	 * @param model The unique alphanumeric identifier for your custom model
-	 * @param showSourceText Check this to include the source text in the response
+	 * @param request Request with all the options for the typed relations operation.
 	 * 
 	 * @return Return a list of detected Subject-Action-Object relations in the text, webpage or HTML content.
 	 */
 	@Processor
-	public TypedRelations typedRelations(@Default("#[payload]") String source, @Optional String model,
-			@Optional Boolean showSourceText) {
-		return new TypedRelationsHandler(config.getService(), source).addModel(model)
-				.addShowSourceText(showSourceText).execute();
+	public TypedRelations typedRelations(@Default("#[payload]") TypedRelationsRequest request) {
+		return new TypedRelationsHandler(config.getService(), request.getSource())
+				.addModel(request.getModel())
+				.addShowSourceText(request.getShowSourceText()).execute();
 	}
 
 	/**
@@ -409,15 +410,14 @@ public class WatsonAlchemyLanguageConnector {
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#title_extraction}
 	 *
-	 * @param source The HTML or URL to process.
-	 * @param showSourceText Check this to include the source text in the response.
+	 * @param request Request with all the options for the title extraction operation.
 	 * 
 	 * @return Return the title of the webpage or HTML content.
 	 */
 	@Processor
-	public DocumentTitle titleExtraction(@Default("#[payload]") String source, @Optional Boolean showSourceText) {
-		return new TitleExtractionHandler(config.getService(), source)
-				.addShowSourceText(showSourceText)
+	public DocumentTitle titleExtraction(@Default("#[payload]") TitleExtractionRequest request) {
+		return new TitleExtractionHandler(config.getService(), request.getSource())
+				.addShowSourceText(request.getShowSourceText())
 				.execute();
 	}
 
@@ -426,25 +426,18 @@ public class WatsonAlchemyLanguageConnector {
 	 * 
 	 * API Doc: {@see https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#text_cleaned}
 	 * 
-	 * @param source The HTML or URL to process.
-	 * @param cquery A visual constraint query to apply to the web page. Required when sourceText is set to cquery
-	 * @param xpath An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
-	 * @param sourceText Determines how to obtain the source text from the webpage
-	 * @param extractLinks Set this to 1 to include hyperlinks in the extracted text
-	 * @param useMetaData Set this to 0 to ignore description information in webpage metadata
+	 * @param request Request with all the options for the text extraction operation.
 	 * 
 	 * @return Return the extracted text.
 	 */
 	@Processor
-	public DocumentText textExtraction(String source, @Optional String cquery,
-			@Optional String xpath, @Optional String sourceText,
-			@Optional String extractLinks, @Optional String useMetaData) {
-		return new TextExtractionHandler(config.getService(), source)
-				.addCquery(cquery)
-				.addSourceText(sourceText)
-				.addXpath(xpath)
-				.addExtractLinks(extractLinks)
-				.addUseMetadata(useMetaData).execute();
+	public DocumentText textExtraction(@Default("#[payload]") TextExtractionRequest request) {
+		return new TextExtractionHandler(config.getService(), request.getSource())
+				.addCquery(request.getCquery())
+				.addSourceText(request.getSourceText())
+				.addXpath(request.getXpath())
+				.addExtractLinks(request.getExtractLinks())
+				.addUseMetadata(request.getUseMetaData()).execute();
 	}
 
 	/**
@@ -506,9 +499,8 @@ public class WatsonAlchemyLanguageConnector {
 				.addShowSourceText(showSourceText)
 				.addSourceText(sourceText)
 				.addXpath(xpath).execute();
-	}	
-	
-	
+	}
+
 	/**
 	 * Analyze text, HTML, or webpage content with multiple text analysis operations. Any parameters for the extract
 	 * methods can also be passed.
@@ -538,6 +530,6 @@ public class WatsonAlchemyLanguageConnector {
 				.addShowSourceText(request.getShowSourceText())
 				.addSourceText(request.getSourceText())
 				.addXpath(request.getXpath())
-				.execute();			
+				.execute();
 	}
 }

@@ -11,6 +11,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
+import org.mule.modules.watsonalchemylanguage.model.TypedRelationsRequest;
 
 import com.ibm.watson.developer_cloud.alchemy.v1.model.TypedRelation;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.TypedRelations;
@@ -19,7 +20,7 @@ public class TypedRelationsTestCases extends AbstractTestCases {
 
 	@Test
 	public void testWithURLCustomModel() {
-		TypedRelations typedRelations = getConnector().typedRelations(TestDataBuilder.TEST_URL_BLOG, "en-news", null);
+		TypedRelations typedRelations = getConnector().typedRelations(buildBasicRequest());
 
 		assertNotNull(typedRelations);
 		assertEquals(TestDataBuilder.TEST_URL_BLOG, typedRelations.getUrl());
@@ -36,6 +37,10 @@ public class TypedRelationsTestCases extends AbstractTestCases {
 		}
 		assertTrue(String.format("The response doesn't contains all the expect entities: %s", flatRelations),
 				cont >= expectedRelations.length);
+	}
+
+	private TypedRelationsRequest buildBasicRequest() {
+		return new TypedRelationsRequest(TestDataBuilder.TEST_URL_BLOG, "en-news", null);
 	}
 
 }
