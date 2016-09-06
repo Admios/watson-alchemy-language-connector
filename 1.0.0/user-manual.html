@@ -1,3 +1,8 @@
+<!--
+
+    (c) Copyright 2016 Admios. The software in this package is published under the terms of the CPAL v1.0 license, a copy of which has been included with this distribution in the LICENSE.md file.
+
+-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -463,7 +468,7 @@ body.book #toc,body.book #preamble,body.book h1.sect0,body.book .sect1>h2{page-b
 <p>AlchemyLanguage is a collection of text analysis functions that derive semantic information from your content. You can input text, HTML, or a public URL and leverage sophisticated natural language processing techniques to get a quick high-level understanding of your content and obtain detailed insights such as directional sentiment from entity to object.</p>
 </div>
 <div class="paragraph">
-<p>Read through this user guide to understand how to set up and configure a basic flow using the connector. Track feature additions, compatibility, limitations and API version updates with each release of the connector using the <a href="release-notes.html">Connector Release Notes</a>. Review the connector operations and functionality using the <a href="../demo/Watson%20AlchemyLanguage%20Connector%20Demo">demo application</a>.</p>
+<p>Read through this user guide to understand how to set up and configure a basic flow using the connector. Track feature additions, compatibility, limitations and API version updates with each release of the connector using the <a href="release-notes.html">Connector Release Notes</a>. Review the connector operations and functionality using the <a href="https://github.com/Admios/watson-alchemy-language-connector/tree/master/demo/Watson%20AlchemyLanguage%20Connector%20Demo">demo application</a>.</p>
 </div>
 <div class="paragraph">
 <p>MuleSoft maintains this connector under the <a href="https://docs.mulesoft.com/mule-user-guide/v/3.8/anypoint-connectors#connector-categories">Certified</a> support policy.</p>
@@ -639,7 +644,7 @@ If you are manually coding the Mule application in Studio&#8217;s XML editor or 
 <h2 id="truedemo-mule-applications-using-connector"><a class="anchor" href="#truedemo-mule-applications-using-connector"></a>Demo Mule Applications Using Connector</h2>
 <div class="sectionbody">
 <div class="paragraph">
-<p><a href="../demo/Watson%20AlchemyLanguage%20Connector%20Demo">Demo Application</a></p>
+<p><a href="https://github.com/Admios/watson-alchemy-language-connector/tree/master/demo/Watson%20AlchemyLanguage%20Connector%20Demo">Demo Application</a></p>
 </div>
 <div class="sect2">
 <h3 id="trueexample-use-case"><a class="anchor" href="#trueexample-use-case"></a>Example Use Case</h3>
@@ -688,25 +693,51 @@ If you are manually coding the Mule application in Studio&#8217;s XML editor or 
 <div class="ulist">
 <ul>
 <li>
-<p>In the Mule Palette, select connectors and drag and drop <strong>Watson AlchemyLanguage Service</strong> in to the flow designer, then create a new configuration and set your <strong>Api Key</strong> from your Bluemix account, after that set the <strong>Extract, Source and Sentiment</strong> to "doc-sentiment,entities,keywords",  #[message.inboundProperties.'http.query.params'.description] and 1 respectively.</p>
+<p>In the Mule Palette, drag and drop a <strong>Transform Message</strong> in to the flow designer, and then use the following snippet to build our request for Watson:</p>
 </li>
 </ul>
 </div>
+<div class="listingblock">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-Javascript" data-lang="Javascript">%dw 1.0
+%output application/java
+---
+{
+	extract: "doc-sentiment,entities,keywords",
+	source: inboundProperties."http.query.params".description as :string,
+	sentiment: 1
+	} as :object {
+	class : "org.mule.modules.watsonalchemylanguage.model.CombinedCallRequest"
+}</code></pre>
+</div>
+</div>
 <div class="imageblock">
 <div class="content">
-<img src="./_images/user-guide-03.png" alt="Http tab">
+<img src="./_images/user-guide-05.png" alt="Watson Request">
 </div>
 </div>
 <div class="ulist">
 <ul>
 <li>
-<p>Then you can add a <strong>Transform Message</strong> and an another flow to save the results in you external system.</p>
+<p>In the Mule Palette, select connectors and drag and drop <strong>Watson AlchemyLanguage Service</strong> in to the flow designer, then create a new configuration and set your <strong>Api Key</strong> from your Bluemix account.</p>
 </li>
 </ul>
 </div>
 <div class="imageblock">
 <div class="content">
-<img src="./_images/user-guide-04.png" alt="Http tab">
+<img src="./_images/user-guide-03.png" alt="Watson Request">
+</div>
+</div>
+<div class="ulist">
+<ul>
+<li>
+<p>Then you can add a <strong>Transform Message</strong> and an another flow to save the results in your external system.</p>
+</li>
+</ul>
+</div>
+<div class="imageblock">
+<div class="content">
+<img src="./_images/user-guide-04.png" alt="Flow Finished">
 </div>
 </div>
 <div class="ulist">
@@ -794,38 +825,36 @@ If you are manually coding the Mule application in Studio&#8217;s XML editor or 
 <div class="content">
 <pre class="highlightjs highlight"><code class="language-xml" data-lang="xml">&lt;?xml version="1.0" encoding="UTF-8"?&gt;
 
-&lt;mule xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw"
-	xmlns:twitter="http://www.mulesoft.org/schema/mule/twitter"
-	xmlns:batch="http://www.mulesoft.org/schema/mule/batch" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking"
-	xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:http="http://www.mulesoft.org/schema/mule/http"
-	xmlns:watson-alchemy-language="http://www.mulesoft.org/schema/mule/watson-alchemy-language"
-	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
-	xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+&lt;mule xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:watson-alchemy-language="http://www.mulesoft.org/schema/mule/watson-alchemy-language" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
-http://www.mulesoft.org/schema/mule/watson-alchemy-language http://www.mulesoft.org/schema/mule/watson-alchemy-language/current/mule-watson-alchemy-language.xsd
 http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
 http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
-http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
-http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/batch/current/mule-batch.xsd"&gt;
-	&lt;http:listener-config name="HTTP_Listener_Configuration"
-		host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration" /&gt;
-	&lt;watson-alchemy-language:watson-alchemylanguage-config
-		name="Watson_AlchemyLanguage_Service__Watson_AlchemyLanguage_Configuration"
-		apiKey="${watson.apikey}"
-		doc:name="Watson AlchemyLanguage Service: Watson AlchemyLanguage Configuration" /&gt;
-	&lt;flow name="PostIssueOnSupportSystem"&gt;
-		&lt;http:listener config-ref="HTTP_Listener_Configuration"
-			path="/issue" allowedMethods="POST" doc:name="HTTP" /&gt;
-		&lt;watson-alchemy-language:combined-call
-			config-ref="Watson_AlchemyLanguage_Service__Watson_AlchemyLanguage_Configuration"
-			extract="doc-sentiment,entities,keywords"
-			source="#[message.inboundProperties.'http.query.params'.description]"
-			sentiment="1" doc:name="Get Combined Results" /&gt;
-		&lt;dw:transform-message doc:name="Generate Response"&gt;
-			&lt;dw:input-payload doc:sample="sample_data/CombinedResults.dwl" /&gt;
-			&lt;dw:set-payload&gt;&lt;![CDATA[%dw 1.0
+http://www.mulesoft.org/schema/mule/watson-alchemy-language http://www.mulesoft.org/schema/mule/watson-alchemy-language/current/mule-watson-alchemy-language.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd"&gt;
+    &lt;http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/&gt;
+    &lt;watson-alchemy-language:config name="Watson_AlchemyLanguage_Service__Configuration" apiKey="${watson.apikey}" doc:name="Watson AlchemyLanguage Service: Configuration"/&gt;
+    &lt;flow name="PostIssueOnSupportSystemFlow"&gt;
+        &lt;http:listener config-ref="HTTP_Listener_Configuration" path="/issue" allowedMethods="POST" doc:name="HTTP"/&gt;
+        &lt;dw:transform-message doc:name="Build Request"&gt;
+            &lt;dw:set-payload&gt;&lt;![CDATA[%dw 1.0
+%output application/java
+---
+{
+	extract: "doc-sentiment,entities,keywords",
+	source: inboundProperties."http.query.params".description as :string,
+	sentiment: 1
+	} as :object {
+	class : "org.mule.modules.watsonalchemylanguage.model.CombinedCallRequest"
+}]]&gt;&lt;/dw:set-payload&gt;
+        &lt;/dw:transform-message&gt;
+        &lt;watson-alchemy-language:combined-call config-ref="Watson_AlchemyLanguage_Service__Configuration" doc:name="Get Combined Results"/&gt;
+        &lt;dw:transform-message doc:name="Generate Response"&gt;
+            &lt;dw:input-payload doc:sample="sample_data/CombinedResults.dwl"/&gt;
+            &lt;dw:set-payload&gt;&lt;![CDATA[%dw 1.0
 %output application/json
 ---
 {
@@ -835,12 +864,12 @@ http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/ba
 	keywords: payload.keywords,
 	entities: payload.entities
 }]]&gt;&lt;/dw:set-payload&gt;
-		&lt;/dw:transform-message&gt;
-		&lt;flow-ref name="CreateNewTickectInSupportSystem" doc:name="CreateNewTickectInSupportSystem" /&gt;
-	&lt;/flow&gt;
-	&lt;sub-flow name="CreateNewTickectInSupportSystem"&gt;
-		&lt;logger message="#[payload]" level="INFO" doc:name="Logger" /&gt;
-	&lt;/sub-flow&gt;
+        &lt;/dw:transform-message&gt;
+        &lt;flow-ref name="CreateNewTickectInSupportSystem" doc:name="CreateNewTickectInSupportSystem"/&gt;
+    &lt;/flow&gt;
+    &lt;sub-flow name="CreateNewTickectInSupportSystem"&gt;
+        &lt;logger message="#[payload]" level="INFO" doc:name="Logger"/&gt;
+    &lt;/sub-flow&gt;
 &lt;/mule&gt;</code></pre>
 </div>
 </div>
@@ -873,7 +902,7 @@ http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/ba
 </div>
 <div id="footer">
 <div id="footer-text">
-Last updated 2016-09-01 15:09:47 EST
+Last updated 2016-09-05 15:19:51 EST
 </div>
 </div>
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/8.9.1/styles/github.min.css">
