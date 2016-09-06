@@ -41,7 +41,7 @@ detected entities and keywords.
 |======================
 | Name | Java Type | Description | Default Value | Required
 |name | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | The name of this configuration. With this name can be later referenced. | | *x*{nbsp}
-| apiKey | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | ++++++ |   | *x*{nbsp}
+| apiKey | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The API Key retrieved from IBM Bluemix that will be used in all the request.+++ |   | *x*{nbsp}
 |======================
 
 
@@ -57,16 +57,10 @@ detected entities and keywords.
 
 
 +++
-Get author names from a webpage or HTML content.
+Get author names from a web page or HTML content.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#authors"> #authors </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:authors
 +++
 
-==== XML Sample
-[source,xml]
-----
-<watson-alchemy-language:authors config-ref="ref"  source="www.url.com" doc:name="Watson AlchemyLanguage Service" />
-----
 
     
     
@@ -79,7 +73,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 
 
 | 
-source icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The HTML or url to process+++ | #[payload] | {nbsp}
+source icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The HTML or URL to process+++ | #[payload] | {nbsp}
 
 
 |======================
@@ -88,7 +82,7 @@ source icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/ja
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++DocumentAuthors+++ | +++return A list of extracted DocumentAuthors+++
+|+++DocumentAuthors+++ | +++Return a list of detected authors in a web page or HTML content.+++
 |======================
 
 
@@ -103,21 +97,13 @@ source icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/ja
 
 
 +++
-Extract entities from a text or a webpage.
+Extract entities from a text, web page or HTML content.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#entities"> #entities </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:entities
 +++
 
-==== XML Sample
-[source,xml]
-----
-<watson-alchemy-language:entities config-ref="ref"
-	source="IBM Watson won the Jeopardy television show hosted by Alex Trebek"
-	maxRetrieve="5" doc:name="Watson AlchemyLanguage Service"/>
-----
 
     
-                                                    
+    
 ==== Attributes
 [cols=".^20%,.^20%,.^35%,.^20%,^.^5%", options="header"]
 |======================
@@ -127,79 +113,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 
 
 | 
-source icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The text or url to process+++ | #[payload] | {nbsp}
-
-
-
-
-| 
-maxRetrieve  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a>+++ | +++Maximum number of entities to return (default = 50)+++ |  | {nbsp}
-
-
-
-
-| 
-coreference  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a>+++ | +++Set this to 0 to treat coreferences as separate entities (coreferences are resolved into detected entities by default)+++ |  | {nbsp}
-
-
-
-
-| 
-disambiguate  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a>+++ | +++Set this to 0 to hide entity disambiguation information in the response+++ |  | {nbsp}
-
-
-
-
-| 
-knowledgeGraph  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a>+++ | +++Set this to 1 to include knowledge graph information in the results. This incurs an additional transaction charge+++ |  | {nbsp}
-
-
-
-
-| 
-linkedData  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a>+++ | +++Set this to 0 to hide Linked Data content links in the response+++ |  | {nbsp}
-
-
-
-
-| 
-quotations  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a>+++ | +++Set this to 1 to include quotations that are linked to detected entities+++ |  | {nbsp}
-
-
-
-
-| 
-sentiment  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a>+++ | +++Set this to 1 to analyze the sentiment towards each detected entity. This incurs an additional transaction charge+++ |  | {nbsp}
-
-
-
-
-| 
-showSourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Check this to include the source text in the response+++ |  | {nbsp}
-
-
-
-
-| 
-structuredEntities  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a>+++ | +++Set this to 0 to ignore structured entities, such as Quantity, EmailAddress, TwitterHandle, Hashtag, and IPAddress+++ |  | {nbsp}
-
-
-
-
-| 
-cquery  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++A visual constraints query to apply to the web page. Required when sourceText is set to cquery+++ |  | {nbsp}
-
-
-
-
-| 
-xpath  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values+++ |  | {nbsp}
-
-
-
-
-| 
-sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++How to obtain the source text from the webpage+++ |  | {nbsp}
+request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylanguage/model/EntitiesRequest.html">EntitiesRequest</a>+++ | +++Request with all the options for entities operation.+++ | #[payload] | {nbsp}
 
 
 |======================
@@ -208,7 +122,7 @@ sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Str
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++Entities+++ | +++return Entities+++
+|+++Entities+++ | +++Return a list of detected entities in a text, web page or HTML content.+++
 |======================
 
 
@@ -223,14 +137,13 @@ sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Str
 
 
 +++
-Extract Dates from a text, webpage or content in an url.
+Extract Dates from a text, web page or content in an URL.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#date-extraction"> #date-extraction </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:dateExtraction
 +++
 
 
     
-            
+    
 ==== Attributes
 [cols=".^20%,.^20%,.^35%,.^20%,^.^5%", options="header"]
 |======================
@@ -240,19 +153,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 
 
 | 
-source icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The text, html or url to process.+++ | #[payload] | {nbsp}
-
-
-
-
-| 
-anchorDate  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The date to use as "today" when interpreting phrases in the text like "next tuesday." Format: <code>yyyy-mm-dd hh:mm:ss</code>+++ |  | {nbsp}
-
-
-
-
-| 
-showSourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Check this to include the source text in the response.+++ |  | {nbsp}
+dateExtractionRequest icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylanguage/model/DateExtractionRequest.html">DateExtractionRequest</a>+++ | +++Request with all the options for a date extraction operation.+++ | #[payload] | {nbsp}
 
 
 |======================
@@ -261,7 +162,7 @@ showSourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++Dates+++ | +++return Dates+++
+|+++Dates+++ | +++Return a list of detected dates in the text, web page or HTML content.+++
 |======================
 
 
@@ -278,7 +179,6 @@ showSourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang
 +++
 Get feeds from a url.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#feed-detection"> #feed-detection </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:feedDetection
 +++
 
 
@@ -302,7 +202,7 @@ url icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++Feeds+++ | +++return Feeds+++
+|+++Feeds+++ | +++Return a list of detected RSS/ATOM links in web page.+++
 |======================
 
 
@@ -317,21 +217,13 @@ url icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/
 
 
 +++
-Extract concepts from a webpage or plain text.
+Extract concepts from a web page or plain text.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#concepts"> #concepts </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:concepts
 +++
 
-==== XML Sample
-[source,xml]
-----
-<watson-alchemy-language:concepts config-ref="ref"
-	source="IBM Watson won the Jeopardy television show hosted by Alex Trebek"
-	maxRetrieve="5" doc:name="Watson AlchemyLanguage Service"/>
-----
 
     
-                                
+    
 ==== Attributes
 [cols=".^20%,.^20%,.^35%,.^20%,^.^5%", options="header"]
 |======================
@@ -341,49 +233,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 
 
 | 
-source icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The text or url to process+++ | #[payload] | {nbsp}
-
-
-
-
-| 
-maxRetrieve  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a>+++ | +++Maximum number of entities to return (default = 50) detected entities by default)+++ |  | {nbsp}
-
-
-
-
-| 
-knowledgeGraph  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a>+++ | +++Set this to 1 to include knowledge graph information in the results. This incurs an additional transaction charge+++ |  | {nbsp}
-
-
-
-
-| 
-linkedData  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a>+++ | +++Set this to 0 to hide Linked Data content links in the response+++ |  | {nbsp}
-
-
-
-
-| 
-showSourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Check this to include the source text in the response TwitterHandle, Hashtag, and IPAddress+++ |  | {nbsp}
-
-
-
-
-| 
-cquery  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++A visual constraints query to apply to the web page. Required when sourceText is set to cquery+++ |  | {nbsp}
-
-
-
-
-| 
-xpath  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values+++ |  | {nbsp}
-
-
-
-
-| 
-sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++How to obtain the source text from the webpage+++ |  | {nbsp}
+request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylanguage/model/ConceptsRequest.html">ConceptsRequest</a>+++ | +++Request with all the options for a concept operation.+++ | #[payload] | {nbsp}
 
 
 |======================
@@ -392,7 +242,7 @@ sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Str
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++Concepts+++ | +++return Concepts+++
+|+++Concepts+++ | +++Return a list of detected high level concepts used in the text, web page or HTML content.+++
 |======================
 
 
@@ -407,15 +257,14 @@ sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Str
 
 
 +++
-Analyze sentiment for targeted phrases in a webpage, HTML, or plain text. Supported languages: Arabic, English,
+Analyze sentiment for targeted phrases in a web page, HTML, or plain text. Supported languages: Arabic, English,
 French, German, Italian, Portuguese, Russian, Spanish.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#targeted-sentiment"> #targeted-sentiment </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:targetedSentiment
 +++
 
 
     
-                        
+    
 ==== Attributes
 [cols=".^20%,.^20%,.^35%,.^20%,^.^5%", options="header"]
 |======================
@@ -425,37 +274,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 
 
 | 
-source icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The text, HTML or URL to process.+++ | #[payload] | {nbsp}
-
-
-
-
-| 
-target  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++Target phrase. The service will return sentiment information for the phrase that is found in the source text. @param target Target phrase. The service will return sentiment information for the phrase that is found in the source text.+++ |  | *x*{nbsp}
-
-
-
-
-| 
-showSourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Check this to include the source text in the response.+++ |  | {nbsp}
-
-
-
-
-| 
-cquery  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++A visual constraints query to apply to the web page. Required when <code>sourceText</code> is set to cquery.+++ |  | {nbsp}
-
-
-
-
-| 
-xpath  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++An XPath query to apply to the web page. Required when <code>sourceText</code> is set to one of the XPath values.+++ |  | {nbsp}
-
-
-
-
-| 
-sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++How to obtain the source text from the webpage.+++ |  | {nbsp}
+request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylanguage/model/TargetedSentimentRequest.html">TargetedSentimentRequest</a>+++ | +++Request with all the options for the targeted sentiment operation.+++ | #[payload] | {nbsp}
 
 
 |======================
@@ -464,7 +283,7 @@ sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Str
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++DocumentSentiment+++ | +++return DocumentSentiment+++
+|+++DocumentSentiment+++ | +++Return the sentiment expressed in the targeted phrase in the text, web page or HTML content.+++
 |======================
 
 
@@ -479,21 +298,13 @@ sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Str
 
 
 +++
-Extract keywords from a webpages, HTML or plain text.
+Extract keywords from a web pages, HTML or plain text.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#keywords"> #keywords </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:keywords
 +++
 
-==== XML Sample
-[source,xml]
-----
-<watson-alchemy-language:keywords config-ref="ref"
-	source="The polymer is made by a company called Papa from Australia"
-	maxRetrieve="10" knowledgeGraph="1" doc:name="Watson AlchemyLanguage Service"/>
-----
 
     
-                                
+    
 ==== Attributes
 [cols=".^20%,.^20%,.^35%,.^20%,^.^5%", options="header"]
 |======================
@@ -503,49 +314,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 
 
 | 
-source icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The text, HTML or URL to process.+++ | #[payload] | {nbsp}
-
-
-
-
-| 
-maxRetrieve  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a>+++ | +++Maximum number of entities to return (default = 50) detected entities by default).+++ |  | {nbsp}
-
-
-
-
-| 
-knowledgeGraph  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a>+++ | +++Set this to 1 to include knowledge graph information in the results.+++ |  | {nbsp}
-
-
-
-
-| 
-sentiment  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a>+++ | +++Set this to 1 to analyze the sentiment towards each detected entity.+++ |  | {nbsp}
-
-
-
-
-| 
-showSourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Check this to include the source text in the response.+++ |  | {nbsp}
-
-
-
-
-| 
-cquery  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++A visual constraints query to apply to the web page. Required when <code>sourceText</code> is set to cquery.+++ |  | {nbsp}
-
-
-
-
-| 
-xpath  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++An XPath query to apply to the web page. Required when <code>sourceText</code> is set to one of the XPath values.+++ |  | {nbsp}
-
-
-
-
-| 
-sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++How to obtain the source text from the webpage.+++ |  | {nbsp}
+request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylanguage/model/KeywordsRequest.html">KeywordsRequest</a>+++ | +++Request with all the options for the keywords operation.+++ | #[payload] | {nbsp}
 
 
 |======================
@@ -554,7 +323,7 @@ sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Str
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++Keywords+++ | +++return Keywords+++
+|+++Keywords+++ | +++Return a list of detected keywords in a text, web page or HTML content.+++
 |======================
 
 
@@ -569,21 +338,13 @@ sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Str
 
 
 +++
-Get Microformats from a text, webpage or content in an url.
+Get Microformats from a text, web page or content in an URL.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#microformats"> #microformats </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:microformats
 +++
 
-==== XML Sample
-[source,xml]
-----
-<watson-alchemy-language:microformats config-ref="ref"
-	source="http://microformats.org/wiki/hcard"
-	doc:name="Watson AlchemyLanguage Service"/>
-----
 
     
-        
+    
 ==== Attributes
 [cols=".^20%,.^20%,.^35%,.^20%,^.^5%", options="header"]
 |======================
@@ -593,13 +354,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 
 
 | 
-source icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The text, html or url to process.+++ | #[payload] | {nbsp}
-
-
-
-
-| 
-showSourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Check this to include the source text in the response.+++ |  | {nbsp}
+request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylanguage/model/MicroformatsRequest.html">MicroformatsRequest</a>+++ | +++Request with all the options for the microformats operation.+++ | #[payload] | {nbsp}
 
 
 |======================
@@ -608,7 +363,7 @@ showSourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++Microformats+++ | +++return Microformats+++
+|+++Microformats+++ | +++Return a list of detected microformats in a text, web page or HTML content.+++
 |======================
 
 
@@ -623,22 +378,14 @@ showSourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang
 
 
 +++
-Extract Subject-Action-Object relations from a webpage, HTML, or plain text. Supported languages: English,
+Extract Subject-Action-Object relations from a web page, HTML, or plain text. Supported languages: English,
 Spanish
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#microformats"> #microformats </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:relations
 +++
 
-==== XML Sample
-[source,xml]
-----
-<watson-alchemy-language:relations config-ref="ref"
-	source="http://www.admios.com/admios-blog/"
-	maxRetrieve="10" knowledgeGraph="true" doc:name="Watson AlchemyLanguage Service"/>
-----
 
     
-                                                            
+    
 ==== Attributes
 [cols=".^20%,.^20%,.^35%,.^20%,^.^5%", options="header"]
 |======================
@@ -648,91 +395,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 
 
 | 
-source icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++One of these is required. Pass HTML content in html, a public facing URL in url, or plain text in text.+++ | #[payload] | {nbsp}
-
-
-
-
-| 
-maxRetrieve  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a>+++ | +++Maximum number of relations to return (default = 50, maximum = 100)+++ |  | {nbsp}
-
-
-
-
-| 
-showSourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Check this to include the source text in the response.+++ |  | {nbsp}
-
-
-
-
-| 
-keywords  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Check this to identify keywords in detected relations. <b>This incurs an additional transaction charge</b>+++ |  | {nbsp}
-
-
-
-
-| 
-entities  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Check this to identify named entities in detected relations. <b>This incurs an additional transaction charge.</b>+++ |  | {nbsp}
-
-
-
-
-| 
-requireEntities  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Check this to restrict results to relations that contain at least one named entity.+++ |  | {nbsp}
-
-
-
-
-| 
-coreference  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Check this treat coreferences as separate entities (coreferences are resolved into detected entities by default).+++ |  | {nbsp}
-
-
-
-
-| 
-disambiguate  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Check this to hide entity disambiguation information in the response.+++ |  | {nbsp}
-
-
-
-
-| 
-knowledgeGraph  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Check this to include knowledge graph information in the results. <b>This incurs an additional transaction charge.</b>+++ |  | {nbsp}
-
-
-
-
-| 
-hideLinkedData  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Check this to hide Linked Data contents links in the response.+++ |  | {nbsp}
-
-
-
-
-| 
-analyzeSentiment  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Check this to analyze the sentiment towards each result.+++ |  | {nbsp}
-
-
-
-
-| 
-excludeEntityFromSentimentAnalysis  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Check this to exclude named entity text from sentiment analysis. For exapmle, do not analyze "New" in "New York".+++ |  | {nbsp}
-
-
-
-
-| 
-cquery  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++A visual constraints query to apply to the web page. Required when sourceText is set to cquery.+++ |  | {nbsp}
-
-
-
-
-| 
-xpath  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values.+++ |  | {nbsp}
-
-
-
-
-| 
-sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++How to obtain the source text from the web page.+++ |  | {nbsp}
+request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylanguage/model/SAORelationsRequest.html">SAORelationsRequest</a>+++ | +++Request with all the options for the Subject-Action-Object relations operation.+++ | #[payload] | {nbsp}
 
 
 |======================
@@ -741,7 +404,7 @@ sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Str
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++SAORelations+++ | +++return an array of detected relations.+++
+|+++SAORelations+++ | +++Return a list of detected Subject-Action-Object relations in the text, web page or HTML content.+++
 |======================
 
 
@@ -756,9 +419,8 @@ sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Str
 
 
 +++
-Get the publication date of a webpage or HTML document.
+Get the publication date of a web page or HTML document.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#publication_date"> #publication_date </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:publicationDate
 +++
 
 
@@ -773,7 +435,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 
 
 | 
-source icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The HTML or url to process+++ | #[payload] | {nbsp}
+source icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The HTML or URL to process+++ | #[payload] | {nbsp}
 
 
 |======================
@@ -782,7 +444,7 @@ source icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/ja
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++DocumentPublicationDate+++ | +++return DocumentPublicationDate+++
+|+++DocumentPublicationDate+++ | +++Return the publication date of the web page or HTML content.+++
 |======================
 
 
@@ -797,14 +459,13 @@ source icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/ja
 
 
 +++
-Analyze the overall sentiment of a webpage, HTML, or plain text.
+Analyze the overall sentiment of a web page, HTML, or plain text.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#sentiment"> #sentiment </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:sentimentAnalysis
 +++
 
 
     
-                    
+    
 ==== Attributes
 [cols=".^20%,.^20%,.^35%,.^20%,^.^5%", options="header"]
 |======================
@@ -814,31 +475,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 
 
 | 
-source icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The text, HTML document or url to process+++ | #[payload] | {nbsp}
-
-
-
-
-| 
-showSourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Check this to include the source text in the response+++ |  | {nbsp}
-
-
-
-
-| 
-cquery  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++A visual constraints query to apply to the web page. Required when sourceText is set to cquery+++ |  | {nbsp}
-
-
-
-
-| 
-xpath  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values+++ |  | {nbsp}
-
-
-
-
-| 
-sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++How to obtain the source text from the webpage+++ |  | {nbsp}
+request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylanguage/model/SentimentAnalysisRequest.html">SentimentAnalysisRequest</a>+++ | +++Request with all the options for the sentiment analysis operation.+++ | #[payload] | {nbsp}
 
 
 |======================
@@ -847,7 +484,7 @@ sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Str
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++DocumentSentiment+++ | +++return DocumentSentiment+++
+|+++DocumentSentiment+++ | +++Return the general sentiment expressed in the text, web page or HTML content.+++
 |======================
 
 
@@ -862,14 +499,13 @@ sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Str
 
 
 +++
-Use custom models to identify typed relations between detected entities from a webpage, HTML, or plain text.
+Use custom models to identify typed relations between detected entities from a web page, HTML, or plain text.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#typed_relations"> #typed_relations </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:typedRelations
 +++
 
 
     
-            
+    
 ==== Attributes
 [cols=".^20%,.^20%,.^35%,.^20%,^.^5%", options="header"]
 |======================
@@ -879,19 +515,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 
 
 | 
-source icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The text, HTML document or url to process+++ | #[payload] | {nbsp}
-
-
-
-
-| 
-model  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The unique alphanumeric identifier for your custom model+++ |  | {nbsp}
-
-
-
-
-| 
-showSourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Check this to include the source text in the response+++ |  | {nbsp}
+request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylanguage/model/TypedRelationsRequest.html">TypedRelationsRequest</a>+++ | +++Request with all the options for the typed relations operation.+++ | #[payload] | {nbsp}
 
 
 |======================
@@ -900,7 +524,7 @@ showSourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++TypedRelations+++ | +++return TypedRelations+++
+|+++TypedRelations+++ | +++Return a list of detected Subject-Action-Object relations in the text, web page or HTML content.+++
 |======================
 
 
@@ -915,14 +539,13 @@ showSourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang
 
 
 +++
-Detect the language of a webpage, HTML, or plain text.
+Detect the language of a web page, HTML, or plain text.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#language"> #language </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:languageDetection
 +++
 
 
     
-                    
+    
 ==== Attributes
 [cols=".^20%,.^20%,.^35%,.^20%,^.^5%", options="header"]
 |======================
@@ -932,31 +555,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 
 
 | 
-source icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The text, HTML or URL to process.+++ | #[payload] | {nbsp}
-
-
-
-
-| 
-showSourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Check this to include the source text in the response.+++ |  | {nbsp}
-
-
-
-
-| 
-cquery  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++A visual constraints query to apply to the web page. Required when <code>sourceText</code> is set to cquery.+++ |  | {nbsp}
-
-
-
-
-| 
-xpath  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++An XPath query to apply to the web page. Required when <code>sourceText</code> is set to one of the XPath values.+++ |  | {nbsp}
-
-
-
-
-| 
-sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++How to obtain the source text from the webpage.+++ |  | {nbsp}
+request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylanguage/model/LanguageDetectionRequest.html">LanguageDetectionRequest</a>+++ | +++Request with all the options for the language detection operation.+++ | #[payload] | {nbsp}
 
 
 |======================
@@ -965,7 +564,7 @@ sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Str
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++Language+++ | +++return Language+++
+|+++Language+++ | +++Return the detected languages in a text, web page or HTML content.+++
 |======================
 
 
@@ -980,14 +579,13 @@ sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Str
 
 
 +++
-Extract the page title from a webpage or HTML.
+Extract the page title from a web page or HTML.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#title_extraction"> #title_extraction </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:titleExtraction
 +++
 
 
     
-        
+    
 ==== Attributes
 [cols=".^20%,.^20%,.^35%,.^20%,^.^5%", options="header"]
 |======================
@@ -997,13 +595,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 
 
 | 
-source icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The HTML or URL to process.+++ | #[payload] | {nbsp}
-
-
-
-
-| 
-showSourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Check this to include the source text in the response.+++ |  | {nbsp}
+request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylanguage/model/TitleExtractionRequest.html">TitleExtractionRequest</a>+++ | +++Request with all the options for the title extraction operation.+++ | #[payload] | {nbsp}
 
 
 |======================
@@ -1012,7 +604,7 @@ showSourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++DocumentTitle+++ | +++return DocumentTitle+++
+|+++DocumentTitle+++ | +++Return the title of the web page or HTML content.+++
 |======================
 
 
@@ -1027,14 +619,13 @@ showSourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang
 
 
 +++
-Extract the main body text from a webpage or HTML.
+Extract the main body text from a web page or HTML.
 API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#text_cleaned"> #text_cleaned </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:textExtraction
 +++
 
 
     
-                        
+    
 ==== Attributes
 [cols=".^20%,.^20%,.^35%,.^20%,^.^5%", options="header"]
 |======================
@@ -1044,37 +635,7 @@ API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api
 
 
 | 
-source  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The HTML or URL to process.+++ |  | *x*{nbsp}
-
-
-
-
-| 
-cquery  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++A visual constraint query to apply to the web page. Required when sourceText is set to cquery+++ |  | {nbsp}
-
-
-
-
-| 
-xpath  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values+++ |  | {nbsp}
-
-
-
-
-| 
-sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++Determines how to obtain the source text from the webpage+++ |  | {nbsp}
-
-
-
-
-| 
-extractLinks  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++Set this to 1 to include hyperlinks in the extracted text+++ |  | {nbsp}
-
-
-
-
-| 
-useMetaData  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++Comment for useMetaData+++ |  | {nbsp}
+request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylanguage/model/TextExtractionRequest.html">TextExtractionRequest</a>+++ | +++Request with all the options for the text extraction operation.+++ | #[payload] | {nbsp}
 
 
 |======================
@@ -1083,7 +644,7 @@ useMetaData  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/St
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++DocumentText+++ | +++return DocumentText+++
+|+++DocumentText+++ | +++Return the extracted text.+++
 |======================
 
 
@@ -1098,9 +659,8 @@ useMetaData  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/St
 
 
 +++
-Extract the main body raw text from a webpage or HTML.
+Extract the main body raw text from a web page or HTML.
 API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#text_raw"> #text_raw </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:rawTextExtraction
 +++
 
 
@@ -1124,7 +684,7 @@ source  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++DocumentText+++ | +++return DocumentText+++
+|+++DocumentText+++ | +++Return the extracted text.+++
 |======================
 
 
@@ -1139,14 +699,13 @@ source  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.
 
 
 +++
-Categorize a webpage into a 5-level taxonomy
+Categorize a web page into a 5-level taxonomy
 API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#taxonomy"> #taxonomy </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:taxonomy
 +++
 
 
     
-                    
+    
 ==== Attributes
 [cols=".^20%,.^20%,.^35%,.^20%,^.^5%", options="header"]
 |======================
@@ -1156,31 +715,7 @@ API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api
 
 
 | 
-source  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The HTML or URL to process.+++ |  | *x*{nbsp}
-
-
-
-
-| 
-showSourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Set this to 1 to include the source text in the response+++ |  | {nbsp}
-
-
-
-
-| 
-cquery  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++A visual constraint query to apply to the web page. Required when sourceText is set to cquery+++ |  | {nbsp}
-
-
-
-
-| 
-xpath  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values+++ |  | {nbsp}
-
-
-
-
-| 
-sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++Determines how to obtain the source text from the webpage+++ |  | {nbsp}
+request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylanguage/model/TaxonomiesRequest.html">TaxonomiesRequest</a>+++ | +++Request with all the options for the taxonomies operation.+++ | #[payload] | {nbsp}
 
 
 |======================
@@ -1189,7 +724,7 @@ sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Str
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++Taxonomies+++ | +++return Taxonomies+++
+|+++Taxonomies+++ | +++Return a list of detected taxonomies in the text, web page or HTML content.+++
 |======================
 
 
@@ -1204,14 +739,13 @@ sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Str
 
 
 +++
-Detect emotions implied in the text of a webpage
+Detect emotions implied in the text of a web page
 API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#emotion_analysis"> #emotion_analysis </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:emotionalAnalysis
 +++
 
 
     
-                    
+    
 ==== Attributes
 [cols=".^20%,.^20%,.^35%,.^20%,^.^5%", options="header"]
 |======================
@@ -1221,31 +755,7 @@ API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api
 
 
 | 
-source  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The HTML or URL to process.+++ |  | *x*{nbsp}
-
-
-
-
-| 
-showSourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Set this to 1 to include the source text in the response+++ |  | {nbsp}
-
-
-
-
-| 
-cquery  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++A visual constraint query to apply to the web page. Required when sourceText is set to cquery+++ |  | {nbsp}
-
-
-
-
-| 
-xpath  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values+++ |  | {nbsp}
-
-
-
-
-| 
-sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++Determines how to obtain the source text from the webpage+++ |  | {nbsp}
+request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylanguage/model/EmotionAnalysisRequest.html">EmotionAnalysisRequest</a>+++ | +++Request with all the options for the emotion analysis operation.+++ | #[payload] | {nbsp}
 
 
 |======================
@@ -1254,7 +764,7 @@ sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Str
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++DocumentEmotion+++ | +++return DocumentEmotion+++
+|+++DocumentEmotion+++ | +++Return a list of all the detected emotions in the text, web page or HTML content.+++
 |======================
 
 
@@ -1269,15 +779,14 @@ sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Str
 
 
 +++
-Analyze text, HTML, or webpage content with multiple text analysis operations. Any parameters for the extract
+Analyze text, HTML, or web page content with multiple text analysis operations. Any parameters for the extract
 methods can also be passed.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#combined-call"> #combined-call </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:combinedCall
 +++
 
 
     
-                                                                        
+    
 ==== Attributes
 [cols=".^20%,.^20%,.^35%,.^20%,^.^5%", options="header"]
 |======================
@@ -1287,109 +796,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 
 
 | 
-source icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The text or url to process+++ | #[payload] | {nbsp}
-
-
-
-
-| 
-extract  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++Comma separated list of any of the following methods: authors, concepts (default), dates, doc-emotion, entities (default), feeds, keywords (default), pub-date, relations, typed-rels, doc-sentiment, taxonomy (default), title+++ |  | {nbsp}
-
-
-
-
-| 
-maxRetrieve  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a>+++ | +++Maximum number of entities to return (default = 50)+++ |  | {nbsp}
-
-
-
-
-| 
-keywords  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Check this to identify keywords in detected relations. <b>This incurs an additional transaction charge</b>+++ |  | {nbsp}
-
-
-
-
-| 
-entities  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Check this to identify named entities in detected relations. <b>This incurs an additional transaction charge.</b>+++ |  | {nbsp}
-
-
-
-
-| 
-requireEntities  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Check this to restrict results to relations that contain at least one named entity.+++ |  | {nbsp}
-
-
-
-
-| 
-coreference  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a>+++ | +++Set this to 0 to treat coreferences as separate entities (coreferences are resolved into detected entities by default)+++ |  | {nbsp}
-
-
-
-
-| 
-disambiguate  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a>+++ | +++Set this to 0 to hide entity disambiguation information in the response+++ |  | {nbsp}
-
-
-
-
-| 
-knowledgeGraph  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a>+++ | +++Set this to 1 to include knowledge graph information in the results. This incurs an additional transaction charge+++ |  | {nbsp}
-
-
-
-
-| 
-linkedData  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a>+++ | +++Set this to 0 to hide Linked Data content links in the response+++ |  | {nbsp}
-
-
-
-
-| 
-quotations  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a>+++ | +++Set this to 1 to include quotations that are linked to detected entities+++ |  | {nbsp}
-
-
-
-
-| 
-sentiment  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a>+++ | +++Set this to 1 to analyze the sentiment towards each detected entity. This incurs an additional transaction charge+++ |  | {nbsp}
-
-
-
-
-| 
-showSourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a>+++ | +++Set this to 1 to include the source text in the response+++ |  | {nbsp}
-
-
-
-
-| 
-structuredEntities  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a>+++ | +++Set this to 0 to ignore structured entities, such as Quantity, EmailAddress, TwitterHandle, Hashtag, and IPAddress+++ |  | {nbsp}
-
-
-
-
-| 
-anchorDate  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The date to use as "today" when interpreting phrases in the text like "next tuesday.". Format: yyyy-mm-dd hh:mm:ss+++ |  | {nbsp}
-
-
-
-
-| 
-cquery  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++A visual constraints query to apply to the web page. Required when sourceText is set to cquery+++ |  | {nbsp}
-
-
-
-
-| 
-xpath  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values+++ |  | {nbsp}
-
-
-
-
-| 
-sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++How to obtain the source text from the webpage+++ |  | {nbsp}
+request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylanguage/model/CombinedCallRequest.html">CombinedCallRequest</a>+++ | +++Request with all the options for a combine call operation.+++ | #[payload] | {nbsp}
 
 
 |======================
@@ -1398,7 +805,7 @@ sourceText  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Str
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++CombinedResults+++ | +++return CombinedResults+++
+|+++CombinedResults+++ | +++Return the combined results for all the operations specified in the extract parameter.+++
 |======================
 
 

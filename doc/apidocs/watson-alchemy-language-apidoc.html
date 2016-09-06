@@ -1,8 +1,3 @@
-<!--
-
-    (c) Copyright 2016 Admios. The software in this package is published under the terms of the CPAL v1.0 license, a copy of which has been included with this distribution in the LICENSE.md file.
-
--->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -2197,7 +2192,7 @@ detected entities and keywords.
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">apiKey</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">The API Key retrieved from IBM Bluemix that will be used in all the request.</p></td>
 <td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
@@ -2218,18 +2213,9 @@ detected entities and keywords.
 </div>
 <div class="paragraph">
 <p>
-Get author names from a webpage or HTML content.
+Get author names from a web page or HTML content.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#authors"> #authors </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:authors
 </p>
-</div>
-<div class="sect3">
-<h4 id="_xml_sample">XML Sample</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;watson-alchemy-language:authors</span> <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ref</span><span class="delimiter">&quot;</span></span>  <span class="attribute-name">source</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">www.url.com</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Watson AlchemyLanguage Service</span><span class="delimiter">&quot;</span></span> <span class="tag">/&gt;</span></code></pre>
-</div>
-</div>
 </div>
 <div class="sect3">
 <h4 id="_attributes_2">Attributes</h4>
@@ -2261,7 +2247,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">source <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The HTML or url to process</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">The HTML or URL to process</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
@@ -2284,7 +2270,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">DocumentAuthors</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">return A list of extracted DocumentAuthors</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Return a list of detected authors in a web page or HTML content.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2298,20 +2284,9 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 </div>
 <div class="paragraph">
 <p>
-Extract entities from a text or a webpage.
+Extract entities from a text, web page or HTML content.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#entities"> #entities </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:entities
 </p>
-</div>
-<div class="sect3">
-<h4 id="_xml_sample_2">XML Sample</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;watson-alchemy-language:entities</span> <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ref</span><span class="delimiter">&quot;</span></span>
-        <span class="attribute-name">source</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">IBM Watson won the Jeopardy television show hosted by Alex Trebek</span><span class="delimiter">&quot;</span></span>
-        <span class="attribute-name">maxRetrieve</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">5</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Watson AlchemyLanguage Service</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
-</div>
-</div>
 </div>
 <div class="sect3">
 <h4 id="_attributes_3">Attributes</h4>
@@ -2341,94 +2316,10 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">source <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The text or url to process</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">request <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="javadocs/org/mule/modules/watsonalchemylanguage/model/EntitiesRequest.html">EntitiesRequest</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Request with all the options for entities operation.</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">maxRetrieve</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Maximum number of entities to return (default = 50)</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">coreference</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Set this to 0 to treat coreferences as separate entities (coreferences are resolved into detected entities by default)</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">disambiguate</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Set this to 0 to hide entity disambiguation information in the response</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">knowledgeGraph</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Set this to 1 to include knowledge graph information in the results. This incurs an additional transaction charge</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">linkedData</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Set this to 0 to hide Linked Data content links in the response</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">quotations</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Set this to 1 to include quotations that are linked to detected entities</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">sentiment</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Set this to 1 to analyze the sentiment towards each detected entity. This incurs an additional transaction charge</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">showSourceText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Check this to include the source text in the response</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">structuredEntities</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Set this to 0 to ignore structured entities, such as Quantity, EmailAddress, TwitterHandle, Hashtag, and IPAddress</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">cquery</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">A visual constraints query to apply to the web page. Required when sourceText is set to cquery</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">xpath</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">sourceText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">How to obtain the source text from the webpage</p></td>
-<td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
 </tbody>
@@ -2450,7 +2341,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Entities</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">return Entities</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Return a list of detected entities in a text, web page or HTML content.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2464,9 +2355,8 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 </div>
 <div class="paragraph">
 <p>
-Extract Dates from a text, webpage or content in an url.
+Extract Dates from a text, web page or content in an URL.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#date-extraction"> #date-extraction </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:dateExtraction
 </p>
 </div>
 <div class="sect3">
@@ -2497,24 +2387,10 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">source <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The text, html or url to process.</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">dateExtractionRequest <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="javadocs/org/mule/modules/watsonalchemylanguage/model/DateExtractionRequest.html">DateExtractionRequest</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Request with all the options for a date extraction operation.</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">anchorDate</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The date to use as "today" when interpreting phrases in the text like "next tuesday." Format: <code>yyyy-mm-dd hh:mm:ss</code></p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">showSourceText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Check this to include the source text in the response.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
 </tbody>
@@ -2536,7 +2412,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Dates</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">return Dates</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Return a list of detected dates in the text, web page or HTML content.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2552,7 +2428,6 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <p>
 Get feeds from a url.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#feed-detection"> #feed-detection </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:feedDetection
 </p>
 </div>
 <div class="sect3">
@@ -2608,7 +2483,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Feeds</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">return Feeds</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Return a list of detected RSS/ATOM links in web page.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2622,20 +2497,9 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 </div>
 <div class="paragraph">
 <p>
-Extract concepts from a webpage or plain text.
+Extract concepts from a web page or plain text.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#concepts"> #concepts </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:concepts
 </p>
-</div>
-<div class="sect3">
-<h4 id="_xml_sample_3">XML Sample</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;watson-alchemy-language:concepts</span> <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ref</span><span class="delimiter">&quot;</span></span>
-        <span class="attribute-name">source</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">IBM Watson won the Jeopardy television show hosted by Alex Trebek</span><span class="delimiter">&quot;</span></span>
-        <span class="attribute-name">maxRetrieve</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">5</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Watson AlchemyLanguage Service</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
-</div>
-</div>
 </div>
 <div class="sect3">
 <h4 id="_attributes_6">Attributes</h4>
@@ -2665,59 +2529,10 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">source <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The text or url to process</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">request <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="javadocs/org/mule/modules/watsonalchemylanguage/model/ConceptsRequest.html">ConceptsRequest</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Request with all the options for a concept operation.</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">maxRetrieve</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Maximum number of entities to return (default = 50) detected entities by default)</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">knowledgeGraph</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Set this to 1 to include knowledge graph information in the results. This incurs an additional transaction charge</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">linkedData</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Set this to 0 to hide Linked Data content links in the response</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">showSourceText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Check this to include the source text in the response TwitterHandle, Hashtag, and IPAddress</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">cquery</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">A visual constraints query to apply to the web page. Required when sourceText is set to cquery</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">xpath</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">sourceText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">How to obtain the source text from the webpage</p></td>
-<td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
 </tbody>
@@ -2739,7 +2554,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Concepts</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">return Concepts</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Return a list of detected high level concepts used in the text, web page or HTML content.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2753,10 +2568,9 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 </div>
 <div class="paragraph">
 <p>
-Analyze sentiment for targeted phrases in a webpage, HTML, or plain text. Supported languages: Arabic, English,
+Analyze sentiment for targeted phrases in a web page, HTML, or plain text. Supported languages: Arabic, English,
 French, German, Italian, Portuguese, Russian, Spanish.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#targeted-sentiment"> #targeted-sentiment </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:targetedSentiment
 </p>
 </div>
 <div class="sect3">
@@ -2787,45 +2601,10 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">source <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The text, HTML or URL to process.</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">request <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="javadocs/org/mule/modules/watsonalchemylanguage/model/TargetedSentimentRequest.html">TargetedSentimentRequest</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Request with all the options for the targeted sentiment operation.</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">target</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Target phrase. The service will return sentiment information for the phrase that is found in the source text. @param target Target phrase. The service will return sentiment information for the phrase that is found in the source text.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">showSourceText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Check this to include the source text in the response.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">cquery</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">A visual constraints query to apply to the web page. Required when <code>sourceText</code> is set to cquery.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">xpath</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">An XPath query to apply to the web page. Required when <code>sourceText</code> is set to one of the XPath values.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">sourceText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">How to obtain the source text from the webpage.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
 </tbody>
@@ -2847,7 +2626,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">DocumentSentiment</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">return DocumentSentiment</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Return the sentiment expressed in the targeted phrase in the text, web page or HTML content.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2861,20 +2640,9 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 </div>
 <div class="paragraph">
 <p>
-Extract keywords from a webpages, HTML or plain text.
+Extract keywords from a web pages, HTML or plain text.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#keywords"> #keywords </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:keywords
 </p>
-</div>
-<div class="sect3">
-<h4 id="_xml_sample_4">XML Sample</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;watson-alchemy-language:keywords</span> <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ref</span><span class="delimiter">&quot;</span></span>
-        <span class="attribute-name">source</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">The polymer is made by a company called Papa from Australia</span><span class="delimiter">&quot;</span></span>
-        <span class="attribute-name">maxRetrieve</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">10</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">knowledgeGraph</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">1</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Watson AlchemyLanguage Service</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
-</div>
-</div>
 </div>
 <div class="sect3">
 <h4 id="_attributes_8">Attributes</h4>
@@ -2904,59 +2672,10 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">source <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The text, HTML or URL to process.</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">request <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="javadocs/org/mule/modules/watsonalchemylanguage/model/KeywordsRequest.html">KeywordsRequest</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Request with all the options for the keywords operation.</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">maxRetrieve</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Maximum number of entities to return (default = 50) detected entities by default).</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">knowledgeGraph</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Set this to 1 to include knowledge graph information in the results.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">sentiment</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Set this to 1 to analyze the sentiment towards each detected entity.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">showSourceText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Check this to include the source text in the response.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">cquery</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">A visual constraints query to apply to the web page. Required when <code>sourceText</code> is set to cquery.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">xpath</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">An XPath query to apply to the web page. Required when <code>sourceText</code> is set to one of the XPath values.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">sourceText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">How to obtain the source text from the webpage.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
 </tbody>
@@ -2978,7 +2697,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Keywords</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">return Keywords</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Return a list of detected keywords in a text, web page or HTML content.</p></td>
 </tr>
 </tbody>
 </table>
@@ -2992,20 +2711,9 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 </div>
 <div class="paragraph">
 <p>
-Get Microformats from a text, webpage or content in an url.
+Get Microformats from a text, web page or content in an URL.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#microformats"> #microformats </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:microformats
 </p>
-</div>
-<div class="sect3">
-<h4 id="_xml_sample_5">XML Sample</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;watson-alchemy-language:microformats</span> <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ref</span><span class="delimiter">&quot;</span></span>
-        <span class="attribute-name">source</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://microformats.org/wiki/hcard</span><span class="delimiter">&quot;</span></span>
-        <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Watson AlchemyLanguage Service</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
-</div>
-</div>
 </div>
 <div class="sect3">
 <h4 id="_attributes_9">Attributes</h4>
@@ -3035,17 +2743,10 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">source <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The text, html or url to process.</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">request <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="javadocs/org/mule/modules/watsonalchemylanguage/model/MicroformatsRequest.html">MicroformatsRequest</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Request with all the options for the microformats operation.</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">showSourceText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Check this to include the source text in the response.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
 </tbody>
@@ -3067,7 +2768,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Microformats</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">return Microformats</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Return a list of detected microformats in a text, web page or HTML content.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3081,21 +2782,10 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 </div>
 <div class="paragraph">
 <p>
-Extract Subject-Action-Object relations from a webpage, HTML, or plain text. Supported languages: English,
+Extract Subject-Action-Object relations from a web page, HTML, or plain text. Supported languages: English,
 Spanish
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#microformats"> #microformats </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:relations
 </p>
-</div>
-<div class="sect3">
-<h4 id="_xml_sample_6">XML Sample</h4>
-<div class="listingblock">
-<div class="content">
-<pre class="CodeRay highlight"><code data-lang="xml"><span class="tag">&lt;watson-alchemy-language:relations</span> <span class="attribute-name">config-ref</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">ref</span><span class="delimiter">&quot;</span></span>
-        <span class="attribute-name">source</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">http://www.admios.com/admios-blog/</span><span class="delimiter">&quot;</span></span>
-        <span class="attribute-name">maxRetrieve</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">10</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">knowledgeGraph</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">true</span><span class="delimiter">&quot;</span></span> <span class="attribute-name">doc:name</span>=<span class="string"><span class="delimiter">&quot;</span><span class="content">Watson AlchemyLanguage Service</span><span class="delimiter">&quot;</span></span><span class="tag">/&gt;</span></code></pre>
-</div>
-</div>
 </div>
 <div class="sect3">
 <h4 id="_attributes_10">Attributes</h4>
@@ -3125,108 +2815,10 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">source <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">One of these is required. Pass HTML content in html, a public facing URL in url, or plain text in text.</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">request <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="javadocs/org/mule/modules/watsonalchemylanguage/model/SAORelationsRequest.html">SAORelationsRequest</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Request with all the options for the Subject-Action-Object relations operation.</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">maxRetrieve</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Maximum number of relations to return (default = 50, maximum = 100)</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">showSourceText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Check this to include the source text in the response.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">keywords</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Check this to identify keywords in detected relations. <b>This incurs an additional transaction charge</b></p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">entities</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Check this to identify named entities in detected relations. <b>This incurs an additional transaction charge.</b></p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">requireEntities</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Check this to restrict results to relations that contain at least one named entity.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">coreference</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Check this treat coreferences as separate entities (coreferences are resolved into detected entities by default).</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">disambiguate</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Check this to hide entity disambiguation information in the response.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">knowledgeGraph</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Check this to include knowledge graph information in the results. <b>This incurs an additional transaction charge.</b></p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">hideLinkedData</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Check this to hide Linked Data contents links in the response.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">analyzeSentiment</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Check this to analyze the sentiment towards each result.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">excludeEntityFromSentimentAnalysis</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Check this to exclude named entity text from sentiment analysis. For exapmle, do not analyze "New" in "New York".</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">cquery</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">A visual constraints query to apply to the web page. Required when sourceText is set to cquery.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">xpath</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">sourceText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">How to obtain the source text from the web page.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
 </tbody>
@@ -3248,7 +2840,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">SAORelations</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">return an array of detected relations.</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Return a list of detected Subject-Action-Object relations in the text, web page or HTML content.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3262,9 +2854,8 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 </div>
 <div class="paragraph">
 <p>
-Get the publication date of a webpage or HTML document.
+Get the publication date of a web page or HTML document.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#publication_date"> #publication_date </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:publicationDate
 </p>
 </div>
 <div class="sect3">
@@ -3297,7 +2888,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">source <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The HTML or url to process</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">The HTML or URL to process</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
@@ -3320,7 +2911,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">DocumentPublicationDate</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">return DocumentPublicationDate</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Return the publication date of the web page or HTML content.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3334,9 +2925,8 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 </div>
 <div class="paragraph">
 <p>
-Analyze the overall sentiment of a webpage, HTML, or plain text.
+Analyze the overall sentiment of a web page, HTML, or plain text.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#sentiment"> #sentiment </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:sentimentAnalysis
 </p>
 </div>
 <div class="sect3">
@@ -3367,38 +2957,10 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">source <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The text, HTML document or url to process</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">request <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="javadocs/org/mule/modules/watsonalchemylanguage/model/SentimentAnalysisRequest.html">SentimentAnalysisRequest</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Request with all the options for the sentiment analysis operation.</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">showSourceText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Check this to include the source text in the response</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">cquery</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">A visual constraints query to apply to the web page. Required when sourceText is set to cquery</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">xpath</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">sourceText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">How to obtain the source text from the webpage</p></td>
-<td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
 </tbody>
@@ -3420,7 +2982,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">DocumentSentiment</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">return DocumentSentiment</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Return the general sentiment expressed in the text, web page or HTML content.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3434,9 +2996,8 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 </div>
 <div class="paragraph">
 <p>
-Use custom models to identify typed relations between detected entities from a webpage, HTML, or plain text.
+Use custom models to identify typed relations between detected entities from a web page, HTML, or plain text.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#typed_relations"> #typed_relations </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:typedRelations
 </p>
 </div>
 <div class="sect3">
@@ -3467,24 +3028,10 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">source <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The text, HTML document or url to process</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">request <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="javadocs/org/mule/modules/watsonalchemylanguage/model/TypedRelationsRequest.html">TypedRelationsRequest</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Request with all the options for the typed relations operation.</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">model</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The unique alphanumeric identifier for your custom model</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">showSourceText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Check this to include the source text in the response</p></td>
-<td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
 </tbody>
@@ -3506,7 +3053,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">TypedRelations</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">return TypedRelations</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Return a list of detected Subject-Action-Object relations in the text, web page or HTML content.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3520,9 +3067,8 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 </div>
 <div class="paragraph">
 <p>
-Detect the language of a webpage, HTML, or plain text.
+Detect the language of a web page, HTML, or plain text.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#language"> #language </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:languageDetection
 </p>
 </div>
 <div class="sect3">
@@ -3553,38 +3099,10 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">source <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The text, HTML or URL to process.</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">request <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="javadocs/org/mule/modules/watsonalchemylanguage/model/LanguageDetectionRequest.html">LanguageDetectionRequest</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Request with all the options for the language detection operation.</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">showSourceText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Check this to include the source text in the response.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">cquery</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">A visual constraints query to apply to the web page. Required when <code>sourceText</code> is set to cquery.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">xpath</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">An XPath query to apply to the web page. Required when <code>sourceText</code> is set to one of the XPath values.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">sourceText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">How to obtain the source text from the webpage.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
 </tbody>
@@ -3606,7 +3124,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Language</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">return Language</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Return the detected languages in a text, web page or HTML content.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3620,9 +3138,8 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 </div>
 <div class="paragraph">
 <p>
-Extract the page title from a webpage or HTML.
+Extract the page title from a web page or HTML.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#title_extraction"> #title_extraction </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:titleExtraction
 </p>
 </div>
 <div class="sect3">
@@ -3653,17 +3170,10 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">source <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The HTML or URL to process.</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">request <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="javadocs/org/mule/modules/watsonalchemylanguage/model/TitleExtractionRequest.html">TitleExtractionRequest</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Request with all the options for the title extraction operation.</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">showSourceText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Check this to include the source text in the response.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
 </tbody>
@@ -3685,7 +3195,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">DocumentTitle</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">return DocumentTitle</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Return the title of the web page or HTML content.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3699,9 +3209,8 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 </div>
 <div class="paragraph">
 <p>
-Extract the main body text from a webpage or HTML.
+Extract the main body text from a web page or HTML.
 API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#text_cleaned"> #text_cleaned </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:textExtraction
 </p>
 </div>
 <div class="sect3">
@@ -3732,45 +3241,10 @@ API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">source</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The HTML or URL to process.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">cquery</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">A visual constraint query to apply to the web page. Required when sourceText is set to cquery</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">xpath</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">sourceText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Determines how to obtain the source text from the webpage</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">extractLinks</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Set this to 1 to include hyperlinks in the extracted text</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">useMetaData</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Comment for useMetaData</p></td>
-<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">request <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="javadocs/org/mule/modules/watsonalchemylanguage/model/TextExtractionRequest.html">TextExtractionRequest</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Request with all the options for the text extraction operation.</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
 </tbody>
@@ -3792,7 +3266,7 @@ API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">DocumentText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">return DocumentText</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Return the extracted text.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3806,9 +3280,8 @@ API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api
 </div>
 <div class="paragraph">
 <p>
-Extract the main body raw text from a webpage or HTML.
+Extract the main body raw text from a web page or HTML.
 API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#text_raw"> #text_raw </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:rawTextExtraction
 </p>
 </div>
 <div class="sect3">
@@ -3864,7 +3337,7 @@ API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">DocumentText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">return DocumentText</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Return the extracted text.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3878,9 +3351,8 @@ API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api
 </div>
 <div class="paragraph">
 <p>
-Categorize a webpage into a 5-level taxonomy
+Categorize a web page into a 5-level taxonomy
 API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#taxonomy"> #taxonomy </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:taxonomy
 </p>
 </div>
 <div class="sect3">
@@ -3911,38 +3383,10 @@ API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">source</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The HTML or URL to process.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">showSourceText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Set this to 1 to include the source text in the response</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">cquery</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">A visual constraint query to apply to the web page. Required when sourceText is set to cquery</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">xpath</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">sourceText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Determines how to obtain the source text from the webpage</p></td>
-<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">request <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="javadocs/org/mule/modules/watsonalchemylanguage/model/TaxonomiesRequest.html">TaxonomiesRequest</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Request with all the options for the taxonomies operation.</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
 </tbody>
@@ -3964,7 +3408,7 @@ API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">Taxonomies</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">return Taxonomies</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Return a list of detected taxonomies in the text, web page or HTML content.</p></td>
 </tr>
 </tbody>
 </table>
@@ -3978,9 +3422,8 @@ API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api
 </div>
 <div class="paragraph">
 <p>
-Detect emotions implied in the text of a webpage
+Detect emotions implied in the text of a web page
 API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#emotion_analysis"> #emotion_analysis </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:emotionalAnalysis
 </p>
 </div>
 <div class="sect3">
@@ -4011,38 +3454,10 @@ API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">source</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The HTML or URL to process.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">showSourceText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Set this to 1 to include the source text in the response</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">cquery</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">A visual constraint query to apply to the web page. Required when sourceText is set to cquery</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">xpath</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">sourceText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Determines how to obtain the source text from the webpage</p></td>
-<td class="tableblock halign-left valign-middle"></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">request <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="javadocs/org/mule/modules/watsonalchemylanguage/model/EmotionAnalysisRequest.html">EmotionAnalysisRequest</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Request with all the options for the emotion analysis operation.</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
 </tbody>
@@ -4064,7 +3479,7 @@ API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">DocumentEmotion</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">return DocumentEmotion</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Return a list of all the detected emotions in the text, web page or HTML content.</p></td>
 </tr>
 </tbody>
 </table>
@@ -4078,10 +3493,9 @@ API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api
 </div>
 <div class="paragraph">
 <p>
-Analyze text, HTML, or webpage content with multiple text analysis operations. Any parameters for the extract
+Analyze text, HTML, or web page content with multiple text analysis operations. Any parameters for the extract
 methods can also be passed.
 API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#combined-call"> #combined-call </a>
-../../../doc/watson-alchemy-language-connector.xml.sample watson-alchemy-language:combinedCall
 </p>
 </div>
 <div class="sect3">
@@ -4112,129 +3526,10 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <td class="tableblock halign-center valign-middle"><p class="tableblock"><strong>x</strong>&#160;</p></td>
 </tr>
 <tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">source <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The text or url to process</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">request <span class="icon"><i class="fa fa-envelope"></i></span></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="javadocs/org/mule/modules/watsonalchemylanguage/model/CombinedCallRequest.html">CombinedCallRequest</a></p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Request with all the options for a combine call operation.</p></td>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">#[payload]</p></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">extract</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Comma separated list of any of the following methods: authors, concepts (default), dates, doc-emotion, entities (default), feeds, keywords (default), pub-date, relations, typed-rels, doc-sentiment, taxonomy (default), title</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">maxRetrieve</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Maximum number of entities to return (default = 50)</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">keywords</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Check this to identify keywords in detected relations. <b>This incurs an additional transaction charge</b></p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">entities</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Check this to identify named entities in detected relations. <b>This incurs an additional transaction charge.</b></p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">requireEntities</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Check this to restrict results to relations that contain at least one named entity.</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">coreference</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Set this to 0 to treat coreferences as separate entities (coreferences are resolved into detected entities by default)</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">disambiguate</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Set this to 0 to hide entity disambiguation information in the response</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">knowledgeGraph</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Set this to 1 to include knowledge graph information in the results. This incurs an additional transaction charge</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">linkedData</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Set this to 0 to hide Linked Data content links in the response</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">quotations</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Set this to 1 to include quotations that are linked to detected entities</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">sentiment</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Set this to 1 to analyze the sentiment towards each detected entity. This incurs an additional transaction charge</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">showSourceText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Boolean.html">Boolean</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Set this to 1 to include the source text in the response</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">structuredEntities</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/Integer.html">Integer</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">Set this to 0 to ignore structured entities, such as Quantity, EmailAddress, TwitterHandle, Hashtag, and IPAddress</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">anchorDate</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">The date to use as "today" when interpreting phrases in the text like "next tuesday.". Format: yyyy-mm-dd hh:mm:ss</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">cquery</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">A visual constraints query to apply to the web page. Required when sourceText is set to cquery</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">xpath</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values</p></td>
-<td class="tableblock halign-left valign-middle"></td>
-<td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
-</tr>
-<tr>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">sourceText</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock"><a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a></p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">How to obtain the source text from the webpage</p></td>
-<td class="tableblock halign-left valign-middle"></td>
 <td class="tableblock halign-center valign-middle"><p class="tableblock">&#160;</p></td>
 </tr>
 </tbody>
@@ -4256,7 +3551,7 @@ API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/
 <tbody>
 <tr>
 <td class="tableblock halign-left valign-middle"><p class="tableblock">CombinedResults</p></td>
-<td class="tableblock halign-left valign-middle"><p class="tableblock">return CombinedResults</p></td>
+<td class="tableblock halign-left valign-middle"><p class="tableblock">Return the combined results for all the operations specified in the extract parameter.</p></td>
 </tr>
 </tbody>
 </table>

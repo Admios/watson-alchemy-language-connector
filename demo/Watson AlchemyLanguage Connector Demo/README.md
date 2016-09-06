@@ -33,9 +33,9 @@ From the Package Explorer view, expand the demo project and open the mule-app.pr
 - **GetCombinedResultsFlow**
 
 
-Run the demo project and in the browser hit - **http://localhost:8081/get-entities?source=[TEXT_OR_URL]**:
+Run the demo project and in the browser hit - **http://localhost:8081/get-combined-results?source=[TEXT_OR_URL]**:
 
-**Input**: http://localhost:8081/get-entities?source=google.com
+**Input**: http://localhost:8081/get-combined-results?source=google.com
 
 **Response**: The result would be a list of all the concepts, entities, keywords and taxonomy detected in the text or webpage.
 ```javascript
@@ -84,7 +84,7 @@ Run the demo project and in the browser hit - **http://localhost:8081/get-entiti
 }
 ```
 
-**Input**: http://localhost:8081/get-entities?source=IBM Watson won the Jeopardy television show hosted by Alex Trebek
+**Input**: http://localhost:8081/get-combined-results?source=IBM Watson won the Jeopardy television show hosted by Alex Trebek
 
 
 **Response**:

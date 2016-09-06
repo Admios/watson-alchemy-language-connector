@@ -15,7 +15,7 @@
 -docencoding
 'UTF-8'
 -doctitle
-'Mule WatsonAlchemyLanguage Anypoint Connector 1.0.0-SNAPSHOT API'
+'Mule WatsonAlchemyLanguage Anypoint Connector 1.0.0 API'
 -linkoffline
 'http://docs.oracle.com/javase/8/docs/api' '/Users/gianluigi.pierini/AnypointStudio/AdmiosConnectors/watson-alchemy-language-connector/target/javadoc-bundle-options'
 -tag
@@ -25,4 +25,4 @@
 -use
 -version
 -windowtitle
-'Mule WatsonAlchemyLanguage Anypoint Connector 1.0.0-SNAPSHOT API'
+'Mule WatsonAlchemyLanguage Anypoint Connector 1.0.0 API'
