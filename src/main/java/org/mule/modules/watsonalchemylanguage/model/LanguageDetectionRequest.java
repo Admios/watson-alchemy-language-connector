@@ -35,7 +35,7 @@ public class LanguageDetectionRequest {
 	private String xpath;
 
 	/**
-	 * How to obtain the source text from the webpage.
+	 * How to obtain the source text from the web page.
 	 */
 	@Optional
 	private String sourceText;
@@ -85,7 +85,7 @@ public class LanguageDetectionRequest {
 	}
 
 	/**
-	 * How to obtain the source text from the webpage.
+	 * How to obtain the source text from the web page.
 	 * 
 	 * @return the sourceText
 	 */

@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
+import org.mule.modules.watsonalchemylanguage.model.EntitiesRequest;
 
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Entities;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Entity;
@@ -29,15 +30,13 @@ public class EntitiesTestCases extends AbstractTestCases {
 	@Test
 	public void testWithMaxRetrieve() {
 		int maxRetrieve = 3;
-		Entities entities = getConnector().entities(TestDataBuilder.TEST_URL, maxRetrieve, null, null, null,
-				null, null, null, null, null, null, null, null);
+		Entities entities = getConnector().entities(buildTestRequest(TestDataBuilder.TEST_URL, maxRetrieve));
 		assertEquals(String.format("The connector should retrieve only %s entities", maxRetrieve),
 				entities.getEntities().size(), maxRetrieve);
 	}
 
 	private void testGetEntities(String source, String... expectedEntities) {
-		Entities entities = getConnector().entities(source, null, null, null, null,
-				null, null, null, null, null, null, null, null);
+		Entities entities = getConnector().entities(buildTestRequest(source, null));
 		assertNotNull(entities);
 		testPrecenseOf(entities.getEntities(), expectedEntities);
 		if (source.equals(TestDataBuilder.TEST_URL)) {
@@ -57,5 +56,13 @@ public class EntitiesTestCases extends AbstractTestCases {
 		}
 		assertEquals(String.format("The response doesn't contains all the expect entities: %s", flatEntities),
 				entitiesToTest.length, cont);
+	}
+	
+	private EntitiesRequest buildTestRequest(String source, Integer maxRetrieve) {
+		EntitiesRequest request = new EntitiesRequest();
+		request.setSource(source);
+		request.setMaxRetrieve(maxRetrieve);
+		
+		return request;
 	}
 }

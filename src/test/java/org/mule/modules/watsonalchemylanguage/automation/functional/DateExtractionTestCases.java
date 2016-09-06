@@ -10,6 +10,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 
 import org.junit.Test;
+import org.mule.modules.watsonalchemylanguage.model.DateExtractionRequest;
 
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Dates;
 
@@ -20,9 +21,7 @@ public class DateExtractionTestCases extends AbstractTestCases {
 	@Test
 	public void getDatesUsingText() {
 
-		Dates dates = getConnector().dateExtraction(
-				"The person was found alive on November 25, 2014 at a ranch on the outskirts of city light.",
-				null, null);
+		Dates dates = getConnector().dateExtraction(buildDateExtractionRequest(false));
 
 		assertNotNull(dates);
 		assertEquals("english", dates.getLanguage());
@@ -34,9 +33,7 @@ public class DateExtractionTestCases extends AbstractTestCases {
 	@Test
 	public void getDatesUsingHTML() {
 		Dates dates = getConnector()
-				.dateExtraction("<html><body><h1>Finally found it!!!</h1><p>The Person was found alive on November 10,"
-						+ " 2014 in Marsella.</p><p>The last time was on a party was October 31, 2014 at a ranch outside the City Lights.</p></body></html>",
-						null, true);
+				.dateExtraction(buildDateExtractionRequest(true));
 
 		assertNotNull(dates);
 		assertEquals("english", dates.getLanguage());
@@ -44,5 +41,26 @@ public class DateExtractionTestCases extends AbstractTestCases {
 		assertEquals(2, dates.getDates().size());
 		assertEquals("10/11/2014 12:00:00 AM", formatter.format(dates.getDates().get(0).getDate()));
 		assertEquals("31/10/2014 12:00:00 AM", formatter.format(dates.getDates().get(1).getDate()));
+	}
+	
+	/**
+	 * This method builds a DateExtractionRequest object
+	 * @param isHtml true If source is using html format, false otherwise.
+	 * @return Instance of DateExtractionRequest class
+	 */
+	public DateExtractionRequest buildDateExtractionRequest(boolean isHtml) {
+		
+		DateExtractionRequest dateExtractionRequest = new DateExtractionRequest();
+		
+		dateExtractionRequest.setShowSourceText(true);
+		dateExtractionRequest.setSource("<html><body><h1>Finally found it!!!</h1><p>The Person was found alive on November 10,"
+					+ " 2014 in Marsella.</p><p>The last time was on a party was October 31, 2014 at a ranch outside the City Lights.</p></body></html>");
+		dateExtractionRequest.setAnchorDate(null);
+		
+		if(isHtml) {		
+			dateExtractionRequest.setSource("The person was found alive on November 25, 2014 at a ranch on the outskirts of city light.");
+		}
+		
+		return dateExtractionRequest;
 	}
 }

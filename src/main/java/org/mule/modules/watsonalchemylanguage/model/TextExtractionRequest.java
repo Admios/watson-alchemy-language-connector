@@ -29,7 +29,7 @@ public class TextExtractionRequest {
 	private String xpath;
 
 	/**
-	 * Determines how to obtain the source text from the webpage.
+	 * Determines how to obtain the source text from the web page.
 	 */
 	@Optional
 	private String sourceText;
@@ -41,7 +41,7 @@ public class TextExtractionRequest {
 	private String extractLinks;
 
 	/**
-	 * Set this to 0 to ignore description information in webpage metadata.
+	 * Set this to 0 to ignore description information in web page metadata.
 	 */
 	@Optional
 	private String useMetaData;
@@ -82,7 +82,7 @@ public class TextExtractionRequest {
 	}
 
 	/**
-	 * Determines how to obtain the source text from the webpage.
+	 * Determines how to obtain the source text from the web page.
 	 * 
 	 * @return the sourceText
 	 */
@@ -100,7 +100,7 @@ public class TextExtractionRequest {
 	}
 
 	/**
-	 * Flag value(0 - 1), set this to 0 to ignore description information in webpage metadata.
+	 * Flag value(0 - 1), set this to 0 to ignore description information in web page metadata.
 	 * 
 	 * @return the useMetaData
 	 */

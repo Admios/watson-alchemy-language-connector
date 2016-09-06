@@ -11,7 +11,7 @@ import org.mule.api.annotations.param.Optional;
 public class MicroformatsRequest {
 
 	/**
-	 * The text, html or url to process.
+	 * The text, HTML or URL to process.
 	 */
 	@Default("#[payload]")
 	private String source;
@@ -32,7 +32,7 @@ public class MicroformatsRequest {
 	}
 
 	/**
-	 * The text, html or url to process.
+	 * The text, HTML or URL to process.
 	 * 
 	 * @return the source
 	 */

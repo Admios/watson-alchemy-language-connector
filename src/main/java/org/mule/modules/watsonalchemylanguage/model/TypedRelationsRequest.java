@@ -10,7 +10,7 @@ import org.mule.api.annotations.param.Optional;
  */
 public class TypedRelationsRequest {
 	/**
-	 * The text, HTML document or url to process
+	 * The text, HTML document or URL to process
 	 */
 	@Default("#[payload]")
 	private String source;
@@ -38,7 +38,7 @@ public class TypedRelationsRequest {
 	}
 
 	/**
-	 * The text, HTML document or url to process.
+	 * The text, HTML document or URL to process.
 	 * 
 	 * @return the source
 	 */

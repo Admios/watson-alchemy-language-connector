@@ -12,7 +12,7 @@ import org.mule.api.annotations.param.Optional;
 public class CombinedCallRequest {
 
 	/**
-	 * Text or url to process
+	 * Text or URL to process
 	 */
 	@Default("#[payload]")
 	private String source;
@@ -36,14 +36,14 @@ public class CombinedCallRequest {
 	private String xpath;
 	
 	/**
-	 * How to obtain the source text from the webpage
+	 * How to obtain the source text from the web page
 	 */
 	@Optional
 	private String sourceText;
 	
 	/**
 	 * Comma separated list of any of the following methods: authors, concepts (default),
-	 * dates, doc-emotion, entities (default), pub-date, relations, typed-rels, doc sentiment,
+	 * dates, doc-emotion, entities (default), pub-date, relations, typed-relations, doc sentiment,
 	 * taxonomy (default), title
 	 */
 	@Optional
@@ -123,14 +123,14 @@ public class CombinedCallRequest {
 	private Integer structuredEntities;
 	
 	/**
-	 * The date to use as "today" when interpreting phrases in the text like "nest tuesday.". 
+	 * The date to use as "today" when interpreting phrases in the text like "next tuesday.". 
 	 * Format: yyyy-mm-dd hh:mm:ss 
 	 */
 	@Optional
 	private String anchorDate;
 
 	/**
-	 * Text or url to process
+	 * Text or URL to process
 	 *
 	 * @return Value of the source attribute
 	 */
@@ -149,7 +149,7 @@ public class CombinedCallRequest {
 
 	/**
 	 * Comma separated list of any of the following methods: authors, concepts (default),
-	 * dates, doc-emotion, entities (default), pub-date, relations, typed-rels, doc sentiment,
+	 * dates, doc-emotion, entities (default), pub-date, relations, typed-relations, doc sentiment,
 	 * taxonomy (default), title
 	 * 
 	 * @return Value of the extract attribute
@@ -352,7 +352,7 @@ public class CombinedCallRequest {
 
 	/**
 	 * Flag value(0-1) used to ignore or show structured entities, such as Quantity, EmailAddress,
-	 * TwitterHandle, Hashtag, and IPAddress
+	 * TwitterHandle, Hash-tag, and IPAddress
 	 * 
 	 * @return Value of the structuredEntities attribute
 	 */
@@ -389,6 +389,7 @@ public class CombinedCallRequest {
 
 	/**
 	 * Flag value(0-1) to verify the inclusion of the source text in the response
+	 * 
 	 * @return Value of the showSourceText attribute
 	 */
 	public Boolean getShowSourceText() {
@@ -422,6 +423,7 @@ public class CombinedCallRequest {
 
 	/**
 	 * An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
+	 * 
 	 * @return Value of the xpath attribute
 	 */
 	public String getXpath() {
@@ -430,6 +432,7 @@ public class CombinedCallRequest {
 
 	/**
 	 * General Setter for xpath parameter
+	 * 
 	 * @param String xpath as an actual parameter representation of the xpath attribute
 	 */
 	public void setXpath(String xpath) {
@@ -438,6 +441,7 @@ public class CombinedCallRequest {
 
 	/**
 	 * This value describes how to obtain the source text from the web page
+	 * 
 	 * @return Value of the sourceText attribute
 	 */
 	public String getSourceText() {

@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
+import org.mule.modules.watsonalchemylanguage.model.ConceptsRequest;
 
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Concept;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Concepts;
@@ -27,8 +28,7 @@ public class ConceptsTestCases extends AbstractTestCases {
 	}
 
 	private void testGetConcepts(String source, String... expectedConcepts) {
-		Concepts concepts = getConnector().concepts(source,
-				null, null, null, null, null, null, null);
+		Concepts concepts = getConnector().concepts(buildTestRequest(source));
 		assertNotNull(concepts);
 		testPrecenseOf(concepts.getConcepts(), expectedConcepts);
 		if (source.equals(TestDataBuilder.TEST_URL)) {
@@ -48,6 +48,13 @@ public class ConceptsTestCases extends AbstractTestCases {
 		}
 		assertEquals(String.format("The response doesn't contains all the expect concepts: %s", flatConcepts),
 				expectedConcepts.length, cont);
+	}
+	
+	
+	private ConceptsRequest buildTestRequest(String source) {
+		ConceptsRequest cr = new ConceptsRequest();
+		cr.setSource(source);
+		return cr;
 	}
 
 }

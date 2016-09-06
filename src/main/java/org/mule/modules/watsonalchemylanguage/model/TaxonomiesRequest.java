@@ -35,7 +35,7 @@ public class TaxonomiesRequest {
 	private String xpath;
 
 	/**
-	 * Determines how to obtain the source text from the webpage
+	 * Determines how to obtain the source text from the web page
 	 */
 	@Optional
 	private String sourceText;
@@ -85,7 +85,7 @@ public class TaxonomiesRequest {
 	}
 
 	/**
-	 * Determines how to obtain the source text from the webpage.
+	 * Determines how to obtain the source text from the web page.
 	 * 
 	 * @return the sourceText
 	 */
