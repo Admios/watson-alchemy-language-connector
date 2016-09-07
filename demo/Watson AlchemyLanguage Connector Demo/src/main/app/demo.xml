@@ -1,24 +1,112 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mule xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:watson-alchemy-language="http://www.mulesoft.org/schema/mule/watson-alchemy-language" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+<mule xmlns:twitter="http://www.mulesoft.org/schema/mule/twitter" xmlns:batch="http://www.mulesoft.org/schema/mule/batch" xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw" xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking" xmlns:watson-alchemy-language="http://www.mulesoft.org/schema/mule/watson-alchemy-language" xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
 	xmlns:spring="http://www.springframework.org/schema/beans" 
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
 http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
-http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
-http://www.mulesoft.org/schema/mule/watson-alchemy-language http://www.mulesoft.org/schema/mule/watson-alchemy-language/current/mule-watson-alchemy-language.xsd
 http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
-http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd">
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/watson-alchemy-language http://www.mulesoft.org/schema/mule/watson-alchemy-language/current/mule-watson-alchemy-language.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
+http://www.mulesoft.org/schema/mule/twitter http://www.mulesoft.org/schema/mule/twitter/current/mule-twitter.xsd
+http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/batch/current/mule-batch.xsd">
     <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
-    <watson-alchemy-language:watson-alchemylanguage-config name="Watson_AlchemyLanguage_Service__Watson_AlchemyLanguage_Configuration" apiKey="${watson.apikey}" doc:name="Watson AlchemyLanguage Service: Watson AlchemyLanguage Configuration"/>
-    <flow name="Get_Entities_Flow">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="get-entities" allowedMethods="GET" doc:name="HTTP"/>
-        <watson-alchemy-language:entities config-ref="Watson_AlchemyLanguage_Service__Watson_AlchemyLanguage_Configuration" source="#[message.inboundProperties.'http.query.params'.source]" doc:name="Get Entities"/>
-        <json:object-to-json-transformer doc:name="Object to JSON"/>
+    <watson-alchemy-language:config name="Watson_AlchemyLanguage_Service__Configuration" apiKey="${watson.apikey}" doc:name="Watson AlchemyLanguage Service: Configuration"/>
+    <twitter:config name="Twitter__Configuration" accessKey="${twitter.access.key}" accessSecret="${twitter.access.secret}" consumerKey="${twitter.consumer.key}" consumerSecret="${twitter.consumer.secret}" doc:name="Twitter: Configuration"/>
+    <flow name="GetCombinedResultsFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/get-combined-results" allowedMethods="GET" doc:name="HTTP"/>
+        <dw:transform-message doc:name="Build Request">
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+{
+	source: inboundProperties."http.query.params".source as :string
+} as :object {
+	class : "org.mule.modules.watsonalchemylanguage.model.CombinedCallRequest"
+}]]></dw:set-payload>
+        </dw:transform-message>
+        <watson-alchemy-language:combined-call config-ref="Watson_AlchemyLanguage_Service__Configuration" doc:name="Get Combined Results"/>
+        <json:object-to-json-transformer doc:name="Convert to JSON"/>
     </flow>
-    <flow name="Get_Combined_Results_Flow">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="/get-combined-results" doc:name="HTTP"/>
-        <watson-alchemy-language:combined-call config-ref="Watson_AlchemyLanguage_Service__Watson_AlchemyLanguage_Configuration" source="#[message.inboundProperties.'http.query.params'.source]" doc:name="Get Combined Results"/>
-        <json:object-to-json-transformer doc:name="Object to JSON"/>
+    <flow name="PostIssueOnSupportSystemFlow">
+        <http:listener config-ref="HTTP_Listener_Configuration" path="/issue" allowedMethods="POST" doc:name="HTTP"/>
+        <dw:transform-message doc:name="Build Request">
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+{
+	extract: "doc-sentiment,entities,keywords",
+	source: inboundProperties."http.query.params".description as :string,
+	sentiment: 1
+	} as :object {
+	class : "org.mule.modules.watsonalchemylanguage.model.CombinedCallRequest"
+}]]></dw:set-payload>
+        </dw:transform-message>
+        <watson-alchemy-language:combined-call config-ref="Watson_AlchemyLanguage_Service__Configuration" doc:name="Get Combined Results"/>
+        <dw:transform-message doc:name="Generate Response">
+            <dw:input-payload doc:sample="sample_data/CombinedResults.dwl"/>
+            <dw:set-payload><![CDATA[%dw 1.0
+%output application/json
+---
+{
+	description: inboundProperties."http.query.params".description,
+	sentiment: payload.sentiment.type,
+	user: inboundProperties."http.query.params".user,
+	keywords: payload.keywords,
+	entities: payload.entities
+}]]></dw:set-payload>
+        </dw:transform-message>
+        <flow-ref name="CreateNewTickectInSupportSystem" doc:name="CreateNewTickectInSupportSystem"/>
     </flow>
+    <sub-flow name="CreateNewTickectInSupportSystem">
+        <logger message="#[payload]" level="INFO" doc:name="Logger"/>
+    </sub-flow>
+    <batch:job name="AnalyseTweetsBatch">
+        <batch:input>
+            <poll doc:name="Poll">
+                <fixed-frequency-scheduler frequency="60" timeUnit="SECONDS"/>
+                <twitter:search config-ref="Twitter__Configuration" query="mulesoft" doc:name="Get Tweets"/>
+            </poll>
+            <dw:transform-message doc:name="Get Tweets Array">
+                <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+payload.tweets]]></dw:set-payload>
+            </dw:transform-message>
+        </batch:input>
+        <batch:process-records>
+            <batch:step name="Batch_Step">
+                <batch:set-record-variable variableName="tweet" value="#[payload]" doc:name="Set Tweet"/>
+                <dw:transform-message doc:name="Build Request">
+                    <dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+{
+	source: payload.retweetedStatus.text,
+	maxRetrieve: 3
+} as :object {
+	class : "org.mule.modules.watsonalchemylanguage.model.ConceptsRequest"
+}]]></dw:set-payload>
+                </dw:transform-message>
+                <watson-alchemy-language:concepts config-ref="Watson_AlchemyLanguage_Service__Configuration" doc:name="Get Concepts"/>
+                <logger message="#[payload]" level="INFO" doc:name="Logger"/>
+                <dw:transform-message doc:name="Transform Message">
+                    <dw:set-payload><![CDATA[%dw 1.0
+%output application/json
+---
+{
+	user: recordVars.tweet.user.screenName,
+	text: recordVars.tweet.text,
+	concepts: payload.concepts
+}]]></dw:set-payload>
+                </dw:transform-message>
+                <flow-ref name="SaveDataInMonirotingSystem" doc:name="SaveDataInMonirotingSystem"/>
+            </batch:step>
+        </batch:process-records>
+    </batch:job>
+    <sub-flow name="SaveDataInMonirotingSystem">
+        <logger message=" #[payload.concepts]" level="INFO" doc:name="Logger"/>
+    </sub-flow>
 </mule>

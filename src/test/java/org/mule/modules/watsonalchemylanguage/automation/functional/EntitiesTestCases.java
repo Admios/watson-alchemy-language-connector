@@ -1,22 +1,21 @@
+/**
+ * (c) Copyright 2016 Admios. The software in this package is published under the terms of the CPAL v1.0 license, a copy of which has been included with this distribution in the LICENSE.md file.
+ */
 package org.mule.modules.watsonalchemylanguage.automation.functional;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
-import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
+import org.mule.modules.watsonalchemylanguage.model.EntitiesRequest;
 
-import com.admios.connector.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Entities;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Entity;
 
-public class EntitiesTestCases extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
-
-	public EntitiesTestCases() {
-		super(WatsonAlchemyLanguageConnector.class);
-	}
+public class EntitiesTestCases extends AbstractTestCases {
 
 	@Test
 	public void testWithText() {
@@ -31,15 +30,13 @@ public class EntitiesTestCases extends AbstractTestCase<WatsonAlchemyLanguageCon
 	@Test
 	public void testWithMaxRetrieve() {
 		int maxRetrieve = 3;
-		Entities entities = getConnector().entities(TestDataBuilder.TEST_URL, maxRetrieve, null, null, null,
-				null, null, null, null, null, null, null, null);
+		Entities entities = getConnector().entities(buildTestRequest(TestDataBuilder.TEST_URL, maxRetrieve));
 		assertEquals(String.format("The connector should retrieve only %s entities", maxRetrieve),
 				entities.getEntities().size(), maxRetrieve);
 	}
 
 	private void testGetEntities(String source, String... expectedEntities) {
-		Entities entities = getConnector().entities(source, null, null, null, null,
-				null, null, null, null, null, null, null, null);
+		Entities entities = getConnector().entities(buildTestRequest(source, null));
 		assertNotNull(entities);
 		testPrecenseOf(entities.getEntities(), expectedEntities);
 		if (source.equals(TestDataBuilder.TEST_URL)) {
@@ -59,5 +56,13 @@ public class EntitiesTestCases extends AbstractTestCase<WatsonAlchemyLanguageCon
 		}
 		assertEquals(String.format("The response doesn't contains all the expect entities: %s", flatEntities),
 				entitiesToTest.length, cont);
+	}
+	
+	private EntitiesRequest buildTestRequest(String source, Integer maxRetrieve) {
+		EntitiesRequest request = new EntitiesRequest();
+		request.setSource(source);
+		request.setMaxRetrieve(maxRetrieve);
+		
+		return request;
 	}
 }

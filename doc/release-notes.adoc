@@ -1,0 +1,62 @@
+= Watson AlchemyLanguage Connector Release Notes
+
+:keywords: Watson AlchemyLanguage, text recognition, natural language
+
+
+Watson AlchemyLanguage is a collection of text analysis functions that derive semantic information from your content.
+You can input text, HTML, or a public URL and leverage sophisticated natural language processing techniques to
+get a quick high-level understanding of your content and obtain detailed insights such as directional sentiment from entity to object.
+
+link:user-manual.html[Watson AlchemyLanguage Connector User Guide]
+////
+Points to the docs.mulesoft pages for documentation on the functional aspects of the connector. e.g.: link:/mule-user-guide/v/3.7/microsoft-sharepoint-2013-connector[Microsoft SharePoint 2013 Connector]
+////
+
+== 1.0.0 - September 1, 2016.
+
+=== Version 1.0.0 Compatibility
+
+[width="100%", cols=",", options="header"]
+|===
+|Software |Version
+|Mule Runtime |3.6
+|Watson AlchemyLanguage |v1
+|===
+
+=== Features
+
+. Authors - Get author names from a webpage or HTML content.
+. Combined Call - Analyze text, HTML, or webpage content with multiple text analysis operations.
+. Concepts - Extract concepts from a webpage, HTML, or plain text.
+. Date Extraction - Extract dates from a webpage, HTML, or plain text.
+. Emotion Analysis - Detect emotions implied in plain text, on a webpage, or in HTML content.
+. Entities - Extract entities from a webpage, HTML, or plain text.
+. Feed Detection - Extract RSS/ATOM feed links from a webpage or HTML.
+. Keywords - Extract keywords from a webpage, HTML, or plain text.
+. Language Detection - Detect the language of a webpage, HTML, or plain text.
+. Microformats - Extract microformats from a webpage or HTML.
+. Publication Date - Get the publication date of a webpage or HTML document.
+. Relations - Extract Subject-Action-Object relations from a webpage, HTML, or plain text.
+. Typed Relations - Use custom models to identify typed relations between detected entities from a webpage, HTML, or plain text.
+. Sentiment Analysis - Analyze the overall sentiment of a webpage, HTML, or plain text.
+. Targeted Sentiment - Analyze sentiment for targeted phrases in a webpage, HTML, or plain text.
+. Taxonomy - Categorize a webpage, HTML, or plain text into a 5-level taxonomy.
+. Text (cleaned) - Extract primary text content from a webpage or HTML.
+. Text (raw) - Extract the plain text from a webpage or HTML.
+. Title Extraction - Extract the page title from a webpage or HTML.
+
+=== 1.0.0 Fixed in this Release
+
+- This version doesn't have bugs fixed.
+
+=== 1.0.0 Known Issues
+
+- This version doesn't have known issues.
+
+=== Support Resources
+////
+could also be named See Also
+////
+* Learn how to link:/mule-user-guide/v/3.7/installing-connectors[Install Anypoint Connectors] using Anypoint Exchange.
+* Access MuleSoft’s MuleForge link:http://forum.mulesoft.org/mulesoft[Forum] to pose questions and get help from Mule’s broad community of users.
+* To access MuleSoft’s expert support team, link:http://www.mulesoft.com/mule-esb-subscription[subscribe] to Mule ESB Enterprise and log in to MuleSoft’s link:http://www.mulesoft.com/support-login[Customer Portal].

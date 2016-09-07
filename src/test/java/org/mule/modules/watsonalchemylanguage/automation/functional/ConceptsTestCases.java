@@ -1,3 +1,6 @@
+/**
+ * (c) Copyright 2016 Admios. The software in this package is published under the terms of the CPAL v1.0 license, a copy of which has been included with this distribution in the LICENSE.md file.
+ */
 package org.mule.modules.watsonalchemylanguage.automation.functional;
 
 import static org.junit.Assert.assertEquals;
@@ -7,17 +10,12 @@ import java.util.List;
 
 import org.apache.commons.lang3.StringUtils;
 import org.junit.Test;
-import org.mule.tools.devkit.ctf.junit.AbstractTestCase;
+import org.mule.modules.watsonalchemylanguage.model.ConceptsRequest;
 
-import com.admios.connector.watsonalchemylanguage.WatsonAlchemyLanguageConnector;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Concept;
 import com.ibm.watson.developer_cloud.alchemy.v1.model.Concepts;
 
-public class ConceptsTestCases extends AbstractTestCase<WatsonAlchemyLanguageConnector> {
-
-	public ConceptsTestCases() {
-		super(WatsonAlchemyLanguageConnector.class);
-	}
+public class ConceptsTestCases extends AbstractTestCases {
 
 	@Test
 	public void testWithText() {
@@ -30,8 +28,7 @@ public class ConceptsTestCases extends AbstractTestCase<WatsonAlchemyLanguageCon
 	}
 
 	private void testGetConcepts(String source, String... expectedConcepts) {
-		Concepts concepts = getConnector().concepts(source,
-				null, null, null, null, null, null, null);
+		Concepts concepts = getConnector().concepts(buildTestRequest(source));
 		assertNotNull(concepts);
 		testPrecenseOf(concepts.getConcepts(), expectedConcepts);
 		if (source.equals(TestDataBuilder.TEST_URL)) {
@@ -51,6 +48,13 @@ public class ConceptsTestCases extends AbstractTestCase<WatsonAlchemyLanguageCon
 		}
 		assertEquals(String.format("The response doesn't contains all the expect concepts: %s", flatConcepts),
 				expectedConcepts.length, cont);
+	}
+	
+	
+	private ConceptsRequest buildTestRequest(String source) {
+		ConceptsRequest cr = new ConceptsRequest();
+		cr.setSource(source);
+		return cr;
 	}
 
 }

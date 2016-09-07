@@ -1,4 +1,4 @@
-# WatsonAlchemyLanguage Anypoint Connector
+# Watson AlchemyLanguage Anypoint Connector
 
 The IBM Watson™ AlchemyLanguage service is a collection of text analysis functions that derive semantic information from your content. You can input text, HTML, or a public URL and leverage sophisticated natural language processing techniques to get a quick high-level understanding of your content and obtain detailed insights such as sentiment for detected entities and keywords.
 
