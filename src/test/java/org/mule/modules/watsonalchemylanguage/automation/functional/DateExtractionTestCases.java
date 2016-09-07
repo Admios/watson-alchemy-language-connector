@@ -57,7 +57,7 @@ public class DateExtractionTestCases extends AbstractTestCases {
 					+ " 2014 in Marsella.</p><p>The last time was on a party was October 31, 2014 at a ranch outside the City Lights.</p></body></html>");
 		dateExtractionRequest.setAnchorDate(null);
 		
-		if(isHtml) {		
+		if(!isHtml) {		
 			dateExtractionRequest.setSource("The person was found alive on November 25, 2014 at a ranch on the outskirts of city light.");
 		}
 		
