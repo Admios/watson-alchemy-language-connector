@@ -19,8 +19,8 @@ public class TypedRelationsRequestTest {
 		request.setModel(MODEL);
 		request.setShowSourceText(SHOW_SOURCE_TEXT);
 
-		assertEquals(SOURCE, request.getModel());
-		assertEquals(MODEL, request.getSource());
+		assertEquals(SOURCE, request.getSource());
+		assertEquals(MODEL, request.getModel());
 		assertEquals(SHOW_SOURCE_TEXT, request.getShowSourceText());
 	}
 
