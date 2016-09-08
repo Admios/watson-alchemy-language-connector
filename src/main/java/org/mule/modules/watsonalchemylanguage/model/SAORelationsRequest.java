@@ -13,14 +13,6 @@ import org.mule.api.annotations.param.Optional;
  */
 public class SAORelationsRequest {
 
-	public SAORelationsRequest(String source, Integer maxRetrieve, Boolean showSourceText, Boolean disambiguate) {
-		super();
-		this.source = source;
-		this.maxRetrieve = maxRetrieve;
-		this.showSourceText = showSourceText;
-		this.disambiguate = disambiguate;
-	}
-
 	/**
 	 * Text or URL to process
 	 */
@@ -112,6 +104,17 @@ public class SAORelationsRequest {
 	 */
 	@Optional
 	private String sourceText;
+
+	public SAORelationsRequest() {
+	}
+
+	public SAORelationsRequest(String source, Integer maxRetrieve, Boolean showSourceText, Boolean disambiguate) {
+		super();
+		this.source = source;
+		this.maxRetrieve = maxRetrieve;
+		this.showSourceText = showSourceText;
+		this.disambiguate = disambiguate;
+	}
 
 	/**
 	 * Text or url to process
