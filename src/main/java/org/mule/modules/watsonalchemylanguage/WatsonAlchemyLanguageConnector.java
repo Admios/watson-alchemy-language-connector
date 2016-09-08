@@ -9,6 +9,7 @@ import org.mule.api.annotations.ReconnectOn;
 import org.mule.api.annotations.licensing.RequiresEnterpriseLicense;
 import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
+import org.mule.api.annotations.param.RefOnly;
 import org.mule.modules.watsonalchemylanguage.config.Config;
 import org.mule.modules.watsonalchemylanguage.handler.implementation.AuthorsHandler;
 import org.mule.modules.watsonalchemylanguage.handler.implementation.CombinedCallHandler;
@@ -78,6 +79,14 @@ public class WatsonAlchemyLanguageConnector {
 	@org.mule.api.annotations.Config
 	Config config;
 
+	public Config getConfig() {
+		return config;
+	}
+
+	public void setConfig(Config config) {
+		this.config = config;
+	}
+
 	/**
 	 * Get author names from a web page or HTML content.
 	 * 
@@ -101,7 +110,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return Return a list of detected entities in a text, web page or HTML content.
 	 */
 	@Processor
-	public Entities entities(@Default("#[payload]") EntitiesRequest request) {
+	public Entities entities(@RefOnly @Default("#[payload]") EntitiesRequest request) {
 
 		return new EntitiesHandler(config.getService(), request.getSource())
 				.addMaxRetrieve(request.getMaxRetrieve())
@@ -124,15 +133,15 @@ public class WatsonAlchemyLanguageConnector {
 	 * 
 	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#date-extraction}
 	 *
-	 * @param dateExtractionRequest Request with all the options for a date extraction operation.
+	 * @param request Request with all the options for a date extraction operation.
 	 * 
 	 * @return Return a list of detected dates in the text, web page or HTML content.
 	 */
 	@Processor
-	public Dates dateExtraction(@Default("#[payload]") DateExtractionRequest dateExtractionRequest) {
-		return new DateExtractionHandler(config.getService(), dateExtractionRequest.getSource())
-				.addAnchorDate(dateExtractionRequest.getAnchorDate())
-				.addShowSourceText(dateExtractionRequest.getShowSourceText())
+	public Dates dateExtraction(@RefOnly @Default("#[payload]") DateExtractionRequest request) {
+		return new DateExtractionHandler(config.getService(), request.getSource())
+				.addAnchorDate(request.getAnchorDate())
+				.addShowSourceText(request.getShowSourceText())
 				.execute();
 	}
 
@@ -151,7 +160,6 @@ public class WatsonAlchemyLanguageConnector {
 				.execute();
 	}
 
-	
 	/**
 	 * Extract concepts from a web page or plain text.
 	 *
@@ -161,7 +169,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return Return a list of detected high level concepts used in the text, web page or HTML content.
 	 */
 	@Processor
-	public Concepts concepts(@Default("#[payload]") ConceptsRequest request) {
+	public Concepts concepts(@RefOnly @Default("#[payload]") ConceptsRequest request) {
 		return new ConceptsHandler(config.getService(), request.getSource())
 				.addCquery(request.getCquery())
 				.addKnowledgeGraph(request.getKnowledgeGraph())
@@ -170,14 +178,6 @@ public class WatsonAlchemyLanguageConnector {
 				.addShowSourceText(request.getShowSourceText())
 				.addSourceText(request.getSourceText())
 				.addXpath(request.getXpath()).execute();
-	}
-
-	public Config getConfig() {
-		return config;
-	}
-
-	public void setConfig(Config config) {
-		this.config = config;
 	}
 
 	/**
@@ -191,7 +191,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return Return the sentiment expressed in the targeted phrase in the text, web page or HTML content.
 	 */
 	@Processor
-	public DocumentSentiment targetedSentiment(@Default("#[payload]") TargetedSentimentRequest request) {
+	public DocumentSentiment targetedSentiment(@RefOnly @Default("#[payload]") TargetedSentimentRequest request) {
 		return new TargetedSentimentHandler(config.getService(), request.getSource())
 				.addCquery(request.getCquery())
 				.addShowSourceText(request.getShowSourceText())
@@ -211,7 +211,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return Return a list of detected keywords in a text, web page or HTML content.
 	 */
 	@Processor
-	public Keywords keywords(@Default("#[payload]") KeywordsRequest request) {
+	public Keywords keywords(@RefOnly @Default("#[payload]") KeywordsRequest request) {
 		return new KeywordsHandler(config.getService(), request.getSource())
 				.addCquery(request.getCquery())
 				.addKnowledgeGraph(request.getKnowledgeGraph())
@@ -232,7 +232,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return Return a list of detected microformats in a text, web page or HTML content.
 	 */
 	@Processor
-	public Microformats microformats(@Default("#[payload]") MicroformatsRequest request) {
+	public Microformats microformats(@RefOnly @Default("#[payload]") MicroformatsRequest request) {
 		return new MicroformatsHandler(config.getService(), request.getSource())
 				.addShowSourceText(request.getShowSourceText()).execute();
 	}
@@ -248,7 +248,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return Return a list of detected Subject-Action-Object relations in the text, web page or HTML content.
 	 */
 	@Processor
-	public SAORelations relations(@Default("#[payload]") SAORelationsRequest request) {
+	public SAORelations relations(@RefOnly @Default("#[payload]") SAORelationsRequest request) {
 		return new RelationsHandler(config.getService(), request.getSource())
 				.addMaxRetrieve(request.getMaxRetrieve())
 				.addShowSourceText(request.getShowSourceText())
@@ -291,7 +291,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return Return the general sentiment expressed in the text, web page or HTML content.
 	 */
 	@Processor
-	public DocumentSentiment sentimentAnalysis(@Default("#[payload]") SentimentAnalysisRequest request) {
+	public DocumentSentiment sentimentAnalysis(@RefOnly @Default("#[payload]") SentimentAnalysisRequest request) {
 		return new SentimentAnalysisHandler(config.getService(), request.getSource())
 				.addShowSourceText(request.getShowSourceText())
 				.addCquery(request.getCquery())
@@ -309,7 +309,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return Return a list of detected Subject-Action-Object relations in the text, web page or HTML content.
 	 */
 	@Processor
-	public TypedRelations typedRelations(@Default("#[payload]") TypedRelationsRequest request) {
+	public TypedRelations typedRelations(@RefOnly @Default("#[payload]") TypedRelationsRequest request) {
 		return new TypedRelationsHandler(config.getService(), request.getSource())
 				.addModel(request.getModel())
 				.addShowSourceText(request.getShowSourceText()).execute();
@@ -325,7 +325,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return Return the detected languages in a text, web page or HTML content.
 	 */
 	@Processor
-	public Language languageDetection(@Default("#[payload]") LanguageDetectionRequest request) {
+	public Language languageDetection(@RefOnly @Default("#[payload]") LanguageDetectionRequest request) {
 		return new LanguageDetectionHandler(config.getService(), request.getSource())
 				.addShowSourceText(request.getShowSourceText())
 				.addCquery(request.getCquery())
@@ -344,7 +344,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return Return the title of the web page or HTML content.
 	 */
 	@Processor
-	public DocumentTitle titleExtraction(@Default("#[payload]") TitleExtractionRequest request) {
+	public DocumentTitle titleExtraction(@RefOnly @Default("#[payload]") TitleExtractionRequest request) {
 		return new TitleExtractionHandler(config.getService(), request.getSource())
 				.addShowSourceText(request.getShowSourceText())
 				.execute();
@@ -360,7 +360,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return Return the extracted text.
 	 */
 	@Processor
-	public DocumentText textExtraction(@Default("#[payload]") TextExtractionRequest request) {
+	public DocumentText textExtraction(@RefOnly @Default("#[payload]") TextExtractionRequest request) {
 		return new TextExtractionHandler(config.getService(), request.getSource())
 				.addCquery(request.getCquery())
 				.addSourceText(request.getSourceText())
@@ -393,7 +393,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return Return a list of detected taxonomies in the text, web page or HTML content.
 	 */
 	@Processor
-	public Taxonomies taxonomies(@Default("#[payload]") TaxonomiesRequest request) {
+	public Taxonomies taxonomies(@RefOnly @Default("#[payload]") TaxonomiesRequest request) {
 		return new TaxonomyHandler(config.getService(), request.getSource())
 				.addShowSourceText(request.getShowSourceText())
 				.addCquery(request.getCquery())
@@ -412,7 +412,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return Return a list of all the detected emotions in the text, web page or HTML content.
 	 */
 	@Processor
-	public DocumentEmotion emotionAnalysis(@Default("#[payload]") EmotionAnalysisRequest request) {
+	public DocumentEmotion emotionAnalysis(@RefOnly @Default("#[payload]") EmotionAnalysisRequest request) {
 		return new EmotionalAnalysisHandler(config.getService(), request.getSource())
 				.addCquery(request.getCquery())
 				.addShowSourceText(request.getShowSourceText())
@@ -431,7 +431,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return Return the combined results for all the operations specified in the extract parameter.
 	 */
 	@Processor
-	public CombinedResults combinedCall(@Default("#[payload]") CombinedCallRequest request) {
+	public CombinedResults combinedCall(@RefOnly @Default("#[payload]") CombinedCallRequest request) {
 		return new CombinedCallHandler(config.getService(), request.getSource())
 				.addExtract(request.getExtract())
 				.addAnchorDate(request.getAnchorDate())

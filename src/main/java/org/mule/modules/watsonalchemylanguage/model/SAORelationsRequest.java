@@ -4,7 +4,6 @@
 package org.mule.modules.watsonalchemylanguage.model;
 
 import org.mule.api.annotations.display.FriendlyName;
-import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
 
 /**
@@ -27,7 +26,7 @@ public class SAORelationsRequest {
 	/**
 	 * Text or URL to process
 	 */
-	@Default("#[payload]") 
+	@Optional
 	private String source;
 
 	/**

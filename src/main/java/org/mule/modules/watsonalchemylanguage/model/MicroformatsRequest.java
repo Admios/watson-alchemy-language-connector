@@ -3,7 +3,6 @@
  */
 package org.mule.modules.watsonalchemylanguage.model;
 
-import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
 
 /**
@@ -16,7 +15,7 @@ public class MicroformatsRequest {
 	/**
 	 * The text, HTML or URL to process.
 	 */
-	@Default("#[payload]")
+	@Optional
 	private String source;
 
 	/**
