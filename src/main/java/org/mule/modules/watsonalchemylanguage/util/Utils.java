@@ -9,7 +9,7 @@ public class Utils {
 
 	/**
 	 * Return 1 only if <i>bool</i> is true. If <i>bool</i> is null return null.
-	 * @param bool
+	 * @param bool Boolean to convert.
 	 * @return {@link Integer}
 	 */
 	public static Integer intValue(final Boolean bool){
@@ -18,7 +18,7 @@ public class Utils {
 	
 	/**
 	 * Return 0 only if <i>bool</i> is true. If <i>bool</i> is null return null.
-	 * @param bool
+	 * @param bool Boolean to convert.
 	 * @return {@link Integer}
 	 */
 	public static Integer deniedToIntValue(final Boolean bool){

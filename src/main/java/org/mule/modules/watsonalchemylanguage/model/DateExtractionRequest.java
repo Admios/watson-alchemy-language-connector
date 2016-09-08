@@ -19,8 +19,8 @@ public class DateExtractionRequest {
 	private String source; 
 
 	/**
-	 * The date to use as "today" when interpreting phrases in the text like "next tuesday.". 
-	 * Format: yyyy-mm-dd hh:mm:ss 
+	 * The date to use as "today" when interpreting phrases in the text like "next tuesday.". Format: yyyy-mm-dd
+	 * hh:mm:ss
 	 */
 	@Optional
 	private String anchorDate;
@@ -28,7 +28,7 @@ public class DateExtractionRequest {
 	/**
 	 * Flag value, check this to include the source text in the response.
 	 */
-	@Optional 
+	@Optional
 	private Boolean showSourceText;
 
 	/**
@@ -41,8 +41,8 @@ public class DateExtractionRequest {
 	}
 
 	/**
-	 * The date to use as "today" when interpreting phrases in the text like "next tuesday.". 
-	 * Format: yyyy-mm-dd hh:mm:ss 
+	 * The date to use as "today" when interpreting phrases in the text like "next tuesday.". Format: yyyy-mm-dd
+	 * hh:mm:ss
 	 * 
 	 * @return Value of the anchorDate attribute
 	 */
@@ -60,31 +60,24 @@ public class DateExtractionRequest {
 	}
 
 	/**
-	 * General Setter for source attribute
-	 * 
-	 * @param String source as an actual parameter representation of the source attribute
+	 * @param source the source to set
 	 */
 	public void setSource(String source) {
 		this.source = source;
 	}
 
 	/**
-	 * General Setter for anchorDate attribute
-	 * 
-	 * @param String anchorDate as an actual parameter representation of the anchorDate attribute
+	 * @param anchorDate the anchorDate to set
 	 */
 	public void setAnchorDate(String anchorDate) {
 		this.anchorDate = anchorDate;
 	}
 
 	/**
-	 * General Setter for showSourceText attribute
-	 * 
-	 * @param Boolean showSourceText as an actual parameter representation of the showSourceText attribute
+	 * @param showSourceText the showSourceText to set
 	 */
 	public void setShowSourceText(Boolean showSourceText) {
 		this.showSourceText = showSourceText;
 	}
-	
-	
+
 }
