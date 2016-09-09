@@ -28,7 +28,7 @@ public class Config {
 	 * Connect, this method will use one api call to validate the api key
 	 *
 	 * @param apiKey The API Key retrieved from IBM Bluemix that will be used in all the request.
-	 * @throws ConnectionException
+	 * @throws ConnectionException If there is any connectivity error like an invalid apiKey.
 	 */
 	@Connect
 	@TestConnectivity
@@ -47,6 +47,8 @@ public class Config {
 
 	/**
 	 * Are we connected
+	 * 
+	 * @return if the connection is open
 	 */
 	@ValidateConnection
 	public boolean isConnected() {
@@ -54,7 +56,9 @@ public class Config {
 	}
 
 	/**
-	 * Are we connected
+	 * Get connection id
+	 * 
+	 * @return connection id
 	 */
 	@ConnectionIdentifier
 	public String connectionId() {

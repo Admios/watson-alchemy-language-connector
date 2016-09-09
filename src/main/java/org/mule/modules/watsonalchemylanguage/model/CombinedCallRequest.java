@@ -3,7 +3,6 @@
  */
 package org.mule.modules.watsonalchemylanguage.model;
 
-import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
 
 
@@ -17,7 +16,7 @@ public class CombinedCallRequest {
 	/**
 	 * Text or URL to process
 	 */
-	@Default("#[payload]")
+	@Optional
 	private String source;
 	
 	/**
@@ -144,7 +143,7 @@ public class CombinedCallRequest {
 	/**
 	 * General Setter for source parameter
 	 * 
-	 * @param String source as an actual parameter representation of the source attribute
+	 * @param source String source as an actual parameter representation of the source attribute
 	 */
 	public void setSource(String source) {
 		this.source = source;
@@ -164,7 +163,7 @@ public class CombinedCallRequest {
 	/**
 	 * General Setter for extract parameter
 	 * 
-	 * @param String extract is an actual parameter representation of the extract attribute
+	 * @param extract String extract is an actual parameter representation of the extract attribute
 	 */
 	public void setExtract(String extract) {
 		this.extract = extract;
@@ -182,7 +181,7 @@ public class CombinedCallRequest {
 	/**
 	 * General Setter for maxRetrieve parameter
 	 * 
-	 * @param Integer maxRetrieve as an actual parameter representation of the maxRetrieve attribute
+	 * @param maxRetrieve Integer maxRetrieve as an actual parameter representation of the maxRetrieve attribute
 	 */
 	public void setMaxRetrieve(Integer maxRetrieve) {
 		this.maxRetrieve = maxRetrieve;
@@ -201,7 +200,7 @@ public class CombinedCallRequest {
 	/**
 	 * General Setter for keywords parameter
 	 * 
-	 * @param Boolean keywords as an actual parameter representation of the keywords attribute
+	 * @param keywords Boolean keywords as an actual parameter representation of the keywords attribute
 	 */
 	public void setKeywords(Boolean keywords) {
 		this.keywords = keywords;
@@ -219,7 +218,7 @@ public class CombinedCallRequest {
 
 	/**
 	 * General Setter for entities parameter
-	 * @param Boolean entities as an actual parameter representation of the entities attribute
+	 * @param entities Boolean entities as an actual parameter representation of the entities attribute
 	 */
 	public void setEntities(Boolean entities) {
 		this.entities = entities;
@@ -237,7 +236,7 @@ public class CombinedCallRequest {
 	/**
 	 * General Setter for requireEntities parameter
 	 * 
-	 * @param Boolean requireEntities as an actual parameter representation of the requireEntities attribute
+	 * @param requireEntities Boolean requireEntities as an actual parameter representation of the requireEntities attribute
 	 */
 	public void setRequireEntities(Boolean requireEntities) {
 		this.requireEntities = requireEntities;
@@ -255,7 +254,7 @@ public class CombinedCallRequest {
 
 	/**
 	 * General Setter for coreference parameter
-	 * @param Integer coreference as an actual parameter representation of the coreference attribute
+	 * @param coreference Integer coreference as an actual parameter representation of the coreference attribute
 	 */
 	public void setCoreference(Integer coreference) {
 		this.coreference = coreference;
@@ -273,7 +272,7 @@ public class CombinedCallRequest {
 	/**
 	 * General Setter for disambiguate parameter
 	 * 
-	 * @param Integer disambiguate as an actual parameter representation of the disambiguate attribute
+	 * @param disambiguate Integer disambiguate as an actual parameter representation of the disambiguate attribute
 	 */
 	public void setDisambiguate(Integer disambiguate) {
 		this.disambiguate = disambiguate;
@@ -292,7 +291,7 @@ public class CombinedCallRequest {
 	/**
 	 * General Setter for knowledgeGraph parameter
 	 * 
-	 * @param Integer knowledgeGraph as an actual parameter representation of the knowledgeGraph attribute
+	 * @param knowledgeGraph Integer knowledgeGraph as an actual parameter representation of the knowledgeGraph attribute
 	 */
 	public void setKnowledgeGraph(Integer knowledgeGraph) {
 		this.knowledgeGraph = knowledgeGraph;
@@ -310,7 +309,7 @@ public class CombinedCallRequest {
 	/**
 	 * General Setter for linkedData parameter
 	 * 
-	 * @param Integer linkedData as an actual parameter representation of the linkedData attribute
+	 * @param linkedData Integer linkedData as an actual parameter representation of the linkedData attribute
 	 */
 	public void setLinkedData(Integer linkedData) {
 		this.linkedData = linkedData;
@@ -328,7 +327,7 @@ public class CombinedCallRequest {
 	/**
 	 * General Setter for quotations parameter
 	 * 
-	 * @param Integer quotations as an actual parameter representation of the quotations attribute
+	 * @param quotations Integer quotations as an actual parameter representation of the quotations attribute
 	 */
 	public void setQuotations(Integer quotations) {
 		this.quotations = quotations;
@@ -347,7 +346,7 @@ public class CombinedCallRequest {
 	/**
 	 * General Setter for sentiment parameter
 	 * 
-	 * @param Integer sentiment as an actual parameter representation of the sentiment attribute
+	 * @param sentiment Integer sentiment as an actual parameter representation of the sentiment attribute
 	 */
 	public void setSentiment(Integer sentiment) {
 		this.sentiment = sentiment;
@@ -366,7 +365,7 @@ public class CombinedCallRequest {
 	/**
 	 * General Setter for structuredEntities parameter
 	 * 
-	 * @param Integer structuredEntities as an actual parameter representation of the structuredEntities attribute
+	 * @param structuredEntities Integer structuredEntities as an actual parameter representation of the structuredEntities attribute
 	 */
 	public void setStructuredEntities(Integer structuredEntities) {
 		this.structuredEntities = structuredEntities;
@@ -384,7 +383,7 @@ public class CombinedCallRequest {
 
 	/**
 	 * General Setter for anchorDate parameter
-	 * @param String anchorDate as an actual parameter representation of the anchorDate attribute
+	 * @param anchorDate String anchorDate as an actual parameter representation of the anchorDate attribute
 	 */
 	public void setAnchorDate(String anchorDate) {
 		this.anchorDate = anchorDate;
@@ -401,7 +400,7 @@ public class CombinedCallRequest {
 
 	/**
 	 * General Setter for showSourceText parameter
-	 * @param Boolean showSourceText as an actual parameter representation of the showSourceText attribute
+	 * @param showSourceText Boolean showSourceText as an actual parameter representation of the showSourceText attribute
 	 */
 	public void setShowSourceText(Boolean showSourceText) {
 		this.showSourceText = showSourceText;
@@ -418,7 +417,7 @@ public class CombinedCallRequest {
 
 	/**
 	 * General Setter for cquery parameter
-	 * @param String cquery as an actual parameter representation of the cquery attribute
+	 * @param cquery String cquery as an actual parameter representation of the cquery attribute
 	 */
 	public void setCquery(String cquery) {
 		this.cquery = cquery;
@@ -436,7 +435,7 @@ public class CombinedCallRequest {
 	/**
 	 * General Setter for xpath parameter
 	 * 
-	 * @param String xpath as an actual parameter representation of the xpath attribute
+	 * @param xpath String xpath as an actual parameter representation of the xpath attribute
 	 */
 	public void setXpath(String xpath) {
 		this.xpath = xpath;
@@ -453,7 +452,7 @@ public class CombinedCallRequest {
 
 	/**
 	 * General Setter for sourceText parameter
-	 * @param String sourceText as an actual parameter representation of the sourceText attribute
+	 * @param sourceText String sourceText as an actual parameter representation of the sourceText attribute
 	 */
 	public void setSourceText(String sourceText) {
 		this.sourceText = sourceText;

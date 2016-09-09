@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:dw="http://www.mulesoft.org/schema/mule/ee/dw"
+	xmlns:json="http://www.mulesoft.org/schema/mule/json" xmlns:http="http://www.mulesoft.org/schema/mule/http"
+	xmlns:tracking="http://www.mulesoft.org/schema/mule/ee/tracking"
+	xmlns:watson-alchemy-language="http://www.mulesoft.org/schema/mule/watson-alchemy-language"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:spring="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-current.xsd
+http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/json http://www.mulesoft.org/schema/mule/json/current/mule-json.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd
+http://www.mulesoft.org/schema/mule/ee/tracking http://www.mulesoft.org/schema/mule/ee/tracking/current/mule-tracking-ee.xsd
+http://www.mulesoft.org/schema/mule/watson-alchemy-language http://www.mulesoft.org/schema/mule/watson-alchemy-language/current/mule-watson-alchemy-language.xsd
+http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd">
+	<http:listener-config name="HTTP_Listener_Configuration"
+		host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration" />
+    <watson-alchemy-language:config name="Watson_AlchemyLanguage_Service__Configuration" apiKey="${watson.apikey}" doc:name="Watson AlchemyLanguage Service: Configuration"/>
+	<flow name="GetCombinedResultsFlow">
+		<http:listener config-ref="HTTP_Listener_Configuration"
+			path="/get-combined-results" allowedMethods="GET" doc:name="HTTP" />
+		<dw:transform-message doc:name="Build Request">
+			<dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+{
+	source: inboundProperties."http.query.params".source as :string
+} as :object {
+	class : "org.mule.modules.watsonalchemylanguage.model.CombinedCallRequest"
+}]]></dw:set-payload>
+		</dw:transform-message>
+		<watson-alchemy-language:combined-call
+			config-ref="Watson_AlchemyLanguage_Service__Configuration" doc:name="Get Combined Results" />
+		<json:object-to-json-transformer
+			doc:name="Convert to JSON" />
+	</flow>
+	<flow name="PostIssueOnSupportSystemFlow">
+		<http:listener config-ref="HTTP_Listener_Configuration"
+			path="/issue" doc:name="HTTP" />
+		<dw:transform-message doc:name="Build Request">
+			<dw:set-payload><![CDATA[%dw 1.0
+%output application/java
+---
+{
+	extract: "doc-sentiment,entities,keywords",
+	source: inboundProperties."http.query.params".description as :string,
+	sentiment: 1
+	} as :object {
+	class : "org.mule.modules.watsonalchemylanguage.model.CombinedCallRequest"
+}]]></dw:set-payload>
+		</dw:transform-message>
+		<watson-alchemy-language:combined-call
+			config-ref="Watson_AlchemyLanguage_Service__Configuration" doc:name="Get Combined Results" />
+		<dw:transform-message doc:name="Generate Response">
+			<dw:input-payload doc:sample="sample_data/CombinedResults.dwl" />
+			<dw:set-payload><![CDATA[%dw 1.0
+%output application/json
+---
+{
+	description: inboundProperties."http.query.params".description,
+	sentiment: payload.sentiment.type,
+	user: inboundProperties."http.query.params".user,
+	keywords: payload.keywords,
+	entities: payload.entities
+}]]></dw:set-payload>
+		</dw:transform-message>
+		<flow-ref name="CreateNewTickectInSupportSystem" doc:name="CreateNewTickectInSupportSystem" />
+	</flow>
+	<sub-flow name="CreateNewTickectInSupportSystem">
+		<logger message="#[payload]" level="INFO" doc:name="Logger" />
+	</sub-flow>
+</mule>

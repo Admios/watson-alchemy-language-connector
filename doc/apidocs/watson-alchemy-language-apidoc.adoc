@@ -58,7 +58,7 @@ detected entities and keywords.
 
 +++
 Get author names from a web page or HTML content.
-API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#authors"> #authors </a>
+<a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#authors">API Doc</a>
 +++
 
 
@@ -82,7 +82,7 @@ source icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/ja
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++DocumentAuthors+++ | +++Return a list of detected authors in a web page or HTML content.+++
+|+++DocumentAuthors+++ | +++A list of detected authors in a web page or HTML content.+++
 |======================
 
 
@@ -98,7 +98,7 @@ source icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/ja
 
 +++
 Extract entities from a text, web page or HTML content.
-API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#entities"> #entities </a>
+<a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#entities">API Doc</a>
 +++
 
 
@@ -122,7 +122,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++Entities+++ | +++Return a list of detected entities in a text, web page or HTML content.+++
+|+++Entities+++ | +++A list of detected entities in a text, web page or HTML content.+++
 |======================
 
 
@@ -138,7 +138,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 
 +++
 Extract Dates from a text, web page or content in an URL.
-API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#date-extraction"> #date-extraction </a>
+<a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#date-extraction">API Doc</a>
 +++
 
 
@@ -162,7 +162,7 @@ dateExtractionRequest icon:envelope[] | +++<a href="javadocs/org/mule/modules/wa
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++Dates+++ | +++Return a list of detected dates in the text, web page or HTML content.+++
+|+++Dates+++ | +++A list of detected dates in the text, web page or HTML content.+++
 |======================
 
 
@@ -178,7 +178,7 @@ dateExtractionRequest icon:envelope[] | +++<a href="javadocs/org/mule/modules/wa
 
 +++
 Get feeds from a url.
-API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#feed-detection"> #feed-detection </a>
+<a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#feed-detection">API Doc</a>
 +++
 
 
@@ -202,7 +202,7 @@ url icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++Feeds+++ | +++Return a list of detected RSS/ATOM links in web page.+++
+|+++Feeds+++ | +++A list of detected RSS/ATOM links in web page.+++
 |======================
 
 
@@ -218,7 +218,7 @@ url icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/
 
 +++
 Extract concepts from a web page or plain text.
-API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#concepts"> #concepts </a>
+<a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#concepts">API Doc</a>
 +++
 
 
@@ -242,7 +242,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++Concepts+++ | +++Return a list of detected high level concepts used in the text, web page or HTML content.+++
+|+++Concepts+++ | +++A list of detected high level concepts used in the text, web page or HTML content.+++
 |======================
 
 
@@ -259,7 +259,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 +++
 Analyze sentiment for targeted phrases in a web page, HTML, or plain text. Supported languages: Arabic, English,
 French, German, Italian, Portuguese, Russian, Spanish.
-API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#targeted-sentiment"> #targeted-sentiment </a>
+<a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#targeted-sentiment">API Doc</a>
 +++
 
 
@@ -283,7 +283,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++DocumentSentiment+++ | +++Return the sentiment expressed in the targeted phrase in the text, web page or HTML content.+++
+|+++DocumentSentiment+++ | +++The sentiment expressed in the targeted phrase in the text, web page or HTML content.+++
 |======================
 
 
@@ -299,7 +299,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 
 +++
 Extract keywords from a web pages, HTML or plain text.
-API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#keywords"> #keywords </a>
+<a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#keywords">API Doc</a>
 +++
 
 
@@ -323,7 +323,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++Keywords+++ | +++Return a list of detected keywords in a text, web page or HTML content.+++
+|+++Keywords+++ | +++A list of detected keywords in a text, web page or HTML content.+++
 |======================
 
 
@@ -339,7 +339,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 
 +++
 Get Microformats from a text, web page or content in an URL.
-API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#microformats"> #microformats </a>
+<a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#microformats">API Doc</a>
 +++
 
 
@@ -363,7 +363,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++Microformats+++ | +++Return a list of detected microformats in a text, web page or HTML content.+++
+|+++Microformats+++ | +++A list of detected microformats in a text, web page or HTML content.+++
 |======================
 
 
@@ -380,7 +380,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 +++
 Extract Subject-Action-Object relations from a web page, HTML, or plain text. Supported languages: English,
 Spanish
-API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#microformats"> #microformats </a>
+<a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#microformats">API Doc</a>
 +++
 
 
@@ -404,7 +404,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++SAORelations+++ | +++Return a list of detected Subject-Action-Object relations in the text, web page or HTML content.+++
+|+++SAORelations+++ | +++A list of detected Subject-Action-Object relations in the text, web page or HTML content.+++
 |======================
 
 
@@ -420,7 +420,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 
 +++
 Get the publication date of a web page or HTML document.
-API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#publication_date"> #publication_date </a>
+<a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#publication_date">API Doc</a>
 +++
 
 
@@ -444,7 +444,7 @@ source icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/ja
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++DocumentPublicationDate+++ | +++Return the publication date of the web page or HTML content.+++
+|+++DocumentPublicationDate+++ | +++The publication date of the web page or HTML content.+++
 |======================
 
 
@@ -460,7 +460,7 @@ source icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/ja
 
 +++
 Analyze the overall sentiment of a web page, HTML, or plain text.
-API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#sentiment"> #sentiment </a>
+<a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#sentiment">API Doc</a>
 +++
 
 
@@ -484,7 +484,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++DocumentSentiment+++ | +++Return the general sentiment expressed in the text, web page or HTML content.+++
+|+++DocumentSentiment+++ | +++The general sentiment expressed in the text, web page or HTML content.+++
 |======================
 
 
@@ -500,7 +500,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 
 +++
 Use custom models to identify typed relations between detected entities from a web page, HTML, or plain text.
-API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#typed_relations"> #typed_relations </a>
+<a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#typed_relations">API Doc</a>
 +++
 
 
@@ -524,7 +524,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++TypedRelations+++ | +++Return a list of detected Subject-Action-Object relations in the text, web page or HTML content.+++
+|+++TypedRelations+++ | +++A list of detected Subject-Action-Object relations in the text, web page or HTML content.+++
 |======================
 
 
@@ -540,7 +540,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 
 +++
 Detect the language of a web page, HTML, or plain text.
-API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#language"> #language </a>
+<a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#language">API Doc</a>
 +++
 
 
@@ -564,7 +564,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++Language+++ | +++Return the detected languages in a text, web page or HTML content.+++
+|+++Language+++ | +++The detected languages in a text, web page or HTML content.+++
 |======================
 
 
@@ -580,7 +580,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 
 +++
 Extract the page title from a web page or HTML.
-API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#title_extraction"> #title_extraction </a>
+<a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#title_extraction">API Doc</a>
 +++
 
 
@@ -604,7 +604,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++DocumentTitle+++ | +++Return the title of the web page or HTML content.+++
+|+++DocumentTitle+++ | +++The title of the web page or HTML content.+++
 |======================
 
 
@@ -620,7 +620,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 
 +++
 Extract the main body text from a web page or HTML.
-API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#text_cleaned"> #text_cleaned </a>
+<a href="https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#text_cleaned">API Doc</a>
 +++
 
 
@@ -644,7 +644,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++DocumentText+++ | +++Return the extracted text.+++
+|+++DocumentText+++ | +++The extracted text.+++
 |======================
 
 
@@ -660,7 +660,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 
 +++
 Extract the main body raw text from a web page or HTML.
-API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#text_raw"> #text_raw </a>
+<a href="https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#text_raw">API Doc</a>
 +++
 
 
@@ -684,7 +684,7 @@ source  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++DocumentText+++ | +++Return the extracted text.+++
+|+++DocumentText+++ | +++The extracted text.+++
 |======================
 
 
@@ -700,7 +700,7 @@ source  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.
 
 +++
 Categorize a web page into a 5-level taxonomy
-API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#taxonomy"> #taxonomy </a>
+<a href="https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#taxonomy">API Doc</a>
 +++
 
 
@@ -724,7 +724,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++Taxonomies+++ | +++Return a list of detected taxonomies in the text, web page or HTML content.+++
+|+++Taxonomies+++ | +++A list of detected taxonomies in the text, web page or HTML content.+++
 |======================
 
 
@@ -740,7 +740,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 
 +++
 Detect emotions implied in the text of a web page
-API Doc: <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#emotion_analysis"> #emotion_analysis </a>
+<a href="https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#emotion_analysis">API Doc</a>
 +++
 
 
@@ -764,7 +764,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++DocumentEmotion+++ | +++Return a list of all the detected emotions in the text, web page or HTML content.+++
+|+++DocumentEmotion+++ | +++A list of all the detected emotions in the text, web page or HTML content.+++
 |======================
 
 
@@ -781,7 +781,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 +++
 Analyze text, HTML, or web page content with multiple text analysis operations. Any parameters for the extract
 methods can also be passed.
-API Doc: <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#combined-call"> #combined-call </a>
+<a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#combined-call">API Doc</a>
 +++
 
 
@@ -805,7 +805,7 @@ request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylan
 [cols=".^40%,.^60%", options="header"]
 |======================
 |Return Java Type | Description
-|+++CombinedResults+++ | +++Return the combined results for all the operations specified in the extract parameter.+++
+|+++CombinedResults+++ | +++The combined results for all the operations specified in the extract parameter.+++
 |======================
 
 

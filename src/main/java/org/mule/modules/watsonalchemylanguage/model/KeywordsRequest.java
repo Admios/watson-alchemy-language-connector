@@ -3,7 +3,6 @@
  */
 package org.mule.modules.watsonalchemylanguage.model;
 
-import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
 
 /**
@@ -16,51 +15,50 @@ public class KeywordsRequest {
 	/**
 	 * Text or url to process
 	 */
-	@Default("#[payload]") 
+	@Optional
 	private String source;
 
 	/**
 	 * Maximum number of entities to return (default 50)
 	 */
-	@Optional 
+	@Optional
 	private Integer maxRetrieve;
 
 	/**
-	 * Set this to 1 to include knowledge graph information in the results. This incurs an
-	 * additional transaction charge
+	 * Set this to 1 to include knowledge graph information in the results. This incurs an additional transaction charge
 	 */
-	@Optional 
+	@Optional
 	private Integer knowledgeGraph;
 
 	/**
-	 * Flag value(1-0) Whether to perform sentiment analysis for each keyword(default=0: disabled).
-	 * This incurs an additional transaction charge.  
+	 * Flag value(1-0) Whether to perform sentiment analysis for each keyword(default=0: disabled). This incurs an
+	 * additional transaction charge.
 	 */
-	@Optional 
-	private Integer sentiment; 
+	@Optional
+	private Integer sentiment;
 
 	/**
 	 * Flag value(0-1) to verify the inclusion of the source text in the response
 	 */
-	@Optional 
+	@Optional
 	private Boolean showSourceText;
 
 	/**
 	 * A visual constraints query to apply to the web page. Required when sourceText is set to cquery
 	 */
-	@Optional 
-	private String cquery; 
+	@Optional
+	private String cquery;
 
 	/**
 	 * An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
 	 */
-	@Optional 
-	private String xpath; 
+	@Optional
+	private String xpath;
 
 	/**
 	 * How to obtain the source text from the web page
 	 */
-	@Optional 
+	@Optional
 	private String sourceText;
 
 	/**
@@ -82,8 +80,8 @@ public class KeywordsRequest {
 	}
 
 	/**
-	 * Flag value(0-1) used to include knowledge graph information in the results. This incurs an
-	 * additional transaction charge
+	 * Flag value(0-1) used to include knowledge graph information in the results. This incurs an additional transaction
+	 * charge
 	 * 
 	 * @return Value of the knowledgeGraph attribute
 	 */
@@ -92,10 +90,10 @@ public class KeywordsRequest {
 	}
 
 	/**
-	 * Flag value(1-0) Whether to perform sentiment analysis for each keyword(default=0: disabled).
-	 * This incurs an additional transaction charge. 
+	 * Flag value(1-0) Whether to perform sentiment analysis for each keyword(default=0: disabled). This incurs an
+	 * additional transaction charge.
 	 * 
-	 *  @return Value of the sentiment attribute
+	 * @return Value of the sentiment attribute
 	 */
 	public Integer getSentiment() {
 		return sentiment;
@@ -138,72 +136,56 @@ public class KeywordsRequest {
 	}
 
 	/**
-	 * General Setter for source attribute
-	 * 
-	 * @param String source as an actual parameter representation of the source attribute
+	 * @param source the source to set
 	 */
 	public void setSource(String source) {
 		this.source = source;
 	}
 
 	/**
-	 * General Setter for maxRetrieve attribute
-	 * 
-	 * @param Integer maxRetrieve as an actual parameter representation of the maxRetrieve attribute
+	 * @param maxRetrieve the maxRetrieve to set
 	 */
 	public void setMaxRetrieve(Integer maxRetrieve) {
 		this.maxRetrieve = maxRetrieve;
 	}
 
 	/**
-	 * General Setter for knowledgeGraph attribute
-	 * 
-	 * @param Integer knowledgeGraph as an actual parameter representation of the knowledgeGraph attribute
+	 * @param knowledgeGraph the knowledgeGraph to set
 	 */
 	public void setKnowledgeGraph(Integer knowledgeGraph) {
 		this.knowledgeGraph = knowledgeGraph;
 	}
 
 	/**
-	 * General Setter for sentiment attribute
-	 * 
-	 * @param String sentiment as an actual parameter representation of the sentiment attribute
+	 * @param sentiment the sentiment to set
 	 */
 	public void setSentiment(Integer sentiment) {
 		this.sentiment = sentiment;
 	}
 
 	/**
-	 * General Setter for showSourceText attribute
-	 * 
-	 * @param Boolean showSourceText as an actual parameter representation of the showSourceText attribute
+	 * @param showSourceText the showSourceText to set
 	 */
 	public void setShowSourceText(Boolean showSourceText) {
 		this.showSourceText = showSourceText;
 	}
 
 	/**
-	 * General Setter for cquery attribute
-	 * 
-	 * @param String cquery as an actual parameter representation of the cquery attribute
+	 * @param cquery the cquery to set
 	 */
 	public void setCquery(String cquery) {
 		this.cquery = cquery;
 	}
 
 	/**
-	 * General Setter for xpath attribute
-	 * 
-	 * @param String xpath as an actual parameter representation of the xpath attribute
+	 * @param xpath the xpath to set
 	 */
 	public void setXpath(String xpath) {
 		this.xpath = xpath;
 	}
 
 	/**
-	 * General Setter for sourceText attribute
-	 * 
-	 * @param String sourceText as an actual parameter representation of the sourceText attribute
+	 * @param sourceText the sourceText to set
 	 */
 	public void setSourceText(String sourceText) {
 		this.sourceText = sourceText;

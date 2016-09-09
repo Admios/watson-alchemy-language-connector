@@ -3,7 +3,6 @@
  */
 package org.mule.modules.watsonalchemylanguage.model;
 
-import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
 
 /**
@@ -16,83 +15,83 @@ public class EntitiesRequest {
 	/**
 	 * The text or URL to process
 	 */
-	@Default("#[payload]") 
+	@Optional
 	private String source; 
 
 	/**
 	 * Maximum number of entities to return (default = 50)
 	 */
-	@Optional 
+	@Optional
 	private Integer maxRetrieve;
 
 	/**
 	 * Flag value(0-1). Set this to 0 to treat coreferences as separate entities (coreferences are resolved into
 	 * detected entities by default)
 	 */
-	@Optional 
-	private Integer coreference; 
+	@Optional
+	private Integer coreference;
 
 	/**
 	 * Flag value(0-1). Set this to 0 to hide entity disambiguation information in the response
 	 */
-	@Optional 
-	private Integer disambiguate; 
+	@Optional
+	private Integer disambiguate;
 
 	/**
-	 * Flag value(0-1). Set this to 1 to include knowledge graph information in the results. This incurs an
-	 * additional transaction charge
+	 * Flag value(0-1). Set this to 1 to include knowledge graph information in the results. This incurs an additional
+	 * transaction charge
 	 */
-	@Optional 
+	@Optional
 	private Integer knowledgeGraph;
 
 	/**
 	 * Flag value(0-1). Set this to 0 to hide Linked Data content links in the response
 	 */
-	@Optional 
-	private Integer linkedData; 
+	@Optional
+	private Integer linkedData;
 
 	/**
 	 * Flag value(0-1). Set this to 1 to include quotations that are linked to detected entities
 	 */
-	@Optional 
-	private Integer quotations; 
+	@Optional
+	private Integer quotations;
 
 	/**
 	 * Flag value(0-1). Set this to 1 to analyze the sentiment towards each detected entity. This incurs an additional
 	 * transaction charge
 	 */
-	@Optional 
+	@Optional
 	private Integer sentiment;
 
 	/**
 	 * Flag value(0-1). Check this to include the source text in the response
 	 */
-	@Optional 
-	private Boolean showSourceText; 
+	@Optional
+	private Boolean showSourceText;
 
 	/**
-	 * Flag value(0-1). Set this to 0 to ignore structured entities, such as Quantity, EmailAddress,
-	 * TwitterHandle, Hashtag, and IPAddress
+	 * Flag value(0-1). Set this to 0 to ignore structured entities, such as Quantity, EmailAddress, TwitterHandle,
+	 * Hashtag, and IPAddress
 	 */
-	@Optional 
+	@Optional
 	private Integer structuredEntities;
 
 	/**
 	 * A visual constraints query to apply to the web page. Required when sourceText is set to cquery
 	 */
-	@Optional 
-	private String cquery; 
+	@Optional
+	private String cquery;
 
 	/**
 	 * An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
 	 */
-	@Optional 
-	private String xpath; 
+	@Optional
+	private String xpath;
 
 	/**
 	 * How to obtain the source text from the web page
 	 */
-	@Optional 
+	@Optional
 	private String sourceText;
 
 	/**
@@ -133,8 +132,8 @@ public class EntitiesRequest {
 	}
 
 	/**
-	 * Flag value(0-1) used to include knowledge graph information in the results. This incurs an
-	 * additional transaction charge
+	 * Flag value(0-1) used to include knowledge graph information in the results. This incurs an additional transaction
+	 * charge
 	 * 
 	 * @return Value of the knowledgeGraph attribute
 	 */
@@ -161,8 +160,8 @@ public class EntitiesRequest {
 	}
 
 	/**
-	 * Flag value(0-1) used to analyze the sentiment towards each detected entity. This incurs an additional
-	 * transaction charge
+	 * Flag value(0-1) used to analyze the sentiment towards each detected entity. This incurs an additional transaction
+	 * charge
 	 * 
 	 * @return Value of the sentiment attribute
 	 */
@@ -180,8 +179,8 @@ public class EntitiesRequest {
 	}
 
 	/**
-	 * Flag value(0-1) used to ignore or show structured entities, such as Quantity, EmailAddress,
-	 * TwitterHandle, Hashtag, and IPAddress
+	 * Flag value(0-1) used to ignore or show structured entities, such as Quantity, EmailAddress, TwitterHandle,
+	 * Hashtag, and IPAddress
 	 * 
 	 * @return Value of the structuredEntities attribute
 	 */
@@ -217,117 +216,91 @@ public class EntitiesRequest {
 	}
 
 	/**
-	 * General Setter for source parameter
-	 * 
-	 * @param String source as an actual parameter representation of the source attribute
+	 * @param source the source to set
 	 */
 	public void setSource(String source) {
 		this.source = source;
 	}
 
 	/**
-	 * General Setter for maxRetrieve parameter
-	 * 
-	 * @param Integer maxRetrieve as an actual parameter representation of the maxRetrieve attribute
+	 * @param maxRetrieve the maxRetrieve to set
 	 */
 	public void setMaxRetrieve(Integer maxRetrieve) {
 		this.maxRetrieve = maxRetrieve;
 	}
 
 	/**
-	 * General Setter for coreference parameter
-	 * 
-	 * @param Integer coreference as an actual parameter representation of the coreference attribute
+	 * @param coreference the coreference to set
 	 */
 	public void setCoreference(Integer coreference) {
 		this.coreference = coreference;
 	}
 
 	/**
-	 * General Setter for disambiguate parameter
-	 * 
-	 * @param Integer disambiguate as an actual parameter representation of the disambiguate attribute
+	 * @param disambiguate the disambiguate to set
 	 */
 	public void setDisambiguate(Integer disambiguate) {
 		this.disambiguate = disambiguate;
 	}
 
 	/**
-	 * General Setter for knowledgeGraph parameter
-	 * 
-	 * @param Integer knowledgeGraph as an actual parameter representation of the knowledgeGraph attribute
+	 * @param knowledgeGraph the knowledgeGraph to set
 	 */
 	public void setKnowledgeGraph(Integer knowledgeGraph) {
 		this.knowledgeGraph = knowledgeGraph;
 	}
 
 	/**
-	 * General Setter for linkedData parameter
-	 * 
-	 * @param Integer linkedData as an actual parameter representation of the linkedData attribute
+	 * @param linkedData the linkedData to set
 	 */
 	public void setLinkedData(Integer linkedData) {
 		this.linkedData = linkedData;
 	}
 
 	/**
-	 * General Setter for quotations parameter
-	 * 
-	 * @param Integer quotations as an actual parameter representation of the quotations attribute
+	 * @param quotations the quotations to set
 	 */
 	public void setQuotations(Integer quotations) {
 		this.quotations = quotations;
 	}
 
 	/**
-	 * General Setter for sentiment parameter
-	 * 
-	 * @param Integer sentiment as an actual parameter representation of the sentiment attribute
+	 * @param sentiment the sentiment to set
 	 */
 	public void setSentiment(Integer sentiment) {
 		this.sentiment = sentiment;
 	}
 
 	/**
-	 * General Setter for showSourceText parameter
-	 * 
-	 * @param Boolean showSourceText as an actual parameter representation of the showSourceText attribute
+	 * @param showSourceText the showSourceText to set
 	 */
 	public void setShowSourceText(Boolean showSourceText) {
 		this.showSourceText = showSourceText;
 	}
 
 	/**
-	 * General Setter for structuredEntities parameter
-	 * 
-	 * @param Integer structuredEntities as an actual parameter representation of the structuredEntities attribute
+	 * @param structuredEntities the structuredEntities to set
 	 */
 	public void setStructuredEntities(Integer structuredEntities) {
 		this.structuredEntities = structuredEntities;
 	}
 
 	/**
-	 * General Setter for cquery parameter
-	 * 
-	 * @param String cquery as an actual parameter representation of the cquery attribute
+	 * @param cquery the cquery to set
 	 */
 	public void setCquery(String cquery) {
 		this.cquery = cquery;
 	}
 
 	/**
-	 * General Setter for xpath parameter
-	 * 
-	 * @param String xpath as an actual parameter representation of the xpath attribute
+	 * @param xpath the xpath to set
 	 */
 	public void setXpath(String xpath) {
 		this.xpath = xpath;
 	}
 
 	/**
-	 * General Setter for sourceText parameter
-	 * 
-	 * @param String sourceText as an actual parameter representation of the sourceText attribute
+	 * @param sourceText the sourceText to set
 	 */
 	public void setSourceText(String sourceText) {
 		this.sourceText = sourceText;

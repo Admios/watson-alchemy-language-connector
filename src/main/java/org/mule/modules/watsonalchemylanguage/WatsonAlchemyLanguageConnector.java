@@ -9,6 +9,7 @@ import org.mule.api.annotations.ReconnectOn;
 import org.mule.api.annotations.licensing.RequiresEnterpriseLicense;
 import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
+import org.mule.api.annotations.param.RefOnly;
 import org.mule.modules.watsonalchemylanguage.config.Config;
 import org.mule.modules.watsonalchemylanguage.handler.implementation.AuthorsHandler;
 import org.mule.modules.watsonalchemylanguage.handler.implementation.CombinedCallHandler;
@@ -78,13 +79,21 @@ public class WatsonAlchemyLanguageConnector {
 	@org.mule.api.annotations.Config
 	Config config;
 
+	public Config getConfig() {
+		return config;
+	}
+
+	public void setConfig(Config config) {
+		this.config = config;
+	}
+
 	/**
 	 * Get author names from a web page or HTML content.
 	 * 
-	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#authors}
+	 * <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#authors">API Doc</a>
 	 *
 	 * @param source The HTML or URL to process
-	 * @return Return a list of detected authors in a web page or HTML content.
+	 * @return A list of detected authors in a web page or HTML content.
 	 */
 	@Processor
 	public DocumentAuthors authors(@Default("#[payload]") String source) {
@@ -94,14 +103,14 @@ public class WatsonAlchemyLanguageConnector {
 	/**
 	 * Extract entities from a text, web page or HTML content.
 	 * 
-	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#entities}
+	 * <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#entities">API Doc</a>
 	 *
 	 * @param request Request with all the options for entities operation.
 	 * 
-	 * @return Return a list of detected entities in a text, web page or HTML content.
+	 * @return A list of detected entities in a text, web page or HTML content.
 	 */
 	@Processor
-	public Entities entities(@Default("#[payload]") EntitiesRequest request) {
+	public Entities entities(@RefOnly @Default("#[payload]") EntitiesRequest request) {
 
 		return new EntitiesHandler(config.getService(), request.getSource())
 				.addMaxRetrieve(request.getMaxRetrieve())
@@ -122,28 +131,28 @@ public class WatsonAlchemyLanguageConnector {
 	/**
 	 * Extract Dates from a text, web page or content in an URL.
 	 * 
-	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#date-extraction}
+	 * <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#date-extraction">API Doc</a>
 	 *
-	 * @param dateExtractionRequest Request with all the options for a date extraction operation.
+	 * @param request Request with all the options for a date extraction operation.
 	 * 
-	 * @return Return a list of detected dates in the text, web page or HTML content.
+	 * @return A list of detected dates in the text, web page or HTML content.
 	 */
 	@Processor
-	public Dates dateExtraction(@Default("#[payload]") DateExtractionRequest dateExtractionRequest) {
-		return new DateExtractionHandler(config.getService(), dateExtractionRequest.getSource())
-				.addAnchorDate(dateExtractionRequest.getAnchorDate())
-				.addShowSourceText(dateExtractionRequest.getShowSourceText())
+	public Dates dateExtraction(@RefOnly @Default("#[payload]") DateExtractionRequest request) {
+		return new DateExtractionHandler(config.getService(), request.getSource())
+				.addAnchorDate(request.getAnchorDate())
+				.addShowSourceText(request.getShowSourceText())
 				.execute();
 	}
 
 	/**
 	 * Get feeds from a url.
 	 * 
-	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#feed-detection}
+	 * <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#feed-detection">API Doc</a>
 	 *
 	 * @param url The <code>URL</code> to process.
 	 * 
-	 * @return Return a list of detected RSS/ATOM links in web page.
+	 * @return A list of detected RSS/ATOM links in web page.
 	 */
 	@Processor
 	public Feeds feedDetection(@Default("#[payload]") String url) {
@@ -151,17 +160,16 @@ public class WatsonAlchemyLanguageConnector {
 				.execute();
 	}
 
-	
 	/**
 	 * Extract concepts from a web page or plain text.
 	 *
-	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#concepts}
+	 * <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#concepts">API Doc</a>
 	 * 
 	 * @param request Request with all the options for a concept operation.
-	 * @return Return a list of detected high level concepts used in the text, web page or HTML content.
+	 * @return A list of detected high level concepts used in the text, web page or HTML content.
 	 */
 	@Processor
-	public Concepts concepts(@Default("#[payload]") ConceptsRequest request) {
+	public Concepts concepts(@RefOnly @Default("#[payload]") ConceptsRequest request) {
 		return new ConceptsHandler(config.getService(), request.getSource())
 				.addCquery(request.getCquery())
 				.addKnowledgeGraph(request.getKnowledgeGraph())
@@ -172,26 +180,18 @@ public class WatsonAlchemyLanguageConnector {
 				.addXpath(request.getXpath()).execute();
 	}
 
-	public Config getConfig() {
-		return config;
-	}
-
-	public void setConfig(Config config) {
-		this.config = config;
-	}
-
 	/**
 	 * Analyze sentiment for targeted phrases in a web page, HTML, or plain text. Supported languages: Arabic, English,
 	 * French, German, Italian, Portuguese, Russian, Spanish.
 	 * 
-	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#targeted-sentiment}
+	 * <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#targeted-sentiment">API Doc</a>
 	 *
 	 * @param request Request with all the options for the targeted sentiment operation.
 	 * 
-	 * @return Return the sentiment expressed in the targeted phrase in the text, web page or HTML content.
+	 * @return The sentiment expressed in the targeted phrase in the text, web page or HTML content.
 	 */
 	@Processor
-	public DocumentSentiment targetedSentiment(@Default("#[payload]") TargetedSentimentRequest request) {
+	public DocumentSentiment targetedSentiment(@RefOnly @Default("#[payload]") TargetedSentimentRequest request) {
 		return new TargetedSentimentHandler(config.getService(), request.getSource())
 				.addCquery(request.getCquery())
 				.addShowSourceText(request.getShowSourceText())
@@ -204,14 +204,14 @@ public class WatsonAlchemyLanguageConnector {
 	/**
 	 * Extract keywords from a web pages, HTML or plain text.
 	 * 
-	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#keywords}
+	 * <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#keywords">API Doc</a>
 	 *
 	 * @param request Request with all the options for the keywords operation.
 	 * 
-	 * @return Return a list of detected keywords in a text, web page or HTML content.
+	 * @return A list of detected keywords in a text, web page or HTML content.
 	 */
 	@Processor
-	public Keywords keywords(@Default("#[payload]") KeywordsRequest request) {
+	public Keywords keywords(@RefOnly @Default("#[payload]") KeywordsRequest request) {
 		return new KeywordsHandler(config.getService(), request.getSource())
 				.addCquery(request.getCquery())
 				.addKnowledgeGraph(request.getKnowledgeGraph())
@@ -225,14 +225,14 @@ public class WatsonAlchemyLanguageConnector {
 	/**
 	 * Get Microformats from a text, web page or content in an URL.
 	 * 
-	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#microformats}
+	 * <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#microformats">API Doc</a>
 	 *
 	 * @param request Request with all the options for the microformats operation.
 	 * 
-	 * @return Return a list of detected microformats in a text, web page or HTML content.
+	 * @return A list of detected microformats in a text, web page or HTML content.
 	 */
 	@Processor
-	public Microformats microformats(@Default("#[payload]") MicroformatsRequest request) {
+	public Microformats microformats(@RefOnly @Default("#[payload]") MicroformatsRequest request) {
 		return new MicroformatsHandler(config.getService(), request.getSource())
 				.addShowSourceText(request.getShowSourceText()).execute();
 	}
@@ -241,14 +241,14 @@ public class WatsonAlchemyLanguageConnector {
 	 * Extract Subject-Action-Object relations from a web page, HTML, or plain text. Supported languages: English,
 	 * Spanish
 	 *
-	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#microformats}
+	 * <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#microformats">API Doc</a>
 	 * 
 	 * @param request Request with all the options for the Subject-Action-Object relations operation.
 	 * 
-	 * @return Return a list of detected Subject-Action-Object relations in the text, web page or HTML content.
+	 * @return A list of detected Subject-Action-Object relations in the text, web page or HTML content.
 	 */
 	@Processor
-	public SAORelations relations(@Default("#[payload]") SAORelationsRequest request) {
+	public SAORelations relations(@RefOnly @Default("#[payload]") SAORelationsRequest request) {
 		return new RelationsHandler(config.getService(), request.getSource())
 				.addMaxRetrieve(request.getMaxRetrieve())
 				.addShowSourceText(request.getShowSourceText())
@@ -270,11 +270,11 @@ public class WatsonAlchemyLanguageConnector {
 	/**
 	 * Get the publication date of a web page or HTML document.
 	 *
-	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#publication_date}
+	 * <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#publication_date">API Doc</a>
 	 * 
 	 * @param source The HTML or URL to process
 	 * 
-	 * @return Return the publication date of the web page or HTML content.
+	 * @return The publication date of the web page or HTML content.
 	 */
 	@Processor
 	public DocumentPublicationDate publicationDate(@Default("#[payload]") String source) {
@@ -284,14 +284,14 @@ public class WatsonAlchemyLanguageConnector {
 	/**
 	 * Analyze the overall sentiment of a web page, HTML, or plain text.
 	 * 
-	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#sentiment}
+	 * <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#sentiment">API Doc</a>
 	 *
 	 * @param request Request with all the options for the sentiment analysis operation.
 	 * 
-	 * @return Return the general sentiment expressed in the text, web page or HTML content.
+	 * @return The general sentiment expressed in the text, web page or HTML content.
 	 */
 	@Processor
-	public DocumentSentiment sentimentAnalysis(@Default("#[payload]") SentimentAnalysisRequest request) {
+	public DocumentSentiment sentimentAnalysis(@RefOnly @Default("#[payload]") SentimentAnalysisRequest request) {
 		return new SentimentAnalysisHandler(config.getService(), request.getSource())
 				.addShowSourceText(request.getShowSourceText())
 				.addCquery(request.getCquery())
@@ -302,14 +302,14 @@ public class WatsonAlchemyLanguageConnector {
 	/**
 	 * Use custom models to identify typed relations between detected entities from a web page, HTML, or plain text.
 	 * 
-	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#typed_relations}
+	 * <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#typed_relations">API Doc</a>
 	 *
 	 * @param request Request with all the options for the typed relations operation.
 	 * 
-	 * @return Return a list of detected Subject-Action-Object relations in the text, web page or HTML content.
+	 * @return A list of detected Subject-Action-Object relations in the text, web page or HTML content.
 	 */
 	@Processor
-	public TypedRelations typedRelations(@Default("#[payload]") TypedRelationsRequest request) {
+	public TypedRelations typedRelations(@RefOnly @Default("#[payload]") TypedRelationsRequest request) {
 		return new TypedRelationsHandler(config.getService(), request.getSource())
 				.addModel(request.getModel())
 				.addShowSourceText(request.getShowSourceText()).execute();
@@ -318,14 +318,14 @@ public class WatsonAlchemyLanguageConnector {
 	/**
 	 * Detect the language of a web page, HTML, or plain text.
 	 * 
-	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#language}
+	 * <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#language">API Doc</a>
 	 *
 	 * @param request Request with all the options for the language detection operation.
 	 * 
-	 * @return Return the detected languages in a text, web page or HTML content.
+	 * @return The detected languages in a text, web page or HTML content.
 	 */
 	@Processor
-	public Language languageDetection(@Default("#[payload]") LanguageDetectionRequest request) {
+	public Language languageDetection(@RefOnly @Default("#[payload]") LanguageDetectionRequest request) {
 		return new LanguageDetectionHandler(config.getService(), request.getSource())
 				.addShowSourceText(request.getShowSourceText())
 				.addCquery(request.getCquery())
@@ -337,14 +337,14 @@ public class WatsonAlchemyLanguageConnector {
 	/**
 	 * Extract the page title from a web page or HTML.
 	 * 
-	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#title_extraction}
+	 * <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#title_extraction">API Doc</a>
 	 *
 	 * @param request Request with all the options for the title extraction operation.
 	 * 
-	 * @return Return the title of the web page or HTML content.
+	 * @return The title of the web page or HTML content.
 	 */
 	@Processor
-	public DocumentTitle titleExtraction(@Default("#[payload]") TitleExtractionRequest request) {
+	public DocumentTitle titleExtraction(@RefOnly @Default("#[payload]") TitleExtractionRequest request) {
 		return new TitleExtractionHandler(config.getService(), request.getSource())
 				.addShowSourceText(request.getShowSourceText())
 				.execute();
@@ -353,14 +353,14 @@ public class WatsonAlchemyLanguageConnector {
 	/**
 	 * Extract the main body text from a web page or HTML.
 	 * 
-	 * API Doc: {@see https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#text_cleaned}
+	 * <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#text_cleaned">API Doc</a>
 	 * 
 	 * @param request Request with all the options for the text extraction operation.
 	 * 
-	 * @return Return the extracted text.
+	 * @return The extracted text.
 	 */
 	@Processor
-	public DocumentText textExtraction(@Default("#[payload]") TextExtractionRequest request) {
+	public DocumentText textExtraction(@RefOnly @Default("#[payload]") TextExtractionRequest request) {
 		return new TextExtractionHandler(config.getService(), request.getSource())
 				.addCquery(request.getCquery())
 				.addSourceText(request.getSourceText())
@@ -372,11 +372,11 @@ public class WatsonAlchemyLanguageConnector {
 	/**
 	 * Extract the main body raw text from a web page or HTML.
 	 * 
-	 * API Doc: {@see https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#text_raw}
+	 * <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#text_raw">API Doc</a>
 	 * 
 	 * @param source The HTML or URL to process.
 	 * 
-	 * @return Return the extracted text.
+	 * @return The extracted text.
 	 */
 	@Processor
 	public DocumentText rawTextExtraction(String source) {
@@ -386,14 +386,14 @@ public class WatsonAlchemyLanguageConnector {
 	/**
 	 * Categorize a web page into a 5-level taxonomy
 	 * 
-	 * API Doc: {@see https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#taxonomy}
+	 * <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#taxonomy">API Doc</a>
 	 * 
 	 * @param request Request with all the options for the taxonomies operation.
 	 * 
-	 * @return Return a list of detected taxonomies in the text, web page or HTML content.
+	 * @return A list of detected taxonomies in the text, web page or HTML content.
 	 */
 	@Processor
-	public Taxonomies taxonomies(@Default("#[payload]") TaxonomiesRequest request) {
+	public Taxonomies taxonomies(@RefOnly @Default("#[payload]") TaxonomiesRequest request) {
 		return new TaxonomyHandler(config.getService(), request.getSource())
 				.addShowSourceText(request.getShowSourceText())
 				.addCquery(request.getCquery())
@@ -405,14 +405,14 @@ public class WatsonAlchemyLanguageConnector {
 	/**
 	 * Detect emotions implied in the text of a web page
 	 * 
-	 * API Doc: {@see https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#emotion_analysis}
+	 * <a href="https://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#emotion_analysis">API Doc</a>
 	 * 
 	 * @param request Request with all the options for the emotion analysis operation.
 	 * 
-	 * @return Return a list of all the detected emotions in the text, web page or HTML content.
+	 * @return A list of all the detected emotions in the text, web page or HTML content.
 	 */
 	@Processor
-	public DocumentEmotion emotionAnalysis(@Default("#[payload]") EmotionAnalysisRequest request) {
+	public DocumentEmotion emotionAnalysis(@RefOnly @Default("#[payload]") EmotionAnalysisRequest request) {
 		return new EmotionalAnalysisHandler(config.getService(), request.getSource())
 				.addCquery(request.getCquery())
 				.addShowSourceText(request.getShowSourceText())
@@ -424,14 +424,14 @@ public class WatsonAlchemyLanguageConnector {
 	 * Analyze text, HTML, or web page content with multiple text analysis operations. Any parameters for the extract
 	 * methods can also be passed.
 	 * 
-	 * API Doc: {@see http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#combined-call}
+	 * <a href="http://www.ibm.com/watson/developercloud/alchemy-language/api/v1/#combined-call">API Doc</a>
 	 * 
 	 * @param request Request with all the options for a combine call operation.
 	 * 
-	 * @return Return the combined results for all the operations specified in the extract parameter.
+	 * @return The combined results for all the operations specified in the extract parameter.
 	 */
 	@Processor
-	public CombinedResults combinedCall(@Default("#[payload]") CombinedCallRequest request) {
+	public CombinedResults combinedCall(@RefOnly @Default("#[payload]") CombinedCallRequest request) {
 		return new CombinedCallHandler(config.getService(), request.getSource())
 				.addExtract(request.getExtract())
 				.addAnchorDate(request.getAnchorDate())

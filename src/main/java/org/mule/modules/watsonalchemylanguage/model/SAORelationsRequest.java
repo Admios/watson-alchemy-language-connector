@@ -4,7 +4,6 @@
 package org.mule.modules.watsonalchemylanguage.model;
 
 import org.mule.api.annotations.display.FriendlyName;
-import org.mule.api.annotations.param.Default;
 import org.mule.api.annotations.param.Optional;
 
 /**
@@ -13,9 +12,102 @@ import org.mule.api.annotations.param.Optional;
  * @author Admios
  */
 public class SAORelationsRequest {
-	
-	
-	
+
+	/**
+	 * Text or URL to process
+	 */
+	@Optional
+	private String source;
+
+	/**
+	 * Maximum number of entities to return (default 50)
+	 */
+	@Optional
+	private Integer maxRetrieve;
+
+	/**
+	 * Set this to 1 to include the source text in the response
+	 */
+	@Optional
+	private Boolean showSourceText;
+
+	/**
+	 * Check this to identify keywords in detected relations. <b> This incurs in additional transaction charge </b>
+	 */
+	@Optional
+	private Boolean keywords;
+
+	/**
+	 * Check this to identify named entities in detected relations. <b>This incurs in additional transaction charge</b>
+	 */
+	@Optional
+	private Boolean entities;
+
+	/**
+	 * Check this to restrict results to relations that contain at least one named entity
+	 */
+	@Optional
+	private Boolean requireEntities;
+
+	/**
+	 * Set this to 0 to treat coreferences as separate entities (coreferences are resolved into detected default
+	 * entities
+	 */
+	@Optional
+	private Boolean coreference;
+
+	/**
+	 * Set this to 0 to hide entity disambiguation information in the response
+	 */
+	@Optional
+	private Boolean disambiguate;
+
+	/**
+	 * Set this to 1 to include knowledge graph information in the results. This incurs an additional transaction charge
+	 */
+	@Optional
+	private Boolean knowledgeGraph;
+
+	/**
+	 * Check this to hide Linked Data contents links in the response.
+	 */
+	@Optional
+	private Boolean hideLinkedData;
+
+	/**
+	 * Check this to analyze the sentiment towards each result.
+	 */
+	@Optional
+	private Boolean analyzeSentiment;
+
+	/**
+	 * Check this to exclude named entity text from sentiment analysis. For example, do not analyze "New" in "New York".
+	 */
+	@FriendlyName("Exclude entity from analysis")
+	@Optional
+	private Boolean excludeEntityFromSentimentAnalysis;
+
+	/**
+	 * A visual constraints query to apply to the web page. Required when sourceText is set to cquery
+	 */
+	@Optional
+	private String cquery;
+
+	/**
+	 * An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
+	 */
+	@Optional
+	private String xpath;
+
+	/**
+	 * How to obtain the source text from the web page
+	 */
+	@Optional
+	private String sourceText;
+
+	public SAORelationsRequest() {
+	}
+
 	public SAORelationsRequest(String source, Integer maxRetrieve, Boolean showSourceText, Boolean disambiguate) {
 		super();
 		this.source = source;
@@ -23,102 +115,6 @@ public class SAORelationsRequest {
 		this.showSourceText = showSourceText;
 		this.disambiguate = disambiguate;
 	}
-
-	/**
-	 * Text or URL to process
-	 */
-	@Default("#[payload]") 
-	private String source;
-
-	/**
-	 * Maximum number of entities to return (default 50)
-	 */
-	@Optional 
-	private Integer maxRetrieve;
-
-	/**
-	 * Set this to 1 to include the source text in the response
-	 */
-	@Optional 
-	private Boolean showSourceText; 
-
-	/**
-	 * Check this to identify keywords in detected relations. <b> This incurs in additional 
-	 * transaction charge </b>
-	 */
-	@Optional 
-	private Boolean keywords; 
-
-	/**
-	 * Check this to identify named entities in detected relations. <b>This incurs in additional
-	 * transaction charge</b>
-	 */
-	@Optional 
-	private Boolean entities;
-
-	/**
-	 * Check this to restrict results to relations that contain at least one named entity
-	 */
-	@Optional 
-	private Boolean requireEntities; 
-
-	/**
-	 * Set this to 0 to treat coreferences as separate entities (coreferences are resolved into
-	 * detected default entities
-	 */
-	@Optional 
-	private Boolean coreference; 
-
-	/**
-	 * Set this to 0 to hide entity disambiguation information in the response
-	 */
-	@Optional 
-	private Boolean disambiguate;
-
-	/**
-	 * Set this to 1 to include knowledge graph information in the results. This incurs an
-	 * additional transaction charge
-	 */
-	@Optional 
-	private Boolean knowledgeGraph; 
-
-	/**
-	 * Check this to hide Linked Data contents links in the response.
-	 */
-	@Optional 
-	private Boolean hideLinkedData; 
-
-	/**
-	 * Check this to analyze the sentiment towards each result.
-	 */
-	@Optional 
-	private Boolean analyzeSentiment;
-
-	/**
-	 * Check this to exclude named entity text from sentiment analysis. For
-	 *            example, do not analyze "New" in "New York".
-	 */
-	@FriendlyName("Exclude entity from analysis") 
-	@Optional 
-	private Boolean excludeEntityFromSentimentAnalysis;
-
-	/**
-	 * A visual constraints query to apply to the web page. Required when sourceText is set to cquery
-	 */
-	@Optional 
-	private String cquery; 
-
-	/**
-	 * An XPath query to apply to the web page. Required when sourceText is set to one of the XPath values
-	 */
-	@Optional 
-	private String xpath;
-
-	/**
-	 * How to obtain the source text from the web page
-	 */
-	@Optional 
-	private String sourceText;
 
 	/**
 	 * Text or url to process
@@ -148,8 +144,8 @@ public class SAORelationsRequest {
 	}
 
 	/**
-	 * Flag value(Boolean) used to identify keywords in detected relations. <b> This incurs in additional 
-	 * transaction charge </b>
+	 * Flag value(Boolean) used to identify keywords in detected relations. <b> This incurs in additional transaction
+	 * charge </b>
 	 * 
 	 * @return Value of the keywords attribute
 	 */
@@ -196,8 +192,8 @@ public class SAORelationsRequest {
 	}
 
 	/**
-	 * Flag value(Boolean) used to include knowledge graph information in the results. This incurs an
-	 * additional transaction charge
+	 * Flag value(Boolean) used to include knowledge graph information in the results. This incurs an additional
+	 * transaction charge
 	 * 
 	 * @return Value of the knowledgeGraph attribute
 	 */
@@ -224,9 +220,9 @@ public class SAORelationsRequest {
 	}
 
 	/**
-	 * Check this to exclude named entity text from sentiment analysis. This is a Boolean value. 
+	 * Check this to exclude named entity text from sentiment analysis. This is a Boolean value.
 	 * 
-	 * @return Value of the excludeEntityFromSentimentAnalysis attribute  
+	 * @return Value of the excludeEntityFromSentimentAnalysis attribute
 	 */
 	public Boolean getExcludeEntityFromSentimentAnalysis() {
 		return excludeEntityFromSentimentAnalysis;
@@ -260,140 +256,108 @@ public class SAORelationsRequest {
 	}
 
 	/**
-	 * General Setter for source parameter
-	 * 
-	 * @param String source as an actual parameter representation of the source attribute
+	 * @param source the source to set
 	 */
 	public void setSource(String source) {
 		this.source = source;
 	}
 
 	/**
-	 * General Setter for maxRetrieve parameter
-	 * 
-	 * @param Integer maxRetrieve as an actual parameter representation of the maxRetrieve attribute
+	 * @param maxRetrieve the maxRetrieve to set
 	 */
 	public void setMaxRetrieve(Integer maxRetrieve) {
 		this.maxRetrieve = maxRetrieve;
 	}
 
 	/**
-	 * General Setter for showSourceText parameter
-	 * 
-	 * @param Boolean showSourceText as an actual parameter representation of the showSourceText attribute
+	 * @param showSourceText the showSourceText to set
 	 */
 	public void setShowSourceText(Boolean showSourceText) {
 		this.showSourceText = showSourceText;
 	}
 
 	/**
-	 * General Setter for keywords parameter
-	 * 
-	 * @param Boolean keywords as an actual parameter representation of the keywords attribute
+	 * @param keywords the keywords to set
 	 */
 	public void setKeywords(Boolean keywords) {
 		this.keywords = keywords;
 	}
 
 	/**
-	 * General Setter for entities parameter
-	 * 
-	 * @param Boolean entities as an actual parameter representation of the entities attribute
+	 * @param entities the entities to set
 	 */
 	public void setEntities(Boolean entities) {
 		this.entities = entities;
 	}
 
 	/**
-	 * General Setter for requiereEntities parameter
-	 * 
-	 * @param Boolean requireEntities as an actual parameter representation of the requireEntities attribute
+	 * @param requireEntities the requireEntities to set
 	 */
 	public void setRequireEntities(Boolean requireEntities) {
 		this.requireEntities = requireEntities;
 	}
 
 	/**
-	 * General Setter for coreference parameter
-	 * 
-	 * @param Boolean coreference as an actual parameter representation of the coreference attribute
+	 * @param coreference the coreference to set
 	 */
 	public void setCoreference(Boolean coreference) {
 		this.coreference = coreference;
 	}
 
 	/**
-	 * General Setter for disambiguate parameter
-	 * 
-	 * @param Boolean disambiguate as an actual parameter representation of the disambiguate attribute
+	 * @param disambiguate the disambiguate to set
 	 */
 	public void setDisambiguate(Boolean disambiguate) {
 		this.disambiguate = disambiguate;
 	}
 
 	/**
-	 * General Setter for knowledgeGraph parameter
-	 * 
-	 * @param Boolean knowledgeGraph as an actual parameter representation of the knowledgeGraph attribute
+	 * @param knowledgeGraph the knowledgeGraph to set
 	 */
 	public void setKnowledgeGraph(Boolean knowledgeGraph) {
 		this.knowledgeGraph = knowledgeGraph;
 	}
 
 	/**
-	 * General Setter for hideLinkedData parameter
-	 * 
-	 * @param Boolean hideLinkedData as an actual parameter representation of the hideLinkedData attribute
+	 * @param hideLinkedData the hideLinkedData to set
 	 */
 	public void setHideLinkedData(Boolean hideLinkedData) {
 		this.hideLinkedData = hideLinkedData;
 	}
 
 	/**
-	 * General Setter for analyzeSentiment parameter
-	 * 
-	 * @param Boolean analyzeSentiment as an actual parameter representation of the analyzeSentiment attribute
+	 * @param analyzeSentiment the analyzeSentiment to set
 	 */
 	public void setAnalyzeSentiment(Boolean analyzeSentiment) {
 		this.analyzeSentiment = analyzeSentiment;
 	}
 
 	/**
-	 * General Setter for excludeEntityFromSentimentAnalysis parameter
-	 * 
-	 * @param Boolean excludeEntityFromSentimentAnalysis as an actual parameter representation of 
-	 * the excludeEntityFromSentimentAnalysis attribute
+	 * @param excludeEntityFromSentimentAnalysis the excludeEntityFromSentimentAnalysis to set
 	 */
 	public void setExcludeEntityFromSentimentAnalysis(Boolean excludeEntityFromSentimentAnalysis) {
 		this.excludeEntityFromSentimentAnalysis = excludeEntityFromSentimentAnalysis;
 	}
 
 	/**
-	 * General Setter for cquery parameter
-	 * 
-	 * @param String cquery as an actual parameter representation of the cquery attribute
+	 * @param cquery the cquery to set
 	 */
 	public void setCquery(String cquery) {
 		this.cquery = cquery;
 	}
 
 	/**
-	 * General Setter for xpath parameter
-	 * 
-	 * @param String xpath as an actual parameter representation of the xpath attribute
+	 * @param xpath the xpath to set
 	 */
 	public void setXpath(String xpath) {
 		this.xpath = xpath;
 	}
 
 	/**
-	 * General Setter for sourceText parameter
-	 * 
-	 * @param String sourceText as an actual parameter representation of the sourceText attribute
+	 * @param sourceText the sourceText to set
 	 */
 	public void setSourceText(String sourceText) {
 		this.sourceText = sourceText;
 	}
-	
-	
+
 }
