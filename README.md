@@ -36,7 +36,7 @@ Use one or all of the natural language processing APIs available through Alchemy
 
 ## Version 1.0.0
 
-- User Guide - https://admios.github.io/watson-alchemy-language-connector/1.0.0/release-notes.html
+- User Guide - https://admios.github.io/watson-alchemy-language-connector/1.0.0/user-manual.html
 - Release Notes - https://admios.github.io/watson-alchemy-language-connector/1.0.0/release-notes.html
 - Apidocs - https://admios.github.io/watson-alchemy-language-connector/1.0.0/apidocs/watson-alchemy-language-apidoc.html
 
