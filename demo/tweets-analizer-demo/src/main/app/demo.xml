@@ -12,58 +12,9 @@ http://www.mulesoft.org/schema/mule/watson-alchemy-language http://www.mulesoft.
 http://www.mulesoft.org/schema/mule/ee/dw http://www.mulesoft.org/schema/mule/ee/dw/current/dw.xsd
 http://www.mulesoft.org/schema/mule/twitter http://www.mulesoft.org/schema/mule/twitter/current/mule-twitter.xsd
 http://www.mulesoft.org/schema/mule/batch http://www.mulesoft.org/schema/mule/batch/current/mule-batch.xsd">
-    <http:listener-config name="HTTP_Listener_Configuration" host="0.0.0.0" port="8081" doc:name="HTTP Listener Configuration"/>
     <watson-alchemy-language:config name="Watson_AlchemyLanguage_Service__Configuration" apiKey="${watson.apikey}" doc:name="Watson AlchemyLanguage Service: Configuration"/>
     <twitter:config name="Twitter__Configuration" accessKey="${twitter.access.key}" accessSecret="${twitter.access.secret}" consumerKey="${twitter.consumer.key}" consumerSecret="${twitter.consumer.secret}" doc:name="Twitter: Configuration"/>
-    <flow name="GetCombinedResultsFlow">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="/get-combined-results" allowedMethods="GET" doc:name="HTTP"/>
-        <dw:transform-message doc:name="Build Request">
-            <dw:set-payload><![CDATA[%dw 1.0
-%output application/java
----
-{
-	source: inboundProperties."http.query.params".source as :string
-} as :object {
-	class : "org.mule.modules.watsonalchemylanguage.model.CombinedCallRequest"
-}]]></dw:set-payload>
-        </dw:transform-message>
-        <watson-alchemy-language:combined-call config-ref="Watson_AlchemyLanguage_Service__Configuration" doc:name="Get Combined Results"/>
-        <json:object-to-json-transformer doc:name="Convert to JSON"/>
-    </flow>
-    <flow name="PostIssueOnSupportSystemFlow">
-        <http:listener config-ref="HTTP_Listener_Configuration" path="/issue" allowedMethods="POST" doc:name="HTTP"/>
-        <dw:transform-message doc:name="Build Request">
-            <dw:set-payload><![CDATA[%dw 1.0
-%output application/java
----
-{
-	extract: "doc-sentiment,entities,keywords",
-	source: inboundProperties."http.query.params".description as :string,
-	sentiment: 1
-	} as :object {
-	class : "org.mule.modules.watsonalchemylanguage.model.CombinedCallRequest"
-}]]></dw:set-payload>
-        </dw:transform-message>
-        <watson-alchemy-language:combined-call config-ref="Watson_AlchemyLanguage_Service__Configuration" doc:name="Get Combined Results"/>
-        <dw:transform-message doc:name="Generate Response">
-            <dw:input-payload doc:sample="sample_data/CombinedResults.dwl"/>
-            <dw:set-payload><![CDATA[%dw 1.0
-%output application/json
----
-{
-	description: inboundProperties."http.query.params".description,
-	sentiment: payload.sentiment.type,
-	user: inboundProperties."http.query.params".user,
-	keywords: payload.keywords,
-	entities: payload.entities
-}]]></dw:set-payload>
-        </dw:transform-message>
-        <flow-ref name="CreateNewTickectInSupportSystem" doc:name="CreateNewTickectInSupportSystem"/>
-    </flow>
-    <sub-flow name="CreateNewTickectInSupportSystem">
-        <logger message="#[payload]" level="INFO" doc:name="Logger"/>
-    </sub-flow>
-    <batch:job name="AnalyseTweetsBatch">
+    <batch:job name="AnalyseTweetsBatch" max-failed-records="-1">
         <batch:input>
             <poll doc:name="Poll">
                 <fixed-frequency-scheduler frequency="60" timeUnit="SECONDS"/>
@@ -84,7 +35,7 @@ payload.tweets]]></dw:set-payload>
 %output application/java
 ---
 {
-	source: payload.retweetedStatus.text,
+	source: payload.text,
 	maxRetrieve: 3
 } as :object {
 	class : "org.mule.modules.watsonalchemylanguage.model.ConceptsRequest"

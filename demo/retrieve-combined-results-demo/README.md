@@ -1,13 +1,12 @@
-Watson AlchemyLanguage Connector Demo
+Retrieve Combined Results Demo
 ===========================
 
 INTRODUCTION
 ------------
-The Watson AlchemyLanguage connector demo project offer three use cases using this three main flows:
+The Retrieve Combined Results Demo project offer two use cases using this two main flows:
 
 * **GetCombinedResultsFlow** - Provides an example on how to get combined results from several methods in just one call.
 * **PostIssueOnSupportSystemFlow** - Show the modernization of a legacy support system, preprocessing the customer request with Watson to classify it and add valuable information before it’s created in the support system.
-* **AnalyseTweetsBatch** - Use a batch that ingests tweets from the company twitter account and then extract their key concepts in order to get statistics about your social presence and save this data in a monitoring system.
 
 
 HOW TO RUN DEMO
@@ -18,15 +17,13 @@ In order to build run this demo project you'll need;
 
 * Anypoint Studio with Mule ESB 3.6 Runtime or higher.
 * Watson AlchemyLanguage Connector v1.0.0 or higher.
-* Mule Twitter Connector v4.0.0 or higher.
 * Watson AlchemyLanguage api key from Bluemix.
-* Twitter OAuth Credentials.
 
 ### Import the demo
 
 With Anypoint Studio up and running, open the Import wizard from the File menu. A pop-up wizard will offer you the chance to pick Anypoint Studio Project from External Location. On the next wizard window point Project Root to the location of the demo project and select the Server Runtime as Mule Server 3.8.0 CE or EE. Once successfully imported the studio will automatically present the Mule Flows.
 
-From the Package Explorer view, expand the demo project and open the mule-app.properties file. Fill in the api key of Watson and the credentials of Twitter.
+From the Package Explorer view, expand the demo project and open the mule-app.properties file. Fill in the api key of Watson.
 
 ### Test the flows
 
@@ -310,9 +307,9 @@ Run the demo project and in the browser hit - **http://localhost:8081/get-combin
 
 - **PostIssueOnSupportSystemFlow**
 
-Run the demo project and do a POST requesto to **http://localhost:8081/issue?user=[USERNAME]&description=[DESCRIPTION]**:
+Run the demo project and do a request to **http://localhost:8081/issue?user=[USERNAME]&description=[DESCRIPTION]**:
 
-**Input**: POST - http://localhost:8081/issue?user=test&description=IBM Watson is a great tool for text recongnition
+**Input**: http://localhost:8081/issue?user=test&description=IBM Watson is a great tool for text recongnition
 
 **Response**: The result would be a list of all the entities, keywords and the sentiment detected in the description, you can change the **Generate Response** and implement the flow **CreateNewTickectInSupportSystem** to save the response in a external system.
 ```javascript
@@ -380,42 +377,8 @@ Run the demo project and do a POST requesto to **http://localhost:8081/issue?use
   ]
 }
 ```
-- **AnalyseTweetsBatch**
-
-Run the demo project, the batch will start to retrieve tweets that constains the word "mulesoft" and will extract their key concepts, then it'll execute the flow **SaveDataInMonirotingSystem** to save the results if you choose to implement this flow. 
-
-**Input**: It will search for new tweets automatically.
-
-**Response**: You can see the results in the console.
-
-```javascript
-INFO  2016-08-31 14:09:36,843 [batch-job-AnalyseTweets-work-manager.01] org.mule.api.processor.LoggerMessageProcessor: {
-  "concepts": [
-    {
-      "dbpedia": "http://dbpedia.org/resource/Peer-to-peer",
-      "freebase": "http://rdf.freebase.com/ns/m.060b5",
-      "relevance": 0.902865,
-      "text": "Peer-to-peer"
-    },
-    {
-      "dbpedia": "http://dbpedia.org/resource/Internet",
-      "freebase": "http://rdf.freebase.com/ns/m.03rlt",
-      "opencyc": "http://sw.opencyc.org/concept/Mx4rvVnZe5wpEbGdrcN5Y29ycA",
-      "relevance": 0.87576,
-      "text": "Internet"
-    },
-    {
-      "dbpedia": "http://dbpedia.org/resource/Internet_of_Things",
-      "freebase": "http://rdf.freebase.com/ns/m.02vnd10",
-      "relevance": 0.852144,
-      "text": "Internet of Things"
-    }
-  ],
-  "language": "english"
-}
-```
 
 SUMMARY
 -------
 
-Congratulations! You have imported the Watson AlchemyLanguage Demo project and used the Watson AlchemyLanguage Connector to extract valuable data from a source using natural language. 
+Congratulations! You have imported the Retrieve Combined Results Demo project and used the Watson AlchemyLanguage Connector to extract valuable data from a source using natural language. 
