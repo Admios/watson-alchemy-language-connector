@@ -22,7 +22,7 @@ toc::[]
 
 AlchemyLanguage is a collection of text analysis functions that derive semantic information from your content. You can input text, HTML, or a public URL and leverage sophisticated natural language processing techniques to get a quick high-level understanding of your content and obtain detailed insights such as directional sentiment from entity to object.
 
-Read through this user guide to understand how to set up and configure a basic flow using the connector. Track feature additions, compatibility, limitations and API version updates with each release of the connector using the link:release-notes.html[Connector Release Notes]. Review the connector operations and functionality using the link:https://github.com/Admios/watson-alchemy-language-connector/tree/master/demo/Watson%20AlchemyLanguage%20Connector%20Demo[demo application].
+Read through this user guide to understand how to set up and configure a basic flow using the connector. Track feature additions, compatibility, limitations and API version updates with each release of the connector using the link:release-notes.html[Connector Release Notes]. Review the connector operations and functionality using the link:https://github.com/Admios/watson-alchemy-language-connector/tree/master/demo/retrieve-combined-results-demo[demo application].
 
 MuleSoft maintains this connector under the link:https://docs.mulesoft.com/mule-user-guide/v/3.8/anypoint-connectors#connector-categories[Certified] support policy.
 
@@ -117,7 +117,7 @@ Inside the `<version>` tags, put the desired version number, the word `RELEASE` 
 
 
 == Demo Mule Applications Using Connector
-link:https://github.com/Admios/watson-alchemy-language-connector/tree/master/demo/Watson%20AlchemyLanguage%20Connector%20Demo[Demo Application]
+link:https://github.com/Admios/watson-alchemy-language-connector/tree/master/demo/retrieve-combined-results-demo[Demo Application]
 
 
 === Example Use Case
