@@ -153,7 +153,7 @@ Extract Dates from a text, web page or content in an URL.
 
 
 | 
-dateExtractionRequest icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylanguage/model/DateExtractionRequest.html">DateExtractionRequest</a>+++ | +++Request with all the options for a date extraction operation.+++ | #[payload] | {nbsp}
+request icon:envelope[] | +++<a href="javadocs/org/mule/modules/watsonalchemylanguage/model/DateExtractionRequest.html">DateExtractionRequest</a>+++ | +++Request with all the options for a date extraction operation.+++ | #[payload] | {nbsp}
 
 
 |======================
@@ -675,7 +675,7 @@ Extract the main body raw text from a web page or HTML.
 
 
 | 
-source  | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The HTML or URL to process.+++ |  | *x*{nbsp}
+source icon:envelope[] | +++<a href="http://docs.oracle.com/javase/7/docs/api/java/lang/String.html">String</a>+++ | +++The HTML or URL to process.+++ | #[payload] | {nbsp}
 
 
 |======================
