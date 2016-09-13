@@ -379,7 +379,7 @@ public class WatsonAlchemyLanguageConnector {
 	 * @return The extracted text.
 	 */
 	@Processor
-	public DocumentText rawTextExtraction(String source) {
+	public DocumentText rawTextExtraction(@Default("#[payload]") String source) {
 		return new TextExtractionHandler(config.getService(), source).execute();
 	}
 
